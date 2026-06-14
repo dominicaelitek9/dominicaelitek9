@@ -1,189 +1,1112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kennel Assistant Chatbot</title>
+    <title>Dominica Elite K9 Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
+        /* Modern Reset and Color Variables */
+        :root {
+            --bg-color: #121824;
+            --card-bg: #1e2640;
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --accent-gold: #d4af37;
+            --accent-hover: #f3e5ab;
+            --whatsapp-green: #25d366;
+            --youtube-red: #ff0000;
+            --youtube-hover: #cc0000;
+            --chat-user-bg: #2a355c;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f6f9;
-            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            text-align: left;
             padding: 20px;
+            margin: 0;
+            line-height: 1.7;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Professional Header Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background-color: rgba(30, 38, 64, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-logo {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-gold);
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--accent-gold);
+        }
+
+        /* Container to keep content clean and centered */
+        .content-container {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 0 20px;
+            flex: 1;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Business Title Header */
+        .main-title {
+            color: var(--accent-gold);
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .main-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        /* Page/Section Layouts */
+        .page-content {
+            display: none; /* Hidden by default, controlled via JS */
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .page-content.active-page {
+            display: block; /* Only show active page */
+        }
+
+        h2 {
+            color: var(--accent-gold);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            color: var(--text-primary);
+            font-size: 1.4rem;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 5px;
+        }
+
+        p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        /* Flyer Container Style */
+        .flyer-showcase-container {
+            text-align: center;
+            margin: 35px 0;
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .embedded-flyer-img {
+            max-width: 100%;
+            width: 550px;
+            height: auto;
+            border-radius: 8px;
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Video Gallery Section Styles */
+        .video-grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .video-showcase-container {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .video-showcase-container.live-container {
+            grid-column: 1 / -1;
+            border: 2px dashed var(--youtube-red);
+            background-color: rgba(255, 0, 0, 0.02);
+        }
+
+        .training-video-player {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 8px;
+            border: 2px solid var(--accent-gold);
+            background-color: #000000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* YouTube Channel CTA Button Section */
+        .youtube-cta-block {
+            text-align: center;
+            margin-top: 40px;
+            padding: 25px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .youtube-subscribe-btn {
+            background-color: var(--youtube-red);
+            color: #ffffff;
+            padding: 12px 28px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 30px;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2);
+        }
+
+        .youtube-subscribe-btn:hover {
+            background-color: var(--youtube-hover);
+            transform: translateY(-2px);
+            color: #ffffff;
+        }
+
+        /* Gallery Page Layout */
+        .breed-gallery-block {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .gallery-img-box {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .gallery-item-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-align: center;
+        }
+
+        .gallery-item-wrapper h5 {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+
+        /* Location & Hours Split Layout */
+        .location-section {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .location-info {
+            flex: 1;
+        }
+
+        .map-container {
+            flex: 1;
+            min-height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid var(--accent-gold);
+            background: #121824;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        /* Grid Display for Breed/Service Items */
+        .item-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .item-card {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease;
+        }
+
+        .item-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .item-card h4 {
+            margin: 0 0 5px 0;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+        }
+
+        .item-card .tag {
+            font-size: 0.85rem;
+            color: var(--accent-gold);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .item-card p {
+            font-size: 1rem;
+            flex-grow: 1;
+        }
+
+        .item-card .price {
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            font-weight: 700;
+            margin: 15px 0;
+        }
+
+        /* Lists */
+        ul.policy-list, ul.hours-list {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        ul.policy-list li, ul.hours-list li {
+            margin-bottom: 8px;
+        }
+
+        /* Call To Action Buttons */
+        .contact-block {
+            margin-top: 20px;
+        }
+
+        button, .action-btn {
+            background-color: var(--accent-gold);
+            color: #000000;
+            padding: 10px 22px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 6px;
+            border: none;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover, .action-btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Contact Box Styles */
+        .contact-card-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .contact-profile {
+            background-color: var(--card-bg);
+            border-left: 4px solid var(--accent-gold);
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            flex: 1;
+        }
+
+        .contact-profile h4 {
+            margin: 0 0 5px 0;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+        }
+
+        .contact-profile .role {
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+
+        .contact-profile p {
+            margin: 5px 0;
+            font-size: 1rem;
+        }
+
+        /* Styling for Clickable Links */
+        .contact-link {
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: color 0.2s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--accent-gold);
+        }
+
+        .whatsapp-link {
+            color: var(--whatsapp-green) !important;
+            font-weight: 600;
+        }
+
+        .whatsapp-link:hover {
+            color: #a3f7bf !important;
+        }
+
+        .fa-whatsapp {
+            margin-right: 5px;
+            font-size: 1.1rem;
+            vertical-align: -1px;
+        }
+
+        /* Business Footer */
+        footer {
+            background-color: rgba(30, 38, 64, 0.5);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px 40px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-top: 60px;
+        }
+
+        /* INTERACTIVE CHATBOT PANELS (LEFT SIDE) */
+        .chat-widget-container {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            z-index: 1000;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .chat-launcher-btn {
+            width: 60px;
+            height: 60px;
+            background-color: var(--whatsapp-green);
+            color: #ffffff;
+            border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            font-size: 26px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            transition: transform 0.3s ease, background-color 0.3s ease;
         }
-        .chat-container {
-            width: 100%;
-            max-width: 450px;
-            height: 600px;
-            background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            display: flex;
+
+        .chat-launcher-btn:hover {
+            transform: scale(1.05);
+            background-color: #1ebd58;
+        }
+
+        .chat-window-panel {
+            position: fixed;
+            bottom: 100px;
+            left: 25px;
+            width: 360px;
+            max-width: calc(100vw - 50px);
+            height: 480px;
+            background-color: var(--bg-color);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            display: none;
             flex-direction: column;
             overflow: hidden;
+            animation: fadeIn 0.3s ease forwards;
         }
-        .chat-header {
-            background-color: #1e293b;
-            color: #ffffff;
+
+        .chat-header-bar {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             padding: 15px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 1.1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .chat-box {
+
+        .chat-header-bar h4 {
+            margin: 0;
+            color: var(--accent-gold);
+            font-size: 1.05rem;
+        }
+
+        .chat-header-bar .subtitle {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .chat-close-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 20px;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .chat-close-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .chat-conversation-log {
             flex: 1;
             padding: 15px;
             overflow-y: auto;
-            background-color: #f8fafc;
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
-        .message {
+
+        .chat-msg-row {
+            display: flex;
+            flex-direction: column;
             max-width: 80%;
             padding: 10px 14px;
-            border-radius: 8px;
-            font-size: 0.95em;
+            border-radius: 10px;
+            font-size: 0.95rem;
             line-height: 1.4;
         }
-        .client-msg {
-            background-color: #3b82f6;
-            color: #ffffff;
-            align-self: flex-end;
-            border-bottom-right-radius: 2px;
-        }
-        .bot-msg {
-            background-color: #e2e8f0;
-            color: #1e293b;
+
+        .chat-msg-row.bot {
+            background-color: var(--card-bg);
+            color: var(--text-primary);
             align-self: flex-start;
-            border-bottom-left-radius: 2px;
+            border-left: 3px solid var(--accent-gold);
         }
+
+        .chat-msg-row.user {
+            background-color: var(--chat-user-bg);
+            color: var(--text-primary);
+            align-self: flex-end;
+        }
+
+        .whatsapp-redirect-btn {
+            display: inline-block;
+            background-color: var(--whatsapp-green);
+            color: #ffffff;
+            padding: 8px 14px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            text-align: center;
+            transition: background-color 0.2s ease;
+        }
+        
+        .whatsapp-redirect-btn:hover {
+            background-color: #1ebd58;
+        }
+
+        .chat-shortcuts-container {
+            display: flex; 
+            flex-wrap: wrap;
+            gap: 6px;
+            padding: 10px 15px;
+            background-color: rgba(30, 38, 64, 0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .chat-shortcut-tag {
+            background-color: var(--card-bg);
+            color: var(--text-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .chat-shortcut-tag:hover {
+            border-color: var(--accent-gold);
+            color: var(--text-primary);
+        }
+
         .chat-input-area {
             display: flex;
-            padding: 10px;
-            background: #ffffff;
-            border-top: 1px solid #e2e8f0;
+            padding: 12px;
+            background-color: var(--card-bg);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .chat-input-area input {
+
+        .chat-input-field {
             flex: 1;
-            padding: 10px;
-            border: 1px solid #cbd5e1;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 6px;
+            padding: 8px 12px;
+            color: #ffffff;
+            font-size: 0.9rem;
             outline: none;
-            font-size: 0.95em;
         }
-        .chat-input-area button {
-            background-color: #10b981;
-            color: white;
+
+        .chat-input-field:focus {
+            border-color: var(--accent-gold);
+        }
+
+        .chat-submit-btn {
+            background-color: var(--accent-gold);
+            color: #000000;
             border: none;
-            padding: 0 16px;
-            margin-left: 8px;
             border-radius: 6px;
+            margin-left: 8px;
+            padding: 0 14px;
             cursor: pointer;
             font-weight: bold;
+            transition: background-color 0.2s ease;
         }
-        .chat-input-area button:hover {
-            background-color: #059669;
+
+        .chat-submit-btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* Smooth page transition animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive UI Adjustments */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px;
+                text-align: center;
+            }
+            nav ul li {
+                margin: 5px 10px;
+                display: inline-block;
+            }
+            body {
+                text-align: center;
+            }
+            ul.policy-list, ul.hours-list {
+                text-align: left;
+                display: inline-block;
+            }
+            .location-section {
+                flex-direction: column;
+                }
+            .contact-card-container {
+                flex-direction: column;
+            }
+            .contact-profile {
+                text-align: left;
+            }
+            .item-card {
+                text-align: left;
+            }
+            .chat-window-panel {
+                bottom: 90px;
+                left: 15px;
+                width: calc(100vw - 30px);
+                max-width: none;
+                height: 400px;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="chat-container">
-    <div class="chat-header">🐾 Kennel Assistant (Away Mode)</div>
-    <div class="chat-box" id="chatBox">
-        <div class="message bot-msg">Hello! Welcome to our Kennel. How can I help you today? (Ask about breeds, pricing, or availability!)</div>
+    <header>
+        <img class="nav-logo" src="IMG-20260605-WA0000.jpg" alt="Dominica Elite K9 Logo">
+        <nav>
+            <ul>
+                <li><a onclick="showPage('home-page')" id="nav-home-page" class="active">Home</a></li>
+                <li><a onclick="showPage('about-page')" id="nav-about-page">About Us</a></li>
+                <li><a onclick="showPage('breeding-page')" id="nav-breeding-page">Puppy Sales</a></li>
+                <li><a onclick="showPage('services-page')" id="nav-services-page">Services & Rates</a></li>
+                <li><a onclick="showPage('gallery-page')" id="nav-gallery-page">Gallery</a></li>
+                <li><a onclick="showPage('training-page')" id="nav-training-page">Watch Training</a></li>
+                <li><a onclick="showPage('policies-page')" id="nav-policies-page">Policies</a></li>
+                <li><a onclick="showPage('payments-page')" id="nav-payments-page">Payments</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="content-container">
+        
+        <h1 class="main-title">Dominica Elite K9 Services</h1>
+        <div class="main-subtitle">Portsmouth, Dominica</div>
+
+        <main>
+            <div id="home-page" class="page-content active-page">
+                <h2>Welcome</h2>
+                <p>Dominica Elite K9 Services provides industry-standard canine development and tactical instruction based in Portsmouth, Dominica. Our tailored training programs ensure your companions achieve peak obedience, reliable protection assets, and optimal health while under our care.</p>
+                <p>We balance top-tier working standards with premium domestic care options, structuring individual routines to meet your companion's specific physical and mental drive profiles.</p>
+                
+                <div class="contact-block">
+                    <button onclick="showContactDetails()">Inquire for Details</button>
+                    <div id="message"></div>
+                </div>
+
+                <div class="flyer-showcase-container">
+                    <h3 style="margin-top: 0; margin-bottom: 15px;">Official K9 Services Flyer</h3>
+                    <img class="embedded-flyer-img" src="IMG-20260605-WA0001.jpg" alt="Dominica Elite K9 Promotional Flyer">
+                </div>
+
+                <div class="location-section">
+                    <div class="location-info">
+                        <h2>Facility Location & Hours</h2>
+                        <p><strong>Address:</strong> Chance, Portsmouth, Dominica</p>
+                        <p>Appointments, dropping off K9 targets, or scheduling consultation evaluations must occur within operational frameworks.</p>
+                        
+                        <ul class="hours-list">
+                            <li><strong>Monday - Friday:</strong> 8:00 AM - 5:00 PM</li>
+                            <li><strong>Saturday - Sunday:</strong> Closed (Emergency Support Only)</li>
+                        </ul>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="about:blank" id="map-iframe" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div id="about-page" class="page-content">
+                <h2>About Us</h2>
+                <p>At Dominica Elite K9 Services, we are dedicated to developing high-caliber working dogs and well-behaved family companions. Based out of Portsmouth, our team brings specialized knowledge in drive channel management, canine psychology, and tactical handling.</p>
+                <p>We believe that a truly elite dog is built on a foundation of trust, consistency, and clear communication. Whether preparing a dog for protection, advanced obedience, or offering premium boarding solutions, we apply professional training metrics to deliver real, sustainable results for our clients.</p>
+            </div>
+
+            <div id="breeding-page" class="page-content">
+                <h2>Elite K9 Breeding & Puppy Sales</h2>
+                <p>Specializing in stable, driven working bloodlines built for high-level utility, tracking, and family defense.</p>
+                
+                <div class="item-grid">
+                    <div class="item-card">
+                        <div>
+                            <h4>Working Line GSD</h4>
+                            <div class="tag">Import Bloodlines</div>
+                            <p>Impeccable structural tracking and protection genetics. Outstanding natural vigilance and off-site threat detection capacity.</p>
+                        </div>
+                        <div>
+                            <div class="price">2,500 XCD</div>
+                            <a onclick="showContactDetails()" class="action-btn">Inquire Bloodline</a>
+                        </div>
+                    </div>
+
+                    <div class="item-card">
+                        <div>
+                            <h4>Belgian Malinois</h4>
+                            <div class="tag">High Working Drive</div>
+                            <p>High-intensity, hyper-athletic drive profiles precisely configured for professional security functions and active protection tasks.</p>
+                        </div>
+                        <div>
+                            <div class="price">2,500 XCD</div>
+                            <a onclick="showContactDetails()" class="action-btn">Inquire Bloodline</a>
+                        </div>
+                    </div>
+
+                    <div class="item-card">
+                        <div>
+                            <h4>Rottweiler</h4>
+                            <div class="tag">Guard & Guardian</div>
+                            <p>Substantial bone structures, high-confidence dispositions, and robust, reliable natural territorial boundary protection.</p>
+                        </div>
+                        <div>
+                            <div class="price">1,000 XCD</div>
+                            <a onclick="showContactDetails()" class="action-btn">Inquire Bloodline</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="message-breeding"></div>
+            </div>
+
+            <div id="services-page" class="page-content">
+                <h2>Our Services & Rates</h2>
+                <p>Explore our premium tiers of performance training, active daycare solutions, and precision workspace grooming handling.</p>
+                
+                <div class="item-grid">
+                    <div class="item-card">
+                        <div>
+                            <h4>Basic Obedience</h4>
+                            <div class="tag">6-Week Standard Program</div>
+                            <p>Clear communication layers, focal markers, reliable on-leash heel work, vital foundational control commands, and behavior corrections handled directly by Ishmael.</p>
+                        </div>
+                        <div>
+                            <div class="price">400 XCD</div>
+                            <a onclick="showContactDetails()" class="action-btn">Book Course</a>
+                        </div>
+                    </div>
+
+                    <div class="item-card">
+                        <div>
+                            <h4>Elite Protection</h4>
+                            <div class="tag">Advanced Tactical Course</div>
+                            <p>Threat assessments, targeted bite-work development, environmental assurance under stress, and complex handler protection defense protocols built around your dog's drive lines.</p>
+                        </div>
+                        <div>
+                            <div class="price">5,000 XCD</div>
+                            <a onclick="showContactDetails()" class="action-btn">Book Evaluation</a>
+                        </div>
+                    </div>
+
+                    <div class="item-card">
+                        <div>
+                            <h4>K9 Grooming</h4>
+                            <div class="tag">Full Premium Hygiene</div>
+                            <p>Thorough sanitization wash, precision undercoat extraction, heavy de-shedding setups, nail trimming, and physical structural styling to keep your working dog in prime condition.</p>
+                        </div>
+                        <div>
+                            <div class="price">100+ XCD</div>
+                            <a onclick="showContactDetails()" class="action-btn">Inquire Slots</a>
+                        </div>
+                    </div>
+
+                    <div class="item-card">
+                        <div>
+                            <h4>K9 Daycare</h4>
+                            <div class="tag">Supervised Daily Care</div>
+                            <p>Fully controlled interaction drills, structured group pacing exercises, scheduled rest intervals, and strictly monitored play configurations on our professional grounds.</p>
+                        </div>
+                        <div>
+                            <div class="price">50+ XCD</div>
+                            <a onclick="showContactDetails()" class="action-btn">Reserve Space</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="message-services"></div>
+            </div>
+
+            <div id="gallery-page" class="page-content">
+                <h2>Elite K9 Media Gallery</h2>
+                <p>Preview our foundational working line parents and high-drive puppies.</p>
+                
+                <div class="breed-gallery-block">
+                    <h3>Working Line German Shepherds</h3>
+                    <div class="gallery-grid">
+                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="gsd_parents1.jpg" alt="GSD Parent 1" onerror="hideEmptyImageBlock(this)"><h5>GSD Parent 1</h5></div>
+                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="gsd_parents2.jpg" alt="GSD Parent 2" onerror="hideEmptyImageBlock(this)"><h5>GSD Parent 2</h5></div>
+                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="gsd_parents3.jpg" alt="GSD Parent 3" onerror="hideEmptyImageBlock(this)"><h5>GSD Parent 3</h5></div>
+                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="gsd_puppies1.jpg" alt="GSD Puppy 1" onerror="hideEmptyImageBlock(this)"><h5>GSD Puppy 1</h5></div>
+                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="gsd_puppies2.jpg" alt="GSD Puppy 2" onerror="hideEmptyImageBlock(this)"><h5>GSD Puppy 2</h5></div>
+                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="gsd_puppies3.jpg" alt="GSD Puppy 3" onerror="hideEmptyImageBlock(this)"><h5>GSD Puppy 3</h5></div>
+                    </div>
+                </div>
+
+                <div class="breed-gallery-block">
+                    <h3>Belgian Malinois</h3>
+                    <div class="gallery-grid">
+                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="mal_parents1.jpg" alt="Malinois Parent 1" onerror="hideEmptyImageBlock(this)"><h5>Malinois Parent 1</h5></div>
+                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="mal_parents2.jpg" alt="Malinois Parent 2" onerror="hideEmptyImageBlock(this)"><h5>Malinois Parent 2</h5></div>
+                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="mal_parents3.jpg" alt="Malinois Parent 3" onerror="hideEmptyImageBlock(this)"><h5>Malinois Parent 3</h5></div>
+                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="mal_puppies1.jpg" alt="Malinois Puppy 1" onerror="hideEmptyImageBlock(this)"><h5>Malinois Puppy 1</h5></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="training-page" class="page-content">
+                <h2>Watch Our Training Sessions</h2>
+                <p>See our high-drive working dogs in action. We post regular obedience courses, tactical protection work, puppy building blocks, and socialization clips.</p>
+                
+                <div class="video-grid-layout">
+                    <div class="video-showcase-container">
+                        <h4>Advanced Protection Setup</h4>
+                        <p>Environmental confidence work and targeted bite development exercises.</p>
+                        <iframe class="training-video-player" src="https://www.youtube.com/embed?listType=user_uploads&list=DominicaEliteK9" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="youtube-cta-block">
+                    <p>Want to see our latest training builds, litter overviews, and daily routines?</p>
+                    <a href="https://www.youtube.com/@DominicaEliteK9Services" target="_blank" class="youtube-subscribe-btn">
+                        <i class="fab fa-youtube"></i> Subscribe on YouTube
+                    </a>
+                </div>
+            </div>
+
+            <div id="policies-page" class="page-content">
+                <h2>Our Policies</h2>
+                <p>To ensure structural safety, consistency, and clean health settings for all handlers and dogs at our facility, please review the frameworks below:</p>
+                <ul class="policy-list">
+                    <li><strong>Evaluation Mandate:</strong> All K9 prospects booking intermediate or protection tracks must undergo an initial drive profiling evaluation.</li>
+                    <li><strong>Vaccination Rules:</strong> All dogs visiting or boarding must possess up-to-date health books showing DHLPP and Rabies coverage.</li>
+                    <li><strong>Reservation Framework:</strong> Puppy deposits are structured to hold your selection sequence and are non-refundable.</li>
+                </ul>
+            </div>
+
+            <div id="payments-page" class="page-content">
+                <h2>Payments & Retainers</h2>
+                <p>We process transactions securely via local bank settlement channels, wire configurations, or direct cash clearings at our main desk.</p>
+                <p>Please interface with management directly to confirm retainer distributions or secure transaction vouchers before dispatching your companions for drop-offs.</p>
+            </div>
+        </main>
     </div>
-    <div class="chat-input-area">
-        <input type="text" id="userInput" placeholder="Type your question here..." onkeypress="handleKeyPress(event)">
-        <button onclick="sendMessage()">Send</button>
+
+    <div class="chat-widget-container">
+        <div class="chat-launcher-btn" onclick="toggleChatSystem()"><i class="fas fa-comments"></i></div>
+        
+        <div class="chat-window-panel" id="chatSystemPanel">
+            <div class="chat-header-bar">
+                <div>
+                    <h4>Elite K9 Assistant</h4>
+                    <p class="subtitle">Away Mode • Response Automated</p>
+                </div>
+                <button class="chat-close-btn" onclick="toggleChatSystem()">×</button>
+            </div>
+            
+            <div class="chat-conversation-log" id="chatbotLog">
+                <div class="chat-msg-row bot">
+                    Hello! Welcome to Dominica Elite K9 Services. How can I help you today? Ask about our working line breeds, training courses, or current availability!
+                </div>
+            </div>
+
+            <div class="chat-shortcuts-container">
+                <div class="chat-shortcut-tag" onclick="useShortcutValue('Do you have puppies available right now?')">Puppy Availability</div>
+                <div class="chat-shortcut-tag" onclick="useShortcutValue('How much is a Working Line GSD?')">GSD Price</div>
+                <div class="chat-shortcut-tag" onclick="useShortcutValue('When is the next litter arriving?')">Next Litters</div>
+                <div class="chat-shortcut-tag" onclick="useShortcutValue('What are your training options?')">Training Rates</div>
+            </div>
+
+            <div class="chat-input-area">
+                <input type="text" class="chat-input-field" id="chatUserTextField" placeholder="Type your question here..." onkeypress="evaluateKeyPress(event)">
+                <button class="chat-submit-btn" onclick="dispatchClientMessage()">Send</button>
+            </div>
+        </div>
     </div>
-</div>
 
-<script>
-    // --- CONFIGURATION (Change your details here) ---
-    const MANAGER_WHATSAPP = "[Insert WhatsApp Link/Number]";
-    const SECRETARY_PHONE = "[Insert Phone Number]";
-    // -------------------------------------------------
+    <footer>
+        <p>&copy; 2026 Dominica Elite K9 Services. All Rights Reserved.</p>
+    </footer>
 
-    const handoffInfo = `please contact our manager directly via WhatsApp at <b>${MANAGER_WHATSAPP}</b> or call our secretary Natasha at <b>${SECRETARY_PHONE}</b>!`;
+    <script>
+        // --- CENTRAL BUSINESS VARIABLES (Update links/numbers cleanly here) ---
+        const WHATSAPP_LINK_RAW = "https://wa.me/17672450410"; 
+        const FORMATTED_PHONE = "+1 (767) 245-0410";
+        // ----------------------------------------------------------------------
 
-    function getBotResponse(input) {
-        const msg = input.toLowerCase();
+        const systemHandoffBlock = `Please interface with our head trainer Ishmael directly on WhatsApp by clicking below, or call us at <b>${FORMATTED_PHONE}</b>! <br><a href="${WHATSAPP_LINK_RAW}" target="_blank" class="whatsapp-redirect-btn"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>`;
 
-        // Scenario 3: When are puppies arriving
-        if (msg.includes("when") && (msg.includes("get") || msg.includes("arrive") || msg.includes("litter") || msg.includes("pupp"))) {
-            return `We have exciting upcoming litters planned! For the exact dates, expected arrival times, and to get on our waiting list, ${handoffInfo} for administrative details.`;
-        }
-
-        // Scenario 2: Live availability / In stock right now
-        if (msg.includes("right now") || msg.includes("available") || msg.includes("in stock") || msg.includes("have any")) {
-            let breedIntro = "";
-            if (msg.includes("german shepherd") || msg.includes("gsd") || msg.includes("working line")) {
-                breedIntro = "Working line German Shepherds are incredible dogs! ";
-            } else if (msg.includes("rottweiler") || msg.includes("rotti")) {
-                breedIntro = "We love Rottweilers! ";
-            } else if (msg.includes("malinois") || msg.includes("belgian")) {
-                breedIntro = "Belgian Malinois are fantastic, high-drive dogs! ";
+        // Interactive Tab Switching Engine
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page-content');
+            pages.forEach(page => page.classList.remove('active-page'));
+            
+            const selectedPage = document.getElementById(pageId);
+            if (selectedPage) {
+                selectedPage.classList.add('active-page');
             }
-            return `${breedIntro}Because our puppies go to their new homes quickly, our live inventory changes daily. I want to make sure you get accurate information, so please reach out to our manager via WhatsApp at <b>${MANAGER_WHATSAPP}</b> to check our current availability, or call our secretary Natasha at <b>${SECRETARY_PHONE}</b>.`;
+
+            const navLinks = document.querySelectorAll('nav ul li a');
+            navLinks.forEach(link => link.classList.remove('active'));
+            
+            const activeNav = document.getElementById('nav-' + pageId);
+            if (activeNav) {
+                activeNav.classList.add('active');
+            }
+
+            // Lazy load mapping iframe framework when navigating to home view
+            if (pageId === 'home-page') {
+                const mapFrame = document.getElementById('map-iframe');
+                if (mapFrame && mapFrame.src === "about:blank") {
+                    mapFrame.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3791.737039023192!2d-61.4646875!3d15.5786111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTXCsDM0JzQzLjAiTiA2McKwMjcnNTIuOSJX!5e0!3m2!1sen!2sdm!4v1717600000000!5m2!1sen!2sdm";
+                }
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Scenario 1: Rottweiler General Interest & Price
-        if (msg.includes("rottweiler") || msg.includes("rotti")) {
-            return `We love Rottweilers! Our prices generally depend on the lineage and training of the pup. For our current exact pricing and to see who we have available right now, ${handoffInfo}`;
+        // Inline Fallback Information Card Generator
+        function showContactDetails() {
+            const layoutHTML = `
+                <div class="contact-card-container">
+                    <div class="contact-profile">
+                        <h4>Ishmael</h4>
+                        <div class="role">Head K9 Instructor</div>
+                        <p><strong>Phone:</strong> <a class="contact-link" href="tel:+17672450410">${FORMATTED_PHONE}</a></p>
+                        <p><strong>WhatsApp:</strong> <a class="contact-link whatsapp-link" href="${WHATSAPP_LINK_RAW}" target="_blank"><i class="fab fa-whatsapp"></i> Chat Live</a></p>
+                    </div>
+                </div>
+            `;
+            
+            const mainBox = document.getElementById('message');
+            const breedBox = document.getElementById('message-breeding');
+            const serviceBox = document.getElementById('message-services');
+            
+            if (mainBox) mainBox.innerHTML = layoutHTML;
+            if (breedBox) breedBox.innerHTML = layoutHTML;
+            if (serviceBox) serviceBox.innerHTML = layoutHTML;
         }
 
-        // German Shepherd General Interest & Price
-        if (msg.includes("german shepherd") || msg.includes("gsd") || msg.includes("working line")) {
-            return `We specialize in top-quality German Shepherds! Our prices generally depend on the lineage, working line vs show line, and training. For our current exact pricing and availability, ${handoffInfo}`;
+        // Clean hidden handling engine for missing images
+        function hideEmptyImageBlock(imageElement) {
+            const wrapper = imageElement.closest('.gallery-item-wrapper');
+            if (wrapper) {
+                wrapper.style.display = 'none';
+            }
         }
 
-        // Belgian Malinois General Interest & Price
-        if (msg.includes("malinois") || msg.includes("belgian")) {
-            return `We love Belgian Malinois! Prices depend directly on their specific lineage and drive levels. For exact pricing and to see who is available right now, ${handoffInfo}`;
+        // --- AUTOMATED CHATBOT LOGIC SYSTEM ---
+        function toggleChatSystem() {
+            const panel = document.getElementById("chatSystemPanel");
+            panel.style.display = (panel.style.display === "flex") ? "none" : "flex";
         }
 
-        // Catch-all Default
-        return `Thanks for reaching out! To better assist you with puppy availability, exact pricing, and upcoming litters, ${handoffInfo}`;
-    }
-
-    function sendMessage() {
-        const inputField = document.getElementById("userInput");
-        const chatBox = document.getElementById("chatBox");
-        const userText = inputField.value.trim();
-
-        if (userText === "") return;
-
-        // Display Client Message
-        const clientDiv = document.createElement("div");
-        clientDiv.className = "message client-msg";
-        clientDiv.innerText = userText;
-        chatBox.appendChild(clientDiv);
-
-        inputField.value = "";
-        chatBox.scrollTop = chatBox.scrollHeight;
-
-        // Process and Display Bot Response
-        setTimeout(() => {
-            const botDiv = document.createElement("div");
-            botDiv.className = "message bot-msg";
-            botDiv.innerHTML = getBotResponse(userText);
-            chatBox.appendChild(botDiv);
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }, 400); 
-    }
-
-    function handleKeyPress(event) {
-        if (event.key === "Enter") {
-            sendMessage();
+        function useShortcutValue(textPhrase) {
+            document.getElementById("chatUserTextField").value = textPhrase;
+            dispatchClientMessage();
         }
-    }
-</script>
 
+        function determineBotResponse(userInputString) {
+            const scrubbed = userInputString.toLowerCase();
+
+            // Scenario 3: Timelines of incoming litters
+            if (scrubbed.includes("when") && (scrubbed.includes("get") || scrubbed.includes("arrive") || scrubbed.includes("litter") || scrubbed.includes("pupp"))) {
+                return `We have exciting upcoming working-line litters planned on our schedule! For historical lineage data, expected heat/arrival windows, or to sign up for our placement waitlist, ${systemHandoffBlock}`;
+            }
+
+            // Scenario 2: Live stock / On-site instant inventory check
+            if (scrubbed.includes("right now") || scrubbed.includes("available") || scrubbed.includes("in stock") || scrubbed.includes("have any")) {
+                let selectiveBreedLine = "";
+                if (scrubbed.includes("german shepherd") || scrubbed.includes("gsd") || scrubbed.includes("working line")) {
+                    selectiveBreedLine = "Our working-line German Shepherds move extremely fast! ";
+                } else if (scrubbed.includes("rottweiler") || scrubbed.includes("rotti")) {
+                    selectiveBreedLine = "Our robust Rottweiler configurations change options weekly. ";
+                } else if (scrubbed.includes("malinois") || scrubbed.includes("belgian")) {
+                    selectiveBreedLine = "Belgian Malinois drive profiles require matching analysis. ";
+                }
+                return `${selectiveBreedLine}Because our protection and companion puppies are assigned rapidly to confirmed depositors, our on-hand availability shifts daily. To ensure you receive accurate up-to-the-minute stock details, ${systemHandoffBlock}`;
+            }
+
+            // Scenario 1: Breed specifics & Financial pricing rates (Rottweilers)
+            if (scrubbed.includes("rottweiler") || scrubbed.includes("rotti")) {
+                return `We breed highly confident, solid Rottweilers! Our standard structural options start at <b>1,000 XCD</b>, variable based on working bloodline lineage tiers. For precise availability info, ${systemHandoffBlock}`;
+            }
+
+            // Breed fallback: German Shepherds
+            if (scrubbed.includes("german shepherd") || scrubbed.includes("gsd") || scrubbed.includes("working line")) {
+                return `We specialize in premier imported working line German Shepherds (Czech & West German tracks) starting at <b>2,500 XCD</b>. To view testing metrics or specific pup selections, ${systemHandoffBlock}`;
+            }
+
+            // Breed fallback: Belgian Malinois
+            if (scrubbed.includes("malinois") || scrubbed.includes("belgian")) {
+                return `Our athletic Belgian Malinois lines are selected precisely for high drive and executive security targets, starting at <b>2,500 XCD</b>. For data profiles on parent pairings, ${systemHandoffBlock}`;
+            }
+
+            // Service rate overview queries
+            if (scrubbed.includes("price") || scrubbed.includes("rate") || scrubbed.includes("cost") || scrubbed.includes("how much") || scrubbed.includes("train")) {
+                return `Our packages run from Basic Obedience (6-Week Program handled by Ishmael at <b>400 XCD</b>) to Advanced Tactical Protection (<b>5,000 XCD</b>), as well as Daycare (<b>50+ XCD</b>) and Grooming (<b>100+ XCD</b>). To lock in an evaluation window, ${systemHandoffBlock}`;
+            }
+
+            // General Framework Fallback Node
+            return `Thank you for contacting Dominica Elite K9 Services! To provide you with clear parameters regarding puppy reservations, custom rate configurations, or to visit our facility in Portsmouth, ${systemHandoffBlock}`;
+        }
+
+        function dispatchClientMessage() {
+            const textInput = document.getElementById("chatUserTextField");
+            const conversationContainer = document.getElementById("chatbotLog");
+            const structuralText = textInput.value.trim();
+
+            if (structuralText === "") return;
+
+            // Render Node: User Text Item
+            const clientRow = document.createElement("div");
+            clientRow.className = "chat-msg-row user";
+            clientRow.innerText = structuralText;
+            conversationContainer.appendChild(clientRow);
+
+            textInput.value = "";
+            conversationContainer.scrollTop = conversationContainer.scrollHeight;
+
+            // Trigger System Automations Delay Simulation
+            setTimeout(() => {
+                const automatedBotRow = document.createElement("div");
+                automatedBotRow.className = "chat-msg-row bot";
+                automatedBotRow.innerHTML = determineBotResponse(structuralText);
+                conversationContainer.appendChild(automatedBotRow);
+                conversationContainer.scrollTop = conversationContainer.scrollHeight;
+            }, 450);
+        }
+
+        function evaluateKeyPress(event) {
+            if (event.key === "Enter") {
+                dispatchClientMessage();
+            }
+        }
+    </script>
 </body>
 </html>
