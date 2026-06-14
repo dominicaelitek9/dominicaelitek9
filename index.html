@@ -110,7 +110,7 @@
     const SECRETARY_PHONE = "[Insert Phone Number]";
     // -------------------------------------------------
 
-    const handoffInfo = `please contact our manager directly via WhatsApp at <b>${MANAGER_WHATSAPP}</b> or call our secretary at <b>${SECRETARY_PHONE}</b>!`;
+    const handoffInfo = `please contact our manager directly via WhatsApp at <b>${MANAGER_WHATSAPP}</b> or call our secretary Natasha at <b>${SECRETARY_PHONE}</b>!`;
 
     function getBotResponse(input) {
         const msg = input.toLowerCase();
@@ -130,7 +130,7 @@
             } else if (msg.includes("malinois") || msg.includes("belgian")) {
                 breedIntro = "Belgian Malinois are fantastic, high-drive dogs! ";
             }
-            return `${breedIntro}Because our puppies go to their new homes quickly, our live inventory changes daily. I want to make sure you get accurate information, so please reach out to our manager via WhatsApp at <b>${MANAGER_WHATSAPP}</b> to check our current availability, or call our secretary at <b>${SECRETARY_PHONE}</b>.`;
+            return `${breedIntro}Because our puppies go to their new homes quickly, our live inventory changes daily. I want to make sure you get accurate information, so please reach out to our manager via WhatsApp at <b>${MANAGER_WHATSAPP}</b> to check our current availability, or call our secretary Natasha at <b>${SECRETARY_PHONE}</b>.`;
         }
 
         // Scenario 1: Rottweiler General Interest & Price
