@@ -189,10 +189,6 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
-        .video-showcase-container.live-container .training-video-player {
-            border-color: var(--youtube-red);
-        }
-
         /* YouTube Channel CTA Button Section */
         .youtube-cta-block {
             text-align: center;
@@ -549,13 +545,6 @@
             gap: 12px;
         }
 
-        .chat-message-viewport {
-            background-color: var(--card-bg);
-            color: var(--text-primary);
-            align-self: flex-start;
-            border-left: 3px solid var(--accent-gold);
-        }
-
         .chat-msg-row {
             display: flex;
             flex-direction: column;
@@ -598,7 +587,7 @@
         }
 
         .chat-shortcuts-container {
-            display: none; 
+            display: flex; 
             flex-wrap: wrap;
             gap: 6px;
             padding: 10px 15px;
@@ -758,7 +747,7 @@
                         </ul>
                     </div>
                     <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3800.222378370769!2d-61.4583!3d15.5833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTXCsDM1JzAwLjAiTiA2McKwMjcnMjkuOSJX!5e0!3m2!1sen!2sdm!4v1700000000000!5m2!1sen!2sdm" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="about:blank" id="map-iframe" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
@@ -892,300 +881,220 @@
                         <div class="gallery-item-wrapper"><img class="gallery-img-box" src="mal_parents2.jpg" alt="Malinois Parent 2" onerror="hideEmptyImageBlock(this)"><h5>Malinois Parent 2</h5></div>
                         <div class="gallery-item-wrapper"><img class="gallery-img-box" src="mal_parents3.jpg" alt="Malinois Parent 3" onerror="hideEmptyImageBlock(this)"><h5>Malinois Parent 3</h5></div>
                         <div class="gallery-item-wrapper"><img class="gallery-img-box" src="mal_puppies1.jpg" alt="Malinois Puppy 1" onerror="hideEmptyImageBlock(this)"><h5>Malinois Puppy 1</h5></div>
-                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="mal_puppies2.jpg" alt="Malinois Puppy 2" onerror="hideEmptyImageBlock(this)"><h5>Malinois Puppy 2</h5></div>
-                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="mal_puppies3.jpg" alt="Malinois Puppy 3" onerror="hideEmptyImageBlock(this)"><h5>Malinois Puppy 3</h5></div>
-                    </div>
-                </div>
-
-                <div class="breed-gallery-block">
-                    <h3>Rottweilers</h3>
-                    <div class="gallery-grid">
-                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="rott_parents1.jpg" alt="Rottweiler Parent 1" onerror="hideEmptyImageBlock(this)"><h5>Rottweiler Parent 1</h5></div>
-                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="rott_parents2.jpg" alt="Rottweiler Parent 2" onerror="hideEmptyImageBlock(this)"><h5>Rottweiler Parent 2</h5></div>
-                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="rott_parents3.jpg" alt="Rottweiler Parent 3" onerror="hideEmptyImageBlock(this)"><h5>Rottweiler Parent 3</h5></div>
-                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="rott_puppies1.jpg" alt="Rottweiler Puppy 1" onerror="hideEmptyImageBlock(this)"><h5>Rottweiler Puppy 1</h5></div>
-                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="rott_puppies2.jpg" alt="Rottweiler Puppy 2" onerror="hideEmptyImageBlock(this)"><h5>Rottweiler Puppy 2</h5></div>
-                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="rott_puppies3.jpg" alt="Rottweiler Puppy 3" onerror="hideEmptyImageBlock(this)"><h5>Rottweiler Puppy 3</h5></div>
                     </div>
                 </div>
             </div>
 
             <div id="training-page" class="page-content">
-                <h2>Watch Training & Live Stream</h2>
-                <p>Video demonstrations showing real-time utility, handler focus under heavy distraction, and step-by-step obedience progression.</p>
+                <h2>Watch Our Training Sessions</h2>
+                <p>See our high-drive working dogs in action. We post regular obedience courses, tactical protection work, puppy building blocks, and socialization clips.</p>
                 
                 <div class="video-grid-layout">
                     <div class="video-showcase-container live-container">
-                        <iframe class="training-video-player" src="https://www.youtube.com/embed/live_stream?channel=UCaSKuD4dJW9yzu4t5DsfTbQ" title="Elite K9 Live Session" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border: none;"></iframe>
-                        <p style="margin: 0; font-size: 1rem; font-weight: 600; color: var(--youtube-red);">
-                            <i class="fa-solid fa-satellite-dish" style="margin-right: 5px; animation: pulse 1.5s infinite;"></i> Live Training Broadcast
-                        </p>
-                        <p style="margin: 0; font-size: 0.95rem; color: var(--text-secondary);">
-                            When we are live-streaming operations or tactical instruction, it broadcasts directly inside this screen frame. If no live stream is active, browse our published uploads below!
-                        </p>
-                    </div>
-
-                    <div class="video-showcase-container">
-                        <iframe class="training-video-player" src="https://www.youtube.com/embed/zbYaORnxFps" title="Tactical Obedience Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border: none;"></iframe>
-                        <p style="margin: 0; font-size: 1rem; font-weight: 600; color: var(--accent-gold);">
-                            <i class="fa-solid fa-circle-play" style="margin-right: 5px;"></i> Tactical Obedience & Drive Management Demo
-                        </p>
-                        <p style="margin: 0; font-size: 0.95rem; color: var(--text-secondary);">
-                            Watch our advanced K9 training sessions executing precision focus drills and command responses under tight working conditions.
-                        </p>
-                    </div>
-
-                    <div class="video-showcase-container">
-                        <iframe class="training-video-player" src="https://www.youtube.com/embed/RfKGc7eWCF4" title="Utility & Focus Progression Drills" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border: none;"></iframe>
-                        <p style="margin: 0; font-size: 1rem; font-weight: 600; color: var(--accent-gold);">
-                            <i class="fa-solid fa-circle-play" style="margin-right: 5px;"></i> Utility & Focus Progression Drills
-                        </p>
-                        <p style="margin: 0; font-size: 0.95rem; color: var(--text-secondary);">
-                            A live breakdown of complex target behaviors, managing threat distractions, and testing environmental confidence lines.
-                        </p>
+                        <h3 style="margin-top:0; color:var(--youtube-red);"><i class="fa-solid fa-circle-play"></i> Latest Live Session / Featured Demonstration</h3>
+                        <iframe class="training-video-player" src="https://www.youtube.com/embed?listType=playlist&list=UU6C8ZkKsh383dZ2_wG-bRow" allowfullscreen></iframe>
                     </div>
                 </div>
 
                 <div class="youtube-cta-block">
-                    <h3 style="margin-top: 0; margin-bottom: 10px;">Want to See Every New Video?</h3>
-                    <p style="margin-bottom: 20px;">We upload fresh protection sessions, puppy highlights, and training breakdowns weekly. Subscribe directly to our channel page to receive instant updates on your phone!</p>
-                    <a href="https://www.youtube.com/channel/UCaSKuD4dJW9yzu4t5DsfTbQ?sub_confirmation=1" target="_blank" class="youtube-subscribe-btn">
+                    <h3>Want to see more of our training updates?</h3>
+                    <p>Subscribe to our official YouTube Channel to follow the progress of our K9 classes, security training sessions, and breeding highlights.</p>
+                    <a href="https://youtube.com/@dominicaelitek9services" target="_blank" class="youtube-subscribe-btn">
                         <i class="fa-brands fa-youtube"></i> Subscribe on YouTube
                     </a>
                 </div>
             </div>
 
             <div id="policies-page" class="page-content">
-                <h2>Business Policies</h2>
-                <p>To maintain our world-class standard of safety, structure, and operational excellence, all clients must strictly adhere to the following business frameworks:</p>
-                
-                <h3>Health and Vaccination Requirements</h3>
+                <h2>Facility Policies</h2>
                 <ul class="policy-list">
-                    <li>All canines entering our facility for daycare, boarding, or training must be fully up-to-date on required vaccinations (including Parvovirus, Distemper, and Rabies).</li>
-                    <li>Proof of recent veterinary health assessment must be submitted prior to the evaluation check-in.</li>
-                    <li>Dogs showing clear signs of contagious illness, parasites, or open, untreated injuries will not be accepted into care.</li>
-                </ul>
-
-                <h3>Booking, Deposits, and Cancellations</h3>
-                <ul class="policy-list">
-                    <li>A non-refundable deposit is required to secure time slots for advanced boarding and multi-week training programs.</li>
-                    <li>Cancellations or training schedule modifications must be submitted at least 48 hours in advance to avoid session forfeiture fees.</li>
-                </ul>
-
-                <h3>Safety and Assessment</h3>
-                <ul class="policy-list">
-                    <li>All dogs undergo an initial temperament assessment to safely classify their social dynamics and drive parameters.</li>
-                    <li>Dominica Elite K9 Services reserves the right to decline or alter service profiles for dogs deemed unsafe or unsuited for collective environment programs without structured tactical handlers.</li>
+                    <li>All dogs entering the facility must have up-to-date health and vaccination cards.</li>
+                    <li>Evaluations must be booked in advance before accepting long-term boarding targets.</li>
+                    <li>Payments are required as structured per program contracts.</li>
                 </ul>
             </div>
 
             <div id="payments-page" class="page-content">
-                <h2>Payments & Secure Checkout</h2>
-                <p>Information on processing invoices, digital deposit methods, and retaining service slot allocations can be managed directly through our team.</p>
+                <h2>Payment Systems</h2>
+                <p>We accept direct bank transfers, cash payments on appointment, and authorized local digital endpoints. Please communicate directly with our desk assets to verify statements.</p>
             </div>
         </main>
-        
     </div>
 
     <div class="chat-widget-container">
-        <div class="chat-launcher-btn" onclick="toggleChatPanel()" id="chat-bubble-launcher">
-            <i class="fa-brands fa-whatsapp"></i>
+        <div class="chat-launcher-btn" onclick="toggleChatWindow()">
+            <i class="fa-solid fa-comments"></i>
         </div>
-        <div class="chat-window-panel" id="chat-window-box">
+
+        <div class="chat-window-panel" id="chatPanel">
             <div class="chat-header-bar">
                 <div>
-                    <h4>Elite K9 Assistant</h4>
-                    <p class="subtitle">Online • Automated Help Desk</p>
+                    <h4>Elite K9 AI Assistant</h4>
+                    <p class="subtitle">Online • Ask me anything</p>
                 </div>
-                <button class="chat-close-btn" onclick="toggleChatPanel()">×</button>
+                <button class="chat-close-btn" onclick="toggleChatWindow()">&times;</button>
             </div>
-            <div class="chat-conversation-log" id="chat-message-viewport">
+
+            <div class="chat-conversation-log" id="chatConversationLog">
                 <div class="chat-msg-row bot">
-                    Hello! Welcome to Dominica Elite K9 Services.
+                    Hello! I am your 24/7 Elite K9 Assistant. If you are trying to reach the manager or secretary and they are currently away or busy training dogs, I can assist you cleanly right here! 
+                    <br><br>What would you like to explore today?
                 </div>
             </div>
-            <div class="chat-shortcuts-container" id="chat-shortcuts-tray">
-                <span class="chat-shortcut-tag" onclick="injectQuickQuestion('Train My Current Dog')">Train My Current Dog</span>
-                <span class="chat-shortcut-tag" onclick="injectQuickQuestion('Purchase an Imported Puppy')">🐕 Purchase an Imported Puppy</span>
-                <span class="chat-shortcut-tag" onclick="injectQuickQuestion('Our Training Methods (E-Collar/Leash)')">🧠 Our Training Methods (E-Collar/Leash)</span>
-                <span class="chat-shortcut-tag" onclick="injectQuickQuestion('View Prices & Why We Are the best')">💰 View Prices & Why We Are the best</span>
-                <span class="chat-shortcut-tag" onclick="injectQuickQuestion('Speak with the Manager')">💬 Connect to WhatsApp Live</span>
+
+            <div class="chat-shortcuts-container">
+                <span class="chat-shortcut-tag" onclick="useShortcut('View Prices')">💰 View Prices</span>
+                <span class="chat-shortcut-tag" onclick="useShortcut('Puppy Sales')">🐕 Puppy Sales</span>
+                <span class="chat-shortcut-tag" onclick="useShortcut('Location')">📍 Location</span>
+                <span class="chat-shortcut-tag" onclick="useShortcut('Connect to WhatsApp')">💬 Live Chat</span>
             </div>
+
             <div class="chat-input-area">
-                <input type="text" class="chat-input-field" id="chat-user-textbox" placeholder="Type your answer here..." onkeypress="handleChatEnter(event)">
-                <button class="chat-submit-btn" onclick="processUserChatInput()">Send</button>
+                <input type="text" class="chat-input-field" id="chatInputField" placeholder="Type a message..." onkeypress="handleChatEnter(event)">
+                <button class="chat-submit-btn" onclick="submitUserMessage()">Send</button>
             </div>
         </div>
     </div>
 
     <footer>
-        © 2026 Dominica Elite K9 Services. | Portsmouth, Dominica | MD: Ishmael Samuel
+        <p>&copy; 2026 Dominica Elite K9 Services. All Rights Reserved. Portsmouth, Dominica.</p>
     </footer>
 
     <script>
+        // Tab system navigation switching
         function showPage(pageId) {
             const pages = document.querySelectorAll('.page-content');
-            pages.forEach(page => {
-                page.classList.remove('active-page');
-            });
+            pages.forEach(page => page.classList.remove('active-page'));
+            
+            const targetPage = document.getElementById(pageId);
+            if(targetPage) targetPage.classList.add('active-page');
 
             const navLinks = document.querySelectorAll('nav ul li a');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-
-            document.getElementById(pageId).classList.add('active-page');
-            document.getElementById('nav-' + pageId).classList.add('active');
+            navLinks.forEach(link => link.classList.remove('active-page'));
             
-            document.getElementById("message").innerHTML = "";
-            document.getElementById("message-breeding").innerHTML = "";
-            document.getElementById("message-services").innerHTML = "";
+            const activeNav = document.getElementById('nav-' + pageId);
+            if(activeNav) activeNav.classList.add('active-page');
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function hideEmptyImageBlock(imageElement) {
-            if (imageElement && imageElement.parentElement) {
-                imageElement.parentElement.style.display = 'none';
-            }
+        // Error helper to hide raw blank graphic elements
+        function hideEmptyImageBlock(img) {
+            img.style.display = 'none';
         }
 
+        // Inline details logic
         function showContactDetails() {
-            let targetDiv = "message";
-            if(document.getElementById("breeding-page").classList.contains("active-page")) {
-                targetDiv = "message-breeding";
-            } else if(document.getElementById("services-page").classList.contains("active-page")) {
-                targetDiv = "message-services";
-            }
-
-            document.getElementById(targetDiv).innerHTML = `
-                <p style="color: var(--accent-gold); font-weight: bold; margin-top: 25px; margin-bottom: 10px; text-align:center;">Connect with our leadership directly to discuss your goals:</p>
+            const profiles = `
                 <div class="contact-card-container">
                     <div class="contact-profile">
-                        <h4>Ishmael Samuel</h4>
-                        <div class="role">Managing Director</div>
-                        <p><strong>Direct Call:</strong> <a class="contact-link" href="tel:17672954694">+1 (767) 295-4694</a></p>
-                        <p><strong>WhatsApp:</strong> <a class="contact-link whatsapp-link" href="https://wa.me/17672954694" target="_blank"><i class="fa-brands fa-whatsapp"></i> Chat Now</a></p>
+                        <h4>Ishmael Blondel</h4>
+                        <div class="role">Head Trainer & Manager</div>
+                        <p><i class="fa-solid fa-phone"></i> +1 (767) 275-6549</p>
+                        <p><a class="contact-link whatsapp-link" href="https://wa.me/17672756549" target="_blank"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a></p>
                     </div>
                     <div class="contact-profile">
-                        <h4>Natasha Whyte</h4>
-                        <div class="role">Secretary</div>
-                        <p><strong>Direct Call:</strong> <a class="contact-link" href="tel:17672779523">+1 (767) 277-9523</a></p>
-                        <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 10px;">(Direct Calls Only)</p>
+                        <h4>Nathalie Blondel</h4>
+                        <div class="role">Secretary & Admin Desk</div>
+                        <p><i class="fa-solid fa-phone"></i> +1 (767) 265-4229</p>
+                        <p><a class="contact-link whatsapp-link" href="https://wa.me/17672654229" target="_blank"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a></p>
                     </div>
                 </div>
             `;
-            
-            document.getElementById(targetDiv).scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            document.getElementById('message').innerHTML = profiles;
+            document.getElementById('message-breeding').innerHTML = profiles;
+            document.getElementById('message-services').innerHTML = profiles;
         }
 
-        function redirectToWhatsAppBusiness(customMessage) {
-            const targetPhone = "17672954694"; 
-            const formattedText = encodeURIComponent(customMessage);
-            const whatsappUrl = `https://wa.me/${targetPhone}?text=${formattedText}`;
-            window.open(whatsappUrl, '_blank');
+        // Interactive Chatbot Layout Handlers
+        function toggleChatWindow() {
+            const panel = document.getElementById('chatPanel');
+            panel.style.display = (panel.style.display === 'flex') ? 'none' : 'flex';
         }
 
-        let chatStep = "FIRST_NAME";
-        let clientData = { firstName: "", lastName: "", phone: "", email: "" };
-
-        setTimeout(() => {
-            renderChatMessage("What is your first name?", 'bot');
-        }, 1000);
-
-        function toggleChatPanel() {
-            const panel = document.getElementById('chat-window-box');
-            if (panel.style.display === 'none' || panel.style.display === '') {
-                panel.style.display = 'flex';
-            } else {
-                panel.style.display = 'none';
+        function handleChatEnter(e) {
+            if (e.key === 'Enter') {
+                submitUserMessage();
             }
         }
 
-        function handleChatEnter(event) {
-            if (event.key === 'Enter') {
-                processUserChatInput();
-            }
+        function useShortcut(text) {
+            addUserMessageLog(text);
+            processBotReply(text);
         }
 
-        function injectQuickQuestion(keyword) {
-            document.getElementById('chat-user-textbox').value = keyword;
-            processUserChatInput();
+        function submitUserMessage() {
+            const field = document.getElementById('chatInputField');
+            const messageText = field.value.trim();
+            if (!messageText) return;
+
+            addUserMessageLog(messageText);
+            field.value = '';
+            processBotReply(messageText);
         }
 
-        function processUserChatInput() {
-            const textbox = document.getElementById('chat-user-textbox');
-            const queryText = textbox.value.trim();
-            if (!queryText) return;
-
-            renderChatMessage(queryText, 'user');
-            textbox.value = '';
-            const lowerInput = queryText.toLowerCase();
-
-            if (lowerInput.includes('manager') || lowerInput.includes('secretary') || lowerInput.includes('ishmael') || lowerInput.includes('natasha') || lowerInput.includes('live') || lowerInput.includes('speak') || lowerInput.includes('chat')) {
-                setTimeout(() => {
-                    let textPrompt = `Hello Dominica Elite K9 Services team, I am on your website and would like to speak directly with a live representative about your services.`;
-                    if (clientData.firstName) {
-                        textPrompt = `Hello, my name is ${clientData.firstName} ${clientData.lastName}. I just completed your website bot screening form and need to speak with the manager or secretary regarding an inquiry!`;
-                    }
-                    renderChatMessage(`Routing you to our WhatsApp Business support hub...<br><a class="whatsapp-redirect-btn" onclick="redirectToWhatsAppBusiness('${textPrompt}')"><i class="fa-brands fa-whatsapp"></i> Launch WhatsApp Chat</a>`, 'bot');
-                }, 300);
-                return;
-            }
-
-            setTimeout(() => {
-                if (chatStep === "FIRST_NAME") {
-                    clientData.firstName = queryText;
-                    chatStep = "LAST_NAME";
-                    renderChatMessage("Thank you. What is your last name?", 'bot');
-                } 
-                else if (chatStep === "LAST_NAME") {
-                    clientData.lastName = queryText;
-                    chatStep = "PHONE_NUMBER";
-                    renderChatMessage("Got it. What is your phone number? (If you don't have a phone number, type 'none')", 'bot');
-                } 
-                else if (chatStep === "PHONE_NUMBER") {
-                    const cleanTxt = queryText.toLowerCase();
-                    if (cleanTxt.includes('none') || cleanTxt === 'no') {
-                        chatStep = "EMAIL_ADDRESS";
-                        renderChatMessage("No problem. What is your email address?", 'bot');
-                    } else {
-                        clientData.phone = queryText;
-                        completeLeadScreening();
-                    }
-                } 
-                else if (chatStep === "EMAIL_ADDRESS") {
-                    clientData.email = queryText;
-                    completeLeadScreening();
-                } 
-                else {
-                    let reply = "Please click 'Inquire for Details' on our page or click the link to reach our team on WhatsApp.";
-                    if (lowerInput.includes('train') || lowerInput.includes('obedience') || lowerInput.includes('daycare')) {
-                        reply = "Programs:<br>• Basic Obedience: 400 XCD<br>• K9 Daycare: 50+ XCD daily<br>• K9 Grooming: 100+ XCD.";
-                    } 
-                    else if (lowerInput.includes('puppy') || lowerInput.includes('breed') || lowerInput.includes('gsd') || lowerInput.includes('malinois') || lowerInput.includes('rottweiler')) {
-                        reply = "Working bloodline genetics:<br>• GSD / Malinois: 2,500 XCD<br>• Rottweiler: 1,000 XCD.";
-                    } 
-                    renderChatMessage(reply, 'bot');
-                }
-            }, 500);
-        }
-
-        function completeLeadScreening() {
-            chatStep = "FAQ_MODE";
-            document.getElementById('chat-shortcuts-tray').style.display = 'flex';
-            document.getElementById('chat-user-textbox').placeholder = "Type your question here...";
-            let messageContext = `Hello, my name is ${clientData.firstName} ${clientData.lastName}. My contact number is ${clientData.phone || 'N/A'} and my email is ${clientData.email || 'N/A'}. I would like to submit my info to the manager!`;
-            renderChatMessage(`Thank you, ${clientData.firstName}. Your baseline details are compiled! You can now send this summary straight to the manager's phone:<br><a class="whatsapp-redirect-btn" onclick="redirectToWhatsAppBusiness('${messageContext}')"><i class="fa-brands fa-whatsapp"></i> Submit to Team</a>`, 'bot');
-        }
-
-        function renderChatMessage(text, sender) {
-            const viewport = document.getElementById('chat-message-viewport');
+        function addUserMessageLog(text) {
+            const log = document.getElementById('chatConversationLog');
             const row = document.createElement('div');
-            row.className = `chat-msg-row ${sender}`;
+            row.className = 'chat-msg-row user';
+            row.innerText = text;
+            log.appendChild(row);
+            log.scrollTop = log.scrollHeight;
+        }
+
+        function addBotMessageLog(text, hasWhatsAppButton = false, number = "") {
+            const log = document.getElementById('chatConversationLog');
+            const row = document.createElement('div');
+            row.className = 'chat-msg-row bot';
             row.innerHTML = text;
-            viewport.appendChild(row);
-            viewport.scrollTop = viewport.scrollHeight;
+
+            if (hasWhatsAppButton && number) {
+                const btn = document.createElement('a');
+                btn.className = 'whatsapp-redirect-btn';
+                btn.href = 'https://wa.me/' + number;
+                btn.target = '_blank';
+                btn.innerHTML = '<i class="fa-brands fa-whatsapp"></i> Message Live WhatsApp';
+                row.appendChild(btn);
+            }
+
+            log.appendChild(row);
+            log.scrollTop = log.scrollHeight;
+        }
+
+        // CRITICAL RECONFIGURED AI BOT LOGIC: Strict condition filters
+        function processBotReply(userInput) {
+            const cleanInput = userInput.toLowerCase();
+            
+            setTimeout(() => {
+                // 1. Check if user is looking for human manager/secretary operations first
+                if (cleanInput.includes("manager") || cleanInput.includes("secretary") || cleanInput.includes("busy")) {
+                    addBotMessageLog(
+                        "The manager (Ishmael) and secretary (Nathalie) are currently handling physical desk management or active K9 drive training sessions. <br><br>However, I am your dedicated AI Assistant and can answer your questions right now! Tell me, are you looking for training rates, puppy availability, or location directions?"
+                    );
+                }
+                // 2. ONLY check for general WhatsApp/direct links if human targets aren't flagged
+                else if (cleanInput.includes("whatsapp") || cleanInput.includes("chat") || cleanInput.includes("live")) {
+                    addBotMessageLog(
+                        "Sure! You can shift directly over to our main WhatsApp channel for human scheduling support. Click the button right below to launch our thread:", 
+                        true, 
+                        "17672756549"
+                    );
+                }
+                // 3. Informational shortcuts/paths
+                else if (cleanInput.includes("price") || cleanInput.includes("rates") || cleanInput.includes("cost")) {
+                    addBotMessageLog("Our standard programs include Basic Obedience (400 XCD) and our Advanced Elite Protection Course (5,000 XCD). You can check complete rates by navigating to our 'Services & Rates' tab above!");
+                }
+                else if (cleanInput.includes("puppy") || cleanInput.includes("sales") || cleanInput.includes("breed")) {
+                    addBotMessageLog("We offer Working Line German Shepherds, high-drive Belgian Malinois, and stable guard-line Rottweilers. View our 'Puppy Sales' tab above for comprehensive parameters.");
+                }
+                else if (cleanInput.includes("location") || cleanInput.includes("where") || cleanInput.includes("address")) {
+                    addBotMessageLog("Our elite facility training grounds are set located directly at Chance, Portsmouth, Dominica. Check out our 'Home' panel to see our operational framework map window.");
+                }
+                // 4. Default baseline fallback
+                else {
+                    addBotMessageLog("I am here to guide you while the managers are on the field! Feel free to ask about our pricing metrics, puppy sales structures, location frames, or click our shortcut links below.");
+                }
+            }, 600);
         }
     </script>
 </body>
