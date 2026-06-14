@@ -183,6 +183,13 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
+        /* Dynamic Class for YouTube Shorts Scaling */
+        .training-video-player.shorts-format {
+            aspect-ratio: 9 / 16;
+            max-width: 315px;
+            margin: 0 auto;
+        }
+
         .video-card-title {
             margin: 0;
             font-size: 1.1rem;
@@ -907,240 +914,85 @@
                 <div id="message-services"></div>
             </div>
 
-            <div id="gallery-page" class="page-content">
-                <h2>Elite K9 Media Gallery</h2>
-                <p>Preview our foundational working line parents and high-drive puppies.</p>
-                
-                <div class="breed-gallery-block">
-                    <h3>Working Line German Shepherds</h3>
-                    <div class="gallery-grid">
-                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="gsd_parents1.jpg" alt="GSD Parent 1" onerror="hideEmptyImageBlock(this)"><h5>GSD Parent 1</h5></div>
-                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="gsd_parents2.jpg" alt="GSD Parent 2" onerror="hideEmptyImageBlock(this)"><h5>GSD Parent 2</h5></div>
-                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="gsd_parents3.jpg" alt="GSD Parent 3" onerror="hideEmptyImageBlock(this)"><h5>GSD Parent 3</h5></div>
-                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="gsd_puppies1.jpg" alt="GSD Puppy 1" onerror="hideEmptyImageBlock(this)"><h5>GSD Puppy 1</h5></div>
-                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="gsd_puppies2.jpg" alt="GSD Puppy 2" onerror="hideEmptyImageBlock(this)"><h5>GSD Puppy 2</h5></div>
-                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="gsd_puppies3.jpg" alt="GSD Puppy 3" onerror="hideEmptyImageBlock(this)"><h5>GSD Puppy 3</h5></div>
-                    </div>
-                </div>
-
-                <div class="breed-gallery-block">
-                    <h3>Belgian Malinois</h3>
-                    <div class="gallery-grid">
-                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="mal_parents1.jpg" alt="Malinois Parent 1" onerror="hideEmptyImageBlock(this)"><h5>Malinois Parent 1</h5></div>
-                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="mal_parents2.jpg" alt="Malinois Parent 2" onerror="hideEmptyImageBlock(this)"><h5>Malinois Parent 2</h5></div>
-                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="mal_puppies1.jpg" alt="Malinois Puppy 1" onerror="hideEmptyImageBlock(this)"><h5>Malinois Puppy 1</h5></div>
-                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="mal_puppies2.jpg" alt="Malinois Puppy 2" onerror="hideEmptyImageBlock(this)"><h5>Malinois Puppy 2</h5></div>
-                    </div>
-                </div>
-            </div>
-
             <div id="training-page" class="page-content">
-                <h2>Our Training Sessions</h2>
-                <p>Watch our elite protection work and obedience structures in action direct from our facility.</p>
+                <h2>Watch Our K9 Training Sessions</h2>
+                <p>See our advanced tactical conditioning, drive channel building, and absolute field control obedience workflows in action.</p>
                 
                 <div class="video-grid-layout">
                     <div class="video-showcase-container">
-                        <iframe class="training-video-player" src="https://www.youtube.com/embed?list=UUaSKuD4dJW9yzu4t5DsfTbQ&index=1" allowfullscreen></iframe>
-                        <p class="video-card-title">Advanced Guarding & Drive Channel Work</p>
+                        <h4 class="video-card-title">Advanced Tactical Obedience & Drive Management Demo</h4>
+                        <iframe 
+                            class="training-video-player" 
+                            src="https://www.youtube.com/embed/RfKGc7eWCF4" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                        </iframe>
                     </div>
 
                     <div class="video-showcase-container">
-                        <iframe class="training-video-player" src="https://www.youtube.com/embed?list=UUaSKuD4dJW9yzu4t5DsfTbQ&index=2" allowfullscreen></iframe>
-                        <p class="video-card-title">Foundational Control & Environmental Stress Drills</p>
+                        <h4 class="video-card-title">Training Shorts</h4>
+                        <iframe 
+                            class="training-video-player shorts-format" 
+                            src="https://www.youtube.com/embed/zbYaORnxFps" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                        </iframe>
                     </div>
                 </div>
 
                 <div class="youtube-cta-block">
-                    <p>Want to follow our daily protection blueprints and puppy updates?</p>
-                    <a href="https://www.youtube.com/channel/UCaSKuD4dJW9yzu4t5DsfTbQ" target="_blank" class="youtube-subscribe-btn">
-                        <i class="fab fa-youtube"></i> Visit Our YouTube Channel
+                    <h3>Want to see more tactical work?</h3>
+                    <p>Subscribe to our official channel for weekly development logs, client run-throughs, and structural logic walk-throughs.</p>
+                    <a href="https://www.youtube.com" target="_blank" class="youtube-subscribe-btn">
+                        <i class="fab fa-youtube"></i> Visit YouTube Channel
                     </a>
                 </div>
             </div>
 
-            <div id="policies-page" class="page-content">
-                <h2>Facility Policies & Frameworks</h2>
-                <ul class="policy-list">
-                    <li>Vaccination profiles must be verified at or before K9 physical intake windows.</li>
-                    <li>Evaluations are strictly handled by appointment blocks. No unscheduled entry is permitted.</li>
-                    <li>All pricing tiers scale depending on breed drives and handler instruction hours.</li>
-                </ul>
+            <div id="gallery-page" class="page-content">
+                <h2>Gallery Portfolio</h2>
+                <p>Asset portfolios coming soon.</p>
             </div>
-
+            <div id="policies-page" class="page-content">
+                <h2>Operational Policies</h2>
+                <p>Policy logs coming soon.</p>
+            </div>
             <div id="payments-page" class="page-content">
-                <h2>Payments & Tendering Tiers</h2>
-                <p>We accept local cash tenders, bank deposit routing vouchers, or verified mobile transfers.</p>
+                <h2>Payment Portals</h2>
+                <p>Payment configuration panels coming soon.</p>
             </div>
         </main>
     </div>
 
-    <div id="contactModal" class="contact-modal">
-        <div class="modal-content-box">
-            <span class="modal-close-btn">&times;</span>
-            <h2>Inquire for Details</h2>
-            
-            <div class="contact-profile">
-                <h4>Ishmael</h4>
-                <div class="role">Manager & Head Handler</div>
-                <p><strong>Phone/WhatsApp:</strong> <a href="https://wa.me/17672954694" target="_blank" class="contact-link whatsapp-link"><i class="fab fa-whatsapp"></i> +1 (767) 295-4694</a></p>
-            </div>
-
-            <div class="contact-profile">
-                <h4>Secretary Office</h4>
-                <div class="role">Bookings & Administration</div>
-                <p><strong>Phone:</strong> <a href="tel:17672954694" class="contact-link">+1 (767) 295-4694</a></p>
-                <p><strong>Email:</strong> admin@dominicaelitek9.com</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="chat-widget-container">
-        <div class="chat-launcher-btn" onclick="toggleChat()"><i class="fas fa-comments"></i></div>
-        <div class="chat-window-panel" id="chat-box">
-            <div class="chat-header-bar">
-                <div>
-                    <h4>K9 Support Assistant</h4>
-                    <p class="subtitle">Dominica Elite K9 Services</p>
-                </div>
-                <button class="chat-close-btn" onclick="toggleChat()">&times;</button>
-            </div>
-            <div class="chat-conversation-log" id="chat-log">
-                <div class="chat-msg-row bot">Hello! Welcome to Dominica Elite K9 Services. I can answer quick questions about our puppy sales, obedience programs, rates, or business hours. How can I help you today?</div>
-            </div>
-            <div class="chat-shortcuts-container">
-                <span class="chat-shortcut-tag" onclick="sendShortcut('What are your hours?')">Hours</span>
-                <span class="chat-shortcut-tag" onclick="sendShortcut('How much is basic obedience?')">Obedience Rates</span>
-                <span class="chat-shortcut-tag" onclick="sendShortcut('Do you have puppies for sale?')">Puppies</span>
-                <span class="chat-shortcut-tag" onclick="sendShortcut('Where are you located?')">Location</span>
-            </div>
-            <div class="chat-input-area">
-                <input type="text" class="chat-input-field" id="chat-input" placeholder="Type your message here..." onkeypress="handleChatKey(event)">
-                <button class="chat-submit-btn" onclick="processUserChat()">Send</button>
-            </div>
-        </div>
-    </div>
-
     <footer>
-        &copy; 2026 Dominica Elite K9 Services. All Rights Reserved. Chance, Portsmouth, Dominica.
+        &copy; 2026 Dominica Elite K9 Services. All Rights Reserved. Portsmouth, Dominica.
     </footer>
 
     <script>
-        // Tab Page Switching Engine
         function showPage(pageId) {
+            // Hide all pages
             const pages = document.querySelectorAll('.page-content');
             pages.forEach(page => page.classList.remove('active-page'));
             
-            const activePage = document.getElementById(pageId);
-            if (activePage) activePage.classList.add('active-page');
-
+            // Uncheck active navigation color links
             const navLinks = document.querySelectorAll('nav ul li a');
             navLinks.forEach(link => link.classList.remove('active'));
 
-            const targetNavLink = document.getElementById('nav-' + pageId);
-            if (targetNavLink) targetNavLink.classList.add('active');
-
-            if (pageId === 'home-page') {
-                loadMapIframe();
-            }
-        }
-
-        function loadMapIframe() {
-            const iframe = document.getElementById('map-iframe');
-            if (iframe && iframe.src === 'about:blank') {
-                iframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3840.407765103001!2d-61.4552485!3d15.542861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c41432f8eb543f9%3A0x67303f39d8df26fd!2sChance%2C%20Portsmouth%2C%20Dominica!5e0!3m2!1sen!2s!4v1700000000000";
-            }
-        }
-
-        function hideEmptyImageBlock(img) {
-            if (img && img.parentElement) {
-                img.parentElement.style.display = 'none';
-            }
-        }
-
-        // --- POP-UP MODAL ENGINE ---
-        document.addEventListener("DOMContentLoaded", function () {
-            loadMapIframe();
-
-            const modal = document.getElementById("contactModal");
-            const btn = document.getElementById("inquireBtn");
-            const closeBtn = document.querySelector(".modal-close-btn");
-
-            // Open popup when "Inquire for Details" is clicked
-            if (btn) {
-                btn.onclick = function (e) {
-                    e.preventDefault();
-                    modal.style.display = "block";
-                }
+            // Display requested target page
+            const targetPage = document.getElementById(pageId);
+            if(targetPage) {
+                targetPage.classList.add('active-page');
             }
 
-            // Close popup when 'X' is clicked
-            if (closeBtn) {
-                closeBtn.onclick = function () {
-                    modal.style.display = "none";
-                }
+            // Highlight chosen button
+            const activeNav = document.getElementById('nav-' + pageId);
+            if(activeNav) {
+                activeNav.classList.add('active');
             }
-
-            // Close popup if background overlay is clicked
-            window.onclick = function (event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-        });
-
-        // Chat Widget Panel Logic
-        function toggleChat() {
-            const chatBox = document.getElementById('chat-box');
-            if (chatBox.style.display === 'flex') {
-                chatBox.style.display = 'none';
-            } else {
-                chatBox.style.display = 'flex';
-            }
-        }
-
-        function handleChatKey(e) {
-            if (e.key === 'Enter') processUserChat();
-        }
-
-        function sendShortcut(text) {
-            document.getElementById('chat-input').value = text;
-            processUserChat();
-        }
-
-        function appendChatRow(sender, text) {
-            const log = document.getElementById('chat-log');
-            const row = document.createElement('div');
-            row.className = 'chat-msg-row ' + sender;
-            row.innerHTML = text;
-            log.appendChild(row);
-            log.scrollTop = log.scrollHeight;
-        }
-
-        function processUserChat() {
-            const input = document.getElementById('chat-input');
-            const query = input.value.trim();
-            if (!query) return;
-
-            appendChatRow('user', query);
-            input.value = '';
-
-            setTimeout(() => {
-                const text = query.toLowerCase();
-                let reply = "I'm not quite sure about that request. You can directly speak with our head handler Ishmael over WhatsApp for precise quotes.";
-                
-                if (text.includes('hour') || text.includes('time') || text.includes('open')) {
-                    reply = "Our facility in Chance, Portsmouth is open Monday through Friday from 8:00 AM to 5:00 PM. We are closed on weekends except for scheduled emergency care tracking.";
-                } else if (text.includes('price') || text.includes('cost') || text.includes('rate') || text.includes('obedience')) {
-                    reply = "Our standard 6-Week Basic Obedience course is 400 XCD. Elite Protection tactical defense training evaluates from 5,000 XCD. Grooming structures start at 100 XCD and daycare runs at 50 XCD per session.";
-                } else if (text.includes('puppy') || text.includes('sale') || text.includes('gsd') || text.includes('breed') || text.includes('malinois')) {
-                    reply = "We offer premium Working Line GSD and Belgian Malinois import bloodlines starting at 2,500 XCD. Rottweiler protection lines start at 1,000 XCD. Check out our 'Puppy Sales' tab for direct breeding inquiries.";
-                } else if (text.includes('location') || text.includes('where') || text.includes('address')) {
-                    reply = "We are located at Chance, Portsmouth, Dominica. You can view our interactive satellite embed right on our homepage map display container.";
-                }
-                
-                reply += '<br><a href="https://wa.me/17672954694" target="_blank" class="whatsapp-redirect-btn"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>';
-                appendChatRow('bot', reply);
-            }, 600);
         }
     </script>
 </body>
