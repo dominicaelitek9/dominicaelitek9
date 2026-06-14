@@ -174,12 +174,6 @@
             gap: 15px;
         }
 
-        .video-showcase-container.live-container {
-            grid-column: 1 / -1;
-            border: 2px dashed var(--youtube-red);
-            background-color: rgba(255, 0, 0, 0.02);
-        }
-
         .training-video-player {
             width: 100%;
             aspect-ratio: 16 / 9;
@@ -187,6 +181,13 @@
             border: 2px solid var(--accent-gold);
             background-color: #000000;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-card-title {
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            font-weight: 600;
         }
 
         /* YouTube Channel CTA Button Section */
@@ -438,6 +439,59 @@
             margin-right: 5px;
             font-size: 1.1rem;
             vertical-align: -1px;
+        }
+
+        /* --- POP-UP MODAL STYLES --- */
+        .contact-modal {
+            display: none; 
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); 
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content-box {
+            background-color: var(--card-bg);
+            margin: 12% auto;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 450px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        .modal-content-box h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            color: var(--text-secondary);
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .modal-close-btn:hover {
+            color: var(--accent-gold);
+        }
+
+        .modal-content-box .contact-profile {
+            margin-bottom: 15px;
+            border-radius: 8px;
         }
 
         /* Business Footer */
@@ -721,7 +775,7 @@
                 <p>We balance top-tier working standards with premium domestic care options, structuring individual routines to meet your companion's specific physical and mental drive profiles.</p>
                 
                 <div class="contact-block">
-                    <button onclick="showPage('services-page')">Inquire for Details</button>
+                    <button id="inquireBtn">Inquire for Details</button>
                     <div id="message"></div>
                 </div>
 
@@ -874,205 +928,219 @@
                     <div class="gallery-grid">
                         <div class="gallery-item-wrapper"><img class="gallery-img-box" src="mal_parents1.jpg" alt="Malinois Parent 1" onerror="hideEmptyImageBlock(this)"><h5>Malinois Parent 1</h5></div>
                         <div class="gallery-item-wrapper"><img class="gallery-img-box" src="mal_parents2.jpg" alt="Malinois Parent 2" onerror="hideEmptyImageBlock(this)"><h5>Malinois Parent 2</h5></div>
-                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="mal_parents3.jpg" alt="Malinois Parent 3" onerror="hideEmptyImageBlock(this)"><h5>Malinois Parent 3</h5></div>
                         <div class="gallery-item-wrapper"><img class="gallery-img-box" src="mal_puppies1.jpg" alt="Malinois Puppy 1" onerror="hideEmptyImageBlock(this)"><h5>Malinois Puppy 1</h5></div>
+                        <div class="gallery-item-wrapper"><img class="gallery-img-box" src="mal_puppies2.jpg" alt="Malinois Puppy 2" onerror="hideEmptyImageBlock(this)"><h5>Malinois Puppy 2</h5></div>
                     </div>
                 </div>
             </div>
 
             <div id="training-page" class="page-content">
-                <h2>Watch Our Training Sessions</h2>
-                <p>See our high-drive working dogs in action. We post regular obedience courses, tactical protection work, puppy building blocks, and socialization clips.</p>
+                <h2>Our Training Sessions</h2>
+                <p>Watch our elite protection work and obedience structures in action direct from our facility.</p>
                 
                 <div class="video-grid-layout">
                     <div class="video-showcase-container">
-                        <h4>Advanced Protection Setup</h4>
-                        <p>Environmental confidence work and targeted bite development exercises.</p>
-                        <iframe class="training-video-player" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="K9 Training" allowfullscreen></iframe>
+                        <iframe class="training-video-player" src="https://www.youtube.com/embed?list=UUaSKuD4dJW9yzu4t5DsfTbQ&index=1" allowfullscreen></iframe>
+                        <p class="video-card-title">Advanced Guarding & Drive Channel Work</p>
                     </div>
+
+                    <div class="video-showcase-container">
+                        <iframe class="training-video-player" src="https://www.youtube.com/embed?list=UUaSKuD4dJW9yzu4t5DsfTbQ&index=2" allowfullscreen></iframe>
+                        <p class="video-card-title">Foundational Control & Environmental Stress Drills</p>
+                    </div>
+                </div>
+
+                <div class="youtube-cta-block">
+                    <p>Want to follow our daily protection blueprints and puppy updates?</p>
+                    <a href="https://www.youtube.com/channel/UCaSKuD4dJW9yzu4t5DsfTbQ" target="_blank" class="youtube-subscribe-btn">
+                        <i class="fab fa-youtube"></i> Visit Our YouTube Channel
+                    </a>
                 </div>
             </div>
 
             <div id="policies-page" class="page-content">
-                <h2>Facility Rules & Regulations</h2>
+                <h2>Facility Policies & Frameworks</h2>
                 <ul class="policy-list">
-                    <li>All dogs entered into daycare, boarding, or evaluations must possess up-to-date DHPP and Rabies health papers.</li>
-                    <li>Evaluations are strictly arranged by scheduling parameters. No unscheduled baseline walk-ins are permitted.</li>
+                    <li>Vaccination profiles must be verified at or before K9 physical intake windows.</li>
+                    <li>Evaluations are strictly handled by appointment blocks. No unscheduled entry is permitted.</li>
+                    <li>All pricing tiers scale depending on breed drives and handler instruction hours.</li>
                 </ul>
             </div>
 
             <div id="payments-page" class="page-content">
-                <h2>Payment Frameworks</h2>
-                <p>We process bank transfers, local physical financing mechanisms, and specialized transaction processing options. Contact administration parameters below to request details.</p>
+                <h2>Payments & Tendering Tiers</h2>
+                <p>We accept local cash tenders, bank deposit routing vouchers, or verified mobile transfers.</p>
             </div>
         </main>
+    </div>
 
-        <section style="margin-top: 50px;">
-            <h3>Official Contact Profiles</h3>
-            <div class="contact-card-container">
-                <div class="contact-profile">
-                    <h4>Ishmael</h4>
-                    <div class="role">Manager & Head Instructor</div>
-                    <p>Primary Performance Targets & Consultations</p>
-                    <p><a class="contact-link whatsapp-link" href="https://wa.me/17672954694" target="_blank"><i class="fab fa-whatsapp"></i> +1 (767) 295-4694</a></p>
-                </div>
-                <div class="contact-profile">
-                    <h4>Natasha White</h4>
-                    <div class="role">Secretary</div>
-                    <p>Scheduling, Operations & Direct Calls</p>
-                    <p><a class="contact-link" href="tel:+17672779523" style="font-weight:600; color:var(--accent-gold);"><i class="fa fa-phone"></i> Direct Call: +1 (767) 277-9523</a></p>
-                    <p><a class="contact-link whatsapp-link" href="https://wa.me/17672779523" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Message</a></p>
-                </div>
+    <div id="contactModal" class="contact-modal">
+        <div class="modal-content-box">
+            <span class="modal-close-btn">&times;</span>
+            <h2>Inquire for Details</h2>
+            
+            <div class="contact-profile">
+                <h4>Ishmael</h4>
+                <div class="role">Manager & Head Handler</div>
+                <p><strong>Phone/WhatsApp:</strong> <a href="https://wa.me/17672954694" target="_blank" class="contact-link whatsapp-link"><i class="fab fa-whatsapp"></i> +1 (767) 295-4694</a></p>
             </div>
-        </section>
 
+            <div class="contact-profile">
+                <h4>Secretary Office</h4>
+                <div class="role">Bookings & Administration</div>
+                <p><strong>Phone:</strong> <a href="tel:17672954694" class="contact-link">+1 (767) 295-4694</a></p>
+                <p><strong>Email:</strong> admin@dominicaelitek9.com</p>
+            </div>
+        </div>
     </div>
 
     <div class="chat-widget-container">
-        <div class="chat-launcher-btn" onclick="toggleChatWindow()"><i class="fas fa-comments"></i></div>
-        <div class="chat-window-panel" id="chatWindow">
+        <div class="chat-launcher-btn" onclick="toggleChat()"><i class="fas fa-comments"></i></div>
+        <div class="chat-window-panel" id="chat-box">
             <div class="chat-header-bar">
                 <div>
-                    <h4>Elite K9 Assistant</h4>
-                    <div class="subtitle">Online Support Team</div>
+                    <h4>K9 Support Assistant</h4>
+                    <p class="subtitle">Dominica Elite K9 Services</p>
                 </div>
-                <button class="chat-close-btn" onclick="toggleChatWindow()">&times;</button>
+                <button class="chat-close-btn" onclick="toggleChat()">&times;</button>
             </div>
-            <div class="chat-conversation-log" id="chatLog">
-                <div class="chat-msg-row bot">
-                    Hello! Welcome to Dominica Elite K9 Services. How can we help you expand your canine development needs today?
-                </div>
+            <div class="chat-conversation-log" id="chat-log">
+                <div class="chat-msg-row bot">Hello! Welcome to Dominica Elite K9 Services. I can answer quick questions about our puppy sales, obedience programs, rates, or business hours. How can I help you today?</div>
             </div>
             <div class="chat-shortcuts-container">
-                <span class="chat-shortcut-tag" onclick="triggerBotResponse('bloodline')">Inquire Bloodline</span>
-                <span class="chat-shortcut-tag" onclick="triggerBotResponse('course')">Book Course</span>
-                <span class="chat-shortcut-tag" onclick="triggerBotResponse('evaluation')">Evaluation</span>
-                <span class="chat-shortcut-tag" onclick="triggerBotResponse('secretary')">Call Secretary</span>
+                <span class="chat-shortcut-tag" onclick="sendShortcut('What are your hours?')">Hours</span>
+                <span class="chat-shortcut-tag" onclick="sendShortcut('How much is basic obedience?')">Obedience Rates</span>
+                <span class="chat-shortcut-tag" onclick="sendShortcut('Do you have puppies for sale?')">Puppies</span>
+                <span class="chat-shortcut-tag" onclick="sendShortcut('Where are you located?')">Location</span>
             </div>
             <div class="chat-input-area">
-                <input type="text" class="chat-input-field" id="chatInputField" placeholder="Type your message here..." onkeypress="handleChatEnter(event)">
-                <button class="chat-submit-btn" onclick="submitCustomChatMessage()">Send</button>
+                <input type="text" class="chat-input-field" id="chat-input" placeholder="Type your message here..." onkeypress="handleChatKey(event)">
+                <button class="chat-submit-btn" onclick="processUserChat()">Send</button>
             </div>
         </div>
     </div>
 
     <footer>
-        &copy; 2026 Dominica Elite K9 Services. All Rights Reserved. Built with Premium Standards.
+        &copy; 2026 Dominica Elite K9 Services. All Rights Reserved. Chance, Portsmouth, Dominica.
     </footer>
 
     <script>
-        // Core Single Page Navigation Routing 
+        // Tab Page Switching Engine
         function showPage(pageId) {
-            // Hide all structural pages
             const pages = document.querySelectorAll('.page-content');
             pages.forEach(page => page.classList.remove('active-page'));
             
-            // Show requested target page
-            const targetPage = document.getElementById(pageId);
-            if (targetPage) {
-                targetPage.classList.add('active-page');
-            }
+            const activePage = document.getElementById(pageId);
+            if (activePage) activePage.classList.add('active-page');
 
-            // Update Header Link States
             const navLinks = document.querySelectorAll('nav ul li a');
             navLinks.forEach(link => link.classList.remove('active'));
-            
-            const activeNav = document.getElementById('nav-' + pageId);
-            if (activeNav) {
-                activeNav.classList.add('active');
+
+            const targetNavLink = document.getElementById('nav-' + pageId);
+            if (targetNavLink) targetNavLink.classList.add('active');
+
+            if (pageId === 'home-page') {
+                loadMapIframe();
             }
-            
-            // Auto scroll cleanly to top of content frame
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Hide structural layout elements when image returns missing
+        function loadMapIframe() {
+            const iframe = document.getElementById('map-iframe');
+            if (iframe && iframe.src === 'about:blank') {
+                iframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3840.407765103001!2d-61.4552485!3d15.542861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c41432f8eb543f9%3A0x67303f39d8df26fd!2sChance%2C%20Portsmouth%2C%20Dominica!5e0!3m2!1sen!2s!4v1700000000000";
+            }
+        }
+
         function hideEmptyImageBlock(img) {
-            if(img.parentNode) {
-                img.parentNode.style.display = 'none';
+            if (img && img.parentElement) {
+                img.parentElement.style.display = 'none';
             }
         }
 
-        // Chat Widget Panel Open/Close Toggle
-        function toggleChatWindow() {
-            const panel = document.getElementById('chatWindow');
-            if(panel.style.display === 'flex') {
-                panel.style.display = 'none';
-            } else {
-                panel.style.display = 'flex';
-            }
-        }
+        // --- POP-UP MODAL ENGINE ---
+        document.addEventListener("DOMContentLoaded", function () {
+            loadMapIframe();
 
-        // Interactive automated chatbot logic response tree 
-        function triggerBotResponse(keyword) {
-            const chatLog = document.getElementById('chatLog');
-            let userMsg = "";
-            let botMsg = "";
-            let btnHtml = "";
+            const modal = document.getElementById("contactModal");
+            const btn = document.getElementById("inquireBtn");
+            const closeBtn = document.querySelector(".modal-close-btn");
 
-            if (keyword === 'bloodline') {
-                userMsg = "I want to inquire about your bloodlines.";
-                botMsg = "Excellent choice. Our imported German Shepherd, Malinois, and Rottweiler working lines represent top performance traits. Click below to chat directly with Ishmael:";
-                btnHtml = `<a class="whatsapp-redirect-btn" href="https://wa.me/17672954694?text=I%20am%20inquiring%20about%20the%20bloodlines" target="_blank"><i class="fab fa-whatsapp"></i> Inquire via WhatsApp</a>`;
-            } else if (keyword === 'course') {
-                userMsg = "I want to book a training course.";
-                botMsg = "Perfect! Our Basic Obedience and tactical courses deliver robust results. Connect with our manager now to lock in your workspace window:";
-                btnHtml = `<a class="whatsapp-redirect-btn" href="https://wa.me/17672954694?text=I%20want%20to%20book%20a%20course" target="_blank"><i class="fab fa-whatsapp"></i> Book Course Now</a>`;
-            } else if (keyword === 'evaluation') {
-                userMsg = "I need to book a K9 Evaluation appointment.";
-                botMsg = "Evaluations structure your dog's drive analysis accurately. Setup your profile consultation slot instantly with our team below:";
-                btnHtml = `<a class="whatsapp-redirect-btn" href="https://wa.me/17672954694?text=I%20want%20to%20book%20an%20evaluation" target="_blank"><i class="fab fa-whatsapp"></i> Schedule Evaluation</a>`;
-            } else if (keyword === 'secretary') {
-                userMsg = "I need to speak with the Secretary.";
-                botMsg = "You can reach Natasha White directly at our reception center via WhatsApp text or via direct telephonic mobile call line below:";
-                btnHtml = `
-                    <a class="whatsapp-redirect-btn" href="https://wa.me/17672779523" target="_blank" style="background-color: #25d366;"><i class="fab fa-whatsapp"></i> Message Secretary</a>
-                    <a class="whatsapp-redirect-btn" href="tel:+17672779523" style="background-color: var(--accent-gold); color:#000000; margin-top:5px;"><i class="fa fa-phone"></i> Call Natasha Directly</a>
-                `;
-            }
-
-            appendMessageRow(userMsg, 'user');
-            setTimeout(() => {
-                appendMessageRow(botMsg + btnHtml, 'bot');
-            }, 400);
-        }
-
-        // Custom string submissions parsing field
-        function submitCustomChatMessage() {
-            const inputField = document.getElementById('chatInputField');
-            const txt = inputField.value.trim().toLowerCase();
-            if(!txt) return;
-
-            appendMessageRow(inputField.value, 'user');
-            inputField.value = "";
-
-            setTimeout(() => {
-                if(txt.includes('blood') || txt.includes('puppy') || txt.includes('sale') || txt.includes('gsd') || txt.includes('buy')) {
-                    appendMessageRow("Let's look into your breeding requests. Tap here to message Ishmael regarding specific bloodlines:", 'bot');
-                    appendMessageRow(`<a class="whatsapp-redirect-btn" href="https://wa.me/17672954694?text=I%20am%20inquiring%20about%20the%20bloodlines" target="_blank"><i class="fab fa-whatsapp"></i> Inquire Bloodlines</a>`, 'bot');
-                } else if(txt.includes('call') || txt.includes('secretary') || txt.includes('natasha') || txt.includes('phone') || txt.includes('book')) {
-                    appendMessageRow("For scheduling tracking parameters or phone routing, contact our secretary Natasha White:", 'bot');
-                    appendMessageRow(`<a class="whatsapp-redirect-btn" href="tel:+17672779523"><i class="fa fa-phone"></i> Call Secretary Directly</a>`, 'bot');
-                } else {
-                    appendMessageRow("Thank you for your message! To receive an instant custom answer, please contact management directly via our central line:", 'bot');
-                    appendMessageRow(`<a class="whatsapp-redirect-btn" href="https://wa.me/17672954694" target="_blank"><i class="fab fa-whatsapp"></i> Open Direct Chat</a>`, 'bot');
+            // Open popup when "Inquire for Details" is clicked
+            if (btn) {
+                btn.onclick = function (e) {
+                    e.preventDefault();
+                    modal.style.display = "block";
                 }
-            }, 500);
-        }
+            }
 
-        function handleChatEnter(e) {
-            if(e.key === 'Enter') {
-                submitCustomChatMessage();
+            // Close popup when 'X' is clicked
+            if (closeBtn) {
+                closeBtn.onclick = function () {
+                    modal.style.display = "none";
+                }
+            }
+
+            // Close popup if background overlay is clicked
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        });
+
+        // Chat Widget Panel Logic
+        function toggleChat() {
+            const chatBox = document.getElementById('chat-box');
+            if (chatBox.style.display === 'flex') {
+                chatBox.style.display = 'none';
+            } else {
+                chatBox.style.display = 'flex';
             }
         }
 
-        function appendMessageRow(text, sender) {
-            const log = document.getElementById('chatLog');
+        function handleChatKey(e) {
+            if (e.key === 'Enter') processUserChat();
+        }
+
+        function sendShortcut(text) {
+            document.getElementById('chat-input').value = text;
+            processUserChat();
+        }
+
+        function appendChatRow(sender, text) {
+            const log = document.getElementById('chat-log');
             const row = document.createElement('div');
             row.className = 'chat-msg-row ' + sender;
             row.innerHTML = text;
             log.appendChild(row);
             log.scrollTop = log.scrollHeight;
+        }
+
+        function processUserChat() {
+            const input = document.getElementById('chat-input');
+            const query = input.value.trim();
+            if (!query) return;
+
+            appendChatRow('user', query);
+            input.value = '';
+
+            setTimeout(() => {
+                const text = query.toLowerCase();
+                let reply = "I'm not quite sure about that request. You can directly speak with our head handler Ishmael over WhatsApp for precise quotes.";
+                
+                if (text.includes('hour') || text.includes('time') || text.includes('open')) {
+                    reply = "Our facility in Chance, Portsmouth is open Monday through Friday from 8:00 AM to 5:00 PM. We are closed on weekends except for scheduled emergency care tracking.";
+                } else if (text.includes('price') || text.includes('cost') || text.includes('rate') || text.includes('obedience')) {
+                    reply = "Our standard 6-Week Basic Obedience course is 400 XCD. Elite Protection tactical defense training evaluates from 5,000 XCD. Grooming structures start at 100 XCD and daycare runs at 50 XCD per session.";
+                } else if (text.includes('puppy') || text.includes('sale') || text.includes('gsd') || text.includes('breed') || text.includes('malinois')) {
+                    reply = "We offer premium Working Line GSD and Belgian Malinois import bloodlines starting at 2,500 XCD. Rottweiler protection lines start at 1,000 XCD. Check out our 'Puppy Sales' tab for direct breeding inquiries.";
+                } else if (text.includes('location') || text.includes('where') || text.includes('address')) {
+                    reply = "We are located at Chance, Portsmouth, Dominica. You can view our interactive satellite embed right on our homepage map display container.";
+                }
+                
+                reply += '<br><a href="https://wa.me/17672954694" target="_blank" class="whatsapp-redirect-btn"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>';
+                appendChatRow('bot', reply);
+            }, 600);
         }
     </script>
 </body>
