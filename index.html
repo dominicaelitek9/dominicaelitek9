@@ -16,6 +16,8 @@
             --accent-gold: #d4af37;
             --accent-hover: #f3e5ab;
             --whatsapp-green: #25d366;
+            --youtube-red: #ff0000;
+            --youtube-hover: #cc0000;
             --chat-user-bg: #2a355c;
         }
 
@@ -172,6 +174,12 @@
             gap: 15px;
         }
 
+        .video-showcase-container.live-container {
+            grid-column: 1 / -1;
+            border: 2px dashed var(--youtube-red);
+            background-color: rgba(255, 0, 0, 0.02);
+        }
+
         .training-video-player {
             width: 100%;
             aspect-ratio: 16 / 9;
@@ -179,6 +187,43 @@
             border: 2px solid var(--accent-gold);
             background-color: #000000;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-showcase-container.live-container .training-video-player {
+            border-color: var(--youtube-red);
+        }
+
+        /* YouTube Channel CTA Button Section */
+        .youtube-cta-block {
+            text-align: center;
+            margin-top: 40px;
+            padding: 25px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .youtube-subscribe-btn {
+            background-color: var(--youtube-red);
+            color: #ffffff;
+            padding: 12px 28px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 30px;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2);
+        }
+
+        .youtube-subscribe-btn:hover {
+            background-color: var(--youtube-hover);
+            transform: translateY(-2px);
+            color: #ffffff;
         }
 
         /* Gallery Page Layout */
@@ -502,6 +547,13 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
+        }
+
+        .chat-message-viewport {
+            background-color: var(--card-bg);
+            color: var(--text-primary);
+            align-self: flex-start;
+            border-left: 3px solid var(--accent-gold);
         }
 
         .chat-msg-row {
@@ -859,10 +911,20 @@
             </div>
 
             <div id="training-page" class="page-content">
-                <h2>Watch Training</h2>
+                <h2>Watch Training & Live Stream</h2>
                 <p>Video demonstrations showing real-time utility, handler focus under heavy distraction, and step-by-step obedience progression.</p>
                 
                 <div class="video-grid-layout">
+                    <div class="video-showcase-container live-container">
+                        <iframe class="training-video-player" src="https://www.youtube.com/embed/live_stream?channel=UCaSKuD4dJW9yzu4t5DsfTbQ" title="Elite K9 Live Session" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border: none;"></iframe>
+                        <p style="margin: 0; font-size: 1rem; font-weight: 600; color: var(--youtube-red);">
+                            <i class="fa-solid fa-satellite-dish" style="margin-right: 5px; animation: pulse 1.5s infinite;"></i> Live Training Broadcast
+                        </p>
+                        <p style="margin: 0; font-size: 0.95rem; color: var(--text-secondary);">
+                            When we are live-streaming operations or tactical instruction, it broadcasts directly inside this screen frame. If no live stream is active, browse our published uploads below!
+                        </p>
+                    </div>
+
                     <div class="video-showcase-container">
                         <iframe class="training-video-player" src="https://www.youtube.com/embed/zbYaORnxFps" title="Tactical Obedience Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border: none;"></iframe>
                         <p style="margin: 0; font-size: 1rem; font-weight: 600; color: var(--accent-gold);">
@@ -882,6 +944,14 @@
                             A live breakdown of complex target behaviors, managing threat distractions, and testing environmental confidence lines.
                         </p>
                     </div>
+                </div>
+
+                <div class="youtube-cta-block">
+                    <h3 style="margin-top: 0; margin-bottom: 10px;">Want to See Every New Video?</h3>
+                    <p style="margin-bottom: 20px;">We upload fresh protection sessions, puppy highlights, and training breakdowns weekly. Subscribe directly to our channel page to receive instant updates on your phone!</p>
+                    <a href="https://www.youtube.com/channel/UCaSKuD4dJW9yzu4t5DsfTbQ?sub_confirmation=1" target="_blank" class="youtube-subscribe-btn">
+                        <i class="fa-brands fa-youtube"></i> Subscribe on YouTube
+                    </a>
                 </div>
             </div>
 
