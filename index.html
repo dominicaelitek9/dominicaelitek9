@@ -93,13 +93,13 @@
         }
         /* Page/Section Layouts */        
         .page-content {            
-            display: none; /* Hidden by default, controlled via JS */            
+            display: none;             
             margin-bottom: 50px;            
             padding-bottom: 30px;            
             animation: fadeIn 0.4s ease forwards;        
         }
         .page-content.active-page {            
-            display: block; /* Only show active page */        
+            display: block;         
         }
         h2 {            
             color: var(--accent-gold);            
@@ -160,7 +160,6 @@
             background-color: #000000;            
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);        
         }
-        /* Dynamic Class for YouTube Shorts Scaling */        
         .training-video-player.shorts-format {            
             aspect-ratio: 9 / 16;            
             max-width: 315px;            
@@ -338,7 +337,6 @@
             margin: 5px 0;            
             font-size: 1rem;        
         }
-        /* Styling for Clickable Links */        
         .contact-link {            
             text-decoration: none;            
             color: var(--text-primary);            
@@ -359,7 +357,7 @@
             font-size: 1.1rem;            
             vertical-align: -1px;        
         }
-        /* --- POP-UP MODAL STYLES --- */        
+        /* POP-UP MODAL STYLES */        
         .contact-modal {            
             display: none;             
             position: fixed;            
@@ -867,9 +865,9 @@
                 </div>
             </div>
             <div class="chat-shortcuts-container">
-                <div class="chat-shortcut-tag" onclick="handleShortcut('Obedience Training')">Obedience</div>
-                <div class="chat-shortcut-tag" onclick="handleShortcut('Puppy Sales')">Puppy Sales</div>
-                <div class="chat-shortcut-tag" onclick="handleShortcut('Grooming Rates')">Grooming</div>
+                <div class="chat-shortcut-tag" onclick="handleShortcut('I want a German Shepherd')">German Shepherd</div>
+                <div class="chat-shortcut-tag" onclick="handleShortcut('I want a Belgian Malinois')">Belgian Malinois</div>
+                <div class="chat-shortcut-tag" onclick="handleShortcut('I want a Rottweiler')">Rottweiler</div>
                 <div class="chat-shortcut-tag" onclick="handleShortcut('Our Policies')">Policies</div>
             </div>
             <div class="chat-input-area">
@@ -884,6 +882,9 @@
     </footer>
 
     <script>
+        // Global context tracker to catch follow-up sales questions
+        let lastDiscussedBreed = "";
+
         // Page Navigation Router
         function showPage(pageId) {
             const pages = document.querySelectorAll('.page-content');
@@ -932,7 +933,6 @@
             chatLauncher.style.display = 'flex';
         }
 
-        // Handle Chat Submissions
         function appendMessage(text, sender) {
             const msgRow = document.createElement('div');
             msgRow.classList.add('chat-msg-row', sender);
@@ -951,14 +951,42 @@
                 greetingPrefix = "Hello! Great to hear from you. ";
             }
 
-            // 2. BROAD-REACHING BUSINESS INFORMATION KNOWLEDGE BASE MATRICES
             let coreResponse = "We offer premium training, breeding bloodlines, daycare, and grooming services. Let me know what specific program you want to explore or message our handler!";
 
-            // Specific Policy Matches
-            if (text.includes('policy') || text.includes('policies') || text.includes('rule') || text.includes('vaccin') || text.includes('cancel') || text.includes('intake') || text.includes('mandatory')) {
+            // 2. CONTEXTUAL SALES LOGIC (Why buy this dog from us?)
+            if ((text.includes('why') || text.includes('reason') || text.includes('benefit') || text.includes('choose')) && 
+                (text.includes('buy') || text.includes('get') || text.includes('purchase') || text.includes('from you') || text.includes('us') || lastDiscussedBreed !== "")) {
+                
+                let breedSpoke = lastDiscussedBreed ? lastDiscussedBreed : "these elite bloodlines";
+                coreResponse = "Purchasing your next " + breedSpoke + " from Dominica Elite K9 Services guarantees unmatched quality. Unlike basic pet stores, our puppies come from strictly evaluated working line bloodlines selected for stable temperaments, clear drive channels, and structural longevity. Plus, they are raised directly alongside our tactical training setup, giving them an advanced developmental foundation under Lead Handler Ishmael's professional oversight.";
+                
+                // Reset tracker after answering the why question
+                lastDiscussedBreed = ""; 
+            }
+            // Breed Specific Match - German Shepherd
+            else if (text.includes('gsd') || text.includes('shepherd')) {
+                coreResponse = "Excellent choice. Our Working Line German Shepherds feature premium imported bloodlines built for tracking, environmental vigilance, and protective instincts. They are priced at 2,500 XCD.";
+                lastDiscussedBreed = "German Shepherd";
+            } 
+            // Breed Specific Match - Belgian Malinois
+            else if (text.includes('malinois') || text.includes('belgian')) {
+                coreResponse = "The Belgian Malinois is an incredible, hyper-athletic working machine. Our line is strictly configured for high-intensity protection frameworks and premium security focus. They are priced at 2,500 XCD.";
+                lastDiscussedBreed = "Belgian Malinois";
+            } 
+            // Breed Specific Match - Rottweiler
+            else if (text.includes('rottweiler') || text.includes('rottie')) {
+                coreResponse = "Our Rottweilers are exceptional companions, bred for broad bone structures, high confidence, and clear territorial boundary management. They are priced at 1,000 XCD.";
+                lastDiscussedBreed = "Rottweiler";
+            }
+            // General Puppy/Breeding Context
+            else if (text.includes('puppy') || text.includes('puppies') || text.includes('breed') || text.includes('sales') || text.includes('want a dog')) {
+                coreResponse = "We breed top-tier working companions: Working Line GSDs (2,500 XCD), Belgian Malinois (2,500 XCD), and protective Rottweilers (1,000 XCD). Which of these breeds fits your security framework or household best?";
+            }
+            // Policy Matches
+            else if (text.includes('policy') || text.includes('policies') || text.includes('rule') || text.includes('vaccin') || text.includes('cancel')) {
                 coreResponse = "Here are our official business policies:<br><br>• <strong>Vaccinations:</strong> Must be fully current prior to any intake sequence.<br>• <strong>Evaluations:</strong> Strictly mandatory for intermediate tactical bite-work tracks.<br>• <strong>Cancellations:</strong> Require a minimum 24-hour formal notice loop.";
             }
-            // Specific Training Matches
+            // Training Matches
             else if (text.includes('obedience')) {
                 coreResponse = "Our Basic Obedience course runs for a 6-week block at 400 XCD. It covers focal marker structures, on-leash positioning, and absolute behavioral corrections.";
             } else if (text.includes('protection') || text.includes('tactical') || text.includes('bite')) {
@@ -966,38 +994,24 @@
             } else if (text.includes('training') || text.includes('course') || text.includes('program')) {
                 coreResponse = "We feature two core training architectures: Basic Obedience (400 XCD for 6 weeks) and Elite Protection (5,000 XCD). Evaluations are mandatory for advanced protection work.";
             }
-            // Specific Breed and Puppy Sale Matches
-            else if (text.includes('gsd') || text.includes('shepherd')) {
-                coreResponse = "Our Working Line German Shepherds are imported bloodlines specialized for structural tracking, natural vigilance, and defensive assets. They are priced at 2,500 XCD.";
-            } else if (text.includes('malinois') || text.includes('belgian')) {
-                coreResponse = "Our high-drive Belgian Malinois are hyper-athletic companions engineered for high-intensity protection frameworks and premium workspace tasks. Priced at 2,500 XCD.";
-            } else if (text.includes('rottweiler') || text.includes('rottie')) {
-                coreResponse = "Our Rottweilers represent broad bone frames and highly confident guardian temperaments built for perimeter safety. Available at 1,000 XCD.";
-            } else if (text.includes('puppy') || text.includes('puppies') || text.includes('breed') || text.includes('sales') || text.includes('buy dog')) {
-                coreResponse = "We offer premium high-utility puppies: Working Line German Shepherds (2,500 XCD), Belgian Malinois (2,500 XCD), and protective Rottweilers (1,000 XCD). Contact us to inspect available litters.";
-            }
             // Services (Grooming and Daycare)
             else if (text.includes('grooming') || text.includes('wash') || text.includes('clean') || text.includes('nail')) {
-                coreResponse = "Premium K9 Hygiene and Grooming setup configurations start at $100+ XCD. This includes thorough sanitization baths, heavy undercoat extractions, and nail trimmings.";
+                coreResponse = "Premium K9 Hygiene and Grooming setup configurations start at 100+ XCD. This includes thorough sanitization baths, heavy undercoat extractions, and nail trimmings.";
             } else if (text.includes('daycare') || text.includes('boarding') || text.includes('care')) {
-                coreResponse = "K9 Daycare runs at $50+ XCD daily. It encompasses supervised group pacing drills, controlled rest cycles, and direct social interactions inside our secure yard boundaries.";
+                coreResponse = "K9 Daycare runs at 50+ XCD daily. It encompasses supervised group pacing drills, controlled rest cycles, and direct social interactions inside our secure yard boundaries.";
             } else if (text.includes('price') || text.includes('rate') || text.includes('cost') || text.includes('how much')) {
-                coreResponse = "Here are our baseline pricing structures: Obedience Training ($400 XCD), Grooming ($100+ XCD), Daycare ($50+ XCD), Elite Protection ($5,000 XCD), and Puppies (1,000 to 2,500 XCD).";
+                coreResponse = "Here are our baseline pricing structures: Obedience Training (400 XCD), Grooming (100+ XCD), Daycare (50+ XCD), Elite Protection (5,000 XCD), and Puppies (1,000 to 2,500 XCD).";
             }
-            // Operational Logistics (Location, Hours, Payments)
-            else if (text.includes('location') || text.includes('where') || text.includes('address') || text.includes('map') || text.includes('portsmouth')) {
+            // Operational Logistics
+            else if (text.includes('location') || text.includes('where') || text.includes('address') || text.includes('map')) {
                 coreResponse = "Our professional grounds are located inside Chance, Portsmouth, Dominica. You can view our integrated facility map directly on our home page block.";
-            } else if (text.includes('hours') || text.includes('open') || text.includes('time') || text.includes('weekend') || text.includes('days')) {
+            } else if (text.includes('hours') || text.includes('open') || text.includes('time') || text.includes('days')) {
                 coreResponse = "We are officially open Monday through Friday from 8:00 AM to 5:00 PM. We are closed on Saturdays and Sundays except for emergency handling supports.";
             } else if (text.includes('payment') || text.includes('pay') || text.includes('bank') || text.includes('cash')) {
                 coreResponse = "We cleanly clear operations via traditional Cash payments, secure Bank Transfers, or direct automated digital WhatsApp invoicing settlements.";
-            } else if (text.includes('video') || text.includes('youtube') || text.includes('watch') || text.includes('session')) {
-                coreResponse = "You can navigate right over to our 'Watch Training' section to see direct high-drive tactical control operations and obedience updates via our YouTube embedded logs.";
-            } else if (text.includes('about') || text.includes('who are you') || text.includes('history') || text.includes('team')) {
-                coreResponse = "We are an elite canine processing agency working in Portsmouth, Dominica. Our specialty lies in canine drive management, behavioral psychology, and high-caliber utility conditioning.";
             }
-            // Handler & Live Support Routing
-            else if (text.includes('handler') || text.includes('live') || text.includes('contact') || text.includes('call') || text.includes('phone') || text.includes('ishmael') || text.includes('number')) {
+            // Handler Support
+            else if (text.includes('handler') || text.includes('live') || text.includes('contact') || text.includes('ishmael') || text.includes('number')) {
                 coreResponse = "Connecting you directly to management... You can call or text Lead Handler Ishmael at +1 (767) 295-4694, or click right here to chat:<br><a class='whatsapp-redirect-btn' href='https://wa.me/17672954694' target='_blank'><i class='fab fa-whatsapp'></i> Chat with Ishmael</a>";
             }
             
