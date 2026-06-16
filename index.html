@@ -172,36 +172,6 @@
             color: var(--text-primary);            
             font-weight: 600;        
         }
-        /* YouTube Channel CTA Button Section */        
-        .youtube-cta-block {            
-            text-align: center;            
-            margin-top: 40px;            
-            padding: 25px;            
-            background-color: var(--card-bg);            
-            border-radius: 12px;            
-            border: 1px solid rgba(255, 255, 255, 0.05);        
-        }
-        .youtube-subscribe-btn {            
-            background-color: var(--youtube-red);            
-            color: #ffffff;            
-            padding: 12px 28px;            
-            font-size: 15px;            
-            font-weight: bold;            
-            cursor: pointer;            
-            border-radius: 30px;            
-            border: none;            
-            display: inline-flex;            
-            align-items: center;            
-            gap: 10px;            
-            text-decoration: none;            
-            transition: background-color 0.3s ease, transform 0.2s ease;            
-            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2);        
-        }
-        .youtube-subscribe-btn:hover {            
-            background-color: var(--youtube-hover);            
-            transform: translateY(-2px);            
-            color: #ffffff;        
-        }
         /* Gallery Page Layout */        
         .breed-gallery-block {            
             background-color: var(--card-bg);            
@@ -900,7 +870,7 @@
                 <div class="chat-shortcut-tag" onclick="handleShortcut('Obedience Training')">Obedience</div>
                 <div class="chat-shortcut-tag" onclick="handleShortcut('Puppy Sales')">Puppy Sales</div>
                 <div class="chat-shortcut-tag" onclick="handleShortcut('Grooming Rates')">Grooming</div>
-                <div class="chat-shortcut-tag" onclick="handleShortcut('Talk to Handler')">Live Handler</div>
+                <div class="chat-shortcut-tag" onclick="handleShortcut('Our Policies')">Policies</div>
             </div>
             <div class="chat-input-area">
                 <input type="text" class="chat-input-field" id="chatInput" placeholder="Type your inquiry details...">
@@ -984,8 +954,12 @@
             // 2. BROAD-REACHING BUSINESS INFORMATION KNOWLEDGE BASE MATRICES
             let coreResponse = "We offer premium training, breeding bloodlines, daycare, and grooming services. Let me know what specific program you want to explore or message our handler!";
 
+            // Specific Policy Matches
+            if (text.includes('policy') || text.includes('policies') || text.includes('rule') || text.includes('vaccin') || text.includes('cancel') || text.includes('intake') || text.includes('mandatory')) {
+                coreResponse = "Here are our official business policies:<br><br>• <strong>Vaccinations:</strong> Must be fully current prior to any intake sequence.<br>• <strong>Evaluations:</strong> Strictly mandatory for intermediate tactical bite-work tracks.<br>• <strong>Cancellations:</strong> Require a minimum 24-hour formal notice loop.";
+            }
             // Specific Training Matches
-            if (text.includes('obedience')) {
+            else if (text.includes('obedience')) {
                 coreResponse = "Our Basic Obedience course runs for a 6-week block at 400 XCD. It covers focal marker structures, on-leash positioning, and absolute behavioral corrections.";
             } else if (text.includes('protection') || text.includes('tactical') || text.includes('bite')) {
                 coreResponse = "The Elite Protection tactical course runs at 5,000 XCD. It handles situational threat assessment dynamics, stress conditioning, and advanced handler protection work.";
@@ -1004,21 +978,19 @@
             }
             // Services (Grooming and Daycare)
             else if (text.includes('grooming') || text.includes('wash') || text.includes('clean') || text.includes('nail')) {
-                coreResponse = "Premium K9 Hygiene and Grooming setup configurations start at 100+ XCD. This includes thorough sanitization baths, heavy undercoat extractions, and nail trimmings.";
+                coreResponse = "Premium K9 Hygiene and Grooming setup configurations start at $100+ XCD. This includes thorough sanitization baths, heavy undercoat extractions, and nail trimmings.";
             } else if (text.includes('daycare') || text.includes('boarding') || text.includes('care')) {
-                coreResponse = "K9 Daycare runs at 50+ XCD daily. It encompasses supervised group pacing drills, controlled rest cycles, and direct social interactions inside our secure yard boundaries.";
+                coreResponse = "K9 Daycare runs at $50+ XCD daily. It encompasses supervised group pacing drills, controlled rest cycles, and direct social interactions inside our secure yard boundaries.";
             } else if (text.includes('price') || text.includes('rate') || text.includes('cost') || text.includes('how much')) {
-                coreResponse = "Here are our baseline pricing structures: Obedience Training (400 XCD), Grooming (100+ XCD), Daycare (50+ XCD), Elite Protection (5,000 XCD), and Puppies (1,000 to 2,500 XCD).";
+                coreResponse = "Here are our baseline pricing structures: Obedience Training ($400 XCD), Grooming ($100+ XCD), Daycare ($50+ XCD), Elite Protection ($5,000 XCD), and Puppies (1,000 to 2,500 XCD).";
             }
-            // Operational Logistics (Location, Hours, Policies, Payments)
+            // Operational Logistics (Location, Hours, Payments)
             else if (text.includes('location') || text.includes('where') || text.includes('address') || text.includes('map') || text.includes('portsmouth')) {
                 coreResponse = "Our professional grounds are located inside Chance, Portsmouth, Dominica. You can view our integrated facility map directly on our home page block.";
             } else if (text.includes('hours') || text.includes('open') || text.includes('time') || text.includes('weekend') || text.includes('days')) {
                 coreResponse = "We are officially open Monday through Friday from 8:00 AM to 5:00 PM. We are closed on Saturdays and Sundays except for emergency handling supports.";
-            } else if (text.includes('policy') || text.includes('policies') || text.includes('rule') || text.includes('vaccin')) {
-                coreResponse = "Our strict operational guidelines dictate: 1) All vaccinations must be fully verified and current before intake structures, 2) Evaluations are completely mandatory for bite-work tracks, and 3) Cancellations require a 24-hour warning notice.";
             } else if (text.includes('payment') || text.includes('pay') || text.includes('bank') || text.includes('cash')) {
-                coreResponse = "We cleanly clear operations via traditional Cash payments, secure Bank Transfers, or MoBanking  Account Number 300031038, Mobile ID 7672779523";
+                coreResponse = "We cleanly clear operations via traditional Cash payments, secure Bank Transfers, or direct automated digital WhatsApp invoicing settlements.";
             } else if (text.includes('video') || text.includes('youtube') || text.includes('watch') || text.includes('session')) {
                 coreResponse = "You can navigate right over to our 'Watch Training' section to see direct high-drive tactical control operations and obedience updates via our YouTube embedded logs.";
             } else if (text.includes('about') || text.includes('who are you') || text.includes('history') || text.includes('team')) {
