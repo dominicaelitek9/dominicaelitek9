@@ -176,6 +176,12 @@
       .form-group-block input:focus, .form-group-block select:focus, .form-group-block textarea:focus {
           border-color: var(--accent-gold);
       }
+      .form-guidance-note {
+          font-size: 0.85rem;
+          color: var(--accent-gold);
+          font-style: italic;
+          margin-top: -4px;
+      }
       
       .stock-badge {
           display: inline-block;
@@ -341,6 +347,18 @@
       }
       button:hover, .action-btn:hover { background-color: var(--accent-hover); transform: translateY(-2px);        
       }
+      .whatsapp-submit-btn {
+          background-color: var(--whatsapp-green);
+          color: white;
+          font-size: 16px;
+          padding: 12px 30px;
+          border-radius: 8px;
+          margin-top: 15px;
+      }
+      .whatsapp-submit-btn:hover {
+          background-color: #1ebe57;
+          color: white;
+      }
       .contact-card-container { display: flex; gap: 20px; margin-top: 15px;        
       }
       .contact-profile { background-color: var(--card-bg); border-left: 4px solid var(--accent-gold); padding: 15px 20px; border-radius: 0 8px 8px 0; flex: 1;        
@@ -418,7 +436,7 @@
           </ul>
         </div>
 
-        <!-- BREEDING PAGE -->
+        <!-- BREEDING / PUPPY SALES PAGE -->
         <div id="breeding-page" class="page-content">
           <h2>Working Line Breeding & Sales</h2>
           <p>We pride ourselves on engineering premium European working bloodlines selected meticulously for clear heads, structural longevity, and natural protection instincts.</p>
@@ -433,7 +451,125 @@
 
           <h3>The Purchasing and Procurement Process</h3>
           <p>Every single puppy sold or assigned through Dominica Elite K9 undergoes extensive structural and psychological temperament evaluation testing (Volhard Testing parameters) at 49 days old. Our placements require client screening matching your domestic setup with the drive dynamics of the puppy.</p>
-          <div style="margin-top:20px;"><button onclick="openModal()">Apply for Next Litter</button></div>
+          
+          <!-- EXPLICIT PUPPY APPLICATION QUESTIONNAIRE -->
+          <div class="app-form-wrapper" style="border: 1px solid var(--accent-gold); margin-top: 35px;">
+              <h3 style="margin-top: 0; color: var(--accent-gold); text-align: center;"><i class="fa fa-wpforms"></i> Elite K9 Puppy Placement Application</h3>
+              <p style="font-size: 0.95rem; text-align: center; margin-bottom: 25px;">This technical profile ensures we match your lifestyle configuration with the correct drive profile and bloodline energy.</p>
+              
+              <form id="puppyApplicationForm" onsubmit="sendPuppyAppToWhatsApp(event)">
+                  <div class="form-grid-two-col">
+                      <div class="form-group-block">
+                          <label for="appFullName">Applicant's Full Name:</label>
+                          <input type="text" id="appFullName" placeholder="First and Last name" required />
+                      </div>
+                      <div class="form-group-block">
+                          <label for="appContactPhone">Contact Phone Number:</label>
+                          <input type="tel" id="appContactPhone" placeholder="e.g., +1 (767) 123-4567" required />
+                      </div>
+                      
+                      <!-- Q1 -->
+                      <div class="form-group-block">
+                          <label for="appBreedChoice">1. Which operational bloodline are you applying for?</label>
+                          <select id="appBreedChoice" required>
+                              <option value="" disabled selected>Select an option...</option>
+                              <option value="German Shepherd (Working Line)">German Shepherd (Working Line) — Clear heads, natural guarding tracking</option>
+                              <option value="Belgian Malinois (Tactical Line)">Belgian Malinois (Tactical Line) — Ultra high-intensity drive, rapid processing</option>
+                              <option value="Undecided / Need Professional Guidance">Undecided / Request Professional Match Guidance</option>
+                          </select>
+                      </div>
+                      
+                      <!-- Q2 -->
+                      <div class="form-group-block">
+                          <label for="appPrimaryPurpose">2. What is the primary intended objective for this asset?</label>
+                          <select id="appPrimaryPurpose" required>
+                              <option value="" disabled selected>Select an option...</option>
+                              <option value="Companion & Active Family Guardian">Companion & Active Family Guardian</option>
+                              <option value="Dedicated Personal Protection (Bite Work Profile)">Dedicated Personal Protection (Requires Bite Work Profiling)</option>
+                              <option value="Tactical Duty / Law Enforcement Operational Work">Tactical Duty / Law Enforcement Operational Work</option>
+                              <option value="Sport Training (IGP, PSA, Ring Sport)">Sport Training (IGP, PSA, Ring Sport)</option>
+                          </select>
+                      </div>
+
+                      <!-- Q3 -->
+                      <div class="form-group-block">
+                          <label for="appExperienceLevel">3. Describe your working dog experience profile:</label>
+                          <select id="appExperienceLevel" required>
+                              <option value="" disabled selected>Select an option...</option>
+                              <option value="Novice (First-time large working breed owner)">Novice (First-time large working breed owner)</option>
+                              <option value="Intermediate (Have owned stable guardian breeds before)">Intermediate (Have owned stable guardian breeds before)</option>
+                              <option value="Advanced (Experienced handler/trainer with high-drive systems)">Advanced (Experienced handler/trainer with high-drive systems)</option>
+                          </select>
+                          <div class="form-guidance-note">Malinois bloodlines are strictly restricted for novice profiles.</div>
+                      </div>
+
+                      <!-- Q4 -->
+                      <div class="form-group-block">
+                          <label for="appActivityLevel">4. Daily physical stimulation/exercise allocation capacity:</label>
+                          <select id="appActivityLevel" required>
+                              <option value="" disabled selected>Select an option...</option>
+                              <option value="Moderate (30-60 mins of casual structured walks)">Moderate (30-60 mins of casual structured walks)</option>
+                              <option value="High (1-2 hours of rigorous mental & physical drills)">High (1-2 hours of rigorous mental & physical drills)</option>
+                              <option value="Extreme (Elite continuous sports tracking, field work, operational duty)">Extreme (Elite continuous sports tracking, field work, operational duty)</option>
+                          </select>
+                      </div>
+
+                      <!-- Q5 -->
+                      <div class="form-group-block">
+                          <label for="appHousingType">5. What is your domestic housing configuration?</label>
+                          <select id="appHousingType" required>
+                              <option value="" disabled selected>Select an option...</option>
+                              <option value="House with fully secure, fenced acreage/yard">House with fully secure, fenced acreage/yard</option>
+                              <option value="House with unfenced or partially secured open yard">House with unfenced or partially secured open yard</option>
+                              <option value="Apartment / Condo / High-density living sector">Apartment / Condo / High-density living sector</option>
+                          </select>
+                      </div>
+
+                      <!-- Q6 -->
+                      <div class="form-group-block">
+                          <label for="appYardFencing">6. Specify fence setup parameters (height structure):</label>
+                          <input type="text" id="appYardFencing" placeholder="e.g., 6ft Concrete wall, chain-link, or kennel compound setup" required />
+                      </div>
+
+                      <!-- Q7 -->
+                      <div class="form-group-block">
+                          <label for="appHouseholdMembers">7. Are there small children or vulnerable individuals inside the home?</label>
+                          <select id="appHouseholdMembers" required>
+                              <option value="" disabled selected>Select an option...</option>
+                              <option value="Yes, children under 10 years old present">Yes, children under 10 years old present</option>
+                              <option value="Yes, older children or adults only">Yes, older children or adults only</option>
+                              <option value="No, solo occupancy or adult handler environment">No, solo occupancy or adult handler environment</option>
+                          </select>
+                      </div>
+
+                      <!-- Q8 -->
+                      <div class="form-group-block">
+                          <label for="appOtherPets">8. List any other animals currently residing on your premises:</label>
+                          <input type="text" id="appOtherPets" placeholder="e.g., None, 1 male small dog, livestock, cats" required />
+                      </div>
+
+                      <!-- Q9 -->
+                      <div class="form-group-block full-width">
+                          <label for="appIsolationHours">9. On average, how many hours per day will the animal stay alone/unattended?</label>
+                          <input type="text" id="appIsolationHours" placeholder="e.g., 2-4 hours, someone is always home, or during standard workday shifts" required />
+                      </div>
+
+                      <!-- Q10 -->
+                      <div class="form-group-block full-width">
+                          <label for="appCrateTraining">10. Do you agree to adhere to strict kennel/crate management and professional obedience structures?</label>
+                          <select id="appCrateTraining" required>
+                              <option value="" disabled selected>Select an option...</option>
+                              <option value="Yes, absolutely. I understand working bloodlines require rigid structure.">Yes, absolutely. I understand working bloodlines require rigid structure.</option>
+                              <option value="No, I plan to let the dog roam completely free-choice without constraint elements.">No, I plan to let the dog roam completely free-choice without constraint elements.</option>
+                          </select>
+                      </div>
+                  </div>
+                  
+                  <div style="text-align: center; margin-top: 15px;">
+                      <button type="submit" class="whatsapp-submit-btn"><i class="fab fa-whatsapp"></i> Submit Application via WhatsApp</button>
+                  </div>
+              </form>
+          </div>
         </div>
 
         <!-- STORE PAGE -->
@@ -719,6 +855,52 @@
       ];
       let currentVideos = JSON.parse(localStorage.getItem('k9_videos_registry')) || defaultVideos;
 
+      // WHATSAPP PLACEMENT PROCESSING PIPELINE ENGINE
+      function sendPuppyAppToWhatsApp(event) {
+          event.preventDefault();
+          
+          // Core Admin Operational Contact
+          const targetAdminWhatsAppLine = "17672779523"; // Natasha White (Secretary Base Link)
+          
+          // Gather parameters
+          const name = document.getElementById('appFullName').value;
+          const phone = document.getElementById('appContactPhone').value;
+          const breed = document.getElementById('appBreedChoice').value;
+          const objective = document.getElementById('appPrimaryPurpose').value;
+          const exp = document.getElementById('appExperienceLevel').value;
+          const physical = document.getElementById('appActivityLevel').value;
+          const housing = document.getElementById('appHousingType').value;
+          const fencing = document.getElementById('appYardFencing').value;
+          const members = document.getElementById('appHouseholdMembers').value;
+          const pets = document.getElementById('appOtherPets').value;
+          const hours = document.getElementById('appIsolationHours').value;
+          const structureAgree = document.getElementById('appCrateTraining').value;
+
+          // Technical Message Structuring Matrix
+          const rawMessageText = `*DOMINICA ELITE K9 SERVICES* \n` + 
+                                 `*PUPPY PLACEMENT CONTEXT PROFILE*\n\n` +
+                                 `• *Applicant Name:* ${name}\n` +
+                                 `• *Contact Phone:* ${phone}\n` +
+                                 `----------------------------------------\n` +
+                                 `1. *Selected Bloodline:* ${breed}\n` +
+                                 `2. *Primary Objective:* ${objective}\n` +
+                                 `3. *Experience Profile:* ${exp}\n` +
+                                 `4. *Stimulation Allocation:* ${physical}\n` +
+                                 `5. *Housing Setup:* ${housing}\n` +
+                                 `6. *Fence Height/Parameters:* ${fencing}\n` +
+                                 `7. *Vulnerable Members:* ${members}\n` +
+                                 `8. *Existing Animals On-Site:* ${pets}\n` +
+                                 `9. *Hours Left Unattended:* ${hours}\n` +
+                                 `10. *Structured Protocol Agreement:* ${structureAgree}`;
+
+          // Safe transmission encoding
+          const encodedText = encodeURIComponent(rawMessageText);
+          const customWhatsAppApiLink = `https://wa.me/${targetAdminWhatsAppLine}?text=${encodedText}`;
+          
+          // Execute redirect operational dispatch
+          window.open(customWhatsAppApiLink, '_blank');
+      }
+
       function triggerAdminSecurityGate() {
           const adminPanel = document.getElementById('adminPanelBlock');
           if (adminPanel.style.display === 'block') {
@@ -741,7 +923,6 @@
 
       function submitAdminPinVerification() {
           const pin = document.getElementById('adminPinInput').value;
-          // Security access configuration rules:
           if (pin === "9523") {
               currentAuthorizedUser = "Natasha White (Secretary)";
               authSuccessSequence();
@@ -990,7 +1171,7 @@
           } else if(rawUrl.includes('youtu.be/')) {
               embedId = rawUrl.split('youtu.be/')[1].split('?')[0];
           } else {
-              alert("Unrecognized YouTube addressing system matrix formatting rule application.");
+              alert("Unrecognized YouTube addressing system formatting matrix configuration rule application.");
               return;
           }
 
@@ -1001,7 +1182,7 @@
       }
 
       function deleteVideo(index) {
-          if(confirm("Remove selected video broadcast reference link configuration?")) {
+          if(confirm("Remove selected video reference configuration link?")) {
               currentVideos.splice(index, 1);
               localStorage.setItem('k9_videos_registry', JSON.stringify(currentVideos));
               renderAllDynamicBlocks();
