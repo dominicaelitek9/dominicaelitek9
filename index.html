@@ -142,23 +142,21 @@
           margin-top: 25px;
           margin-bottom: 35px;
       }
-      .form-grid-two-col {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 20px;
+      /* Single column vertical long line form layout setup */
+      .form-vertical-stack-layout {
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
       }
       .form-group-block {
-          margin-bottom: 20px;
           display: flex;
           flex-direction: column;
           gap: 8px;
           text-align: left;
-      }
-      .form-group-block.full-width {
-          grid-column: span 2;
+          width: 100%;
       }
       .form-group-block label {
-          font-size: 0.95rem;
+          font-size: 1rem;
           color: var(--text-primary);
           font-weight: 600;
       }
@@ -166,11 +164,13 @@
           background-color: rgba(0, 0, 0, 0.2);
           border: 1px solid rgba(255, 255, 255, 0.1);
           color: #ffffff;
-          padding: 10px 14px;
+          padding: 12px 14px;
           font-size: 1rem;
           border-radius: 6px;
           outline: none;
           font-family: inherit;
+          width: 100%;
+          box-sizing: border-box;
           transition: border-color 0.3s ease;
       }
       .form-group-block input:focus, .form-group-block select:focus, .form-group-block textarea:focus {
@@ -180,7 +180,7 @@
           font-size: 0.85rem;
           color: var(--accent-gold);
           font-style: italic;
-          margin-top: -4px;
+          margin-top: -2px;
       }
       
       .stock-badge {
@@ -383,7 +383,7 @@
       }
       footer { background-color: rgba(30, 38, 64, 0.5); border-top: 1px solid rgba(255, 255, 255, 0.05); padding: 20px 40px; text-align: center; color: var(--text-secondary); font-size: 0.95rem; margin-top: 60px;        
       }
-      @media (max-width: 768px) { header { flex-direction: column; gap: 15px; padding: 20px; text-align: center; } nav ul li { margin: 5px 8px; display: inline-block; } body { text-align: center; } .contact-card-container { flex-direction: column; } .contact-profile { text-align: left; } .item-card { text-align: left; } .form-grid-two-col { grid-template-columns: 1fr; } .form-group-block.full-width { grid-column: span 1; }        
+      @media (max-width: 768px) { header { flex-direction: column; gap: 15px; padding: 20px; text-align: center; } nav ul li { margin: 5px 8px; display: inline-block; } body { text-align: center; } .contact-card-container { flex-direction: column; } .contact-profile { text-align: left; } .item-card { text-align: left; }        
       }
     </style>
   </head>
@@ -412,7 +412,7 @@
         <div id="home-page" class="page-content active-page">
           <h2>Welcome</h2>
           <p>Dominica Elite K9 Services provides industry-standard canine development and tactical instruction.</p>
-          <div class="contact-block"><button onclick="openModal()">Inquire for Details</button></div>
+          <div class="contact-block"><button onclick="redirectToBooking('General Information & Pricing Details')">Inquire for Details</button></div>
           <div class="flyer-showcase-container">
             <h3>Official K9 Services Flyer</h3>
             <img class="embedded-flyer-img" src="IMG-20260605-WA0001.jpg" alt="Flyer" />
@@ -452,17 +452,18 @@
           <h3>The Purchasing and Procurement Process</h3>
           <p>Every single puppy sold or assigned through Dominica Elite K9 undergoes extensive structural and psychological temperament evaluation testing (Volhard Testing parameters) at 49 days old. Our placements require client screening matching your domestic setup with the drive dynamics of the puppy.</p>
           
-          <!-- EXPLICIT PUPPY APPLICATION QUESTIONNAIRE -->
+          <!-- EXPLICIT PUPPY APPLICATION QUESTIONNAIRE (LONG SINGLE LINE COLUMN LAYOUT) -->
           <div class="app-form-wrapper" style="border: 1px solid var(--accent-gold); margin-top: 35px;">
               <h3 style="margin-top: 0; color: var(--accent-gold); text-align: center;"><i class="fa fa-wpforms"></i> Elite K9 Puppy Placement Application</h3>
               <p style="font-size: 0.95rem; text-align: center; margin-bottom: 25px;">This technical profile ensures we match your lifestyle configuration with the correct drive profile and bloodline energy.</p>
               
               <form id="puppyApplicationForm" onsubmit="sendPuppyAppToWhatsApp(event)">
-                  <div class="form-grid-two-col">
+                  <div class="form-vertical-stack-layout">
                       <div class="form-group-block">
                           <label for="appFullName">Applicant's Full Name:</label>
                           <input type="text" id="appFullName" placeholder="First and Last name" required />
                       </div>
+                      
                       <div class="form-group-block">
                           <label for="appContactPhone">Contact Phone Number:</label>
                           <input type="tel" id="appContactPhone" placeholder="e.g., +1 (767) 123-4567" required />
@@ -549,13 +550,13 @@
                       </div>
 
                       <!-- Q9 -->
-                      <div class="form-group-block full-width">
+                      <div class="form-group-block">
                           <label for="appIsolationHours">9. On average, how many hours per day will the animal stay alone/unattended?</label>
                           <input type="text" id="appIsolationHours" placeholder="e.g., 2-4 hours, someone is always home, or during standard workday shifts" required />
                       </div>
 
                       <!-- Q10 -->
-                      <div class="form-group-block full-width">
+                      <div class="form-group-block">
                           <label for="appCrateTraining">10. Do you agree to adhere to strict kennel/crate management and professional obedience structures?</label>
                           <select id="appCrateTraining" required>
                               <option value="" disabled selected>Select an option...</option>
@@ -565,7 +566,7 @@
                       </div>
                   </div>
                   
-                  <div style="text-align: center; margin-top: 15px;">
+                  <div style="text-align: center; margin-top: 30px;">
                       <button type="submit" class="whatsapp-submit-btn"><i class="fab fa-whatsapp"></i> Submit Application via WhatsApp</button>
                   </div>
               </form>
@@ -593,7 +594,7 @@
               </div>
               <div>
                 <div class="price">EC$ 650.00 / Month</div>
-                <button onclick="openModal()">Book Program</button>
+                <button onclick="redirectToBooking('Puppy Development Program (EC$ 650/mo)')">Book Program</button>
               </div>
             </div>
 
@@ -605,7 +606,7 @@
               </div>
               <div>
                 <div class="price">EC$ 1,200.00 / Course</div>
-                <button onclick="openModal()">Book Program</button>
+                <button onclick="redirectToBooking('Advanced Behavioral Overhaul (EC$ 1,200/Course)')">Book Program</button>
               </div>
             </div>
 
@@ -617,7 +618,7 @@
               </div>
               <div>
                 <div class="price">Inquire for Pricing</div>
-                <button onclick="openModal()">Inquire Options</button>
+                <button onclick="redirectToBooking('Executive Protection Package (Custom Pricing Inquiry)')">Inquire Options</button>
               </div>
             </div>
           </div>
@@ -830,6 +831,9 @@
     <!-- INTERACTIVE JAVASCRIPT LAYER -->
     <script>
       let currentAuthorizedUser = null;
+      
+      // Central Unified WhatsApp Line for Operations (Trainer & Shared Access Matrix Line)
+      const primaryK9WhatsAppLine = "17672954694";
 
       // CORE STORES REGISTRY
       const defaultProducts = [
@@ -855,12 +859,21 @@
       ];
       let currentVideos = JSON.parse(localStorage.getItem('k9_videos_registry')) || defaultVideos;
 
-      // WHATSAPP PLACEMENT PROCESSING PIPELINE ENGINE
+      // BOOKING AND INQUIRY REDIRECT SYSTEM
+      function redirectToBooking(itemName) {
+          const rawBookingMsg = `*DOMINICA ELITE K9 SERVICES* \n` + 
+                                `*NEW INQUIRY & BOOKING REQUEST*\n\n` + 
+                                `Hello, I would like to book or receive details regarding the following technical program/item:\n` +
+                                `• *Subject/Asset:* ${itemName}\n\n` +
+                                `Please connect me to an available manager or secretary to coordinate next structural steps.`;
+          
+          const encodedBookingMsg = encodeURIComponent(rawBookingMsg);
+          window.open(`https://wa.me/${primaryK9WhatsAppLine}?text=${encodedBookingMsg}`, '_blank');
+      }
+
+      // WHATSAPP PLACEMENT PROCESSING PIPELINE ENGINE (Dispatches directly to main operational line)
       function sendPuppyAppToWhatsApp(event) {
           event.preventDefault();
-          
-          // Core Admin Operational Contact
-          const targetAdminWhatsAppLine = "17672779523"; // Natasha White (Secretary Base Link)
           
           // Gather parameters
           const name = document.getElementById('appFullName').value;
@@ -895,7 +908,7 @@
 
           // Safe transmission encoding
           const encodedText = encodeURIComponent(rawMessageText);
-          const customWhatsAppApiLink = `https://wa.me/${targetAdminWhatsAppLine}?text=${encodedText}`;
+          const customWhatsAppApiLink = `https://wa.me/${primaryK9WhatsAppLine}?text=${encodedText}`;
           
           // Execute redirect operational dispatch
           window.open(customWhatsAppApiLink, '_blank');
@@ -1000,7 +1013,7 @@
                   </div>
                   <div>
                       <div class="price">EC$ ${prod.price}.00</div>
-                      <button onclick="openModal()">Order via Administrative Desk</button>
+                      <button onclick="redirectToBooking('Store Item purchase: ${prod.name}')">Order via Administrative Desk</button>
                   </div>
               `;
               grid.appendChild(card);
