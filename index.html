@@ -1,4 +1,4 @@
-         <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -66,13 +66,13 @@
       }
       nav ul li {            
           display: inline-block;            
-          margin-left: 15px;        
+          margin-left: 11px;        
       }
       nav ul li a {            
           color: var(--text-secondary);            
           text-decoration: none;            
           font-weight: 600;            
-          font-size: 14px;            
+          font-size: 13px;            
           cursor: pointer;            
           transition: color 0.3s ease;        
       }
@@ -190,6 +190,15 @@
           color: var(--accent-gold);
           font-style: italic;
           margin-top: -2px;
+      }
+      .disclaimer-box {
+          background-color: rgba(0, 0, 0, 0.3);
+          border-left: 4px solid var(--badge-outstock);
+          padding: 15px;
+          margin-top: 15px;
+          border-radius: 0 8px 8px 0;
+          font-size: 0.9rem;
+          color: var(--text-secondary);
       }
       
       .stock-badge {
@@ -354,55 +363,31 @@
       }
       .gallery-item-wrapper span { font-size: 0.8rem; color: var(--accent-gold); font-weight: 600; text-transform: uppercase; }
 
-      /* Store-Specific Layout Changes */
-      .item-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 25px;        
+      .item-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 25px;        
       }
-      .item-card { background-color: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.3s ease;        
+      .item-card { background-color: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 10px; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.3s ease;        
       }
       .item-card:hover { transform: translateY(-5px);        
       }
-      .product-img-wrapper {
+      
+      /* Enhanced Store Card Styling for Product Images */
+      .product-img-frame {
           width: 100%;
-          height: 180px;
-          background-color: rgba(0,0,0,0.3);
-          border-bottom: 1px solid rgba(255,255,255,0.08);
-          position: relative;
-      }
-      .product-img-box {
-          width: 100%;
-          height: 180px;
+          aspect-ratio: 4 / 3;
           object-fit: cover;
+          border-radius: 6px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          margin-bottom: 15px;
+          background-color: rgba(0, 0, 0, 0.2);
       }
-      .product-img-fallback {
-          width: 100%;
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          color: rgba(255,255,255,0.15);
-          font-size: 2.5rem;
-      }
-      .product-card-badge {
-          position: absolute;
-          top: 12px;
-          right: 12px;
-          z-index: 5;
-          margin: 0;
-      }
-      .item-card-body {
-          padding: 20px;
-          display: flex;
-          flex-direction: column;
-          flex-grow: 1;
-      }
+      
       .item-card h4 { margin: 0 0 5px 0; font-size: 1.3rem; color: var(--text-primary);        
       }
       .item-card .tag { font-size: 0.85rem; color: var(--accent-gold); font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px;        
       }
-      .item-card p { font-size: 1rem; flex-grow: 1; margin-bottom: 15px;       
+      .item-card p { font-size: 1rem; flex-grow: 1;        
       }
-      .item-card .price { font-size: 1.25rem; color: var(--text-primary); font-weight: 700; margin-bottom: 15px;        
+      .item-card .price { font-size: 1.25rem; color: var(--text-primary); font-weight: 700; margin: 15px 0;        
       }
       button, .action-btn { background-color: var(--accent-gold); color: #000000; padding: 10px 22px; font-size: 14px; font-weight: bold; cursor: pointer; border-radius: 6px; border: none; display: inline-block; text-decoration: none; text-align: center; transition: background-color 0.3s ease, transform 0.2s ease;        
       }
@@ -469,6 +454,7 @@
           transform: scale(1.1);
           background-color: #1ebe57;
       }
+      /* Visual indicator badge notifying user that support is available */
       .chatbot-pulse-indicator {
           position: absolute;
           top: 0;
@@ -485,7 +471,7 @@
           50% { opacity: 1; }
           100% { opacity: 0.6; }
       }
-      @media (max-width: 768px) { header { flex-direction: column; gap: 15px; padding: 20px; text-align: center; } nav ul li { margin: 5px 8px; display: inline-block; } body { text-align: center; } .contact-card-container { flex-direction: column; } .contact-profile { text-align: left; } .item-card { text-align: left; }        
+      @media (max-width: 768px) { header { flex-direction: column; gap: 15px; padding: 20px; text-align: center; } nav ul li { margin: 5px 4px; display: inline-block; } body { text-align: center; } .contact-card-container { flex-direction: column; } .contact-profile { text-align: left; } .item-card { text-align: left; }        
       }
     </style>
   </head>
@@ -503,6 +489,7 @@
           <li><a onclick="showPage('home-page')" id="nav-home-page" class="active">Home</a></li>
           <li><a onclick="showPage('about-page')" id="nav-about-page">About Us</a></li>
           <li><a onclick="showPage('breeding-page')" id="nav-breeding-page">Puppy Sales</a></li>
+          <li><a onclick="showPage('adult-sales-page')" id="nav-adult-sales-page">Adult Dog Sales</a></li>
           <li><a onclick="showPage('store-page')" id="nav-store-page">Store</a></li>
           <li><a onclick="showPage('services-page')" id="nav-services-page">Services & Rates</a></li>
           <li><a onclick="showPage('gallery-page')" id="nav-gallery-page">Gallery</a></li>
@@ -549,6 +536,12 @@
           <h2>Working Line Breeding & Sales</h2>
           <p>We pride ourselves on engineering premium European working bloodlines selected meticulously for clear heads, structural longevity, and natural protection instincts.</p>
           
+          <div class="app-form-wrapper" style="border: 1px solid rgba(212, 175, 55, 0.3); text-align: center; margin-bottom: 30px;">
+             <h4 style="color: var(--accent-gold); margin: 0; font-size: 1.2rem; text-transform: uppercase;">Standard Puppy Procurement Pricing Structure</h4>
+             <p style="margin: 8px 0 0 0; font-size: 1.05rem;">Untrained Puppies Sell Strictly at <strong>8 Weeks Old</strong> • Starting Price Basis: <strong>$2,500.00 XCD</strong></p>
+             <div class="form-guidance-note" style="margin-top: 5px; color: #fff;">Applies equally to German Shepherds & Belgian Malinois • Genders are uniform in standard base pricing.</div>
+          </div>
+
           <h3>Our Genetics Program</h3>
           <p>Our breeding lines are engineered strictly for environmental stability, structural safety metrics, and proper orthopedic conformation. We produce world-class assets in two distinct fields:</p>
           
@@ -567,6 +560,11 @@
               <form id="puppyApplicationForm" onsubmit="sendPuppyAppToWhatsApp(event)">
                   <div class="form-vertical-stack-layout">
                       <div class="form-group-block">
+                          <label>Puppy Base Allocation Cost Rate:</label>
+                          <input type="text" value="Starts at $2,500 XCD (Released at 8 Weeks - Untrained)" disabled style="color: var(--accent-gold); font-weight: bold; background: rgba(0,0,0,0.4);" />
+                      </div>
+
+                      <div class="form-group-block">
                           <label for="appFullName">Applicant's Full Name:</label>
                           <input type="text" id="appFullName" placeholder="First and Last name" required />
                       </div>
@@ -580,14 +578,24 @@
                           <label for="appBreedChoice">1. Which operational bloodline are you applying for?</label>
                           <select id="appBreedChoice" required>
                               <option value="" disabled selected>Select an option...</option>
-                              <option value="German Shepherd (Working Line)">German Shepherd (Working Line) — Clear heads, natural guarding tracking</option>
-                              <option value="Belgian Malinois (Tactical Line)">Belgian Malinois (Tactical Line) — Ultra high-intensity drive, rapid processing</option>
+                              <option value="German Shepherd ($2,500 XCD Base)">German Shepherd ($2,500 XCD Base) — Clear heads, natural guarding tracking</option>
+                              <option value="Belgian Malinois ($2,500 XCD Base)">Belgian Malinois ($2,500 XCD Base) — Ultra high-intensity drive, rapid processing</option>
                               <option value="Undecided / Need Professional Guidance">Undecided / Request Professional Match Guidance</option>
+                          </select>
+                      </div>
+
+                      <div class="form-group-block">
+                          <label for="appGenderChoice">2. Preferred Gender Selection Layout (Same Price Metrics):</label>
+                          <select id="appGenderChoice" required>
+                              <option value="" disabled selected>Select an option...</option>
+                              <option value="Male Asset Configuration">Male Asset Configuration</option>
+                              <option value="Female Asset Configuration">Female Asset Configuration</option>
+                              <option value="No Preference / Select Based On Drive Profile">No Preference / Select Based On Tested Drive Profiles</option>
                           </select>
                       </div>
                       
                       <div class="form-group-block">
-                          <label for="appPrimaryPurpose">2. What is the primary intended objective for this asset?</label>
+                          <label for="appPrimaryPurpose">3. What is the primary intended objective for this asset?</label>
                           <select id="appPrimaryPurpose" required>
                               <option value="" disabled selected>Select an option...</option>
                               <option value="Companion & Active Family Guardian">Companion & Active Family Guardian</option>
@@ -598,7 +606,7 @@
                       </div>
 
                       <div class="form-group-block">
-                          <label for="appExperienceLevel">3. Describe your working dog experience profile:</label>
+                          <label for="appExperienceLevel">4. Describe your working dog experience profile:</label>
                           <select id="appExperienceLevel" required>
                               <option value="" disabled selected>Select an option...</option>
                               <option value="Novice (First-time large working breed owner)">Novice (First-time large working breed owner)</option>
@@ -609,7 +617,7 @@
                       </div>
 
                       <div class="form-group-block">
-                          <label for="appActivityLevel">4. Daily physical stimulation/exercise allocation capacity:</label>
+                          <label for="appActivityLevel">5. Daily physical stimulation/exercise allocation capacity:</label>
                           <select id="appActivityLevel" required>
                               <option value="" disabled selected>Select an option...</option>
                               <option value="Moderate (30-60 mins of casual structured walks)">Moderate (30-60 mins of casual structured walks)</option>
@@ -619,7 +627,7 @@
                       </div>
 
                       <div class="form-group-block">
-                          <label for="appHousingType">5. What is your domestic housing configuration?</label>
+                          <label for="appHousingType">6. What is your domestic housing configuration?</label>
                           <select id="appHousingType" required>
                               <option value="" disabled selected>Select an option...</option>
                               <option value="House with fully secure, fenced acreage/yard">House with fully secure, fenced acreage/yard</option>
@@ -629,12 +637,12 @@
                       </div>
 
                       <div class="form-group-block">
-                          <label for="appYardFencing">6. Specify fence setup parameters (height structure):</label>
+                          <label for="appYardFencing">7. Specify fence setup parameters (height structure):</label>
                           <input type="text" id="appYardFencing" placeholder="e.g., 6ft Concrete wall, chain-link, or kennel compound setup" required />
                       </div>
 
                       <div class="form-group-block">
-                          <label for="appHouseholdMembers">7. Are there small children or vulnerable individuals inside the home?</label>
+                          <label for="appHouseholdMembers">8. Are there small children or vulnerable individuals inside the home?</label>
                           <select id="appHouseholdMembers" required>
                               <option value="" disabled selected>Select an option...</option>
                               <option value="Yes, children under 10 years old present">Yes, children under 10 years old present</option>
@@ -644,17 +652,17 @@
                       </div>
 
                       <div class="form-group-block">
-                          <label for="appOtherPets">8. List any other animals currently residing on your premises:</label>
+                          <label for="appOtherPets">9. List any other animals currently residing on your premises:</label>
                           <input type="text" id="appOtherPets" placeholder="e.g., None, 1 male small dog, livestock, cats" required />
                       </div>
 
                       <div class="form-group-block">
-                          <label for="appIsolationHours">9. On average, how many hours per day will the animal stay alone/unattended?</label>
+                          <label for="appIsolationHours">10. On average, how many hours per day will the animal stay alone/unattended?</label>
                           <input type="text" id="appIsolationHours" placeholder="e.g., 2-4 hours, someone is always home, or during standard workday shifts" required />
                       </div>
 
                       <div class="form-group-block">
-                          <label for="appCrateTraining">10. Do you agree to adhere to strict kennel/crate management and professional obedience structures?</label>
+                          <label for="appCrateTraining">11. Do you agree to adhere to strict kennel/crate management and professional obedience structures?</label>
                           <select id="appCrateTraining" required>
                               <option value="" disabled selected>Select an option...</option>
                               <option value="Yes, absolutely. I understand working bloodlines require rigid structure.">Yes, absolutely. I understand working bloodlines require rigid structure.</option>
@@ -664,7 +672,119 @@
                   </div>
                   
                   <div style="text-align: center; margin-top: 30px;">
-                      <button type="submit" class="whatsapp-submit-btn"><i class="fab fa-whatsapp"></i> Submit Application via WhatsApp</button>
+                      <button type="submit" class="whatsapp-submit-btn"><i class="fab fa-whatsapp"></i> Submit Puppy Application via WhatsApp</button>
+                  </div>
+              </form>
+          </div>
+        </div>
+
+        <!-- ADULT DOG SALES PAGE -->
+        <div id="adult-sales-page" class="page-content">
+          <h2>Adult Dog Sales & Deployments</h2>
+          <p>At Dominica Elite K9 Services, we have mature, high-performance adult dogs available for purchase, tailored specifically to meet high-level security, residential, or companion mandates.</p>
+          
+          <h3>Operational Profile Configurations Available:</h3>
+          <div class="item-grid">
+              <div class="item-card" style="padding: 18px;">
+                  <h4>Untrained / Companion Adult Dogs</h4>
+                  <div class="tag">Baseline Household Profile</div>
+                  <p>Mature assets displaying stable baseline temperament, ideal for standard domestic companionship without defensive drive structuring configurations.</p>
+              </div>
+              <div class="item-card" style="padding: 18px;">
+                  <h4>Green Adult Dogs</h4>
+                  <div class="tag">Raw Work Potential • $3,500 XCD</div>
+                  <p>High-drive adult assets possessing optimal genetics, environmental confidence, and foundational drives, ready to be shaped into a targeted protection module.</p>
+              </div>
+              <div class="item-card" style="padding: 18px;">
+                  <h4>Single Purpose Mature Dogs</h4>
+                  <div class="tag">Obedience Focus • $3,650 XCD</div>
+                  <p>Fully configured in advanced structural obedience drills. Ideal for consumers requiring an impeccably well-mannered, highly controllable domestic asset.</p>
+              </div>
+              <div class="item-card" style="padding: 18px;">
+                  <h4>Dual Purpose Mature Dogs</h4>
+                  <div class="tag">Elite Protector Tier • $4,500 XCD</div>
+                  <p>The ultimate configuration balancing absolute civilized domestic behavioral obedience controls with active, elite-tier defensive protection matrices.</p>
+              </div>
+          </div>
+
+          <!-- RESTRICTED CLASSIFICATION SECTION -->
+          <div class="app-form-wrapper" style="border: 2px dashed var(--badge-outstock); background-color: rgba(20, 10, 15, 0.6); margin-top: 35px;">
+              <h3 style="margin-top: 0; color: var(--badge-outstock);"><i class="fa fa-triangle-exclamation"></i> Contract-Only Restricted Asset Classifications</h3>
+              <p>Specialized functional capabilities including **Search and Rescue (SAR)**, **Complex Compound Security / Perimeter Defense**, and **K9 Patrol Operations** are strictly unavailable to the general public. Procurement is restricted to verified security firms and government agencies operating under rigid contract frameworks.</p>
+              
+              <div class="disclaimer-box">
+                  <strong>PROPRIETARY CONTRACT-ONLY PRIVACY DISCLAIMER:</strong> All corporate applications, operational deployment layouts, agency background checks, and contractual negotiations processed under our restricted K9 division remain classified under strict non-disclosure parameters. Dominica Elite K9 Services guarantees complete operational data isolation. Tactical profiles, buyer identities, and defense capabilities will never be logged publicly or shared across unencrypted digital infrastructures.
+              </div>
+          </div>
+
+          <!-- INTENSE ADULT PROFILING APPLICATION -->
+          <div class="app-form-wrapper" style="border: 1px solid var(--accent-gold); margin-top: 40px;">
+              <h3 style="margin-top:0; color:var(--accent-gold); text-align:center;"><i class="fa fa-shield-dog"></i> High-Control Adult Dog Placement Application</h3>
+              <p style="font-size:0.95rem; text-align:center; margin-bottom:25px;">This intensive screening layout determines suitability for handled mature working dogs.</p>
+              
+              <form id="adultApplicationForm" onsubmit="sendAdultAppToWhatsApp(event)">
+                  <div class="form-vertical-stack-layout">
+                      <div class="form-group-block">
+                          <label for="adultFullName">Applicant's / Officer's Full Name:</label>
+                          <input type="text" id="adultFullName" placeholder="First and Last name" required />
+                      </div>
+                      
+                      <div class="form-group-block">
+                          <label for="adultContactPhone">Direct Contact Number:</label>
+                          <input type="tel" id="adultContactPhone" placeholder="e.g., +1 (767) 123-4567" required />
+                      </div>
+
+                      <div class="form-group-block">
+                          <label for="adultBreedChoice">1. Which breed asset configuration do you require?</label>
+                          <select id="adultBreedChoice" required>
+                              <option value="" disabled selected>Select breed selection...</option>
+                              <option value="German Shepherd (Adult)">German Shepherd (Adult Asset)</option>
+                              <option value="Belgian Malinois (Adult)">Belgian Malinois (Adult Asset)</option>
+                          </select>
+                      </div>
+
+                      <div class="form-group-block">
+                          <label for="adultNeedGreen">2. Do you require a RAW GREEN Adult Dog? ($3,500 XCD)</label>
+                          <select id="adultNeedGreen" onchange="toggleAdultFormLogic()" required>
+                              <option value="" disabled selected>Select answer...</option>
+                              <option value="Yes - I require a Green German Shepherd">Yes - I require a Green German Shepherd ($3,500 XCD)</option>
+                              <option value="Yes - I require a Green Belgian Malinois">Yes - I require a Green Belgian Malinois ($3,500 XCD)</option>
+                              <option value="No - I require a Trained or Untrained/Companion asset">No - I require alternative training specifications</option>
+                          </select>
+                      </div>
+
+                      <!-- CONDITIONAL TRAINED FIELD BLOCKS -->
+                      <div class="form-group-block" id="trainedSelectionWrapperBlock">
+                          <label for="adultTrainedType">3. Select custom training tier parameters required:</label>
+                          <select id="adultTrainedType">
+                              <option value="Untrained / Companion Adult Configuration" selected>Untrained / Companion Adult Profile Structure</option>
+                              <option value="Single Purpose Dog - Basic Obedience Focus ($3,650 XCD)">Single Purpose Dog - Impeccable Obedience Focus Only ($3,650 XCD)</option>
+                              <option value="Dual Purpose Dog - Elite Protection Matrix ($4,500 XCD)">Dual Purpose Dog - Obedience Controlled Elite Protector ($4,500 XCD)</option>
+                          </select>
+                      </div>
+
+                      <div class="form-group-block">
+                          <label for="adultExperience">4. Detail handler history regarding adult high-drive working animals:</label>
+                          <textarea id="adultExperience" rows="3" placeholder="Specify previous exposure to correction metrics, drive control, or tactical handling systems..." required></textarea>
+                      </div>
+
+                      <div class="form-group-block">
+                          <label for="adultContainment">5. Describe environmental containment setup parameters:</label>
+                          <input type="text" id="adultContainment" placeholder="e.g., Reinforced concrete run, commercial steel kennels, structural perimeter height" required />
+                      </div>
+
+                      <div class="form-group-block">
+                          <label for="adultLiability">6. Do you accept complete legal liability for managing high-drive protection assets?</label>
+                          <select id="adultLiability" required>
+                              <option value="" disabled selected>Select verification...</option>
+                              <option value="Yes, I explicitly agree to control parameters.">Yes, I assume absolute asset handling liability metrics.</option>
+                              <option value="No, I am looking for a zero-liability family pet.">No, I do not wish to manage protection drive layouts.</option>
+                          </select>
+                      </div>
+                  </div>
+
+                  <div style="text-align: center; margin-top: 30px;">
+                      <button type="submit" class="whatsapp-submit-btn" style="background-color: #1e3a8a;"><i class="fab fa-whatsapp"></i> Dispatch Adult Application to Command Desk</button>
                   </div>
               </form>
           </div>
@@ -684,30 +804,36 @@
           
           <div class="item-grid">
             <div class="item-card">
-              <div class="item-card-body">
+              <div>
                 <h4>Puppy Development Program</h4>
                 <div class="tag">Foundation Training</div>
                 <p>Designed for puppies aged 2-6 months. Focuses on socialization protocols, environmental engagement mechanics, food/toy drive markers, and foundational leash engagement.</p>
+              </div>
+              <div>
                 <div class="price">EC$ 650.00 / Month</div>
                 <button onclick="redirectToBooking('Puppy Development Program (EC$ 650/mo)')">Book Program</button>
               </div>
             </div>
 
             <div class="item-card">
-              <div class="item-card-body">
+              <div>
                 <h4>Advanced Behavioral Overhaul</h4>
                 <div class="tag">Modification & Control</div>
                 <p>Targeted rehabilitation addressing environmental reactivity, dog-to-dog aggression, resource guarding, or deep fear matrices using proven psychological drive balancing techniques.</p>
+              </div>
+              <div>
                 <div class="price">EC$ 1,200.00 / Course</div>
                 <button onclick="redirectToBooking('Advanced Behavioral Overhaul (EC$ 1,200/Course)')">Book Program</button>
               </div>
             </div>
 
             <div class="item-card">
-              <div class="item-card-body">
+              <div>
                 <h4>Executive Protection Package</h4>
                 <div class="tag">Tactical Configuration</div>
                 <p>Advanced bite-work configuration, drive channel shifting (prey-to-defense transition control), weapon threat conditioning, and tactical handler control operations.</p>
+              </div>
+              <div>
                 <div class="price">Inquire for Pricing</div>
                 <button onclick="redirectToBooking('Executive Protection Package (Custom Pricing Inquiry)')">Inquire Options</button>
               </div>
@@ -810,6 +936,10 @@
                             <input type="text" id="newProdPrice" placeholder="e.g., 120" />
                         </div>
                         <div class="form-group-block">
+                            <label for="newProdImg">Product Image URL Link:</label>
+                            <input type="url" id="newProdImg" placeholder="https://example.com/product-image.jpg" />
+                        </div>
+                        <div class="form-group-block">
                             <label for="newProdCat">Category Classification:</label>
                             <select id="newProdCat">
                                 <option value="Gear & Accessories">Gear & Accessories</option>
@@ -822,10 +952,6 @@
                                 <option value="In Stock">In Stock</option>
                                 <option value="Out of Stock">Out of Stock</option>
                             </select>
-                        </div>
-                        <div class="form-group-block full-width">
-                            <label for="newProdImg">Product Image URL (Optional):</label>
-                            <input type="url" id="newProdImg" placeholder="https://example.com/product-image.jpg" />
                         </div>
                         <div class="form-group-block full-width">
                             <label for="newProdDesc">Operational Descriptions:</label>
@@ -944,11 +1070,11 @@
       let currentAuthorizedUser = null;
       const primaryK9WhatsAppLine = "17672954694";
 
-      // CORE STORES REGISTRY (Default items populated with placeholder Unsplash photography addresses)
+      // CORE STORES REGISTRY
       const defaultProducts = [
-          { name: "Stainless Steel Dog Bowl", price: "65", cat: "Gear & Accessories", status: "In Stock", desc: "Heavy-duty, non-slip base designed for high-drive working dogs.", img: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=500" },
-          { name: "Ergonomic Tactical Harness", price: "185", cat: "Gear & Accessories", status: "In Stock", desc: "No-pull configuration equipped with load-bearing control handles.", img: "https://images.unsplash.com/photo-1625316708582-7c38734be31d?auto=format&fit=crop&w=500" },
-          { name: "Heavy-Duty Reflective Leash", price: "55", cat: "Gear & Accessories", status: "Out of Stock", desc: "6-foot specialized nylon weave featuring premium integrated safety clasps.", img: "https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?auto=format&fit=crop&w=500" }
+          { name: "Stainless Steel Dog Bowl", price: "65", cat: "Gear & Accessories", status: "In Stock", desc: "Heavy-duty, non-slip base designed for high-drive working dogs.", url: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=400" },
+          { name: "Ergonomic Tactical Harness", price: "185", cat: "Gear & Accessories", status: "In Stock", desc: "No-pull configuration equipped with load-bearing control handles.", url: "https://images.unsplash.com/photo-1625316708582-7c38734be31d?auto=format&fit=crop&w=400" },
+          { name: "Heavy-Duty Reflective Leash", price: "55", cat: "Gear & Accessories", status: "Out of Stock", desc: "6-foot specialized nylon weave featuring premium integrated safety clasps.", url: "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&w=400" }
       ];
       let currentProducts = JSON.parse(localStorage.getItem('k9_store_inventory')) || defaultProducts;
 
@@ -969,6 +1095,16 @@
       ];
       let currentVideos = JSON.parse(localStorage.getItem('k9_videos_registry')) || defaultVideos;
 
+      function toggleAdultFormLogic() {
+          const rawGreenValue = document.getElementById('adultNeedGreen').value;
+          const trainedWrapper = document.getElementById('trainedSelectionWrapperBlock');
+          if (rawGreenValue.startsWith('Yes')) {
+              trainedWrapper.style.display = 'none';
+          } else {
+              trainedWrapper.style.display = 'flex';
+          }
+      }
+
       function redirectToBooking(itemName) {
           const rawBookingMsg = `*DOMINICA ELITE K9 SERVICES* \n` + 
                                 `*NEW INQUIRY & BOOKING REQUEST*\n\n` + 
@@ -988,6 +1124,7 @@
           const name = document.getElementById('appFullName').value;
           const phone = document.getElementById('appContactPhone').value;
           const breed = document.getElementById('appBreedChoice').value;
+          const gender = document.getElementById('appGenderChoice').value;
           const objective = document.getElementById('appPrimaryPurpose').value;
           const exp = document.getElementById('appExperienceLevel').value;
           const physical = document.getElementById('appActivityLevel').value;
@@ -999,20 +1136,53 @@
           const structureAgree = document.getElementById('appCrateTraining').value;
 
           const rawMessageText = `*DOMINICA ELITE K9 SERVICES* \n` + 
-                                 `*PUPPY PLACEMENT CONTEXT PROFILE*\n\n` +
+                                 `*PUPPY PLACEMENT CONTEXT PROFILE*\n` +
+                                 `*BASE COST: STARTS AT $2,500 XCD (8 WKS)*\n\n` +
                                  `• *Applicant Name:* ${name}\n` +
                                  `• *Contact Phone:* ${phone}\n` +
                                  `----------------------------------------\n` +
                                  `1. *Selected Bloodline:* ${breed}\n` +
-                                 `2. *Primary Objective:* ${objective}\n` +
-                                 `3. *Experience Profile:* ${exp}\n` +
-                                 `4. *Stimulation Allocation:* ${physical}\n` +
-                                 `5. *Housing Setup:* ${housing}\n` +
-                                 `6. *Fence Height/Parameters:* ${fencing}\n` +
-                                 `7. *Vulnerable Members:* ${members}\n` +
-                                 `8. *Existing Animals On-Site:* ${pets}\n` +
-                                 `9. *Hours Left Unattended:* ${hours}\n` +
-                                 `10. *Structured Protocol Agreement:* ${structureAgree}`;
+                                 `2. *Gender Configuration:* ${gender}\n` +
+                                 `3. *Primary Objective:* ${objective}\n` +
+                                 `4. *Experience Profile:* ${exp}\n` +
+                                 `5. *Stimulation Allocation:* ${physical}\n` +
+                                 `6. *Housing Setup:* ${housing}\n` +
+                                 `7. *Fence Height/Parameters:* ${fencing}\n` +
+                                 `8. *Vulnerable Members:* ${members}\n` +
+                                 `9. *Existing Animals On-Site:* ${pets}\n` +
+                                 `10. *Hours Left Unattended:* ${hours}\n` +
+                                 `11. *Structured Protocol Agreement:* ${structureAgree}`;
+
+          window.open(`https://wa.me/${primaryK9WhatsAppLine}?text=${encodeURIComponent(rawMessageText)}`, '_blank');
+      }
+
+      function sendAdultAppToWhatsApp(event) {
+          event.preventDefault();
+          const name = document.getElementById('adultFullName').value;
+          const phone = document.getElementById('adultContactPhone').value;
+          const breed = document.getElementById('adultBreedChoice').value;
+          const greenStatus = document.getElementById('adultNeedGreen').value;
+          
+          let trainingTierResult = "N/A - Green Dog Profile Selected ($3,500 XCD)";
+          if (greenStatus.startsWith('No')) {
+              trainingTierResult = document.getElementById('adultTrainedType').value;
+          }
+
+          const experience = document.getElementById('adultExperience').value;
+          const containment = document.getElementById('adultContainment').value;
+          const liability = document.getElementById('adultLiability').value;
+
+          const rawMessageText = `*DOMINICA ELITE K9 SERVICES* \n` +
+                                 `*HIGH-CONTROL ADULT PLACEMENT PROFILE*\n\n` +
+                                 `• *Handler Name:* ${name}\n` +
+                                 `• *Contact Phone:* ${phone}\n` +
+                                 `----------------------------------------\n` +
+                                 `1. *Breed Configuration Selection:* ${breed}\n` +
+                                 `2. *Green Dog Requirement Status:* ${greenStatus}\n` +
+                                 `3. *Training/System Configuration Details:* ${trainingTierResult}\n` +
+                                 `4. *Handler Background Records:* ${experience}\n` +
+                                 `5. *Containment Array Infrastructure:* ${containment}\n` +
+                                 `6. *Liability Assumption Declaration:* ${liability}`;
 
           window.open(`https://wa.me/${primaryK9WhatsAppLine}?text=${encodeURIComponent(rawMessageText)}`, '_blank');
       }
@@ -1104,22 +1274,17 @@
               const card = document.createElement('div');
               card.className = "item-card";
               const isInstock = prod.status === "In Stock";
+              const finalProductImgUrl = prod.url ? prod.url : "https://images.unsplash.com/photo-1541599540903-216a46ca1df0?auto=format&fit=crop&w=400";
               
-              // Handle image container or fallback icon architecture gracefully
-              let imageHtml = `<div class="product-img-fallback"><i class="fa fa-box-open"></i></div>`;
-              if (prod.img && prod.img.trim() !== "") {
-                  imageHtml = `<img class="product-img-box" src="${prod.img.trim()}" alt="${prod.name}" onerror="this.parentElement.innerHTML='<div class=\"product-img-fallback\"><i class=\"fa fa-circle-exclamation\"></i></div>'" />`;
-              }
-
               card.innerHTML = `
-                  <div class="product-img-wrapper">
-                      <span class="stock-badge product-card-badge ${isInstock ? 'in-stock' : 'out-of-stock'}">${prod.status}</span>
-                      ${imageHtml}
-                  </div>
-                  <div class="item-card-body">
+                  <div>
+                      <img class="product-img-frame" src="${finalProductImgUrl}" alt="${prod.name}">
+                      <span class="stock-badge ${isInstock ? 'in-stock' : 'out-of-stock'}">${prod.status}</span>
                       <h4>${prod.name}</h4>
                       <div class="tag">${prod.cat}</div>
                       <p>${prod.desc}</p>
+                  </div>
+                  <div>
                       <div class="price">EC$ ${prod.price}.00</div>
                       <button onclick="redirectToBooking('Store Item purchase: ${prod.name}')">Order via Administrative Desk</button>
                   </div>
@@ -1226,13 +1391,13 @@
           const idx = document.getElementById('editProductIndex').value;
           const name = document.getElementById('newProdName').value.trim();
           const price = document.getElementById('newProdPrice').value.trim();
+          const url = document.getElementById('newProdImg').value.trim();
           const cat = document.getElementById('newProdCat').value;
           const status = document.getElementById('newProdStock').value;
-          const img = document.getElementById('newProdImg').value.trim();
           const desc = document.getElementById('newProdDesc').value.trim();
 
           if(!name || !price || !desc) { alert("Please compile all mandatory technical data parameters."); return; }
-          const obj = { name, price, cat, status, img, desc };
+          const obj = { name, price, cat, status, desc, url };
 
           if(idx !== "") currentProducts[parseInt(idx)] = obj;
           else currentProducts.push(obj);
@@ -1247,9 +1412,9 @@
           document.getElementById('editProductIndex').value = index;
           document.getElementById('newProdName').value = prod.name;
           document.getElementById('newProdPrice').value = prod.price;
+          document.getElementById('newProdImg').value = prod.url ? prod.url : "";
           document.getElementById('newProdCat').value = prod.cat;
           document.getElementById('newProdStock').value = prod.status;
-          document.getElementById('newProdImg').value = prod.img ? prod.img : "";
           document.getElementById('newProdDesc').value = prod.desc;
           document.getElementById('adminFormSubmitBtn').innerText = "Commit Secure Update Modifications";
           document.getElementById('cancelEditBtn').style.display = "inline-block";
@@ -1297,7 +1462,6 @@
           const type = document.getElementById('ytVideoType').value;
           
           let embedId = "";
-          
           if (rawUrl.includes('/shorts/')) {
               embedId = rawUrl.split('/shorts/')[1].split('?')[0].split('&')[0];
           } else if (rawUrl.includes('/live/')) {
@@ -1333,8 +1497,13 @@
       function showPage(pageId) {
           document.querySelectorAll('.page-content').forEach(page => page.classList.remove('active-page'));
           document.querySelectorAll('nav ul li a').forEach(navLink => navLink.classList.remove('active'));
-          document.getElementById(pageId).classList.add('active-page');
-          document.getElementById('nav-' + pageId).classList.add('active');
+          
+          const targetedPageBlock = document.getElementById(pageId);
+          if(targetedPageBlock) targetedPageBlock.classList.add('active-page');
+          
+          const targetedNavLink = document.getElementById('nav-' + pageId);
+          if(targetedNavLink) targetedNavLink.classList.add('active');
+          
           window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
@@ -1350,6 +1519,7 @@
 
       document.addEventListener('DOMContentLoaded', () => {
           renderAllDynamicBlocks();
+          toggleAdultFormLogic();
       });
     </script>
   </body>
