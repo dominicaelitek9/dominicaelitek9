@@ -125,6 +125,13 @@
           padding-left: 15px;
           margin-bottom: 20px;
       }
+
+      h3.section-header {
+          color: var(--text-primary);
+          border-bottom: 1px solid var(--border-color);
+          padding-bottom: 8px;
+          margin-top: 35px;
+      }
       
       .page-content {            
           display: none;            
@@ -136,7 +143,6 @@
           display: block;        
       }
 
-      /* ADMIN CREDENTIAL GATE & WORKSPACES */
       #auth-gate-modal {
           display: none;
           background-color: var(--card-bg);
@@ -180,7 +186,7 @@
           margin: 30px 0;
       }
       
-      .dog-profile-card, .info-panel, .rate-card, .store-card {
+      .dog-profile-card, .info-panel, .rate-card, .store-card, .app-questionnaire-panel {
           background-color: var(--card-bg);
           border: 1px solid var(--border-color);
           border-radius: 12px;
@@ -222,14 +228,6 @@
       .dog-name { font-size: 1.5rem; margin: 0 0 5px 0; color: #fff; }
       .dog-price { font-size: 1.3rem; color: var(--accent-gold); font-weight: bold; margin-bottom: 15px; }
       
-      .app-form-wrapper {
-          background-color: var(--card-bg);
-          border: 1px solid var(--border-color);
-          padding: 25px;
-          border-radius: 12px;
-          margin-top: 20px;
-      }
-      
       .form-vertical-stack-layout {
           display: flex;
           flex-direction: column;
@@ -252,6 +250,12 @@
           outline: none;
           width: 100%;
           box-sizing: border-box;
+          font-family: inherit;
+      }
+
+      .form-group-block textarea {
+          resize: vertical;
+          min-height: 80px;
       }
 
       .gallery-section-title {
@@ -472,10 +476,11 @@
           <p>Our training and canine configuration matrices are systematically led by Head Trainer <strong>Ishmael Samuel</strong>, supported by administrative management handled by <strong>Natasha White</strong>.</p>
         </div>
 
-        <!-- 3. PUPPUES PAGE -->
+        <!-- 3. PUPPIES PAGE WITH FORM -->
         <div id="puppy-sales" class="page-content">
           <h2>Working Line Puppy Sales</h2>
           <p>Our raw untrained puppies are released strictly at <strong>8 Weeks Old</strong> with baseline health optimization clearances, internal deworming records, and initial tactical vaccinations completed.</p>
+          
           <div class="catalog-grid-system">
             <div class="dog-profile-card">
               <div>
@@ -484,7 +489,7 @@
                 <div class="dog-price">$2,500.00 XCD</div>
                 <p>Premium European working lines selected for environmental density and home tracking capabilities.</p>
               </div>
-              <button onclick="redirectToBooking('German Shepherd Puppy Purchase Request')">Reserve GSD via WhatsApp</button>
+              <button onclick="scrollToElement('pup-form-anchor')">Apply For A Puppy</button>
             </div>
             <div class="dog-profile-card">
               <div>
@@ -493,15 +498,52 @@
                 <div class="dog-price">$2,500.00 XCD</div>
                 <p>High-intensity genetics featuring fast processing speed and extreme prey drive configurations.</p>
               </div>
-              <button onclick="redirectToBooking('Belgian Malinois Puppy Purchase Request')">Reserve Malinois via WhatsApp</button>
+              <button onclick="scrollToElement('pup-form-anchor')">Apply For A Puppy</button>
             </div>
+          </div>
+
+          <h3 class="section-header" id="pup-form-anchor"><i class="fa-solid fa-file-signature"></i> Puppy Acquisition Questionnaire</h3>
+          <p style="color:var(--text-secondary); font-size:0.95rem;">Please fill out the application layout below. Upon submission, your criteria answers are compiled and transmitted directly to our office WhatsApp pipeline.</p>
+          
+          <div class="app-questionnaire-panel">
+            <form onsubmit="handlePuppyApplication(event)" class="form-vertical-stack-layout">
+              <div class="form-group-block">
+                <label>Applicant Full Name *</label>
+                <input type="text" id="p-form-name" placeholder="John Doe" required />
+              </div>
+              <div class="form-group-block">
+                <label>Target Working Breed Preference *</label>
+                <select id="p-form-breed">
+                  <option value="German Shepherd Dog (GSD)">German Shepherd Dog (GSD)</option>
+                  <option value="Belgian Malinois">Belgian Malinois</option>
+                </select>
+              </div>
+              <div class="form-group-block">
+                <label>Does your containment property have secure perimeter fencing? Describe height/type. *</label>
+                <textarea id="p-form-fence" placeholder="e.g. Yes, 6ft structural chainlink boundaries surrounding entire lot..." required></textarea>
+              </div>
+              <div class="form-group-block">
+                <label>Outline your experience handling high-drive working line canines *</label>
+                <textarea id="p-form-exp" placeholder="Detail any previous working dogs, protection or companion history..." required></textarea>
+              </div>
+              <div class="form-group-block">
+                <label>What is the primary operational purpose for this puppy? *</label>
+                <select id="p-form-purpose">
+                  <option value="Family Companion & Deterrent">Family Companion & Deterrent</option>
+                  <option value="Active Estate Protection Asset">Active Estate Protection Asset</option>
+                  <option value="Sport / Tactical Competition">Sport / Tactical Competition</option>
+                </select>
+              </div>
+              <button type="submit" style="background-color: var(--whatsapp-green); color: white; margin-top:10px;"><i class="fab fa-whatsapp"></i> Dispatch Puppy Application</button>
+            </form>
           </div>
         </div>
 
-        <!-- 4. ADULT SALES PAGE -->
+        <!-- 4. ADULT SALES PAGE WITH FORM -->
         <div id="adult-sales" class="page-content">
           <h2>Trained Adult Protection Assets</h2>
           <p>We source, import, and build adult personal preservation configurations tailored for rapid estate deployment and executive field tracking.</p>
+          
           <div class="catalog-grid-system">
             <div class="dog-profile-card">
               <div>
@@ -510,8 +552,36 @@
                 <div class="dog-price">Pricing Upon Request</div>
                 <p>Fully customized off-leash control layouts coupled with active realistic bite matrix profiles.</p>
               </div>
-              <button onclick="redirectToBooking('Adult Trained Protection Asset Inquiry')">Inquire for Pricing</button>
+              <button onclick="scrollToElement('adult-form-anchor')">Submit Security Profiling Questionnaire</button>
             </div>
+          </div>
+
+          <h3 class="section-header" id="adult-form-anchor"><i class="fa-solid fa-shield-halved"></i> Adult Protection Evaluation Profile</h3>
+          <p style="color:var(--text-secondary); font-size:0.95rem;">Due to the intensity of our fully trained operational protection stock, comprehensive structural vetting is mandatory.</p>
+          
+          <div class="app-questionnaire-panel">
+            <form onsubmit="handleAdultApplication(event)" class="form-vertical-stack-layout">
+              <div class="form-group-block">
+                <label>Client Name / Corporate Handler *</label>
+                <input type="text" id="a-form-name" placeholder="John Doe / Security Firm Name" required />
+              </div>
+              <div class="form-group-block">
+                <label>Target Threat Matrix & Deployment Setting *</label>
+                <textarea id="a-form-threat" placeholder="Detail specific high-risk threats, perimeter sizes, or home invasion mitigation needs..." required></textarea>
+              </div>
+              <div class="form-group-block">
+                <label>Have you ever handled a dog trained in active command bite-work? *</label>
+                <select id="a-form-bitework">
+                  <option value="No, I require comprehensive handler training integration.">No, I require comprehensive handler training integration.</option>
+                  <option value="Yes, I have handled active bite configurations before.">Yes, I have handled active bite configurations before.</option>
+                </select>
+              </div>
+              <div class="form-group-block">
+                <label>Describe current housing / kennel layout configurations for the asset *</label>
+                <textarea id="a-form-housing" placeholder="Specify if the dog will live inside the home, in tactical outdoor runs, etc..." required></textarea>
+              </div>
+              <button type="submit" style="background-color: var(--whatsapp-green); color: white; margin-top:10px;"><i class="fab fa-whatsapp"></i> Dispatch Protection Profile</button>
+            </form>
           </div>
         </div>
 
@@ -520,7 +590,6 @@
           <h2>Tactical Gear & K9 Provisions</h2>
           <p>Procure industrial-strength working gear tested directly on our fields for longevity and handling efficiency.</p>
           <div class="catalog-grid-system" id="dynamic-store-container">
-            <!-- Core Standard Assets -->
             <div class="store-card">
               <div>
                 <div class="card-header-badge"><span class="breed-tag">K9 Equipment</span><span class="status-pill instock">In Stock</span></div>
@@ -561,7 +630,7 @@
           </div>
         </div>
 
-        <!-- 7. GALLERY PAGE (WITH SEPARATE CATEGORY DOMS) -->
+        <!-- 7. GALLERY PAGE -->
         <div id="gallery-page" class="page-content">
           <h2>Operational Media Gallery</h2>
           
@@ -600,7 +669,6 @@
           <p>Review real-time video validation fields capturing raw drive management, behavior modification, Shorts, and protection grip matrices.</p>
           
           <div class="video-grid" id="dynamic-video-container">
-            <!-- Seed Video Baseline -->
             <div class="info-panel" style="padding:15px;">
               <span class="breed-tag" style="margin-bottom:8px; display:inline-block;">Format: Long Form Blueprint</span>
               <div class="video-responsive-wrapper">
@@ -627,7 +695,6 @@
     <script>
       const TARGET_WHATSAPP = "17672954694";
       
-      // PASSWORDS DICTIONARY CONFIGURATION
       const ROLES_CREDENTIALS = {
           "Manager": "Manager767",
           "Secretary": "Secretary767"
@@ -673,7 +740,46 @@
           window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
-      // ADMIN CONTROLS: DYNAMICALLY GENERATE NEW GEAR CONTENT SKELETON
+      function scrollToElement(id) {
+          const el = document.getElementById(id);
+          if(el) { el.scrollIntoView({ behavior: 'smooth' }); }
+      }
+
+      // DYNAMIC APPLICATION DISPATCHERS TO WHATSAPP
+      function handlePuppyApplication(e) {
+          e.preventDefault();
+          const name = document.getElementById('p-form-name').value;
+          const breed = document.getElementById('p-form-breed').value;
+          const fencing = document.getElementById('p-form-fence').value;
+          const experience = document.getElementById('p-form-exp').value;
+          const purpose = document.getElementById('p-form-purpose').value;
+
+          const textPayload = `*DOMINICA ELITE K9 SERVICES - NEW PUPPY APPLICATION*\n\n` +
+                              `• *Applicant:* ${name}\n` +
+                              `• *Breed Preference:* ${breed}\n` +
+                              `• *Operational Purpose:* ${purpose}\n\n` +
+                              `• *Containment Fencing Profile:*\n"${fencing}"\n\n` +
+                              `• *High-Drive Experience History:*\n"${experience}"`;
+
+          window.open(`https://wa.me/${TARGET_WHATSAPP}?text=${encodeURIComponent(textPayload)}`, '_blank');
+      }
+
+      function handleAdultApplication(e) {
+          e.preventDefault();
+          const name = document.getElementById('a-form-name').value;
+          const threat = document.getElementById('a-form-threat').value;
+          const bitework = document.getElementById('a-form-bitework').value;
+          const housing = document.getElementById('a-form-housing').value;
+
+          const textPayload = `*DOMINICA ELITE K9 SERVICES - ADULT PROTECTION PROFILING*\n\n` +
+                              `• *Client/Handler:* ${name}\n` +
+                              `• *Bite-Work Experience Level:* ${bitework}\n\n` +
+                              `• *Target Threat Matrix / Setting:*\n"${threat}"\n\n` +
+                              `• *Housing & Kennel Setup:*\n"${housing}"`;
+
+          window.open(`https://wa.me/${TARGET_WHATSAPP}?text=${encodeURIComponent(textPayload)}`, '_blank');
+      }
+
       function adminAddStoreItem(e) {
           e.preventDefault();
           const title = document.getElementById('adm-store-title').value;
@@ -682,10 +788,9 @@
           const desc = document.getElementById('adm-store-desc').value;
           const stock = document.getElementById('adm-store-stock').value;
 
-          if(!img) { img = "IMG-20260605-WA0000.jpg"; } // Default if image URL omitted
+          if(!img) { img = "IMG-20260605-WA0000.jpg"; }
 
           const container = document.getElementById('dynamic-store-container');
-          
           const storeCard = document.createElement('div');
           storeCard.className = 'store-card';
           storeCard.innerHTML = `
@@ -696,7 +801,7 @@
               </div>
               <h4 class="dog-name" style="margin:0;">${title}</h4>
               <div class="dog-price">${price}</div>
-              ${img ? `<img src="${img}" style="width:100%; height:120px; object-fit:cover; border-radius:6px; margin-bottom:10px;" onerror="this.style.display='none'"/>` : ''}
+              <img src="${img}" style="width:100%; height:120px; object-fit:cover; border-radius:6px; margin-bottom:10px;" onerror="this.style.display='none'"/>
               <p>${desc}</p>
             </div>
             <button onclick="redirectToBooking('Purchase Inquiry: ${encodeURIComponent(title)}')">Buy via WhatsApp</button>
@@ -710,14 +815,12 @@
           document.getElementById('adm-store-desc').value = "";
       }
 
-      // ADMIN CONTROLS: MOUNT AND EXTRACT YOUTUBE / SHORTS / LIVE
       function adminAddVideo(e) {
           e.preventDefault();
           const title = document.getElementById('adm-vid-title').value;
           let urlInput = document.getElementById('adm-vid-url').value.trim();
           const type = document.getElementById('adm-vid-type').value;
 
-          // Robust YouTube ID extraction utility supporting Long-forms, Shorts, & Lives
           let videoId = urlInput;
           if(urlInput.includes('v=')) {
               videoId = urlInput.split('v=')[1].split('&')[0];
@@ -749,7 +852,6 @@
           document.getElementById('adm-vid-url').value = "";
       }
 
-      // ADMIN CONTROLS: SORT GENETIC GALLERY (PARENTS vs PUPS BY BREED)
       function adminAddGallery(e) {
           e.preventDefault();
           const imgUrl = document.getElementById('adm-gal-url').value.trim();
@@ -765,8 +867,6 @@
           }
 
           const targetContainer = document.getElementById(targetContainerId);
-          
-          // Clear text fallback string message block if it exists
           if (targetContainer.innerHTML.includes("No lineage puppy assets")) {
               targetContainer.innerHTML = "";
           }
