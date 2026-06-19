@@ -127,10 +127,10 @@
       }
 
       h3.section-header {
-          color: var(--text-primary);
+          color: var(--accent-gold);
           border-bottom: 1px solid var(--border-color);
           padding-bottom: 8px;
-          margin-top: 35px;
+          margin-top: 40px;
       }
       
       .page-content {            
@@ -227,6 +227,22 @@
       
       .dog-name { font-size: 1.5rem; margin: 0 0 5px 0; color: #fff; }
       .dog-price { font-size: 1.3rem; color: var(--accent-gold); font-weight: bold; margin-bottom: 15px; }
+
+      .tier-block {
+          background-color: rgba(0, 0, 0, 0.2);
+          border: 1px dashed var(--border-color);
+          padding: 15px;
+          border-radius: 8px;
+          margin-bottom: 15px;
+      }
+
+      .tier-block h5 {
+          margin: 0 0 5px 0;
+          font-size: 1.1rem;
+          color: var(--accent-gold);
+          display: flex;
+          justify-content: space-between;
+      }
       
       .form-vertical-stack-layout {
           display: flex;
@@ -240,11 +256,17 @@
           gap: 6px;
       }
       
+      .form-group-block label {
+          font-weight: 600;
+          font-size: 0.95rem;
+          color: #f1f5f9;
+      }
+      
       .form-group-block input, .form-group-block select, .form-group-block textarea {
           background-color: rgba(0, 0, 0, 0.3);
           border: 1px solid var(--border-color);
           color: #ffffff;
-          padding: 10px;
+          padding: 12px;
           font-size: 1rem;
           border-radius: 6px;
           outline: none;
@@ -255,7 +277,16 @@
 
       .form-group-block textarea {
           resize: vertical;
-          min-height: 80px;
+          min-height: 90px;
+      }
+
+      .form-row-2col {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 15px;
+      }
+      @media(min-width: 768px) {
+          .form-row-2col { grid-template-columns: 1fr 1fr; }
       }
 
       .gallery-section-title {
@@ -357,7 +388,7 @@
           <li><a onclick="showPage('about-page')" id="nav-about-page">About</a></li>
           <li><a onclick="showPage('puppy-sales')" id="nav-puppy-sales">Puppies</a></li>
           <li><a onclick="showPage('adult-sales')" id="nav-adult-sales">Adults</a></li>
-          <li><a onclick="showPage('store-page')" id="nav-store-page">Store</a></li>
+          <li><a onclick="store-page" onclick="showPage('store-page')" id="nav-store-page">Store</a></li>
           <li><a onclick="showPage('services-rates')" id="nav-services-rates">Rates</a></li>
           <li><a onclick="showPage('gallery-page')" id="nav-gallery-page">Gallery</a></li>
           <li><a onclick="showPage('watch-training')" id="nav-watch-training">Watch Training</a></li>
@@ -469,14 +500,28 @@
           </div>
         </div>
 
-        <!-- 2. ABOUT US PAGE -->
+        <!-- 2. ABOUT US PAGE (EXPANDED TO SHOW CORE VALUES AND STANCE) -->
         <div id="about-page" class="page-content">
           <h2>About Our Establishment</h2>
           <p>Dominica Elite K9 Services is the premier hub for high-intensity working line cultivation, custom behavioral engineering, and protection development system integration based in Portsmouth, Dominica.</p>
           <p>Our training and canine configuration matrices are systematically led by Head Trainer <strong>Ishmael Samuel</strong>, supported by administrative management handled by <strong>Natasha White</strong>.</p>
+          
+          <h3 class="section-header"><i class="fa-solid fa-gavel"></i> What We Stand For</h3>
+          <p>At Dominica Elite K9 Services, we believe that a true working dog is a masterpiece of balance: possessing rock-solid nerves, clear environmental stability, and absolute structural soundness. We reject standard aesthetic breeding in favor of preserving functional work ethic, high intelligence, and dependable protection drives.</p>
+          
+          <div class="rates-grid" style="margin-top:20px;">
+             <div class="info-panel">
+                <h4 style="color:var(--accent-gold); margin-top:0;"><i class="fa-solid fa-shield"></i> Uncompromised Security</h4>
+                <p>We stand for absolute civilian preservation. Our training lines are built to handle real-world crisis situations flawlessly while remaining fully integrated, safe members of their households.</p>
+             </div>
+             <div class="info-panel">
+                <h4 style="color:var(--accent-gold); margin-top:0;"><i class="fa-solid fa-heart-pulse"></i> Canine Genetic Integrity</h4>
+                <p>We believe in strict selective health clearances. Every breeding animal or imported prospect is scrutinized heavily for strong hip/elbow tracking structure, stable baseline behaviors, and natural working drives.</p>
+             </div>
+          </div>
         </div>
 
-        <!-- 3. PUPPIES PAGE WITH FORM -->
+        <!-- 3. PUPPIES PAGE WITH FORM AND CONTACT FIELDS -->
         <div id="puppy-sales" class="page-content">
           <h2>Working Line Puppy Sales</h2>
           <p>Our raw untrained puppies are released strictly at <strong>8 Weeks Old</strong> with baseline health optimization clearances, internal deworming records, and initial tactical vaccinations completed.</p>
@@ -503,28 +548,48 @@
           </div>
 
           <h3 class="section-header" id="pup-form-anchor"><i class="fa-solid fa-file-signature"></i> Puppy Acquisition Questionnaire</h3>
-          <p style="color:var(--text-secondary); font-size:0.95rem;">Please fill out the application layout below. Upon submission, your criteria answers are compiled and transmitted directly to our office WhatsApp pipeline.</p>
+          <p style="color:var(--text-secondary); font-size:0.95rem;">Please fill out the structured application details below. All answers are encrypted and pushed instantly to the head office WhatsApp review log.</p>
           
           <div class="app-questionnaire-panel">
             <form onsubmit="handlePuppyApplication(event)" class="form-vertical-stack-layout">
+              
+              <!-- Contact Meta Info Blocks -->
               <div class="form-group-block">
                 <label>Applicant Full Name *</label>
                 <input type="text" id="p-form-name" placeholder="John Doe" required />
               </div>
+
+              <div class="form-row-2col">
+                 <div class="form-group-block">
+                   <label>Primary Phone Number *</label>
+                   <input type="tel" id="p-form-phone" placeholder="e.g. 767-123-4567" required />
+                 </div>
+                 <div class="form-group-block">
+                   <label>Email Address *</label>
+                   <input type="email" id="p-form-email" placeholder="name@domain.com" required />
+                 </div>
+              </div>
+
+              <div class="form-group-block">
+                <label>Geographic Residence Location (Parish / Town) *</label>
+                <input type="text" id="p-form-location" placeholder="e.g. Portsmouth, Saint John Parish" required />
+              </div>
+
+              <!-- Qualification Vectors -->
               <div class="form-group-block">
                 <label>Target Working Breed Preference *</label>
                 <select id="p-form-breed">
-                  <option value="German Shepherd Dog (GSD)">German Shepherd Dog (GSD)</option>
-                  <option value="Belgian Malinois">Belgian Malinois</option>
+                  <option value="German Shepherd Dog (GSD)">German Shepherd Dog (GSD) [$2,500 XCD]</option>
+                  <option value="Belgian Malinois">Belgian Malinois [$2,500 XCD]</option>
                 </select>
               </div>
               <div class="form-group-block">
                 <label>Does your containment property have secure perimeter fencing? Describe height/type. *</label>
-                <textarea id="p-form-fence" placeholder="e.g. Yes, 6ft structural chainlink boundaries surrounding entire lot..." required></textarea>
+                <textarea id="p-form-fence" placeholder="e.g. Yes, 6ft block wall with lockable gates surrounding property..." required></textarea>
               </div>
               <div class="form-group-block">
                 <label>Outline your experience handling high-drive working line canines *</label>
-                <textarea id="p-form-exp" placeholder="Detail any previous working dogs, protection or companion history..." required></textarea>
+                <textarea id="p-form-exp" placeholder="Detail if you have managed high-drive breeds, tracking dogs, or protection assets previously..." required></textarea>
               </div>
               <div class="form-group-block">
                 <label>What is the primary operational purpose for this puppy? *</label>
@@ -539,35 +604,72 @@
           </div>
         </div>
 
-        <!-- 4. ADULT SALES PAGE WITH FORM -->
+        <!-- 4. ADULT SALES PAGE (SEPARATED DESCRIPTIONS + PRICE TIERS + DETAILED QUESTIONS) -->
         <div id="adult-sales" class="page-content">
           <h2>Trained Adult Protection Assets</h2>
-          <p>We source, import, and build adult personal preservation configurations tailored for rapid estate deployment and executive field tracking.</p>
+          <p>We source, import, and build adult personal preservation configurations tailored for rapid estate deployment, personal security, and executive field tracking.</p>
           
-          <div class="catalog-grid-system">
-            <div class="dog-profile-card">
-              <div>
-                <div class="card-header-badge"><span class="breed-tag">Import Asset</span><span class="status-pill outstock">Waitlist</span></div>
-                <h4 class="dog-name" style="margin:0;">Executive Protection Dog</h4>
-                <div class="dog-price">Pricing Upon Request</div>
-                <p>Fully customized off-leash control layouts coupled with active realistic bite matrix profiles.</p>
-              </div>
-              <button onclick="scrollToElement('adult-form-anchor')">Submit Security Profiling Questionnaire</button>
-            </div>
+          <!-- SEPARATED TIER DESCRIPTIONS BLOCK -->
+          <h3 class="section-header"><i class="fa-solid fa-layer-group"></i> Available Asset Tier Classifications</h3>
+          <p style="color:var(--text-secondary); margin-bottom:20px;">Review our asset categories below to identify the exact structural layout your home or compound requires before filling out the vetting questionnaire.</p>
+          
+          <div class="tier-block">
+             <h5><span>1. Green Dog (GSD or Malinois)</span> <span style="color:#fff;">$3,000.00 XCD</span></h5>
+             <p style="margin:5px 0 0 0; font-size:0.95rem; color:var(--text-secondary);">An unpolished young adult displaying massive raw genetic drives, excellent natural defensive potential, and clean environmental nerves. These dogs possess <strong>no advanced training</strong> but have been soundly tested to guarantee high aptitude for tracking, obedience, or protection work.</p>
           </div>
 
+          <div class="tier-block">
+             <h5><span>2. Single-Purpose Dog (Basic Obedience)</span> <span style="color:#fff;">$3,600.00 XCD</span></h5>
+             <p style="margin:5px 0 0 0; font-size:0.95rem; color:var(--text-secondary);">A fully mature German Shepherd or Belgian Malinois completely trained in <strong>Basic Obedience mechanics</strong>. This asset executes crisp on-leash heel work, rapid sits, downs, and stays under normal distractions, serving as a highly manageable deterrent and alert sentinel for your property.</p>
+          </div>
+
+          <div class="tier-block">
+             <h5><span>3. Dual-Purpose Dog (Advanced Obedience & Protection)</span> <span style="color:#fff;">$4,500.00 XCD</span></h5>
+             <p style="margin:5px 0 0 0; font-size:0.95rem; color:var(--text-secondary);">Our elite tier classification asset. This dog features flawless <strong>Advanced Off-Leash Obedience</strong> coupled with **Active Protection & Guard Dog capabilities**. Trained to alert on command, deploy a ferocious bite matrix against home intruders, hold ground against physical threats, and immediately release/out on handler signal.</p>
+          </div>
+
+          <!-- QUESTIONNAIRE WITH CHOSEN TIERS AND CORE CONTACT INFO -->
           <h3 class="section-header" id="adult-form-anchor"><i class="fa-solid fa-shield-halved"></i> Adult Protection Evaluation Profile</h3>
-          <p style="color:var(--text-secondary); font-size:0.95rem;">Due to the intensity of our fully trained operational protection stock, comprehensive structural vetting is mandatory.</p>
+          <p style="color:var(--text-secondary); font-size:0.95rem;">Due to the high defensive drive parameters of our fully trained adult stock, rigorous handler profiling is mandatory before placement.</p>
           
           <div class="app-questionnaire-panel">
             <form onsubmit="handleAdultApplication(event)" class="form-vertical-stack-layout">
+              
+              <!-- Core Identity Vectors -->
               <div class="form-group-block">
-                <label>Client Name / Corporate Handler *</label>
-                <input type="text" id="a-form-name" placeholder="John Doe / Security Firm Name" required />
+                <label>Client Full Name / Corporate Entity *</label>
+                <input type="text" id="a-form-name" placeholder="John Doe" required />
               </div>
+
+              <div class="form-row-2col">
+                 <div class="form-group-block">
+                   <label>Primary Contact Phone *</label>
+                   <input type="tel" id="a-form-phone" placeholder="e.g. 767-235-XXXX" required />
+                 </div>
+                 <div class="form-group-block">
+                   <label>Email Address *</label>
+                   <input type="email" id="a-form-email" placeholder="client@domain.com" required />
+                 </div>
+              </div>
+
+              <div class="form-group-block">
+                <label>Geographic Installation Location (Town / Parish / Estate Location) *</label>
+                <input type="text" id="a-form-location" placeholder="e.g. Calibishie, Saint Andrew Parish" required />
+              </div>
+
+              <div class="form-group-block">
+                <label>Select Your Requested Asset Tier Structure *</label>
+                <select id="a-form-tier">
+                  <option value="Green Dog Prospect ($3,000 XCD)">Green Dog Prospect (GSD/Malinois) — $3,000.00 XCD</option>
+                  <option value="Single-Purpose: Basic Obedience Adult ($3,600 XCD)">Single-Purpose: Basic Obedience Adult — $3,600.00 XCD</option>
+                  <option value="Dual-Purpose: Advanced Obedience & Protection Guard ($4,500 XCD)">Dual-Purpose: Advanced Obedience & Protection Guard — $4,500.00 XCD</option>
+                </select>
+              </div>
+
+              <!-- Deepened Protection Questions -->
               <div class="form-group-block">
                 <label>Target Threat Matrix & Deployment Setting *</label>
-                <textarea id="a-form-threat" placeholder="Detail specific high-risk threats, perimeter sizes, or home invasion mitigation needs..." required></textarea>
+                <textarea id="a-form-threat" placeholder="Detail specific security threats, perimeter sizes, high-risk assets or home invasion protection targets..." required></textarea>
               </div>
               <div class="form-group-block">
                 <label>Have you ever handled a dog trained in active command bite-work? *</label>
@@ -578,7 +680,7 @@
               </div>
               <div class="form-group-block">
                 <label>Describe current housing / kennel layout configurations for the asset *</label>
-                <textarea id="a-form-housing" placeholder="Specify if the dog will live inside the home, in tactical outdoor runs, etc..." required></textarea>
+                <textarea id="a-form-housing" placeholder="Specify if the dog will live inside the home, in custom outdoor tactical kennels, etc..." required></textarea>
               </div>
               <button type="submit" style="background-color: var(--whatsapp-green); color: white; margin-top:10px;"><i class="fab fa-whatsapp"></i> Dispatch Protection Profile</button>
             </form>
@@ -745,10 +847,13 @@
           if(el) { el.scrollIntoView({ behavior: 'smooth' }); }
       }
 
-      // DYNAMIC APPLICATION DISPATCHERS TO WHATSAPP
+      // DYNAMIC APPLICATION DISPATCHERS TO WHATSAPP VIA COMPASS STRINGS
       function handlePuppyApplication(e) {
           e.preventDefault();
           const name = document.getElementById('p-form-name').value;
+          const phone = document.getElementById('p-form-phone').value;
+          const email = document.getElementById('p-form-email').value;
+          const location = document.getElementById('p-form-location').value;
           const breed = document.getElementById('p-form-breed').value;
           const fencing = document.getElementById('p-form-fence').value;
           const experience = document.getElementById('p-form-exp').value;
@@ -756,6 +861,9 @@
 
           const textPayload = `*DOMINICA ELITE K9 SERVICES - NEW PUPPY APPLICATION*\n\n` +
                               `• *Applicant:* ${name}\n` +
+                              `• *Phone No:* ${phone}\n` +
+                              `• *Email:* ${email}\n` +
+                              `• *Location:* ${location}\n` +
                               `• *Breed Preference:* ${breed}\n` +
                               `• *Operational Purpose:* ${purpose}\n\n` +
                               `• *Containment Fencing Profile:*\n"${fencing}"\n\n` +
@@ -767,12 +875,20 @@
       function handleAdultApplication(e) {
           e.preventDefault();
           const name = document.getElementById('a-form-name').value;
+          const phone = document.getElementById('a-form-phone').value;
+          const email = document.getElementById('a-form-email').value;
+          const location = document.getElementById('a-form-location').value;
+          const tier = document.getElementById('a-form-tier').value;
           const threat = document.getElementById('a-form-threat').value;
           const bitework = document.getElementById('a-form-bitework').value;
           const housing = document.getElementById('a-form-housing').value;
 
           const textPayload = `*DOMINICA ELITE K9 SERVICES - ADULT PROTECTION PROFILING*\n\n` +
                               `• *Client/Handler:* ${name}\n` +
+                              `• *Phone No:* ${phone}\n` +
+                              `• *Email:* ${email}\n` +
+                              `• *Installation Location:* ${location}\n` +
+                              `• *Selected Configuration Tier:* ${tier}\n\n` +
                               `• *Bite-Work Experience Level:* ${bitework}\n\n` +
                               `• *Target Threat Matrix / Setting:*\n"${threat}"\n\n` +
                               `• *Housing & Kennel Setup:*\n"${housing}"`;
