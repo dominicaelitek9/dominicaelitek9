@@ -7,7 +7,6 @@
     <title>Dominica Elite K9 Services</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <style>
-      /* Modern Master Theme & Brand Color Mapping */        
       :root {            
           --bg-color: #121824;            
           --card-bg: #1e2640;            
@@ -16,8 +15,7 @@
           --accent-gold: #d4af37;            
           --accent-hover: #f3e5ab;            
           --whatsapp-green: #25d366;            
-          --youtube-red: #ff0000;            
-          --chat-user-bg: #2a355c;        
+          --admin-panel-bg: #111827;
           --badge-instock: #1ebd58;
           --badge-outstock: #ef4444;
           --border-color: rgba(255, 255, 255, 0.08);
@@ -45,7 +43,6 @@
           box-sizing: border-box;        
       }
       
-      /* Fixed Sticky Header Panel with Scroll Support */
       header {            
           display: flex;            
           flex-direction: column;
@@ -77,16 +74,8 @@
           object-fit: cover;            
           border: 2px solid var(--accent-gold);
           cursor: pointer;
-          transition: transform 0.2s ease;
-      }
-      .nav-logo:active {
-          transform: scale(0.9);
       }
       
-      /* Micro Navigation Links Configuration */
-      nav {
-          width: 100%;
-      }
       nav ul {            
           list-style-type: none;            
           padding: 0;            
@@ -96,12 +85,7 @@
           justify-content: center;
           gap: 10px;
       }
-      @media (min-width: 992px) {
-          nav ul {
-              justify-content: flex-end;
-              gap: 14px;
-          }
-      }
+      
       nav ul li a {            
           color: var(--text-secondary);            
           text-decoration: none;            
@@ -112,15 +96,13 @@
           border-radius: 4px;
           transition: all 0.3s ease;        
           background-color: rgba(255, 255, 255, 0.02);
-          border: 1px solid transparent;
       }
+      
       nav ul li a:hover, nav ul li a.active {            
           color: var(--accent-gold);        
           background-color: rgba(214, 175, 55, 0.1);
-          border-color: rgba(214, 175, 55, 0.2);
       }
       
-      /* Typography System */
       .main-title {            
           color: var(--accent-gold);            
           font-size: 2.6rem;            
@@ -128,105 +110,105 @@
           text-align: center;        
           font-weight: 800;
       }
+      
       .main-subtitle {            
           color: var(--text-secondary);            
           font-size: 1.2rem;            
           text-align: center;            
           margin-bottom: 40px;        
       }
+      
       h2 {            
           color: var(--accent-gold);            
           font-size: 2rem;            
-          margin-top: 10px;
-          margin-bottom: 20px;        
           border-left: 4px solid var(--accent-gold);
           padding-left: 15px;
-      }
-      h3 {            
-          color: var(--text-primary);            
-          font-size: 1.4rem;            
-          margin-top: 35px;            
-          margin-bottom: 15px;            
-          border-bottom: 1px solid var(--border-color);            
-          padding-bottom: 8px;        
-      }
-      p {            
-          color: var(--text-secondary);            
-          font-size: 1.1rem;            
-          margin-bottom: 15px;        
+          margin-bottom: 20px;
       }
       
-      /* Interactive Content Panels Engine */
       .page-content {            
           display: none;            
           margin-bottom: 50px;            
-          padding-bottom: 30px;            
           animation: pageIn 0.4s ease forwards;        
       }
+      
       .page-content.active-page {            
           display: block;        
       }
-      
-      /* ADMIN PANEL CONTROLS BANNER */
+
+      /* ADMIN CREDENTIAL GATE & WORKSPACES */
+      #auth-gate-modal {
+          display: none;
+          background-color: var(--card-bg);
+          border: 2px solid var(--accent-gold);
+          padding: 25px;
+          border-radius: 12px;
+          margin-bottom: 30px;
+          max-width: 400px;
+          margin-left: auto;
+          margin-right: auto;
+      }
+
       #secret-admin-banner {
           display: none;
-          background: linear-gradient(90deg, #1ebd58, #d4af37);
-          color: black;
-          padding: 12px 20px;
-          text-align: center;
-          font-weight: bold;
-          border-radius: 8px;
-          margin-bottom: 25px;
-          align-items: center;
-          justify-content: space-between;
-          font-size: 14px;
-          box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+          background: linear-gradient(90deg, #121824, #1e2640);
+          color: white;
+          padding: 20px;
+          border-radius: 12px;
+          margin-bottom: 35px;
+          border: 2px dashed var(--accent-gold);
       }
-      .editable-active {
-          outline: 2px dashed var(--accent-gold) !important;
-          background-color: rgba(214, 175, 55, 0.08) !important;
-          cursor: text;
+
+      .admin-panel-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 20px;
+          margin-top: 15px;
+      }
+
+      .admin-card-control {
+          background-color: var(--admin-panel-bg);
+          padding: 15px;
+          border-radius: 8px;
+          border: 1px solid rgba(255,255,255,0.1);
       }
       
-      /* Responsive Content Grid Formats */
-      .catalog-grid-system, .operational-grid, .rates-grid, .gallery-grid {
+      .catalog-grid-system, .rates-grid, .gallery-grid, .video-grid {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
           gap: 25px;
           margin: 30px 0;
       }
       
-      /* Premium UI Cards Construction */
       .dog-profile-card, .info-panel, .rate-card, .store-card {
           background-color: var(--card-bg);
           border: 1px solid var(--border-color);
           border-radius: 12px;
           padding: 25px;
-          text-align: left;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          transition: transform 0.3s ease, border-color 0.3s ease;
-      }
-      .dog-profile-card:hover, .rate-card:hover, .store-card:hover {
-          transform: translateY(-5px);
-          border-color: rgba(214, 175, 55, 0.3);
+          transition: transform 0.3s ease;
       }
       
-      /* Card Meta Badges */
+      .dog-profile-card:hover, .store-card:hover {
+          transform: translateY(-5px);
+      }
+      
       .card-header-badge {
           display: flex;
           justify-content: space-between;
           align-items: center;
           margin-bottom: 15px;
       }
+      
       .breed-tag {
           font-size: 0.8rem;
           text-transform: uppercase;
           font-weight: bold;
-          letter-spacing: 1px;
           color: var(--accent-gold);
       }
+      
       .status-pill {
           font-size: 0.75rem;
           padding: 4px 10px;
@@ -240,61 +222,70 @@
       .dog-name { font-size: 1.5rem; margin: 0 0 5px 0; color: #fff; }
       .dog-price { font-size: 1.3rem; color: var(--accent-gold); font-weight: bold; margin-bottom: 15px; }
       
-      /* Form Element Specifications */
       .app-form-wrapper {
           background-color: var(--card-bg);
           border: 1px solid var(--border-color);
-          padding: 30px;
+          padding: 25px;
           border-radius: 12px;
-          margin-top: 25px;
-          margin-bottom: 35px;
+          margin-top: 20px;
       }
+      
       .form-vertical-stack-layout {
           display: flex;
           flex-direction: column;
-          gap: 20px;
+          gap: 15px;
       }
+      
       .form-group-block {
           display: flex;
           flex-direction: column;
-          gap: 8px;
-          text-align: left;
+          gap: 6px;
       }
-      .form-group-block label {
-          font-size: 1rem;
-          color: var(--text-primary);
-          font-weight: 600;
-      }
+      
       .form-group-block input, .form-group-block select, .form-group-block textarea {
-          background-color: rgba(0, 0, 0, 0.25);
+          background-color: rgba(0, 0, 0, 0.3);
           border: 1px solid var(--border-color);
           color: #ffffff;
-          padding: 12px;
+          padding: 10px;
           font-size: 1rem;
           border-radius: 6px;
           outline: none;
-          font-family: inherit;
           width: 100%;
           box-sizing: border-box;
-          transition: border-color 0.3s ease;
+      }
+
+      .gallery-section-title {
+          margin-top: 30px;
+          color: var(--accent-gold);
+          border-bottom: 1px solid var(--border-color);
+          padding-bottom: 5px;
+      }
+
+      .gallery-item {
+          border-radius: 8px;
+          overflow: hidden;
+          border: 2px solid var(--border-color);
+          background-color: #000;
+          height: 250px;
+          position: relative;
       }
       
-      /* Media Layout Components */
-      .flyer-showcase-container {            
-          text-align: center;            
-          margin: 35px 0;            
-          background-color: var(--card-bg);            
-          padding: 25px;            
-          border-radius: 12px;            
-          border: 1px solid var(--border-color);        
+      .gallery-item img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
       }
-      .embedded-flyer-img {            
-          max-width: 100%;            
-          width: 500px; 
-          height: auto; 
-          border-radius: 8px; 
-          border: 2px solid var(--accent-gold); 
+
+      .gallery-caption {
+          position: absolute;
+          bottom: 0;
+          background: rgba(0,0,0,0.75);
+          width: 100%;
+          padding: 8px;
+          font-size: 0.85rem;
+          box-sizing: border-box;
       }
+      
       .video-responsive-wrapper {
           position: relative;
           padding-bottom: 56.25%;
@@ -302,29 +293,13 @@
           overflow: hidden;
           border-radius: 12px;
           border: 2px solid var(--border-color);
-          margin: 20px 0;
-      }
-      .video-responsive-wrapper iframe {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-      }
-      .gallery-item {
-          border-radius: 8px;
-          overflow: hidden;
-          border: 2px solid var(--border-color);
-          background-color: #000;
-          height: 220px;
-      }
-      .gallery-item img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
       }
       
-      /* Buttons and Interactivity */
+      .video-responsive-wrapper iframe {
+          position: absolute;
+          top: 0; left: 0; width: 100%; height: 100%;
+      }
+      
       button, .action-btn { 
           background-color: var(--accent-gold); 
           color: #000000; 
@@ -334,62 +309,30 @@
           cursor: pointer; 
           border-radius: 6px; 
           border: none; 
-          display: inline-block; 
-          text-decoration: none; 
-          text-align: center; 
           transition: all 0.3s ease;        
       }
-      button:hover, .action-btn:hover { 
+      
+      button:hover { 
           background-color: var(--accent-hover); 
-          transform: translateY(-2px);        
       }
       
-      /* FAQ Accordion Elements */
-      .faq-wrapper { display: flex; flex-direction: column; gap: 15px; }
-      .faq-card {
-          background-color: var(--card-bg);
-          border: 1px solid var(--border-color);
-          border-left: 4px solid var(--accent-gold);
-          border-radius: 0 8px 8px 0;
-          padding: 20px;
-      }
-      .faq-question { color: var(--text-primary); font-size: 1.15rem; font-weight: 600; margin: 0 0 8px 0; display: flex; align-items: center; gap: 10px; }
-      .faq-question i { color: var(--accent-gold); }
-      
-      /* Operational Tables */
-      .schedule-table { width: 100%; border-collapse: collapse; color: var(--text-secondary); }
-      .schedule-table td { padding: 10px 0; font-size: 1rem; }
-      .schedule-table td:last-child { text-align: right; color: var(--text-primary); font-weight: 600; }
-      .schedule-table tr:not(:last-child) td { border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-      
-      /* Persistent Communication Anchor */
       .k9-floating-chatbot-anchor {
           position: fixed;
-          bottom: 25px;
-          right: 25px;
-          z-index: 9999;
+          bottom: 25px; right: 25px; z-index: 9999;
           background-color: var(--whatsapp-green);
-          color: white;
-          width: 60px;
-          height: 60px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 30px;
-          box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+          color: white; width: 60px; height: 60px; border-radius: 50%;
+          display: flex; align-items: center; justify-content: center;
+          font-size: 30px; box-shadow: 0 4px 16px rgba(0,0,0,0.5);
           cursor: pointer;
       }
       
       footer { 
           background-color: rgba(30, 38, 64, 0.5); 
           border-top: 1px solid var(--border-color); 
-          padding: 25px; 
-          text-align: center; 
-          color: var(--text-secondary); 
-          font-size: 0.95rem; 
-          margin-top: 60px;        
+          padding: 25px; text-align: center; 
+          color: var(--text-secondary); font-size: 0.95rem; margin-top: 60px;        
       }
+      
       @keyframes pageIn {
           from { opacity: 0; transform: translateY(8px); }
           to { opacity: 1; transform: translateY(0); }
@@ -397,50 +340,128 @@
     </style>
   </head>
   <body>
-    <!-- PERSISTENT FLOATING QUICK-CHAT CONNECTOR -->
-    <a class="k9-floating-chatbot-anchor" onclick="triggerQuickChatRoute()" title="Connect to Command Desk">
+
+    <a class="k9-floating-chatbot-anchor" onclick="triggerQuickChatRoute()">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <header>
-      <!-- CLICK LOGO ONCE TO OPEN ADMIN OPTIONS BAR -->
-      <img class="nav-logo" src="IMG-20260605-WA0000.jpg" alt="Logo" onclick="toggleAdminPanel(true)" title="Click to open Admin Panel" />
+      <img class="nav-logo" src="IMG-20260605-WA0000.jpg" alt="Logo" onclick="showPage('home-page')" />
       <nav>
         <ul>
           <li><a onclick="showPage('home-page')" id="nav-home-page" class="active">Home</a></li>
           <li><a onclick="showPage('about-page')" id="nav-about-page">About</a></li>
-          <li><a onclick="showPage('puppy-sales')" id="nav-puppy-sales">Puppy Sales</a></li>
-          <li><a onclick="showPage('adult-sales')" id="nav-adult-sales">Adult Sales</a></li>
+          <li><a onclick="showPage('puppy-sales')" id="nav-puppy-sales">Puppies</a></li>
+          <li><a onclick="showPage('adult-sales')" id="nav-adult-sales">Adults</a></li>
           <li><a onclick="showPage('store-page')" id="nav-store-page">Store</a></li>
           <li><a onclick="showPage('services-rates')" id="nav-services-rates">Rates</a></li>
           <li><a onclick="showPage('gallery-page')" id="nav-gallery-page">Gallery</a></li>
           <li><a onclick="showPage('watch-training')" id="nav-watch-training">Watch Training</a></li>
-          <li><a onclick="showPage('policies-page')" id="nav-policies-page">Policies</a></li>
-          <li><a onclick="showPage('payments-page')" id="nav-payments-page">Payments</a></li>
           <li><a onclick="showPage('operations-page')" id="nav-operations-page">Hours</a></li>
+          <li><a onclick="toggleAuthGate()" style="background-color: rgba(214,175,55,0.2); color: var(--accent-gold);" id="nav-auth-trigger"><i class="fa-solid fa-lock"></i> Admin Login</a></li>
         </ul>
       </nav>
     </header>
 
     <div class="content-container">
-      <!-- ADMIN CONSOLE CONTROLS BANNER -->
-      <div id="secret-admin-banner">
-          <span><i class="fa-solid fa-screwdriver-wrench"></i> ADMIN MODE ACTIVE — Click directly onto any text, price, or description on the website to change it live.</span>
-          <button style="background: black; color: white; padding: 6px 14px; font-size:12px; border-radius:4px;" onclick="toggleAdminPanel(false)">Exit & Lock</button>
+
+      <!-- SECURE AUTH GATE MODAL -->
+      <div id="auth-gate-modal">
+        <h3 style="margin-top:0; color:var(--accent-gold);">Command Security Clearance</h3>
+        <form onsubmit="handleAdminLogin(event)" class="form-vertical-stack-layout">
+          <div class="form-group-block">
+            <label>Staff Designation Role</label>
+            <select id="auth-role">
+              <option value="Manager">Manager</option>
+              <option value="Secretary">Secretary</option>
+            </select>
+          </div>
+          <div class="form-group-block">
+            <label>Security Access Code</label>
+            <input type="password" id="auth-pass" placeholder="••••••••" required />
+          </div>
+          <button type="submit" style="width:100%;">Verify Credentials</button>
+        </form>
       </div>
 
-      <h1 class="main-title" id="editable-title">Dominica Elite K9 Services</h1>
-      <div class="main-subtitle" id="editable-subtitle">Portsmouth, Dominica</div>
+      <!-- ACTIVE CONSOLE ACCESS WORKSPACE -->
+      <div id="secret-admin-banner">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:10px; margin-bottom:15px;">
+            <span style="font-weight:bold; color:var(--accent-gold);"><i class="fa-solid fa-screwdriver-wrench"></i> CONSOLE ACTIVE: Logged in as <span id="active-user-label">None</span></span>
+            <button style="background:#ef4444; color:white; padding:4px 10px; font-size:11px;" onclick="logOutAdmin()">Lock Session</button>
+          </div>
+          
+          <div class="admin-panel-grid">
+            <!-- STORE CONTROLS -->
+            <div class="admin-card-control">
+              <h5>Add Store Merch / Gear</h5>
+              <form onsubmit="adminAddStoreItem(event)" class="form-vertical-stack-layout">
+                <div class="form-group-block"><input type="text" id="adm-store-title" placeholder="Item Name" required /></div>
+                <div class="form-group-block"><input type="text" id="adm-store-price" placeholder="Price (e.g. $150.00 XCD)" required /></div>
+                <div class="form-group-block"><input type="text" id="adm-store-img" placeholder="Image Filename/URL" /></div>
+                <div class="form-group-block"><input type="text" id="adm-store-desc" placeholder="Product Description" required /></div>
+                <div class="form-group-block">
+                  <select id="adm-store-stock">
+                    <option value="instock">In Stock</option>
+                    <option value="outstock">Sold Out</option>
+                  </select>
+                </div>
+                <button type="submit" style="padding:6px; font-size:12px;">Deploy Product</button>
+              </form>
+            </div>
+
+            <!-- WATCH TRAINING VIDEO CONTROLS -->
+            <div class="admin-card-control">
+              <h5>Embed Stream / Video / Short</h5>
+              <form onsubmit="adminAddVideo(event)" class="form-vertical-stack-layout">
+                <div class="form-group-block"><input type="text" id="adm-vid-title" placeholder="Video Tracking Title" required /></div>
+                <div class="form-group-block"><input type="text" id="adm-vid-url" placeholder="YouTube Video ID or Full URL" required /></div>
+                <div class="form-group-block">
+                  <select id="adm-vid-type">
+                    <option value="Long Form">Long Form Blueprint</option>
+                    <option value="Shorts">YouTube Short Clip</option>
+                    <option value="Live Matrix">Live Field Stream</option>
+                  </select>
+                </div>
+                <button type="submit" style="padding:6px; font-size:12px;">Publish Stream</button>
+              </form>
+            </div>
+
+            <!-- GALLERY EXTENSION CONTROLS -->
+            <div class="admin-card-control">
+              <h5>Upload Bloodline Photo Asset</h5>
+              <form onsubmit="adminAddGallery(event)" class="form-vertical-stack-layout">
+                <div class="form-group-block"><input type="text" id="adm-gal-url" placeholder="Image Filename or URL" required /></div>
+                <div class="form-group-block">
+                  <select id="adm-gal-breed">
+                    <option value="German Shepherd">German Shepherd</option>
+                    <option value="Belgian Malinois">Belgian Malinois</option>
+                  </select>
+                </div>
+                <div class="form-group-block">
+                  <select id="adm-gal-cat">
+                    <option value="parent">Parent Stud / Dam Asset</option>
+                    <option value="pup">Progeny Puppy Batch</option>
+                  </select>
+                </div>
+                <div class="form-group-block"><input type="text" id="adm-gal-desc" placeholder="Asset Metadata Description" /></div>
+                <button type="submit" style="padding:6px; font-size:12px;">Commit to Gallery</button>
+              </form>
+            </div>
+          </div>
+      </div>
+
+      <h1 class="main-title">Dominica Elite K9 Services</h1>
+      <div class="main-subtitle">Portsmouth, Dominica</div>
+      
       <main>
         
         <!-- 1. HOME PAGE -->
         <div id="home-page" class="page-content active-page">
           <h2>Welcome to Command Headquarters</h2>
           <p>Dominica Elite K9 Services provides industry-standard canine development, working bloodline production, and elite tactical instruction.</p>
-          <button onclick="redirectToBooking('General Information Package Inquiry')">Inquire for Immediate Details</button>
-          <div class="flyer-showcase-container">
-            <h3>Official Structural Service Brief</h3>
-            <img class="embedded-flyer-img" src="IMG-20260605-WA0001.jpg" alt="Service Flyer Matrix" />
+          <div class="flyer-showcase-container" style="text-align:center; margin-top:30px;">
+            <img src="IMG-20260605-WA0001.jpg" alt="Service Brief" style="max-width:100%; width:500px; border-radius:8px; border:2px solid var(--accent-gold);" />
           </div>
         </div>
 
@@ -448,48 +469,32 @@
         <div id="about-page" class="page-content">
           <h2>About Our Establishment</h2>
           <p>Dominica Elite K9 Services is the premier hub for high-intensity working line cultivation, custom behavioral engineering, and protection development system integration based in Portsmouth, Dominica.</p>
-          <p>We build balanced operational dog systems by focusing on genetic drive clear-headedness, target engagement parameters, and intensive handler training protocols.</p>
-          <h3>Operational Command Framework</h3>
           <p>Our training and canine configuration matrices are systematically led by Head Trainer <strong>Ishmael Samuel</strong>, supported by administrative management handled by <strong>Natasha White</strong>.</p>
         </div>
 
-        <!-- 3. PUPPY SALES PAGE -->
+        <!-- 3. PUPPUES PAGE -->
         <div id="puppy-sales" class="page-content">
           <h2>Working Line Puppy Sales</h2>
           <p>Our raw untrained puppies are released strictly at <strong>8 Weeks Old</strong> with baseline health optimization clearances, internal deworming records, and initial tactical vaccinations completed.</p>
-          
           <div class="catalog-grid-system">
             <div class="dog-profile-card">
               <div>
                 <div class="card-header-badge"><span class="breed-tag">German Shepherd</span><span class="status-pill instock">Available</span></div>
-                <h4 class="dog-name">Working GSD Puppies</h4>
+                <h4 class="dog-name" style="margin:0;">Working GSD Puppies</h4>
                 <div class="dog-price">$2,500.00 XCD</div>
-                <p style="font-size:0.95rem;">Premium European working lines selected for environmental density and home tracking capabilities.</p>
+                <p>Premium European working lines selected for environmental density and home tracking capabilities.</p>
               </div>
               <button onclick="redirectToBooking('German Shepherd Puppy Purchase Request')">Reserve GSD via WhatsApp</button>
             </div>
             <div class="dog-profile-card">
               <div>
                 <div class="card-header-badge"><span class="breed-tag">Belgian Malinois</span><span class="status-pill instock">Available</span></div>
-                <h4 class="dog-name">Tactical Malinois Puppies</h4>
+                <h4 class="dog-name" style="margin:0;">Tactical Malinois Puppies</h4>
                 <div class="dog-price">$2,500.00 XCD</div>
-                <p style="font-size:0.95rem;">High-intensity genetics featuring fast processing speed and extreme prey drive configurations.</p>
+                <p>High-intensity genetics featuring fast processing speed and extreme prey drive configurations.</p>
               </div>
               <button onclick="redirectToBooking('Belgian Malinois Puppy Purchase Request')">Reserve Malinois via WhatsApp</button>
             </div>
-          </div>
-
-          <h3>Puppy Purchase Application</h3>
-          <div class="app-form-wrapper">
-            <form id="pupForm" class="form-vertical-stack-layout" onsubmit="sendPuppyApplication(event)">
-              <div class="form-group-block"><label>Applicant Name</label><input type="text" id="p_name" required /></div>
-              <div class="form-group-block"><label>WhatsApp Contact Phone</label><input type="tel" id="p_phone" required /></div>
-              <div class="form-group-block"><label>Target Breed Asset</label>
-                <select id="p_breed"><option>German Shepherd Working Line</option><option>Belgian Malinois Tactical Line</option></select>
-              </div>
-              <div class="form-group-block"><label>Enclosure & Containment Infrastructure</label><textarea id="p_yard" rows="3" placeholder="Describe yard layout and fencing details..." required></textarea></div>
-              <button type="submit">Submit Puppy Application</button>
-            </form>
           </div>
         </div>
 
@@ -497,31 +502,16 @@
         <div id="adult-sales" class="page-content">
           <h2>Trained Adult Protection Assets</h2>
           <p>We source, import, and build adult personal preservation configurations tailored for rapid estate deployment and executive field tracking.</p>
-          
           <div class="catalog-grid-system">
             <div class="dog-profile-card">
               <div>
                 <div class="card-header-badge"><span class="breed-tag">Import Asset</span><span class="status-pill outstock">Waitlist</span></div>
-                <h4 class="dog-name">Executive Protection Dog</h4>
+                <h4 class="dog-name" style="margin:0;">Executive Protection Dog</h4>
                 <div class="dog-price">Pricing Upon Request</div>
-                <p style="font-size:0.95rem;">Fully customized off-leash control layouts coupled with active realistic bite matrix profiles.</p>
+                <p>Fully customized off-leash control layouts coupled with active realistic bite matrix profiles.</p>
               </div>
               <button onclick="redirectToBooking('Adult Trained Protection Asset Inquiry')">Inquire for Pricing</button>
             </div>
-          </div>
-
-          <h3>Adult Asset & Advanced Training Application</h3>
-          <div class="app-form-wrapper">
-            <form id="adultForm" class="form-vertical-stack-layout" onsubmit="sendAdultApplication(event)">
-              <div class="form-group-block"><label>Handler Name</label><input type="text" id="a_name" required /></div>
-              <div class="form-group-block"><label>Contact Line</label><input type="tel" id="a_phone" required /></div>
-              <div class="form-group-block"><label>Requested Solution</label>
-                <select id="a_service"><option>Purchase Trained Adult Asset</option><option>Immersive Board-and-Train Module</option><option>Severe Behavior Modification Matrix</option></select>
-              </div>
-              <div class="form-group-block"><label>Canine Baseline Information (If applicable)</label><input type="text" id="a_dog" placeholder="Breed, age, and behavioral faults..." /></div>
-              <div class="form-group-block"><label>Strategic Security Goals</label><textarea id="a_goals" rows="3" required></textarea></div>
-              <button type="submit">Submit Tactical Application</button>
-            </form>
           </div>
         </div>
 
@@ -529,13 +519,24 @@
         <div id="store-page" class="page-content">
           <h2>Tactical Gear & K9 Provisions</h2>
           <p>Procure industrial-strength working gear tested directly on our fields for longevity and handling efficiency.</p>
-          <div class="catalog-grid-system">
+          <div class="catalog-grid-system" id="dynamic-store-container">
+            <!-- Core Standard Assets -->
             <div class="store-card">
-              <div><h4 class="dog-name">Heavy-Duty Tactical Collar</h4><div class="dog-price">$120.00 XCD</div><p>Dual-layer nylon web structure with military-grade steel cobra buckle assemblies.</p></div>
+              <div>
+                <div class="card-header-badge"><span class="breed-tag">K9 Equipment</span><span class="status-pill instock">In Stock</span></div>
+                <h4 class="dog-name" style="margin:0;">Heavy-Duty Tactical Collar</h4>
+                <div class="dog-price">$120.00 XCD</div>
+                <p>Dual-layer nylon web structure with military-grade steel cobra buckle assemblies.</p>
+              </div>
               <button onclick="redirectToBooking('Purchase: Tactical Collar Bundle')">Buy via WhatsApp</button>
             </div>
             <div class="store-card">
-              <div><h4 class="dog-name">Biothane Tracking Leash (15ft)</h4><div class="dog-price">$165.00 XCD</div><p>Waterproof, zero-slip high-tensile material perfect for intense tracking tracking tasks.</p></div>
+              <div>
+                <div class="card-header-badge"><span class="breed-tag">K9 Equipment</span><span class="status-pill instock">In Stock</span></div>
+                <h4 class="dog-name" style="margin:0;">Biothane Tracking Leash (15ft)</h4>
+                <div class="dog-price">$165.00 XCD</div>
+                <p>Waterproof, zero-slip high-tensile material perfect for intense tracking tasks.</p>
+              </div>
               <button onclick="redirectToBooking('Purchase: 15ft Biothane Tracking Leash')">Buy via WhatsApp</button>
             </div>
           </div>
@@ -544,7 +545,6 @@
         <!-- 6. SERVICES & RATES PAGE -->
         <div id="services-rates" class="page-content">
           <h2>Professional Service Solutions</h2>
-          <p>Transparent fee schedules designed for elite performance delivery across multiple development vectors.</p>
           <div class="rates-grid">
             <div class="rate-card">
               <h4>Basic Obedience Program</h4>
@@ -553,89 +553,68 @@
               <button onclick="redirectToBooking('Booking: Basic Obedience Program')">Book Program</button>
             </div>
             <div class="rate-card">
-              <h4>Advanced Off-Leash System</h4>
-              <div class="dog-price">$1,200.00 XCD</div>
-              <p>Complete remote response deployment via drive channel transitions and bulletproof distance controls.</p>
-              <button onclick="redirectToBooking('Booking: Advanced Off-Leash System')">Book Program</button>
-            </div>
-            <div class="rate-card">
               <h4>Immersive Board-and-Train</h4>
-              <div class="dog-price">$2,500.00 XCD <span style="font-size:0.8rem;color:var(--text-secondary);">/ Month</span></div>
+              <div class="dog-price">$2,500.00 XCD</div>
               <p>Full residency within our secure compound with immersive daily environmental clarity drills.</p>
               <button onclick="redirectToBooking('Booking: Monthly Board and Train Residency')">Book Residency</button>
             </div>
           </div>
         </div>
 
-        <!-- 7. GALLERY PAGE -->
+        <!-- 7. GALLERY PAGE (WITH SEPARATE CATEGORY DOMS) -->
         <div id="gallery-page" class="page-content">
           <h2>Operational Media Gallery</h2>
-          <p>Real-time visual monitoring snapshots capturing high-drive transitions, structural agility patterns, and processing mechanics.</p>
-          <div class="gallery-grid">
-            <div class="gallery-item"><img src="IMG-20260605-WA0000.jpg" alt="Compound Display 1" /></div>
-            <div class="gallery-item"><img src="IMG-20260605-WA0001.jpg" alt="Compound Display 2" /></div>
+          
+          <h3 class="gallery-section-title"><i class="fa-solid fa-dna"></i> German Shepherd Working Line Stock</h3>
+          <h4 style="color:var(--text-secondary); margin-bottom:5px;">Parent Studs & Dams</h4>
+          <div class="gallery-grid" id="gsd-parents-container">
+             <div class="gallery-item">
+               <img src="IMG-20260605-WA0000.jpg" alt="GSD Stud" />
+               <div class="gallery-caption">Imported Foundation Working GSD Stud</div>
+             </div>
+          </div>
+          
+          <h4 style="color:var(--text-secondary); margin-bottom:5px;">Progeny & Current Puppies</h4>
+          <div class="gallery-grid" id="gsd-pups-container">
+             <p style="grid-column: 1/-1; color: var(--text-secondary); font-size: 0.9rem; font-style: italic;">No lineage puppy assets currently registered. Update via control console.</p>
+          </div>
+
+          <h3 class="gallery-section-title"><i class="fa-solid fa-dna"></i> Belgian Malinois Tactical Line Stock</h3>
+          <h4 style="color:var(--text-secondary); margin-bottom:5px;">Parent Studs & Dams</h4>
+          <div class="gallery-grid" id="mal-parents-container">
+             <div class="gallery-item">
+               <img src="IMG-20260605-WA0001.jpg" alt="Malinois Dam" />
+               <div class="gallery-caption">High-Drive Protection Line Dam Profile</div>
+             </div>
+          </div>
+          
+          <h4 style="color:var(--text-secondary); margin-bottom:5px;">Progeny & Current Puppies</h4>
+          <div class="gallery-grid" id="mal-pups-container">
+             <p style="grid-column: 1/-1; color: var(--text-secondary); font-size: 0.9rem; font-style: italic;">No lineage puppy assets currently registered. Update via control console.</p>
           </div>
         </div>
 
         <!-- 8. WATCH TRAINING PAGE -->
         <div id="watch-training" class="page-content">
           <h2>Video Training Stream Archive</h2>
-          <p>Review real-time video validation fields capturing raw drive management behavior modification and protection grip matrices.</p>
-          <div class="video-responsive-wrapper">
-            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="K9 Instructional Stream Feed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-        </div>
-
-        <!-- 9. POLICIES PAGE -->
-        <div id="policies-page" class="page-content">
-          <h2>Operational & Safety Policies</h2>
-          <div class="faq-wrapper">
-            <div class="faq-card">
-              <h4 class="faq-question"><i class="fa-solid fa-triangle-exclamation"></i> Compound Entry Security Regulations</h4>
-              <p class="faq-answer">Visits are structurally prohibited unless an authorized operational schedule booking has been explicitly processed. All handlers must follow line-management instructions immediately upon entering target fields.</p>
-            </div>
-            <div class="faq-card">
-              <h4 class="faq-question"><i class="fa-solid fa-handshake"></i> Breed Program Retention Commitments</h4>
-              <p class="faq-answer">Puppy reservation holding fees are completely non-refundable once committed. This maintains processing priority for highly sought-after working genetic lineages.</p>
+          <p>Review real-time video validation fields capturing raw drive management, behavior modification, Shorts, and protection grip matrices.</p>
+          
+          <div class="video-grid" id="dynamic-video-container">
+            <!-- Seed Video Baseline -->
+            <div class="info-panel" style="padding:15px;">
+              <span class="breed-tag" style="margin-bottom:8px; display:inline-block;">Format: Long Form Blueprint</span>
+              <div class="video-responsive-wrapper">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="K9 Feed" frameborder="0" allowfullscreen></iframe>
+              </div>
+              <h4 style="margin:10px 0 0 0; font-size:1.1rem;">K9 Instructional Stream Feed</h4>
             </div>
           </div>
         </div>
 
-        <!-- 10. PAYMENTS PAGE -->
-        <div id="payments-page" class="page-content">
-          <h2>Accepted Financial Settlement Portals</h2>
-          <p>All institutional accounts require settlement confirmation clearings prior to physical asset releases or onboarding residency check-ins.</p>
-          <div class="operational-grid">
-            <div class="info-panel">
-              <h4><i class="fa-solid fa-building-columns"></i> Local Settlement Options</h4>
-              <p>• <strong>National Bank of Dominica (NBD):</strong> Direct digital wire transfer networks.</p>
-              <p>• <strong>Physical Cash Clearances:</strong> Administered on-site via secure receipt protocols.</p>
-            </div>
-            <div class="info-panel">
-              <h4><i class="fa-solid fa-globe"></i> International Payment Gateways</h4>
-              <p>• <strong>Digital Remittance Portals:</strong> Western Union & MoneyGram routing endpoints.</p>
-              <p>• <strong>Wire Transfer Systems:</strong> Custom coordinate parameters sent upon application verification.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- 11. LOCATION & HOURS PAGE -->
+        <!-- 9. HOURS & LOCATION -->
         <div id="operations-page" class="page-content">
           <h2>Compound Hours & Geographic Coordinates</h2>
-          <div class="operational-grid">
-            <div class="info-panel">
-              <h4><i class="fa-solid fa-location-dot"></i> Geographic Command Post</h4>
-              <p><strong>Dominica Elite K9 Compound</strong><br>Portsmouth, Saint John Parish<br>Commonwealth of Dominica</p>
-            </div>
-            <div class="info-panel">
-              <h4><i class="fa-solid fa-clock"></i> Weekly Schedule Matrix</h4>
-              <table class="schedule-table">
-                <tr><td>Monday - Friday</td><td>8:00 AM - 5:00 PM</td></tr>
-                <tr><td>Saturday</td><td>9:00 AM - 2:00 PM</td></tr>
-                <tr><td>Sunday</td><td style="color:var(--badge-outstock);">Closed (System Diagnostics)</td></tr>
-              </table>
-            </div>
-          </div>
+          <p><strong>Dominica Elite K9 Compound</strong><br>Portsmouth, Saint John Parish, Commonwealth of Dominica</p>
         </div>
 
       </main>
@@ -647,25 +626,38 @@
 
     <script>
       const TARGET_WHATSAPP = "17672954694";
-      let adminModeActive = false;
+      
+      // PASSWORDS DICTIONARY CONFIGURATION
+      const ROLES_CREDENTIALS = {
+          "Manager": "Manager767",
+          "Secretary": "Secretary767"
+      };
 
-      function toggleAdminPanel(activate) {
-          adminModeActive = activate;
-          const banner = document.getElementById('secret-admin-banner');
-          banner.style.display = activate ? 'flex' : 'none';
-          
-          // Target all headings, text blocks, prices, list items, and table cells across all tabs
-          const editableElements = document.querySelectorAll('main p, main h2, main h3, main h4, main td, main li, .dog-price, #editable-title, #editable-subtitle');
-          
-          editableElements.forEach(el => {
-              if (activate) {
-                  el.setAttribute('contenteditable', 'true');
-                  el.classList.add('editable-active');
-              } else {
-                  el.removeAttribute('contenteditable');
-                  el.classList.remove('editable-active');
-              }
-          });
+      function toggleAuthGate() {
+          const gate = document.getElementById('auth-gate-modal');
+          gate.style.display = (gate.style.display === 'block') ? 'none' : 'block';
+      }
+
+      function handleAdminLogin(e) {
+          e.preventDefault();
+          const selectedRole = document.getElementById('auth-role').value;
+          const inputtedPass = document.getElementById('auth-pass').value;
+
+          if (ROLES_CREDENTIALS[selectedRole] === inputtedPass) {
+              document.getElementById('auth-gate-modal').style.display = 'none';
+              document.getElementById('secret-admin-banner').style.display = 'block';
+              document.getElementById('active-user-label').innerText = selectedRole;
+              document.getElementById('auth-pass').value = "";
+              alert(`Access Authorization Confirmed. Welcome back to Command Station, ${selectedRole}.`);
+          } else {
+              alert("Access Denied. Security coordinate code string invalid.");
+          }
+      }
+
+      function logOutAdmin() {
+          document.getElementById('secret-admin-banner').style.display = 'none';
+          document.getElementById('active-user-label').innerText = "None";
+          alert("Admin Engine Locked. All active structural panels tracking safely secured.");
       }
 
       function showPage(pageId) {
@@ -681,33 +673,123 @@
           window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
+      // ADMIN CONTROLS: DYNAMICALLY GENERATE NEW GEAR CONTENT SKELETON
+      function adminAddStoreItem(e) {
+          e.preventDefault();
+          const title = document.getElementById('adm-store-title').value;
+          const price = document.getElementById('adm-store-price').value;
+          let img = document.getElementById('adm-store-img').value.trim();
+          const desc = document.getElementById('adm-store-desc').value;
+          const stock = document.getElementById('adm-store-stock').value;
+
+          if(!img) { img = "IMG-20260605-WA0000.jpg"; } // Default if image URL omitted
+
+          const container = document.getElementById('dynamic-store-container');
+          
+          const storeCard = document.createElement('div');
+          storeCard.className = 'store-card';
+          storeCard.innerHTML = `
+            <div>
+              <div class="card-header-badge">
+                <span class="breed-tag">K9 Equipment</span>
+                <span class="status-pill ${stock}">${stock === 'instock' ? 'In Stock' : 'Sold Out'}</span>
+              </div>
+              <h4 class="dog-name" style="margin:0;">${title}</h4>
+              <div class="dog-price">${price}</div>
+              ${img ? `<img src="${img}" style="width:100%; height:120px; object-fit:cover; border-radius:6px; margin-bottom:10px;" onerror="this.style.display='none'"/>` : ''}
+              <p>${desc}</p>
+            </div>
+            <button onclick="redirectToBooking('Purchase Inquiry: ${encodeURIComponent(title)}')">Buy via WhatsApp</button>
+          `;
+          
+          container.insertBefore(storeCard, container.firstChild);
+          alert(`Successfully uploaded "${title}" to tactical store pipeline inventory.`);
+          document.getElementById('adm-store-title').value = "";
+          document.getElementById('adm-store-price').value = "";
+          document.getElementById('adm-store-img').value = "";
+          document.getElementById('adm-store-desc').value = "";
+      }
+
+      // ADMIN CONTROLS: MOUNT AND EXTRACT YOUTUBE / SHORTS / LIVE
+      function adminAddVideo(e) {
+          e.preventDefault();
+          const title = document.getElementById('adm-vid-title').value;
+          let urlInput = document.getElementById('adm-vid-url').value.trim();
+          const type = document.getElementById('adm-vid-type').value;
+
+          // Robust YouTube ID extraction utility supporting Long-forms, Shorts, & Lives
+          let videoId = urlInput;
+          if(urlInput.includes('v=')) {
+              videoId = urlInput.split('v=')[1].split('&')[0];
+          } else if(urlInput.includes('shorts/')) {
+              videoId = urlInput.split('shorts/')[1].split('?')[0];
+          } else if(urlInput.includes('youtu.be/')) {
+              videoId = urlInput.split('youtu.be/')[1].split('?')[0];
+          } else if(urlInput.includes('live/')) {
+              videoId = urlInput.split('live/')[1].split('?')[0];
+          }
+
+          const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+          const container = document.getElementById('dynamic-video-container');
+
+          const videoPanel = document.createElement('div');
+          videoPanel.className = 'info-panel';
+          videoPanel.style.padding = '15px';
+          videoPanel.innerHTML = `
+              <span class="breed-tag" style="margin-bottom:8px; display:inline-block;">Format: ${type}</span>
+              <div class="video-responsive-wrapper">
+                <iframe src="${embedUrl}" title="${title}" frameborder="0" allowfullscreen></iframe>
+              </div>
+              <h4 style="margin:10px 0 0 0; font-size:1.1rem;">${title}</h4>
+          `;
+
+          container.insertBefore(videoPanel, container.firstChild);
+          alert(`Video entry "${title}" correctly published to media streams repository.`);
+          document.getElementById('adm-vid-title').value = "";
+          document.getElementById('adm-vid-url').value = "";
+      }
+
+      // ADMIN CONTROLS: SORT GENETIC GALLERY (PARENTS vs PUPS BY BREED)
+      function adminAddGallery(e) {
+          e.preventDefault();
+          const imgUrl = document.getElementById('adm-gal-url').value.trim();
+          const breed = document.getElementById('adm-gal-breed').value;
+          const category = document.getElementById('adm-gal-cat').value;
+          const desc = document.getElementById('adm-gal-desc').value || "Elite Bloodline Asset";
+
+          let targetContainerId = "";
+          if (breed === "German Shepherd") {
+              targetContainerId = (category === "parent") ? "gsd-parents-container" : "gsd-pups-container";
+          } else {
+              targetContainerId = (category === "parent") ? "mal-parents-container" : "mal-pups-container";
+          }
+
+          const targetContainer = document.getElementById(targetContainerId);
+          
+          // Clear text fallback string message block if it exists
+          if (targetContainer.innerHTML.includes("No lineage puppy assets")) {
+              targetContainer.innerHTML = "";
+          }
+
+          const galleryItem = document.createElement('div');
+          galleryItem.className = 'gallery-item';
+          galleryItem.innerHTML = `
+             <img src="${imgUrl}" alt="K9 Matrix View" />
+             <div class="gallery-caption">${desc}</div>
+          `;
+
+          targetContainer.insertBefore(galleryItem, targetContainer.firstChild);
+          alert(`Asset safely injected into the [${breed} - ${category === 'parent' ? 'Parents' : 'Puppies'}] gallery block.`);
+          document.getElementById('adm-gal-url').value = "";
+          document.getElementById('adm-gal-desc').value = "";
+      }
+
       function triggerQuickChatRoute() {
           window.open(`https://wa.me/${TARGET_WHATSAPP}?text=Hello%20Dominica%20Elite%20K9%20Services,%20I%20would%20like%20to%20request%20general%20consultation.`, '_blank');
       }
 
       function redirectToBooking(context) {
           window.open(`https://wa.me/${TARGET_WHATSAPP}?text=Hello%20Dominica%20Elite%20K9%20Services,%20I%20am%20routing%20an%20inquiry%20for:%20` + encodeURIComponent(context), '_blank');
-      }
-
-      function sendPuppyApplication(e) {
-          e.preventDefault();
-          const msg = `*NEW PUPPY PROCUREMENT APPLICATION*\n\n` +
-                      `• *Name:* ${document.getElementById('p_name').value}\n` +
-                      `• *Phone:* ${document.getElementById('p_phone').value}\n` +
-                      `• *Breed Selected:* ${document.getElementById('p_breed').value}\n` +
-                      `• *Yard Setup:* ${document.getElementById('p_yard').value}`;
-          window.open(`https://wa.me/${TARGET_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
-      }
-
-      function sendAdultApplication(e) {
-          e.preventDefault();
-          const msg = `*ADVANCED ADULT ASSET / INSTRUCTION APPLICATION*\n\n` +
-                      `• *Handler:* ${document.getElementById('a_name').value}\n` +
-                      `• *Contact:* ${document.getElementById('a_phone').value}\n` +
-                      `• *Selected Track:* ${document.getElementById('a_service').value}\n` +
-                      `• *Canine Info:* ${document.getElementById('a_dog').value}\n` +
-                      `• *Strategic Target:* ${document.getElementById('a_goals').value}`;
-          window.open(`https://wa.me/${TARGET_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
       }
     </script>
   </body>
