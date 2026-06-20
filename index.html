@@ -305,6 +305,147 @@
           .form-row-2col { grid-template-columns: 1fr 1fr; }
       }
 
+      /* FAQ ACCORDION STYLES */
+      .faq-wrapper-layout {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          margin-top: 25px;
+      }
+
+      .faq-accordion-block {
+          background-color: var(--card-bg);
+          border: 1px solid var(--border-color);
+          border-radius: 8px;
+          overflow: hidden;
+      }
+
+      .faq-header-trigger {
+          padding: 18px 22px;
+          font-weight: 600;
+          color: #ffffff;
+          cursor: pointer;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          user-select: none;
+          background-color: rgba(255, 255, 255, 0.01);
+          transition: background 0.3s;
+      }
+
+      .faq-header-trigger:hover {
+          background-color: rgba(214, 175, 55, 0.04);
+          color: var(--accent-gold);
+      }
+
+      .faq-panel-body {
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease-out;
+          background-color: rgba(0, 0, 0, 0.15);
+      }
+
+      .faq-inner-text {
+          padding: 20px;
+          color: var(--text-secondary);
+          font-size: 0.95rem;
+          border-top: 1px solid rgba(255,255,255,0.04);
+      }
+
+      /* FLOATING K9 AI CHATBOT INTERFACE */
+      .chatbot-fixed-viewport {
+          position: fixed;
+          bottom: 100px;
+          right: 25px;
+          width: 350px;
+          height: 450px;
+          background-color: #1a2236;
+          border: 2px solid var(--accent-gold);
+          border-radius: 12px;
+          box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+          display: none;
+          flex-direction: column;
+          z-index: 99999;
+          overflow: hidden;
+          animation: pageIn 0.3s ease;
+      }
+
+      .chat-header-bar {
+          background-color: var(--card-bg);
+          padding: 12px 15px;
+          border-bottom: 1px solid var(--border-color);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      }
+
+      .chat-header-title {
+          font-weight: bold;
+          color: var(--accent-gold);
+          font-size: 0.95rem;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+      }
+
+      .chat-logs-scrollarea {
+          flex: 1;
+          padding: 15px;
+          overflow-y: auto;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+      }
+
+      .msg-bubble {
+          max-width: 80%;
+          padding: 10px 14px;
+          border-radius: 8px;
+          font-size: 0.9rem;
+          line-height: 1.4;
+      }
+
+      .msg-bubble.system-bot {
+          background-color: rgba(255,255,255,0.06);
+          color: #f1f5f9;
+          align-self: flex-start;
+          border-bottom-left-radius: 2px;
+      }
+
+      .msg-bubble.user-node {
+          background-color: var(--accent-gold);
+          color: #000000;
+          align-self: flex-end;
+          font-weight: 500;
+          border-bottom-right-radius: 2px;
+      }
+
+      .chat-input-dock {
+          padding: 10px;
+          background-color: var(--admin-panel-bg);
+          border-top: 1px solid var(--border-color);
+          display: flex;
+          gap: 8px;
+      }
+
+      .chat-input-dock input {
+          flex: 1;
+          background-color: rgba(0,0,0,0.3);
+          border: 1px solid var(--border-color);
+          border-radius: 4px;
+          padding: 8px 12px;
+          color: white;
+          outline: none;
+          font-family: inherit;
+          font-size: 0.9rem;
+      }
+
+      .chat-input-dock button {
+          padding: 8px 14px;
+          font-size: 13px;
+          border-radius: 4px;
+      }
+
       .gallery-section-title {
           margin-top: 30px;
           color: var(--accent-gold);
@@ -398,9 +539,25 @@
   </head>
   <body>
 
-    <a class="k9-floating-chatbot-anchor" onclick="triggerQuickChatRoute()">
-        <i class="fab fa-whatsapp"></i>
+    <!-- PRIMARY FLOATING ANCHOR (Toggles AI Assistant Viewport) -->
+    <a class="k9-floating-chatbot-anchor" onclick="toggleAiChatbotWindow()">
+        <i class="fa-solid fa-robot"></i>
     </a>
+
+    <!-- FLOATING INTERACTIVE COMPANION INTERFACE -->
+    <div class="chatbot-fixed-viewport" id="k9-chatbot-ui-container">
+        <div class="chat-header-bar">
+            <div class="chat-header-title"><i class="fa-solid fa-shield-dog"></i> K9 Command AI</div>
+            <span style="cursor:pointer; color:var(--text-secondary);" onclick="toggleAiChatbotWindow()"><i class="fa-solid fa-xmark"></i></span>
+        </div>
+        <div class="chat-logs-scrollarea" id="chat-logs-view">
+            <div class="msg-bubble system-bot">Welcome to Command Headquarters Intelligence Portal. Ask me about our breeds (GSD, Belgian Malinois), equipment stock, or obedience pricing matrices.</div>
+        </div>
+        <form onsubmit="handleChatbotQuery(event)" class="chat-input-dock">
+            <input type="text" id="chat-user-input" placeholder="Type your directive query..." required autocomplete="off" />
+            <button type="submit">Send</button>
+        </form>
+    </div>
 
     <header>
       <img class="nav-logo" src="IMG-20260605-WA0000.jpg" alt="Logo" onclick="showPage('home-page')" />
@@ -414,6 +571,7 @@
           <li><a onclick="showPage('services-rates')" id="nav-services-rates">Rates</a></li>
           <li><a onclick="showPage('gallery-page')" id="nav-gallery-page">Gallery</a></li>
           <li><a onclick="showPage('watch-training')" id="nav-watch-training">Watch Training</a></li>
+          <li><a onclick="showPage('faq-page')" id="nav-faq-page">FAQ</a></li>
           <li><a onclick="showPage('operations-page')" id="nav-operations-page">Hours</a></li>
           <li><a onclick="toggleAuthGate()" style="background-color: rgba(214,175,55,0.2); color: var(--accent-gold);" id="nav-auth-trigger"><i class="fa-solid fa-lock"></i> Admin Login</a></li>
         </ul>
@@ -576,12 +734,10 @@
           
           <div class="app-questionnaire-panel">
             <form onsubmit="handlePuppyApplication(event)" class="form-vertical-stack-layout">
-              
               <div class="form-group-block">
                 <label>Applicant Full Name *</label>
                 <input type="text" id="p-form-name" placeholder="John Doe" required />
               </div>
-
               <div class="form-row-2col">
                  <div class="form-group-block">
                    <label>Primary Phone Number *</label>
@@ -592,12 +748,10 @@
                    <input type="email" id="p-form-email" placeholder="name@domain.com" required />
                  </div>
               </div>
-
               <div class="form-group-block">
                 <label>Geographic Residence Location (Parish / Town) *</label>
                 <input type="text" id="p-form-location" placeholder="e.g. Portsmouth, Saint John Parish" required />
               </div>
-
               <div class="form-group-block">
                 <label>Target Working Breed Preference *</label>
                 <select id="p-form-breed">
@@ -637,12 +791,10 @@
              <h5><span>1. Green Dog (GSD or Malinois)</span> <span style="color:#fff;">$3,000.00 XCD</span></h5>
              <p style="margin:5px 0 0 0; font-size:0.95rem; color:var(--text-secondary);">An unpolished young adult displaying massive raw genetic drives, excellent natural defensive potential.</p>
           </div>
-
           <div class="tier-block">
              <h5><span>2. Single-Purpose Dog (Basic Obedience)</span> <span style="color:#fff;">$3,600.00 XCD</span></h5>
              <p style="margin:5px 0 0 0; font-size:0.95rem; color:var(--text-secondary);">A fully mature German Shepherd or Belgian Malinois completely trained in <strong>Basic Obedience mechanics</strong>.</p>
           </div>
-
           <div class="tier-block">
              <h5><span>3. Dual-Purpose Dog (Advanced Obedience & Protection)</span> <span style="color:#fff;">$4,500.00 XCD</span></h5>
              <p style="margin:5px 0 0 0; font-size:0.95rem; color:var(--text-secondary);">Our elite tier classification asset. This dog features flawless <strong>Advanced Off-Leash Obedience</strong>.</p>
@@ -652,12 +804,10 @@
           
           <div class="app-questionnaire-panel">
             <form onsubmit="handleAdultApplication(event)" class="form-vertical-stack-layout">
-              
               <div class="form-group-block">
                 <label>Client Full Name / Corporate Entity *</label>
                 <input type="text" id="a-form-name" placeholder="John Doe" required />
               </div>
-
               <div class="form-row-2col">
                  <div class="form-group-block">
                    <label>Primary Contact Phone *</label>
@@ -668,12 +818,10 @@
                    <input type="email" id="a-form-email" placeholder="client@domain.com" required />
                  </div>
               </div>
-
               <div class="form-group-block">
                 <label>Geographic Installation Location *</label>
                 <input type="text" id="a-form-location" placeholder="e.g. Calibishie" required />
               </div>
-
               <div class="form-group-block">
                 <label>Select Your Requested Asset Tier Structure *</label>
                 <select id="a-form-tier">
@@ -682,7 +830,6 @@
                   <option value="Dual-Purpose: Advanced Obedience & Protection Guard ($4,500 XCD)">Dual-Purpose: Advanced Obedience & Protection Guard — $4,500.00 XCD</option>
                 </select>
               </div>
-
               <div class="form-group-block">
                 <label>Target Threat Matrix & Deployment Setting *</label>
                 <textarea id="a-form-threat" placeholder="Detail specific security threats..." required></textarea>
@@ -708,7 +855,7 @@
           <h2>Tactical Gear & K9 Provisions</h2>
           <p>Procure industrial-strength working gear tested directly on our fields for longevity and handling efficiency.</p>
           <div class="catalog-grid-system" id="dynamic-store-container">
-              <!-- Render loop -->
+              <!-- Dynamically populated via JS -->
           </div>
         </div>
 
@@ -734,7 +881,6 @@
         <!-- 7. GALLERY PAGE -->
         <div id="gallery-page" class="page-content">
           <h2>Operational Media Gallery</h2>
-          
           <h3 class="gallery-section-title"><i class="fa-solid fa-dna"></i> German Shepherd Working Line Stock</h3>
           <div class="gallery-grid" id="gsd-parents-container">
              <div class="gallery-item">
@@ -773,10 +919,49 @@
           </div>
         </div>
 
-        <!-- 9. HOURS & LOCATION -->
+        <!-- 9. FAQ ACCORDION PAGE -->
+        <div id="faq-page" class="page-content">
+          <h2>Frequently Answered Operational Protocols</h2>
+          <p>Review baseline guidelines concerning our asset logistics, location access parameters, and operational frameworks.</p>
+          
+          <div class="faq-wrapper-layout">
+             <div class="faq-accordion-block">
+                <div class="faq-header-trigger" onclick="toggleFaqAccordion(this)">
+                   <span>What age do your working puppies become available for pickup?</span>
+                   <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-panel-body">
+                   <div class="faq-inner-text">All raw, untrained working line bloodline puppies are explicitly released from our compound at exactly 8 weeks old. They come with baseline health optimization clearances, internal tracking charts, and initial tactical vaccinations finished.</div>
+                </div>
+             </div>
+
+             <div class="faq-accordion-block">
+                <div class="faq-header-trigger" onclick="toggleFaqAccordion(this)">
+                   <span>What are your operational compound hours?</span>
+                   <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-panel-body">
+                   <div class="faq-inner-text">Our facility handles physical security checks and client entries from 8:00 AM to 4:00 PM, Monday through Saturday. The facility is completely closed on Sundays for internal facility management.</div>
+                </div>
+             </div>
+
+             <div class="faq-accordion-block">
+                <div class="faq-header-trigger" onclick="toggleFaqAccordion(this)">
+                   <span>Can I buy a pre-trained adult asset for home protection?</span>
+                   <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-panel-body">
+                   <div class="faq-inner-text">Yes. We source and fully prepare adult preservation configurations across three clear tier levels: Green Prospects ($3,000 XCD), Single-Purpose Basic Obedience Adults ($3,600 XCD), and fully configured Dual-Purpose Off-Leash Protection Assets ($4,500 XCD).</div>
+                </div>
+             </div>
+          </div>
+        </div>
+
+        <!-- 10. HOURS & LOCATION -->
         <div id="operations-page" class="page-content">
           <h2>Compound Hours & Geographic Coordinates</h2>
           <p><strong>Dominica Elite K9 Compound</strong><br>Portsmouth, Saint John Parish, Commonwealth of Dominica</p>
+          <p><strong>Standard Hours:</strong> 8:00 AM - 4:00 PM (Monday through Saturday)<br><em>Closed Sundays for internal facility configuration.</em></p>
         </div>
 
       </main>
@@ -794,7 +979,7 @@
           "Secretary": "Secretary767"
       };
 
-      // LIVE INVENTORY ARRAY WITH QUANTITIES
+      // LIVE INVENTORY METRICS
       let STORE_ITEMS = [
         {
           id: "prod-1",
@@ -828,9 +1013,10 @@
           renderStoreProducts();
       };
 
-      // CORE QUANTITY PROCESSING AUTOMATION ENGINE
+      // AUTOMATED INVENTORY RENDERING LOGIC
       function renderStoreProducts() {
           const container = document.getElementById('dynamic-store-container');
+          if(!container) return;
           container.innerHTML = ""; 
 
           STORE_ITEMS.forEach(item => {
@@ -878,6 +1064,73 @@
           });
       }
 
+      // FAQ INTERACTION ENGINE
+      function toggleFaqAccordion(headerElement) {
+          const chevron = headerElement.querySelector('i');
+          const panelBody = headerElement.nextElementSibling;
+          
+          if (panelBody.style.maxHeight && panelBody.style.maxHeight !== '0px') {
+              panelBody.style.maxHeight = '0px';
+              chevron.style.transform = 'rotate(0deg)';
+          } else {
+              document.querySelectorAll('.faq-panel-body').forEach(p => p.style.maxHeight = '0px');
+              document.querySelectorAll('.faq-header-trigger i').forEach(i => i.style.transform = 'rotate(0deg)');
+              
+              panelBody.style.maxHeight = panelBody.scrollHeight + "px";
+              chevron.style.transform = 'rotate(180deg)';
+          }
+      }
+
+      // AI FLOATING CHATBOT CORE INTELLIGENCE ROUTER
+      function toggleAiChatbotWindow() {
+          const chatWindow = document.getElementById('k9-chatbot-ui-container');
+          chatWindow.style.display = (chatWindow.style.display === 'flex') ? 'none' : 'flex';
+      }
+
+      function handleChatbotQuery(e) {
+          e.preventDefault();
+          const inputField = document.getElementById('chat-user-input');
+          const logArea = document.getElementById('chat-logs-view');
+          const userText = inputField.value.trim();
+          if(!userText) return;
+
+          // Display User Message bubble
+          const userBubble = document.createElement('div');
+          userBubble.className = 'msg-bubble user-node';
+          userBubble.innerText = userText;
+          logArea.appendChild(userBubble);
+          inputField.value = "";
+          logArea.scrollTop = logArea.scrollHeight;
+
+          // Generate automated K9 tactical responses matching site data rules
+          setTimeout(() => {
+              const botBubble = document.createElement('div');
+              botBubble.className = 'msg-bubble system-bot';
+              
+              const cleanText = userText.toLowerCase();
+              let reply = "I have recorded your query. For specialized training files, please use our floating WhatsApp integration or call 1(767) 295-4694.";
+
+              if(cleanText.includes('puppy') || cleanText.includes('puppies')) {
+                  reply = "Our working line German Shepherd and Belgian Malinois puppies are released at 8 weeks old with vaccinations completed. Price is $2,500 XCD. You can fill out the selection criteria questionnaire in the 'Puppies' tab.";
+              } else if (cleanText.includes('adult') || cleanText.includes('protection') || cleanText.includes('trained')) {
+                  reply = "We offer 3 distinct protection asset configurations: Tier 1 Green Prospects ($3,000 XCD), Tier 2 Basic Obedience Adults ($3,600 XCD), and Tier 3 Premium Off-Leash Protection Guards ($4,500 XCD). Details can be processed via the 'Adults' portal tab.";
+              } else if (cleanText.includes('price') || cleanText.includes('rate') || cleanText.includes('cost') || cleanText.includes('obedience')) {
+                  reply = "Our entry-level Basic Obedience program is set at $600 XCD. Immersive on-site residency (Board & Train) is priced at a monthly flat matrix of $2,500 XCD.";
+              } else if (cleanText.includes('collar') || cleanText.includes('leash') || cleanText.includes('stock') || cleanText.includes('gear')) {
+                  reply = "Equipment stock status is monitored live: Tactical Collars are $120 XCD (In Stock), Biothane Tracking Leashes are $165 XCD (Low Stock), and Tug Pillows are currently Out of Stock ($85 XCD).";
+              } else if (cleanText.includes('hours') || cleanText.includes('time') || cleanText.includes('days')) {
+                  reply = "Compound active operating hours run strictly between 8:00 AM and 4:00 PM, Monday through Saturday. We are fully closed on Sundays.";
+              } else if (cleanText.includes('trainer') || cleanText.includes('ishmael') || cleanText.includes('natasha')) {
+                  reply = "Dominica Elite K9 Services is led by Head Trainer Ishmael Samuel, with administrative direction handled completely by Natasha White.";
+              }
+
+              botBubble.innerText = reply;
+              logArea.appendChild(botBubble);
+              logArea.scrollTop = logArea.scrollHeight;
+          }, 600);
+      }
+
+      // ADMIN PORTAL FUNCTIONALITY
       function handleAdminLogin(e) {
           e.preventDefault();
           const selectedRole = document.getElementById('auth-role').value;
@@ -1115,10 +1368,6 @@
           alert(`Asset safely injected.`);
           document.getElementById('adm-gal-url').value = "";
           document.getElementById('adm-gal-desc').value = "";
-      }
-
-      function triggerQuickChatRoute() {
-          window.open(`https://wa.me/${TARGET_WHATSAPP}?text=Hello%20Dominica%20Elite%20K9%20Services,%20I%20would%20like%20to%20request%20general%20consultation.`, '_blank');
       }
 
       function redirectToBooking(context) {
