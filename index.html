@@ -15,7 +15,7 @@
           --accent-gold: #d4af37;            
           --accent-hover: #f3e5ab;            
           --whatsapp-green: #25d366;            
-          --admin-panel-bg: #111827;
+          --admin-panel-bg: #0f172a;
           --badge-instock: #1ebd58;
           --badge-lowstock: #f97316;
           --badge-outstock: #ef4444;
@@ -36,7 +36,7 @@
       }
       
       .content-container {            
-          max-width: 1100px;            
+          max-width: 1200px;            
           margin: 0 auto;            
           padding: 0 20px;            
           flex: 1;            
@@ -93,7 +93,7 @@
           font-weight: 600;            
           font-size: 12.5px;            
           cursor: pointer;            
-          padding: 6px 10px;
+          padding: 6px 12px;
           border-radius: 4px;
           transition: all 0.3s ease;        
           background-color: rgba(255, 255, 255, 0.02);
@@ -125,6 +125,7 @@
           border-left: 4px solid var(--accent-gold);
           padding-left: 15px;
           margin-bottom: 20px;
+          margin-top: 30px;
       }
 
       h3.section-header {
@@ -132,6 +133,9 @@
           border-bottom: 1px solid var(--border-color);
           padding-bottom: 8px;
           margin-top: 40px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
       }
       
       .page-content {            
@@ -144,7 +148,7 @@
           display: block;        
       }
 
-      /* ADMIN CONSOLE BLOCKS */
+      /* COMPREHENSIVE ADMIN HUB */
       #auth-gate-modal {
           display: none;
           background-color: var(--card-bg);
@@ -155,13 +159,14 @@
           max-width: 400px;
           margin-left: auto;
           margin-right: auto;
+          box-shadow: 0 20px 50px rgba(0,0,0,0.5);
       }
 
       #secret-admin-banner {
           display: none;
-          background: linear-gradient(90deg, #121824, #1e2640);
+          background-color: var(--admin-panel-bg);
           color: white;
-          padding: 20px;
+          padding: 25px;
           border-radius: 12px;
           margin-bottom: 35px;
           border: 2px dashed var(--accent-gold);
@@ -169,26 +174,26 @@
 
       .admin-panel-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
           gap: 20px;
-          margin-top: 15px;
+          margin-top: 20px;
       }
 
       .admin-card-control {
-          background-color: var(--admin-panel-bg);
-          padding: 15px;
+          background-color: rgba(255,255,255,0.02);
+          padding: 20px;
           border-radius: 8px;
-          border: 1px solid rgba(255,255,255,0.1);
+          border: 1px solid var(--border-color);
       }
       
       .catalog-grid-system, .rates-grid, .gallery-grid, .video-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
           gap: 25px;
           margin: 30px 0;
       }
       
-      .dog-profile-card, .info-panel, .rate-card, .store-card, .app-questionnaire-panel {
+      .dog-profile-card, .info-panel, .rate-card, .app-questionnaire-panel {
           background-color: var(--card-bg);
           border: 1px solid var(--border-color);
           border-radius: 12px;
@@ -196,18 +201,30 @@
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          transition: transform 0.3s ease;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          overflow: hidden;
+          position: relative;
       }
       
-      .dog-profile-card:hover, .store-card:hover {
+      .dog-profile-card:hover {
           transform: translateY(-5px);
+          box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      }
+
+      .card-img {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+          border-radius: 8px;
+          margin-bottom: 15px;
+          border: 1px solid rgba(255,255,255,0.1);
       }
       
       .card-header-badge {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          margin-bottom: 15px;
+          margin-bottom: 10px;
       }
       
       .breed-tag {
@@ -228,35 +245,45 @@
       .status-pill.lowstock { background-color: var(--badge-lowstock); }
       .status-pill.outstock { background-color: var(--badge-outstock); }
       
-      .dog-name { font-size: 1.5rem; margin: 0 0 5px 0; color: #fff; }
-      .dog-price { font-size: 1.3rem; color: var(--accent-gold); font-weight: bold; margin-bottom: 15px; }
-      .stock-qty-text { font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px; font-weight: 500;}
+      .dog-name { font-size: 1.5rem; margin: 0 0 5px 0; color: #fff; font-weight: 700; }
+      .dog-price { font-size: 1.3rem; color: var(--accent-gold); font-weight: bold; margin-bottom: 10px; }
+      .stock-qty-text { font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px; font-weight: 600;}
 
       .admin-actions-inline {
-          display: none;
+          display: flex;
           gap: 10px;
-          margin-top: 10px;
+          margin-top: 15px;
           border-top: 1px dashed rgba(255,255,255,0.1);
-          padding-top: 10px;
+          padding-top: 12px;
       }
 
-      .btn-edit { background: #3b82f6; color: white; padding: 6px 12px; font-size: 12px; border-radius: 4px; border: none; cursor: pointer; }
-      .btn-delete { background: #ef4444; color: white; padding: 6px 12px; font-size: 12px; border-radius: 4px; border: none; cursor: pointer; }
+      .btn-edit { background: #3b82f6; color: white; padding: 6px 12px; font-size: 12px; border-radius: 4px; border: none; cursor: pointer; font-weight: 600; }
+      .btn-delete { background: #ef4444; color: white; padding: 6px 12px; font-size: 12px; border-radius: 4px; border: none; cursor: pointer; font-weight: 600; }
 
-      .tier-block {
-          background-color: rgba(0, 0, 0, 0.2);
-          border: 1px dashed var(--border-color);
-          padding: 15px;
-          border-radius: 8px;
-          margin-bottom: 15px;
+      .capability-showcase {
+          background: linear-gradient(135deg, rgba(30, 38, 64, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
+          border: 1px solid var(--accent-gold);
+          padding: 20px;
+          border-radius: 10px;
+          margin-bottom: 25px;
       }
 
-      .tier-block h5 {
-          margin: 0 0 5px 0;
-          font-size: 1.1rem;
+      .capability-showcase h4 {
+          margin-top: 0;
           color: var(--accent-gold);
+          font-size: 1.25rem;
           display: flex;
           justify-content: space-between;
+          align-items: center;
+      }
+
+      .deployment-badge {
+          font-size: 0.75rem;
+          background: rgba(214, 175, 55, 0.15);
+          color: var(--accent-gold);
+          padding: 3px 8px;
+          border-radius: 4px;
+          border: 1px solid rgba(214, 175, 55, 0.3);
       }
 
       .policy-item {
@@ -267,14 +294,53 @@
           margin-bottom: 12px;
       }
 
-      .gallery-item img, .video-item video {
+      .gallery-item {
+          position: relative;
+          border-radius: 8px;
+          overflow: hidden;
+          border: 1px solid var(--border-color);
+          height: 240px;
+      }
+
+      .gallery-item img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+      }
+
+      .gallery-item:hover img {
+          transform: scale(1.05);
+      }
+
+      .video-item {
+          background-color: var(--card-bg);
+          border: 1px solid var(--border-color);
+          padding: 15px;
+          border-radius: 12px;
+      }
+
+      .video-item video, .video-item iframe {
           width: 100%;
           border-radius: 8px;
           border: 1px solid var(--border-color);
-          object-fit: cover;
           height: 220px;
           display: block;
+          background: #000;
       }
+
+      .video-type-badge {
+          display: inline-block;
+          font-size: 11px;
+          font-weight: bold;
+          text-transform: uppercase;
+          padding: 2px 7px;
+          border-radius: 4px;
+          margin-bottom: 8px;
+      }
+      .video-type-badge.live { background-color: #ef4444; color: white; animation: pulse 1.5s infinite; }
+      .video-type-badge.long { background-color: #3b82f6; color: white; }
+      .video-type-badge.short { background-color: #8b5cf6; color: white; }
       
       .form-vertical-stack-layout {
           display: flex;
@@ -292,8 +358,6 @@
           font-weight: 600;
           font-size: 0.95rem;
           color: #f1f5f9;
-          display: flex;
-          justify-content: space-between;
       }
       
       .form-group-block input, .form-group-block select, .form-group-block textarea {
@@ -434,12 +498,6 @@
       button:hover:not(:disabled) { 
           background-color: var(--accent-hover); 
       }
-
-      button:disabled {
-          background-color: #334155;
-          color: #64748b;
-          cursor: not-allowed;
-      }
       
       .k9-floating-chatbot-anchor {
           position: fixed;
@@ -475,16 +533,22 @@
           from { opacity: 0; transform: translateY(8px); }
           to { opacity: 1; transform: translateY(0); }
       }
+
+      @keyframes pulse {
+          0% { opacity: 0.6; }
+          50% { opacity: 1; }
+          100% { opacity: 0.6; }
+      }
     </style>
   </head>
   <body>
 
-    <!-- Floating Chatbot Toggle Trigger Button -->
+    <!-- Floating Chatbot Trigger -->
     <a class="k9-floating-chatbot-anchor" onclick="toggleAiChatbotWindow()">
         <i class="fa-solid fa-shield-dog"></i>
     </a>
 
-    <!-- Intelligent Contextual K9 Chatbot Console Window -->
+    <!-- Command AI Matrix Window -->
     <div class="chatbot-fixed-viewport" id="k9-chatbot-ui-container">
         <div class="chat-header-bar">
             <div class="chat-header-title"><i class="fa-solid fa-robot"></i> Command AI Matrix</div>
@@ -492,7 +556,7 @@
         </div>
         <div class="chat-logs-scrollarea" id="chat-logs-view"></div>
         <form onsubmit="handleChatbotQuery(event)" class="chat-input-dock">
-            <input type="text" id="chat-user-input" placeholder="Ask anything about our dogs or training..." required autocomplete="off" />
+            <input type="text" id="chat-user-input" placeholder="Ask about dogs, capabilities, training..." required autocomplete="off" />
             <button type="submit">Send</button>
         </form>
     </div>
@@ -503,24 +567,20 @@
         <ul>
           <li><a onclick="showPage('home-page')" id="nav-home-page" class="active">Home</a></li>
           <li><a onclick="showPage('about-page')" id="nav-about-page">About</a></li>
-          <li><a onclick="showPage('puppy-sales')" id="nav-puppy-sales">Puppies</a></li>
-          <li><a onclick="showPage('adult-sales')" id="nav-adult-sales">Adults</a></li>
-          <li><a onclick="showPage('services-rates')" id="nav-services-rates">Rates</a></li>
+          <li><a onclick="showPage('puppy-sales')" id="nav-puppy-sales">Puppy Sales</a></li>
+          <li><a onclick="showPage('adult-sales')" id="nav-adult-sales">Adult Assets</a></li>
+          <li><a onclick="showPage('services-rates')" id="nav-services-rates">Services & Rates</a></li>
           <li><a onclick="showPage('operations-page')" id="nav-operations-page">Hours & Rules</a></li>
+          <li><a onclick="triggerAdminGateModal()" style="color: var(--accent-gold);"><i class="fa-solid fa-key"></i> Control Matrix</a></li>
         </ul>
       </nav>
     </header>
 
     <div class="content-container">
 
-      <!-- SECRET GATE ACTIVATION TRIGGERS -->
-      <div style="text-align: right; margin-top: -20px; margin-bottom: 15px;">
-          <span style="font-size: 11px; color: var(--text-secondary); cursor: doubleclick; opacity: 0.3;" ondblclick="triggerAdminGateModal()">Console Matrix Access</span>
-      </div>
-
       <!-- SYSTEM AUTHENTICATION MODAL GATEWAY -->
       <div id="auth-gate-modal">
-          <h4 style="margin-top:0; color:var(--accent-gold);"><i class="fa-solid fa-key"></i> Administrator Authentication</h4>
+          <h4 style="margin-top:0; color:var(--accent-gold);"><i class="fa-solid fa-key"></i> Master Authentication</h4>
           <div class="form-group-block">
               <input type="password" id="admin-pass-input" placeholder="Enter Secure Matrix Key" />
           </div>
@@ -530,36 +590,87 @@
           </div>
       </div>
 
-      <!-- CONTROL BANNER MATRIX -->
+      <!-- MASTER CONTROL BANNER PANEL -->
       <div id="secret-admin-banner">
           <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:10px;">
-              <h4 style="margin:0; color:var(--accent-gold);"><i class="fa-solid fa-user-gear"></i> K9 Administrative Portal Panel Active</h4>
+              <h4 style="margin:0; color:var(--accent-gold);"><i class="fa-solid fa-user-gear"></i> Direct Operational Admin Hub Active</h4>
               <button onclick="killAdminSession()" style="background:#ef4444; color:white; padding:4px 10px; font-size:11px;">Lock Session</button>
           </div>
+          
           <div class="admin-panel-grid">
+              <!-- PRODUCT EDITOR (PUPPIES & ADULTS) -->
               <div class="admin-card-control">
-                  <h5>Modify Inventory Quantities</h5>
-                  <div class="form-group-block">
-                      <select id="stock-target-select" onchange="synchronizeStockFormInputs()">
-                          <option value="gsd-pup">German Shepherd Puppies</option>
-                          <option value="mal-pup">Belgian Malinois Puppies</option>
-                      </select>
-                  </div>
-                  <div class="form-row-2col" style="margin-top:10px;">
+                  <h5 style="color: var(--accent-gold); margin-top:0;"><i class="fa-solid fa-dog"></i> Add / Edit Core Asset Store</h5>
+                  <form id="admin-product-form" onsubmit="saveProductOverride(event)" class="form-vertical-stack-layout">
+                      <input type="hidden" id="edit-product-id" value="" />
                       <div class="form-group-block">
-                          <label style="font-size:11px;">Stock Count</label>
-                          <input type="number" id="stock-count-field" value="5" />
-                      </div>
-                      <div class="form-group-block">
-                          <label style="font-size:11px;">Status Indicator</label>
-                          <select id="stock-status-field">
-                              <option value="instock">In Stock</option>
-                              <option value="lowstock">Low Stock</option>
-                              <option value="outstock">Sold Out</option>
+                          <label style="font-size:11px;">Target Catalog Page</label>
+                          <select id="adm-prod-page" required>
+                              <option value="puppy">Puppy Sales Catalog</option>
+                              <option value="adult">Adult Assets Catalog</option>
                           </select>
                       </div>
+                      <div class="form-group-block">
+                          <label style="font-size:11px;">Asset / Profile Name</label>
+                          <input type="text" id="adm-prod-name" placeholder="e.g. Premium Czech GSD Puppies" required />
+                      </div>
+                      <div class="form-group-block">
+                          <label style="font-size:11px;">Breed Group</label>
+                          <select id="adm-prod-breed">
+                              <option value="German Shepherd">German Shepherd</option>
+                              <option value="Belgian Malinois">Belgian Malinois</option>
+                              <option value="Working Cross">Working Cross Line</option>
+                          </select>
+                      </div>
+                      <div class="form-row-2col">
+                          <div class="form-group-block">
+                              <label style="font-size:11px;">Price (XCD)</label>
+                              <input type="number" id="adm-prod-price" placeholder="2500" required />
+                          </div>
+                          <div class="form-group-block">
+                              <label style="font-size:11px;">Tracking Quantity (1-10)</label>
+                              <input type="number" id="adm-prod-qty" min="0" max="10" value="5" required />
+                          </div>
+                      </div>
+                      <div class="form-group-block">
+                          <label style="font-size:11px;">Asset Image URL</label>
+                          <input type="text" id="adm-prod-img" placeholder="Paste image filename or web link" />
+                      </div>
+                      <div class="form-group-block">
+                          <label style="font-size:11px; color:#a7f3d0;">💡 AI Description Engine</label>
+                          <select id="adm-prod-ai-desc">
+                              <option value="auto">Auto-Generate Description via Matrix AI</option>
+                              <option value="manual">Keep Custom/Existing Text Below</option>
+                          </select>
+                          <textarea id="adm-prod-desc" placeholder="Manual notes (if AI engine is set to manual)..."></textarea>
+                      </div>
+                      <button type="submit" style="width:100%; padding:8px; font-size:12px;">Publish Changes To Live Grid</button>
+                  </form>
+              </div>
+
+              <!-- MEDIA OPERATIONS INJECTOR -->
+              <div class="admin-card-control">
+                  <h5 style="color: var(--accent-gold); margin-top:0;"><i class="fa-solid fa-photo-film"></i> Inject Media Assets</h5>
+                  <div class="form-vertical-stack-layout">
+                      <div class="form-group-block">
+                          <label style="font-size:11px;">Target Operational Vault</label>
+                          <select id="adm-media-target">
+                              <option value="gallery">Facility Media Gallery (Photo)</option>
+                              <option value="video-live">Watch Training: Live Stream Embed</option>
+                              <option value="video-long">Watch Training: Long-form Maneuver</option>
+                              <option value="video-short">Watch Training: Tactical Short/Reel</option>
+                          </select>
+                      </div>
+                      <div class="form-group-block">
+                          <label style="font-size:11px;">Source File / Link URL</label>
+                          <input type="text" id="adm-media-url" placeholder="filename.jpg or video stream link" />
+                      </div>
+                      <div class="form-group-block">
+                          <label style="font-size:11px;">Caption Label</label>
+                          <input type="text" id="adm-media-caption" placeholder="Description of media event" />
+                      </div>
+                      <button onclick="injectOperationalMedia()" style="width:100%; padding:8px; font-size:12px; background-color:var(--accent-gold);">Inject into Live Feed</button>
                   </div>
-                  <button onclick="commitStockAdjustmentChanges()" style="margin-top:12px; width:100%; padding:6px; font-size:12px;">Publish Stock Quantities</button>
               </div>
           </div>
       </div>
@@ -574,17 +685,20 @@
           <h2>Welcome to Command Headquarters</h2>
           <p>Dominica Elite K9 Services provides industry-standard canine development, working bloodline production, and elite tactical instruction.</p>
           
-          <!-- WATCH TRAINING / LIVE BROADCAST IN ACTION -->
+          <!-- WATCH TRAINING / LIVE BROADCAST -->
           <h3 class="section-header"><i class="fa-solid fa-video"></i> Watch Training Operations</h3>
           <p>Observe our lines undergoing field tracking maneuvers, grip balancing structures, and clear environmental pressure scenarios.</p>
-          <div class="video-grid">
-              <div class="video-item">
-                  <video src="VID-20260605-WA0002.mp4" controls preload="metadata" poster="IMG-20260605-WA0001.jpg"></video>
+          <div class="video-grid" id="live-video-grid-container">
+              <!-- Default media elements -->
+              <div class="video-item" data-type="long">
+                  <span class="video-type-badge long">Long Maneuver</span>
+                  <video src="VID-20260605-WA0002.mp4" controls preload="metadata"></video>
                   <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:5px; text-align:center;">Working Drive Calibration & Focus Tracking</p>
               </div>
-              <div class="video-item">
+              <div class="video-item" data-type="short">
+                  <span class="video-type-badge short">Tactical Short</span>
                   <video src="VID-20260605-WA0003.mp4" controls preload="metadata"></video>
-                  <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:5px; text-align:center;">Behavior Correction & Tactical Environmental Neutrality</p>
+                  <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:5px; text-align:center;">Behavior Correction & Tactical Neutrality</p>
               </div>
           </div>
 
@@ -599,30 +713,12 @@
           <p>Dominica Elite K9 Services is the premier hub for high-intensity working line cultivation, custom behavioral engineering, and protection development system integration based in Portsmouth, Dominica.</p>
           <p>Our training and canine configuration matrices are systematically led by Head Trainer <strong>Ishmael Samuel</strong>, supported by administrative management handled by <strong>Natasha White</strong>.</p>
           
-          <h3 class="section-header"><i class="fa-solid fa-gavel"></i> What We Stand For</h3>
-          <p>At Dominica Elite K9 Services, we believe that a true working dog is a masterpiece of balance: possessing rock-solid nerves, clear environmental stability, and absolute structural soundness.</p>
-          
-          <div class="rates-grid" style="margin-top:20px;">
-             <div class="info-panel">
-                <h4 style="color:var(--accent-gold); margin-top:0;"><i class="fa-solid fa-shield"></i> Uncompromised Security</h4>
-                <p>We stand for absolute civilian preservation. Our training lines are built to handle real-world crisis situations flawlessly while remaining fully integrated, safe members of their households.</p>
-             </div>
-             <div class="info-panel">
-                <h4 style="color:var(--accent-gold); margin-top:0;"><i class="fa-solid fa-heart-pulse"></i> Canine Genetic Integrity</h4>
-                <p>We believe in strict selective health clearances. Every breeding animal or imported prospect is scrutinized heavily for strong hip/elbow tracking structure.</p>
-             </div>
-          </div>
-
           <!-- MEDIA GALLERY PORTFOLIO -->
           <h3 class="section-header"><i class="fa-solid fa-images"></i> Facility Operations Media Gallery</h3>
           <p>A window into our operational facility footprint, training blocks, and physical setups.</p>
-          <div class="gallery-grid">
-              <div class="gallery-item">
-                  <img src="IMG-20260605-WA0000.jpg" alt="K9 Operational Logo" />
-              </div>
-              <div class="gallery-item">
-                  <img src="IMG-20260605-WA0001.jpg" alt="Elite Deployment Matrix Brief" />
-              </div>
+          <div class="gallery-grid" id="live-gallery-grid-container">
+              <div class="gallery-item"><img src="IMG-20260605-WA0000.jpg" alt="K9 Operational Logo" /></div>
+              <div class="gallery-item"><img src="IMG-20260605-WA0001.jpg" alt="Elite Deployment Matrix Brief" /></div>
           </div>
         </div>
 
@@ -631,36 +727,8 @@
           <h2>Working Line Puppy Sales</h2>
           <p>Our raw untrained puppies are released strictly at <strong>8 Weeks Old</strong> with baseline health optimization clearances, internal deworming records, and initial tactical vaccinations completed.</p>
           
-          <div class="catalog-grid-system">
-            <div class="dog-profile-card" id="card-gsd-pup">
-              <div>
-                <div class="card-header-badge">
-                    <span class="breed-tag">German Shepherd</span>
-                    <span class="status-pill instock" id="badge-gsd-pup">Available</span>
-                </div>
-                <h4 class="dog-name">Working GSD Puppies</h4>
-                <div class="dog-price">$2,500.00 XCD</div>
-                <p>Premium European working lines selected for environmental density and home tracking capabilities.</p>
-                <div class="stock-qty-text" id="qty-gsd-pup">Units Tracking Available: 5</div>
-              </div>
-              <div class="admin-actions-inline"><button class="btn-edit" onclick="alert('Use primary admin control center panel at top.')">Override</button></div>
-              <button onclick="scrollToElement('pup-form-anchor')" style="margin-top:15px;">Apply For A Puppy</button>
-            </div>
-
-            <div class="dog-profile-card" id="card-mal-pup">
-              <div>
-                <div class="card-header-badge">
-                    <span class="breed-tag">Belgian Malinois</span>
-                    <span class="status-pill instock" id="badge-mal-pup">Available</span>
-                </div>
-                <h4 class="dog-name">Tactical Malinois Puppies</h4>
-                <div class="dog-price">$2,500.00 XCD</div>
-                <p>High-intensity genetics featuring fast processing speed and extreme prey drive configurations.</p>
-                <div class="stock-qty-text" id="qty-mal-pup">Units Tracking Available: 4</div>
-              </div>
-              <div class="admin-actions-inline"><button class="btn-edit" onclick="alert('Use primary admin control center panel at top.')">Override</button></div>
-              <button onclick="scrollToElement('pup-form-anchor')" style="margin-top:15px;">Apply For A Puppy</button>
-            </div>
+          <div class="catalog-grid-system" id="puppy-catalog-mount">
+              <!-- Dynamically populated by JS Engine -->
           </div>
 
           <h3 class="section-header" id="pup-form-anchor"><i class="fa-solid fa-file-signature"></i> Puppy Acquisition Questionnaire</h3>
@@ -683,8 +751,8 @@
               <div class="form-group-block">
                 <label>Target Working Breed Preference *</label>
                 <select id="p-form-breed">
-                  <option value="German Shepherd Dog (GSD)">German Shepherd Dog (GSD) [$2,500 XCD]</option>
-                  <option value="Belgian Malinois">Belgian Malinois [$2,500 XCD]</option>
+                  <option value="GSD">German Shepherd Dog (GSD) [$2,500 XCD]</option>
+                  <option value="Malinois">Belgian Malinois [$2,500 XCD]</option>
                 </select>
               </div>
               <button type="submit" style="background-color: var(--whatsapp-green); color: white; margin-top:10px;"><i class="fab fa-whatsapp"></i> Dispatch Puppy Application</button>
@@ -695,17 +763,117 @@
         <!-- ADULT GUARD CORE MODULE SECTION -->
         <div id="adult-sales" class="page-content">
           <h2>Trained Adult Protection Assets</h2>
-          <p>We source, import, and build adult personal preservation configurations tailored for rapid estate deployment, personal security, and executive field tracking.</p>
+          <p>We source, import, and build adult personal preservation configurations tailored for rapid estate deployment, corporate security assets, and high-intensity governmental operations.</p>
           
-          <h3 class="section-header"><i class="fa-solid fa-layer-group"></i> Available Asset Tier Classifications</h3>
+          <!-- K9 CAPABILITIES EXPLAINER PANEL -->
+          <h3 class="section-header"><i class="fa-solid fa-brain"></i> Understanding Adult Asset Capabilities & Target Fit</h3>
+          <p>Regardless of breed (German Shepherd or Belgian Malinois), working adult lines are classified scientifically into performance tiers based on their psychological mapping and skill limits:</p>
           
-          <div class="tier-block">
-             <h5><span>1. Green Dog (GSD or Malinois)</span> <span style="color:#fff;">$3,000.00 XCD</span></h5>
-             <p style="margin:5px 0 0 0; font-size:0.95rem; color:var(--text-secondary);">An unpolished young adult displaying massive raw genetic drives, excellent natural defensive potential.</p>
+          <div class="capability-showcase">
+              <h4><span>1. Green Dogs (Raw Prospects)</span> <span class="deployment-badge">Best Fit: Customs / Police / Sport Handlers</span></h4>
+              <p><strong>Description & Capabilities:</strong> Green dogs are young adults (typically 12–24 months) possessing massive genetic drives, high intelligence, and solid nerves, but they are entirely unpolished. They have tracking capability, powerful raw bite mechanics, and environmental resilience, but no formal utility commands.</p>
+              <p style="margin:5px 0 0 0; color:var(--text-secondary); font-size:0.9rem;"><em>Operational Fit:</em> Ideal for government agencies like police forces or customs units that want to finish training the asset utilizing their internal handler methods.</p>
           </div>
-          <div class="tier-block">
-             <h5><span>2. Single-Purpose Dog (Basic Obedience)</span> <span style="color:#fff;">$3,600.00 XCD</span></h5>
-             <p style="margin:5px 0 0 0; font-size:0.95rem; color:var(--text-secondary);">A fully mature German Shepherd or Belgian Malinois completely trained in <strong>Basic Obedience mechanics</strong>.</p>
+
+          <div class="capability-showcase">
+              <h4><span>2. Single-Purpose Dogs</span> <span class="deployment-badge">Best Fit: Security Firms (Patrol K9) / Fire Service / Prison Systems</span></h4>
+              <p><strong>Description & Capabilities:</strong> These assets are specialized master engineering profiles trained to excel inside <strong>exactly one distinct discipline</strong>. This is either strict, high-level control and property patrol defense work (biting, area clearing, suspect detention) OR detection tracking work (tracking explosives, narcotics, or fire service arson accelerants).</p>
+              <p style="margin:5px 0 0 0; color:var(--text-secondary); font-size:0.9rem;"><em>Operational Fit:</em> Perfect for private security firms needing perimeter control patrol dogs, or correction prison systems managing close-quarter cell blocks.</p>
+          </div>
+
+          <div class="capability-showcase">
+              <h4><span>3. Dual-Purpose Dogs</span> <span class="deployment-badge">Best Fit: Tactical Units / Police Force Combat Squads</span></h4>
+              <p><strong>Description & Capabilities:</strong> The pinnacle of utility canine development. These dogs function at extreme limits. They possess full combat-effective protection capabilities (tactical deployment, criminal tracking apprehension, civilian neutralization) combined seamlessly with high-tier tracking and detection metrics (narcotics/contraband tracking).</p>
+              <p style="margin:5px 0 0 0; color:var(--text-secondary); font-size:0.9rem;"><em>Operational Fit:</em> Deployed strictly with elite government tactical sectors, frontline police units, or high-risk active conflict operational task forces.</p>
+          </div>
+
+          <!-- ADULT ASSETS CATALOG LIVE MOUNT -->
+          <h3 class="section-header"><i class="fa-solid fa-shield"></i> Current Adult Asset Availability</h3>
+          <div class="catalog-grid-system" id="adult-catalog-mount">
+              <!-- Dynamically populated by JS Engine -->
+          </div>
+
+          <!-- ADULT QUESTIONNAIRE INCLUSION (10 Questions) -->
+          <h3 class="section-header" id="adult-form-anchor"><i class="fa-solid fa-file-invoice"></i> High-Asset Adult Deployment Questionnaire</h3>
+          <p>Because trained adults represent significant tactical protection capabilities, applicants must provide detailed security profiles below:</p>
+          <div class="app-questionnaire-panel">
+              <form onsubmit="handleAdultApplication(event)" class="form-vertical-stack-layout">
+                  <div class="form-row-2col">
+                      <div class="form-group-block">
+                          <label>1. Organization or Full Legal Name *</label>
+                          <input type="text" id="a-q1" placeholder="e.g. Security Firm Name or Individual" required />
+                      </div>
+                      <div class="form-group-block">
+                          <label>2. Primary Secure Contact Number *</label>
+                          <input type="tel" id="a-q2" placeholder="767-123-4567" required />
+                      </div>
+                  </div>
+
+                  <div class="form-group-block">
+                      <label>3. Deployment Location/Address (Exactly where asset will live and perform duty) *</label>
+                      <input type="text" id="a-q3" placeholder="Specify parish, street, facility footprint" required />
+                  </div>
+
+                  <div class="form-group-block">
+                      <label>4. Tactical Mission Objective (Describe exactly what you need this dog to do) *</label>
+                      <textarea id="a-q4" placeholder="e.g. Compound apprehension, high-risk crowd containment, night perimeter patrol, narcotics tracking..." required></textarea>
+                  </div>
+
+                  <div class="form-row-2col">
+                      <div class="form-group-block">
+                          <label>5. Asset Capability Class Required *</label>
+                          <select id="a-q5">
+                              <option value="Green Dog">Green Dog (Raw Prospect Line)</option>
+                              <option value="Single Purpose - Patrol">Single Purpose (Patrol / Property Protection Only)</option>
+                              <option value="Single Purpose - Detection">Single Purpose (Scent Tracking / Detection Only)</option>
+                              <option value="Dual Purpose">Dual Purpose (Apprehension + Detection Combat Profile)</option>
+                          </select>
+                      </div>
+                      <div class="form-group-block">
+                          <label>6. Entity / Sector Background *</label>
+                          <select id="a-q6">
+                              <option value="Private Security Firm">Private Security Firm / Patrol Agency</option>
+                              <option value="Government Agency">Government Sector (Prison, Police, Customs)</option>
+                              <option value="Private Residential Home">Private Estate Preservation Owner</option>
+                              <option value="Other Commercial Sector">Commercial Compound Facility Business</option>
+                          </select>
+                      </div>
+                  </div>
+
+                  <div class="form-group-block">
+                      <label>7. Level of Handling Experience with High-Drive Protection Working Dogs? *</label>
+                      <select id="a-q7">
+                          <option value="Novice">Novice (No previous protection handling records)</option>
+                          <option value="Intermediate">Intermediate (Have managed basic utility working breeds)</option>
+                          <option value="Advanced / Certified">Advanced (Certified decoy, military handler, tactical officer)</option>
+                      </select>
+                  </div>
+
+                  <div class="form-group-block">
+                      <label>8. Housing Infrastructure Framework *</label>
+                      <input type="text" id="a-q8" placeholder="e.g. 10x10 chain link shelter, indoor air-conditioned unit kennel, perimeter fence dimensions" required />
+                  </div>
+
+                  <div class="form-row-2col">
+                      <div class="form-group-block">
+                          <label>9. Timeline for Operational Field Deployment *</label>
+                          <select id="a-q9">
+                              <option value="Immediate">Immediate Deployment Required (Within 30 Days)</option>
+                              <option value="Quarterly Planning">Next 2-3 Months</option>
+                              <option value="Procurement Cycle">Procurement Allocation Strategy (Budget Mapping)</option>
+                          </select>
+                      </div>
+                      <div class="form-group-block">
+                          <label>10. Handler Training Integration Clause Acceptance *</label>
+                          <select id="a-q10" required>
+                              <option value="Yes">Yes, we agree to undergo mandatory handler integration sessions</option>
+                              <option value="No">No, requesting exemption based on verified tactical credentials</option>
+                          </select>
+                      </div>
+                  </div>
+
+                  <button type="submit" style="background-color: var(--whatsapp-green); color: white; margin-top:15px;"><i class="fab fa-whatsapp"></i> Dispatch Adult Asset Application</button>
+              </form>
           </div>
         </div>
 
@@ -759,13 +927,15 @@
 
     <!-- INTERACTIVE ENGINE JAVASCRIPT LAYER -->
     <script>
-      // Live Global Matrix Stock Memory Storage
-      let inventoryState = {
-          "gsd-pup": { qty: 5, status: "instock", name: "Working GSD Puppies" },
-          "mal-pup": { qty: 4, status: "instock", name: "Tactical Malinois Puppies" }
-      };
+      // MASTER DATA INVENTORY STATE
+      let storeProducts = [
+          { id: "p1", page: "puppy", name: "Working GSD Puppies", breed: "German Shepherd", price: 2500, qty: 5, img: "IMG-20260605-WA0000.jpg", desc: "Premium European working lines selected for environmental density and home tracking capabilities." },
+          { id: "p2", page: "puppy", name: "Tactical Malinois Puppies", breed: "Belgian Malinois", price: 2500, qty: 4, img: "IMG-20260605-WA0001.jpg", desc: "High-intensity genetics featuring fast processing speed and extreme prey drive configurations." },
+          { id: "a1", page: "adult", name: "Imported Raw Green Dogs", breed: "Belgian Malinois", price: 3000, qty: 3, img: "IMG-20260605-WA0001.jpg", desc: "Unpolished young adults displaying massive raw genetic drives, solid skeletal symmetry, and excellent natural defensive potential." },
+          { id: "a2", page: "adult", name: "Single-Purpose Patrol Assets", breed: "German Shepherd", price: 3600, qty: 2, img: "IMG-20260605-WA0000.jpg", desc: "Fully mature adults completely trained in high-intensity obedience and tactical deterrence maneuvers." }
+      ];
 
-      // Single-Page Routing Engine Controller
+      // ROUTING CONTEXT
       function showPage(pageId) {
           const pages = document.querySelectorAll('.page-content');
           pages.forEach(p => p.classList.remove('active-page'));
@@ -787,7 +957,174 @@
           if(el) el.scrollIntoView({ behavior: 'smooth' });
       }
 
-      // ADMIN PORTAL SCRIPT MATRIX CONTROL 
+      // RENDER CORE PRODUCT TEMPLATE TILES WITH THRESHOLD INTELLIGENCE
+      function renderProductGrids() {
+          const pupMount = document.getElementById('puppy-catalog-mount');
+          const adultMount = document.getElementById('adult-catalog-mount');
+          
+          pupMount.innerHTML = "";
+          adultMount.innerHTML = "";
+
+          storeProducts.forEach(prod => {
+              // Stock thresholds calculated rule-based
+              let statusClass = "instock";
+              let statusText = "Available";
+              
+              if(prod.qty <= 4) {
+                  statusClass = "lowstock";
+                  statusText = "Low Stock";
+              }
+              if(prod.qty === 0 || prod.qty === "0") {
+                  statusClass = "outstock";
+                  statusText = "Sold Out";
+              }
+
+              const cardHtml = `
+                <div class="dog-profile-card" id="card-${prod.id}">
+                  <img class="card-img" src="${prod.img || 'IMG-20260605-WA0000.jpg'}" alt="Asset Image" onerror="this.src='IMG-20260605-WA0000.jpg'" />
+                  <div>
+                    <div class="card-header-badge">
+                        <span class="breed-tag">${prod.breed}</span>
+                        <span class="status-pill ${statusClass}">${statusText}</span>
+                    </div>
+                    <h4 class="dog-name">${prod.name}</h4>
+                    <div class="dog-price">$${parseFloat(prod.price).toLocaleString()}.00 XCD</div>
+                    <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:10px;">${prod.desc}</p>
+                    <div class="stock-qty-text">Units Tracking Available: ${prod.qty} / 10</div>
+                  </div>
+                  <div class="admin-actions-inline" style="display: ${document.getElementById('secret-admin-banner').style.display === 'block' ? 'flex' : 'none'};">
+                      <button class="btn-edit" onclick="loadProductIntoEditor('${prod.id}')"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+                      <button class="btn-delete" onclick="deleteProductAsset('${prod.id}')"><i class="fa-solid fa-trash"></i> Delete</button>
+                  </div>
+                  <button onclick="scrollToElement('${prod.page === 'puppy' ? 'pup-form-anchor' : 'adult-form-anchor'}')" style="margin-top:15px; width:100%;">Acquisition File</button>
+                </div>
+              `;
+
+              if(prod.page === "puppy") {
+                  pupMount.innerHTML += cardHtml;
+              } else {
+                  adultMount.innerHTML += cardHtml;
+              }
+          });
+      }
+
+      // ENGINE HEURISTIC PROCEDURAL AUTOMATION: MATRIX AI OVERRIDE DESCRIPTION GENERATOR
+      function generateAiProceduralDescription(name, breed, pageType) {
+          const attributes = [
+              "Engineered with verified high-drive genetic markers, elite hip/elbow alignment symmetry, and optimal environmental focus parameters.",
+              "Possesses severe environmental threat neutrality, rapid tracking processor speed, and extreme courage layout traits.",
+              "Bred strictly from proven historical tactical bloodlines showcasing impeccable nerve stability and clear off-switch family functionality."
+          ];
+          const seed = Math.floor(Math.random() * attributes.length);
+          
+          if(pageType === "puppy") {
+              return `Elite 8-week-old ${breed} prospect initialized for custom work patterns. ${attributes[seed]} Complete tracking records and booster cycles included.`;
+          } else {
+              return `Certified stable mature ${breed} utility framework. Optimized for instant operational integration inside safety structures or personal protection sectors. ${attributes[seed]}`;
+          }
+      }
+
+      // PRODUCT OVERRIDE SAVING PIPELINE
+      function saveProductOverride(e) {
+          e.preventDefault();
+          const id = document.getElementById('edit-product-id').value;
+          const page = document.getElementById('adm-prod-page').value;
+          const name = document.getElementById('adm-prod-name').value.trim();
+          const breed = document.getElementById('adm-prod-breed').value;
+          const price = parseInt(document.getElementById('adm-prod-price').value) || 0;
+          const qty = Math.min(10, Math.max(0, parseInt(document.getElementById('adm-prod-qty').value) || 0));
+          let img = document.getElementById('adm-prod-img').value.trim();
+          const aiMode = document.getElementById('adm-prod-ai-desc').value;
+          let desc = document.getElementById('adm-prod-desc').value.trim();
+
+          if(aiMode === "auto") {
+              desc = generateAiProceduralDescription(name, breed, page);
+          }
+
+          if(!img) {
+              img = "IMG-20260605-WA0000.jpg";
+          }
+
+          if(id) {
+              // Update mode
+              const idx = storeProducts.findIndex(p => p.id === id);
+              if(idx !== -1) {
+                  storeProducts[idx] = { id, page, name, breed, price, qty, img, desc };
+              }
+          } else {
+              // Create mode
+              const newId = "prod_" + Date.now();
+              storeProducts.push({ id: newId, page, name, breed, price, qty, img, desc });
+          }
+
+          document.getElementById('admin-product-form').reset();
+          document.getElementById('edit-product-id').value = "";
+          renderProductGrids();
+          alert('Asset data verified and compiled down to active nodes.');
+      }
+
+      function loadProductIntoEditor(id) {
+          const prod = storeProducts.find(p => p.id === id);
+          if(!prod) return;
+
+          document.getElementById('edit-product-id').value = prod.id;
+          document.getElementById('adm-prod-page').value = prod.page;
+          document.getElementById('adm-prod-name').value = prod.name;
+          document.getElementById('adm-prod-breed').value = prod.breed;
+          document.getElementById('adm-prod-price').value = prod.price;
+          document.getElementById('adm-prod-qty').value = prod.qty;
+          document.getElementById('adm-prod-img').value = prod.img;
+          document.getElementById('adm-prod-desc').value = prod.desc;
+          document.getElementById('adm-prod-ai-desc').value = "manual";
+          
+          document.getElementById('secret-admin-banner').scrollIntoView({ behavior: 'smooth' });
+      }
+
+      function deleteProductAsset(id) {
+          if(confirm('Are you certain you want to purge this asset profile from active inventory?')) {
+              storeProducts = storeProducts.filter(p => p.id !== id);
+              renderProductGrids();
+          }
+      }
+
+      // DYNAMIC MEDIA CONTENT INJECTOR
+      function injectOperationalMedia() {
+          const target = document.getElementById('adm-media-target').value;
+          const url = document.getElementById('adm-media-url').value.trim();
+          const caption = document.getElementById('adm-media-caption').value.trim() || "Operational Event Live Profile";
+
+          if(!url) {
+              alert('Please supply an accurate resource locator/link.');
+              return;
+          }
+
+          if(target === "gallery") {
+              const mount = document.getElementById('live-gallery-grid-container');
+              mount.innerHTML += `<div class="gallery-item"><img src="${url}" alt="User Injected Image" onerror="this.src='IMG-20260605-WA0000.jpg'" /></div>`;
+              alert('Facility Gallery media array expanded.');
+          } else {
+              const mount = document.getElementById('live-video-grid-container');
+              let badgeHtml = "";
+              
+              if(target === "video-live") badgeHtml = `<span class="video-type-badge live">🔴 Live Stream</span>`;
+              if(target === "video-long") badgeHtml = `<span class="video-type-badge long">Long Maneuver</span>`;
+              if(target === "video-short") badgeHtml = `<span class="video-type-badge short">Tactical Short</span>`;
+
+              mount.innerHTML += `
+                  <div class="video-item" data-type="${target.split('-')[1]}">
+                      ${badgeHtml}
+                      <video src="${url}" controls preload="metadata" poster="IMG-20260605-WA0001.jpg"></video>
+                      <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:5px; text-align:center;">${caption}</p>
+                  </div>
+              `;
+              alert('Watch Training operations system stream updated.');
+          }
+
+          document.getElementById('adm-media-url').value = "";
+          document.getElementById('adm-media-caption').value = "";
+      }
+
+      // ADMIN PORTAL SYSTEM ACCESS CONTROL
       function triggerAdminGateModal() {
           const m = document.getElementById('auth-gate-modal');
           m.style.display = (m.style.display === 'block') ? 'none' : 'block';
@@ -796,14 +1133,10 @@
 
       function evaluateAccessKey() {
           const input = document.getElementById('admin-pass-input').value;
-          // Simple client key placeholder validation
           if(input === "k9elite") {
               document.getElementById('auth-gate-modal').style.display = 'none';
               document.getElementById('secret-admin-banner').style.display = 'block';
-              
-              // Display inline administrative overrides
-              document.querySelectorAll('.admin-actions-inline').forEach(box => box.style.display = 'block');
-              synchronizeStockFormInputs();
+              renderProductGrids(); // Forces view of inline editing tools
               alert('Matrix Verified. Welcome Master Handlers.');
           } else {
               alert('Access Denied. Command Vector Mismatch.');
@@ -812,50 +1145,28 @@
 
       function killAdminSession() {
           document.getElementById('secret-admin-banner').style.display = 'none';
-          document.querySelectorAll('.admin-actions-inline').forEach(box => box.style.display = 'none');
           document.getElementById('admin-pass-input').value = '';
+          renderProductGrids();
           alert('Session Locked safely.');
       }
 
-      function synchronizeStockFormInputs() {
-          const target = document.getElementById('stock-target-select').value;
-          const currentData = inventoryState[target];
-          if(currentData) {
-              document.getElementById('stock-count-field').value = currentData.qty;
-              document.getElementById('stock-status-field').value = currentData.status;
-          }
-      }
-
-      function commitStockAdjustmentChanges() {
-          const target = document.getElementById('stock-target-select').value;
-          const newQty = parseInt(document.getElementById('stock-count-field').value) || 0;
-          const newStatus = document.getElementById('stock-status-field').value;
-
-          // Commit to state
-          inventoryState[target].qty = newQty;
-          inventoryState[target].status = newStatus;
-
-          // Render UI Adjustments on Catalogue Cards Dynamically
-          const badgeEl = document.getElementById('badge-' + target);
-          const qtyEl = document.getElementById('qty-' + target);
-
-          if(badgeEl && qtyEl) {
-              qtyEl.innerText = "Units Tracking Available: " + newQty;
-              badgeEl.className = "status-pill " + newStatus;
-              
-              if(newStatus === "instock") badgeEl.innerText = "Available";
-              if(newStatus === "lowstock") badgeEl.innerText = "Low Stock";
-              if(newStatus === "outstock") badgeEl.innerText = "Sold Out";
-          }
-          alert('Live catalog tracking state re-configured successfully.');
-      }
-
+      // WHATSAPP RE-ROUTE FORM SIMULATION DISPATCHERS
       function handlePuppyApplication(e) {
           e.preventDefault();
-          alert('Application captured successfully! Forwarding tracking parameters.');
+          const name = document.getElementById('p-form-name').value;
+          const breed = document.getElementById('p-form-breed').value;
+          alert(`Success! Puppy dossier compiled for ${name} concerning ${breed}. Secure verification pending.`);
       }
 
-      // Chatbot Panel Controller 
+      function handleAdultApplication(e) {
+          e.preventDefault();
+          const entity = document.getElementById('a-q1').value;
+          const location = document.getElementById('a-q3').value;
+          const mission = document.getElementById('a-q4').value;
+          alert(`Dossier Saved! Adult asset requirement received for deployment at location [${location}] to execute: "${mission}".`);
+      }
+
+      // INTELLIGENT CHATBOT VIEW CONSOLE
       let isChatbotOpen = false;
       function toggleAiChatbotWindow() {
           const box = document.getElementById('k9-chatbot-ui-container');
@@ -863,7 +1174,7 @@
           box.style.display = isChatbotOpen ? 'flex' : 'none';
           
           if(isChatbotOpen && document.getElementById('chat-logs-view').children.length === 0) {
-              pushBotResponse("Welcome to Command Core! 🐾 I am your intelligent K9 assistant. You can ask me any question about our available dogs, training philosophies, puppy details, or health standards. What can I analyze for you today?");
+              pushBotResponse("Welcome to Command Core Matrix! 🐾 Ask me anything regarding our Available Stock, Puppy Prices ($2,500 XCD), or the specialized capabilities of our Green, Single-Purpose, or Dual-Purpose adult lines.");
           }
       }
 
@@ -885,7 +1196,6 @@
           view.scrollTop = view.scrollHeight;
       }
 
-      // COGNITIVE INTENT ANALYSIS MATRIX BRAIN
       function handleChatbotQuery(e) {
           e.preventDefault();
           const inputEl = document.getElementById('chat-user-input');
@@ -895,56 +1205,38 @@
           pushUserMessage(rawQuery);
           inputEl.value = '';
 
-          // Normalize the string structure cleanly to map contexts seamlessly
-          const cleanQuery = rawQuery.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
-
-          // Vectorized Concept Intent Mappers
-          const inventoryIntent = matchesAny(cleanQuery, ['what dog', 'available', 'have dogs', 'puppies', 'pups', 'sell', 'stock', 'inventory', 'buy', 'what do you have', 'current lines', 'breeds']);
-          const pricingIntent = matchesAny(cleanQuery, ['price', 'cost', 'how much', 'rate', 'fee', 'charge', 'xcd', 'money', 'expensive']);
-          const trainingIntent = matchesAny(cleanQuery, ['train', 'obedience', 'drive', 'bite', 'protection', 'guard', 'socialize', 'aggression', 'behavior', 'teach', 'command', 'video', 'watch']);
-          const healthIntent = matchesAny(cleanQuery, ['vaccine', 'health', 'deworm', 'sick', 'vet', 'hip', 'elbow', 'structure', 'diet', 'feed', '8 weeks', 'old', 'policy', 'rules']);
-          const greetingIntent = matchesAny(cleanQuery, ['hello', 'hi ', 'hey', 'greetings', 'yo ', 'morning', 'afternoon', 'good day']);
+          const cleanQuery = rawQuery.toLowerCase();
 
           setTimeout(() => {
-              // Intent Context Mapping 1: Complete Available Dog Stock Tracking Live Readout
-              if (inventoryIntent) {
-                  pushBotResponse(`We currently cultivate elite German Shepherd and Belgian Malinois bloodlines. Here is the active real-time compound inventory configuration:\n\n` +
-                                  `🐾 1. ${inventoryState['gsd-pup'].name} — $2,500.00 XCD (${inventoryState['gsd-pup'].qty} tracking units on site)\n` +
-                                  `🐾 2. ${inventoryState['mal-pup'].name} — $2,500.00 XCD (${inventoryState['mal-pup'].qty} tracking units on site)\n` +
-                                  `🐕 3. Adult Green Line Dogs — $3,000.00 XCD\n` +
-                                  `🎓 4. Single-Purpose Mature Adult Guard Assets — $3,600.00 XCD\n\n` +
-                                  `You can view our tracking records and application questionnaires inside the 'Puppies' and 'Adults' pages.`);
+              if (cleanQuery.includes("puppy") || cleanQuery.includes("pups") || cleanQuery.includes("inventory") || cleanQuery.includes("stock")) {
+                  let infoStr = "Active Live Store Inventory Reads:\n\n";
+                  storeProducts.forEach(p => {
+                      infoStr += `🐾 ${p.name} ($${p.price} XCD) - Stock Units Available: ${p.qty}\n`;
+                  });
+                  pushBotResponse(infoStr);
               } 
-              // Intent Context Mapping 2: Financial Matrix
-              else if (pricingIntent) {
-                  pushBotResponse("Our baseline performance asset price schedule is fully transparent:\n\n" +
-                                  "• Selected Unprocessed Puppies (8 Weeks): $2,500.00 XCD\n" +
-                                  "• High-Drive Raw Adult Green Dogs: $3,000.00 XCD\n" +
-                                  "• Fully Obedience-Engineered Adult Guards: $3,600.00 XCD\n\n" +
-                                  "Custom facility handler setups or immersive Board & Train packages can be custom engineered during evaluation windows.");
-              } 
-              // Intent Context Mapping 3: Behavioral Instruction & Videos
-              else if (trainingIntent) {
-                  pushBotResponse("Dominica Elite K9 Services integrates strict balanced mechanics. Our behavioral training program targets high environmental stability, neutral focus, and precise drive channeling. You can watch our training operation modules directly on the Home page to check out our live grip calibrations and active decoy work!");
-              } 
-              // Intent Context Mapping 4: Medical Clearances & Official Rule Policies
-              else if (healthIntent) {
-                  pushBotResponse("All animals leaving or processing into our Portsmouth facility undergo rigid management checks. Puppies are kept to 8 weeks minimum with initial deworming sets and vaccination protocols. Our compound rules require all visiting outside lines to provide certified clean veterinary health certificates beforehand.");
+              else if (cleanQuery.includes("green")) {
+                  pushBotResponse("Green Dogs represent raw, high-drive adult prospects (GSD or Malinois). They possess powerful genetic tracking and protective capability layout values but contain no polished training. Best fit for Government Customs tracking, Police forces, or experienced tactical handlers.");
               }
-              // Intent Context Mapping 5: Greetings Pipeline Entry
-              else if (greetingIntent) {
-                  pushBotResponse("Greetings! The system is active and monitoring. Let me know if you would like me to review our current available puppy stock, provide line pricing data, or summarize our protection development matrices.");
+              else if (cleanQuery.includes("single")) {
+                  pushBotResponse("Single-Purpose assets are hyper-engineered in exactly one field—either tracking protection/bite control work or detection mapping. Ideal deployment: Private security firms seeking patrol K9 structures, arson squads, or corrections environments.");
               }
-              // Semantic Fallback: Dynamic Handler Engine for Generalized Canine Questions
+              else if (cleanQuery.includes("dual")) {
+                  pushBotResponse("Dual-Purpose tactical lines are trained to combine high-intensity criminal apprehension and tracking with precision detection (contraband/narcotics). Deployed exclusively with special government units or military tactical sectors.");
+              }
+              else if (cleanQuery.includes("price") || cleanQuery.includes("cost") || cleanQuery.includes("how much")) {
+                  pushBotResponse("Our standardized base prices:\n• Unprocessed Puppies: $2,500.00 XCD\n• Raw Adult Green Prospects: $3,000.00 XCD\n• Single-Purpose Apprehension Assets: $3,600.00 XCD");
+              }
               else {
-                  pushBotResponse("Understood. Regarding your question: our operational matrix covers advanced working line biology, puppy bite development cultivation, raw drive analysis, and physical structural preservation. \n\nIf your question pertains to purchasing an animal, we have elite GSD and Malinois assets starting at $2,500 XCD. Please specify if you want an overview of puppies, adult classes, or training structures!");
+                  pushBotResponse("Understood. Our facility works with high-drive Belgian Malinois and German Shepherd configurations across Puppies, Green Dogs, Single-Purpose, and Dual-Purpose assets. Let me know which tier parameters you require me to clarify!");
               }
-          }, 550);
+          }, 400);
       }
 
-      function matchesAny(sourceText, keywordsArray) {
-          return keywordsArray.some(keyword => sourceText.includes(keyword));
-      }
+      // Initialize Live UI Runtime
+      window.onload = function() {
+          renderProductGrids();
+      };
     </script>
   </body>
 </html>
