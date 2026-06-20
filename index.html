@@ -10,13 +10,13 @@
     
     <style>
         :root {
-            --tactical-black: #0b0c10;
-            --deep-slate: #1f2833;
-            --steel-gray: #c5c6c7;
-            --k9-cyan: #66fcf1;
-            --alert-red: #ff4d4d;
-            --warning-orange: #ff944d;
-            --success-green: #2ecc71;
+            --tactical-black: #111625;
+            --deep-slate: #1a233a;
+            --steel-gray: #e2e8f0;
+            --k9-cyan: #3b82f6;
+            --alert-red: #ef4444;
+            --warning-orange: #f97316;
+            --success-green: #22c55e;
         }
 
         * {
@@ -83,8 +83,8 @@
 
         nav ul li a:hover, nav ul li a.active {
             background-color: var(--k9-cyan);
-            color: var(--tactical-black);
-            box-shadow: 0 0 10px rgba(102, 252, 241, 0.4);
+            color: #fff;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
         }
 
         .admin-gate-trigger {
@@ -101,7 +101,7 @@
 
         .admin-gate-trigger:hover {
             background-color: var(--k9-cyan);
-            color: var(--tactical-black);
+            color: #fff;
         }
 
         /* --- SECRET SYSTEM ADMINISTRATIVE BANNER --- */
@@ -215,7 +215,7 @@
 
         input, select, textarea {
             background-color: var(--tactical-black);
-            border: 1px solid var(--steel-gray);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             color: #fff;
             padding: 10px;
             border-radius: 4px;
@@ -227,12 +227,12 @@
         input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: var(--k9-cyan);
-            box-shadow: 0 0 5px rgba(102, 252, 241, 0.3);
+            box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
         }
 
         button.btn-submit {
             background-color: var(--k9-cyan);
-            color: var(--tactical-black);
+            color: #fff;
             font-family: 'Orbitron', sans-serif;
             font-weight: bold;
             padding: 12px;
@@ -282,13 +282,13 @@
         }
 
         .breed-tag {
-            background-color: rgba(102, 252, 241, 0.1);
+            background-color: rgba(59, 130, 246, 0.1);
             color: var(--k9-cyan);
             padding: 2px 8px;
             border-radius: 4px;
             font-size: 0.85rem;
             font-weight: bold;
-            border: 1px solid rgba(102, 252, 241, 0.3);
+            border: 1px solid rgba(59, 130, 246, 0.3);
             text-transform: uppercase;
         }
 
@@ -300,9 +300,9 @@
             text-transform: uppercase;
         }
 
-        .status-pill.instock { background-color: rgba(46, 204, 113, 0.2); color: var(--success-green); }
-        .status-pill.lowstock { background-color: rgba(255, 148, 77, 0.2); color: var(--warning-orange); }
-        .status-pill.outstock { background-color: rgba(255, 77, 77, 0.2); color: var(--alert-red); }
+        .status-pill.instock { background-color: rgba(34, 197, 94, 0.2); color: var(--success-green); }
+        .status-pill.lowstock { background-color: rgba(249, 115, 22, 0.2); color: var(--warning-orange); }
+        .status-pill.outstock { background-color: rgba(239, 68, 68, 0.2); color: var(--alert-red); }
 
         .dog-name {
             color: #fff;
@@ -348,8 +348,8 @@
 
         .store-card button:hover:not(:disabled) {
             background-color: var(--k9-cyan);
-            color: var(--tactical-black);
-            box-shadow: 0 0 10px rgba(102, 252, 241, 0.4);
+            color: #fff;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
         }
 
         .store-card button:disabled {
@@ -384,7 +384,7 @@
         }
 
         .faq-row-node {
-            background-color: var(--deep-slate);
+            background-color: var(--tactical-black);
             border-radius: 6px;
             border: 1px solid rgba(255,255,255,0.05);
             overflow: hidden;
@@ -402,7 +402,7 @@
         }
 
         .faq-header-trigger:hover {
-            background-color: rgba(102, 252, 241, 0.05);
+            background-color: rgba(59, 130, 246, 0.05);
         }
 
         .faq-header-trigger h4 {
@@ -508,7 +508,7 @@
             border-radius: 8px;
             border: 2px solid var(--k9-cyan);
             padding: 30px;
-            box-shadow: 0 0 25px rgba(102,252,241,0.3);
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.3);
         }
 
         .modal-vault-box h3 {
@@ -536,7 +536,7 @@
             bottom: 25px;
             right: 25px;
             background-color: var(--k9-cyan);
-            color: var(--tactical-black);
+            color: #fff;
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -545,7 +545,7 @@
             align-items: center;
             font-size: 1.6rem;
             cursor: pointer;
-            box-shadow: 0 4px 20px rgba(102, 252, 241, 0.4);
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
             z-index: 5000;
             transition: all 0.3s;
         }
@@ -621,7 +621,7 @@
 
         .msg-bubble.user-node {
             background-color: var(--k9-cyan);
-            color: var(--tactical-black);
+            color: #fff;
             align-self: flex-end;
             font-weight: 600;
         }
@@ -647,7 +647,7 @@
         .chat-input-dock button {
             background-color: var(--k9-cyan);
             border: none;
-            color: var(--tactical-black);
+            color: #fff;
             padding: 0 15px;
             border-radius: 4px;
             cursor: pointer;
@@ -713,7 +713,7 @@
                 <div>
                     <div class="info-panel">
                         <h3>Puppy Acquisition Profile Application</h3>
-                        <form onsubmit="handlePuppyApplication(e)">
+                        <form onsubmit="handlePuppyApplication(event)">
                             <div class="form-group"><label>First & Last Name</label><input type="text" id="p-form-name" required placeholder="John Doe"></div>
                             <div class="form-group"><label>Direct Telephone Number</label><input type="tel" id="p-form-phone" required placeholder="1-767-xxx-xxxx"></div>
                             <div class="form-group"><label>Email Secure Coordinates</label><input type="email" id="p-form-email" required placeholder="john@example.com"></div>
@@ -779,7 +779,7 @@
                 <div>
                     <div class="info-panel">
                         <h3>Adult Deployment Profiling Portal</h3>
-                        <form onsubmit="handleAdultApplication(e)">
+                        <form onsubmit="handleAdultApplication(event)">
                             <div class="form-group"><label>First & Last Name</label><input type="text" id="a-form-name" required placeholder="Jane Smith"></div>
                             <div class="form-group"><label>Direct Telephone Number</label><input type="tel" id="a-form-phone" required placeholder="1-767-xxx-xxxx"></div>
                             <div class="form-group"><label>Email Secure Coordinates</label><input type="email" id="a-form-email" required placeholder="jane@example.com"></div>
@@ -832,7 +832,7 @@
                     <h3>Schedule Evaluation Consultation</h3>
                     <p>Register your dog's data into the tactical operations registry to arrange a physical assessment alignment with Head Trainer Ishmael Samuel.</p>
                     <br>
-                    <form onsubmit="event.preventDefault(); redirectToBooking('Evaluation: ' + document.getElementById('t-breed').value + ' - ' + document.getElementById('t-issue').value);">
+                    <form onsubmit="if(event) event.preventDefault(); redirectToBooking('Evaluation: ' + document.getElementById('t-breed').value + ' - ' + document.getElementById('t-issue').value);">
                         <div class="form-group"><label>Dog Breed & Age Profile</label><input type="text" id="t-breed" required placeholder="Rottweiler / 14 Months"></div>
                         <div class="form-group"><label>Target Selection Package</label>
                             <select id="t-package">
@@ -1019,7 +1019,7 @@
 
       // CHATBOT DIALOGUE STATE ENGINE
       let chatbotState = {
-          step: "greeting", // greeting -> waiting_name -> waiting_email -> waiting_location -> main_query -> waiting_feedback -> completed
+          step: "greeting", 
           userData: {
               fullName: "",
               email: "",
@@ -1128,14 +1128,13 @@
           }, 800);
       }
 
-      function handleChatbotQuery(e) {
-          e.preventDefault();
+      function handleChatbotQuery(event) {
+          if(event) event.preventDefault(); 
           const inputField = document.getElementById('chat-user-input');
           const logArea = document.getElementById('chat-logs-view');
           const userText = inputField.value.trim();
           if(!userText) return;
 
-          // Display User Message bubble
           const userBubble = document.createElement('div');
           userBubble.className = 'msg-bubble user-node';
           userBubble.innerText = userText;
@@ -1143,7 +1142,6 @@
           inputField.value = "";
           logArea.scrollTop = logArea.scrollHeight;
 
-          // State Routing Pipeline
           setTimeout(() => {
               switch (chatbotState.step) {
                   case "waiting_name":
@@ -1170,44 +1168,34 @@
                       let isBehavioral = false;
                       const cleanText = userText.toLowerCase();
 
-                      // BEHAVIORAL PROBLEMS CHECK (CATCHES CHEWING, BARKING, AGGRESSION, LEASH PULLING, JUMPING, ETC.)
                       if (cleanText.includes('bite') || cleanText.includes('bark') || cleanText.includes('chew') || cleanText.includes('aggress') || cleanText.includes('pull') || cleanText.includes('jump') || cleanText.includes('behavio')) {
                           reply = "Behavioral issues like structural chewing, boundary barking, jumping, leash pulling, and defensive reactivity are issues we fix directly. These deviations are systematically corrected inside our $600 XCD Basic Obedience framework or through intensive on-compound Board & Train residency.";
                           isBehavioral = true;
                       }
-                      // SENSITIVE BREED/PUPPY CHECKS
                       else if(cleanText.includes('puppy') || cleanText.includes('puppies') || cleanText.includes('litter') || cleanText.includes('whelp')) {
                           reply = "Our working line German Shepherd and Belgian Malinois puppies are released at 8 weeks old with structural health clearances and initial vaccinations finished. Price is $2,500 XCD. You can fill out the selection criteria form in the 'Puppies' portal tab.";
                       } 
-                      // ADULT / PROTECTION ASSETS
                       else if (cleanText.includes('adult') || cleanText.includes('protection') || cleanText.includes('trained') || cleanText.includes('guard') || cleanText.includes('executive')) {
                           reply = "We configure three distinct protection asset classifications: Tier 1 Green Prospects ($3,000 XCD), Tier 2 Basic Obedience Adults ($3,600 XCD), and Tier 3 Premium Off-Leash Protection Guards ($4,500 XCD). File your requirements via our 'Adults' portal.";
                       } 
-                      // HEALTH / MEDICAL / STRUCTURAL CHECKS
                       else if (cleanText.includes('health') || cleanText.includes('vaccin') || cleanText.includes('worm') || cleanText.includes('hip') || cleanText.includes('elbow') || cleanText.includes('vet')) {
                           reply = "Genetic health and skeletal integrity are our top priorities. All stock features strict clearances for strong hip and elbow structures. Puppies receive complete deworming and tactical booster sets prior to physical handover.";
                       }
-                      // DIET, NUTRITION & FEEDING
                       else if (cleanText.includes('food') || cleanText.includes('feed') || cleanText.includes('eat') || cleanText.includes('diet') || cleanText.includes('raw')) {
                           reply = "Working bloodlines require high-protein performance formulation matrices to thrive. Ishmael provides customized dietary schedules during client handovers to ensure optimal skeletal and muscle development.";
                       }
-                      // OTHER BREEDS INQUIRIES
                       else if (cleanText.includes('rottweiler') || cleanText.includes('pitbull') || cleanText.includes('bully') || cleanText.includes('doberman') || cleanText.includes('other breed')) {
                           reply = "While we strictly breed and curate working-line GSDs and Belgian Malinois, our professional training solutions (Obedience and Board & Train structures) accept all large and working breeds.";
                       }
-                      // TRAINING PACKAGES & GENERAL RATES
                       else if (cleanText.includes('price') || cleanText.includes('rate') || cleanText.includes('cost') || cleanText.includes('service') || cleanText.includes('obedience') || cleanText.includes('board')) {
                           reply = "Our standard entry-level Basic Obedience package is set at $600 XCD. Complete immersive on-site compound residency (Board & Train) functions at a flat rate of $2,500 XCD per month.";
                       } 
-                      // GEAR & LIVE MERCHANDISE STOCK
                       else if (cleanText.includes('collar') || cleanText.includes('leash') || cleanText.includes('stock') || cleanText.includes('gear') || cleanText.includes('merch')) {
                           reply = "Equipment metrics are tracked live: Tactical Web Collars are $120 XCD (In Stock), Biothane Tracking Leashes are $165 XCD (Low Stock), and Tug Pillows are currently out of inventory.";
                       } 
-                      // OPERATIONS & TIMING
                       else if (cleanText.includes('hours') || cleanText.includes('time') || cleanText.includes('days') || cleanText.includes('open') || cleanText.includes('sunday')) {
                           reply = "Compound operational hours run strictly between 8:00 AM and 4:00 PM, Monday through Saturday. The facility is fully closed on Sundays for internal maintenance.";
                       } 
-                      // STAFF / PERSONNEL MANAGEMENT
                       else if (cleanText.includes('trainer') || cleanText.includes('ishmael') || cleanText.includes('samuel') || cleanText.includes('natasha') || cleanText.includes('white')) {
                           reply = "Dominica Elite K9 Services is strategically led by Head Trainer Ishmael Samuel, with structural administrative direction handled completely by Natasha White.";
                       }
@@ -1268,8 +1256,8 @@
       }
 
       // ADMIN PORTAL FUNCTIONALITY
-      function handleAdminLogin(e) {
-          e.preventDefault();
+      function handleAdminLogin(event) {
+          if(event) event.preventDefault(); 
           const selectedRole = document.getElementById('auth-role').value;
           const inputtedPass = document.getElementById('auth-pass').value;
 
@@ -1280,7 +1268,6 @@
               document.getElementById('active-user-label').innerText = selectedRole;
               document.getElementById('auth-pass').value = "";
               
-              // REVEAL INNER CONTROL COMPONENTS
               document.getElementById('admin-store-form-panel').style.display = 'block';
               document.getElementById('admin-media-form-panel').style.display = 'block';
               
@@ -1296,7 +1283,6 @@
           document.getElementById('secret-admin-banner').style.display = 'none';
           document.getElementById('active-user-label').innerText = "None";
           
-          // CONCEAL INNER CONTROL COMPONENTS
           document.getElementById('admin-store-form-panel').style.display = 'none';
           document.getElementById('admin-media-form-panel').style.display = 'none';
           
@@ -1305,8 +1291,8 @@
           alert("Admin Engine Locked.");
       }
 
-      function adminSaveStoreItem(e) {
-          e.preventDefault();
+      function adminSaveStoreItem(event) {
+          if(event) event.preventDefault(); 
           const editId = document.getElementById('adm-store-edit-id').value;
           const title = document.getElementById('adm-store-title').value;
           const price = document.getElementById('adm-store-price').value;
@@ -1394,13 +1380,8 @@
           window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
-      function scrollToElement(id) {
-          const el = document.getElementById(id);
-          if(el) { el.scrollIntoView({ behavior: 'smooth' }); }
-      }
-
-      function handlePuppyApplication(e) {
-          if(e) e.preventDefault();
+      function handlePuppyApplication(event) {
+          if(event) event.preventDefault(); 
           const name = document.getElementById('p-form-name').value;
           const phone = document.getElementById('p-form-phone').value;
           const email = document.getElementById('p-form-email').value;
@@ -1423,8 +1404,8 @@
           window.open(`https://wa.me/${TARGET_WHATSAPP}?text=${encodeURIComponent(textPayload)}`, '_blank');
       }
 
-      function handleAdultApplication(e) {
-          if(e) e.preventDefault();
+      function handleAdultApplication(event) {
+          if(event) event.preventDefault(); 
           const name = document.getElementById('a-form-name').value;
           const phone = document.getElementById('a-form-phone').value;
           const email = document.getElementById('a-form-email').value;
@@ -1447,8 +1428,8 @@
           window.open(`https://wa.me/${TARGET_WHATSAPP}?text=${encodeURIComponent(textPayload)}`, '_blank');
       }
 
-      function adminAddVideo(e) {
-          e.preventDefault();
+      function adminAddVideo(event) {
+          if(event) event.preventDefault(); 
           const title = document.getElementById('adm-vid-title').value;
           let urlInput = document.getElementById('adm-vid-url').value.trim();
           const type = document.getElementById('adm-vid-type').value;
@@ -1484,8 +1465,8 @@
           document.getElementById('adm-vid-url').value = "";
       }
 
-      function adminAddGallery(e) {
-          e.preventDefault();
+      function adminAddGallery(event) {
+          if(event) event.preventDefault(); 
           const imgUrl = document.getElementById('adm-gal-url').value.trim();
           const breed = document.getElementById('adm-gal-breed').value;
           const category = document.getElementById('adm-gal-cat').value;
