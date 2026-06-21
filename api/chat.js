@@ -42,8 +42,8 @@ export default async function handler(req, res) {
         4. CALL TO ACTION CLOSURE: Always close your responses by warmly and professionally directing the user to look at the store catalog tables on the webpage and click any of the available action buttons to instantly open a direct, pre-packaged WhatsApp inquiry straight to Ishmael or Natasha to book a consultation, clear an entry protocol, or process an intake questionnaire.
         `;
 
-        const response = await ai.models.generateContent({
-           model: 'gemini-2.0-flash',
+       const response = await ai.models.generateContent({
+            model: 'gemini-2.5-flash',
             contents: message,
             config: {
                 systemInstruction: systemInstruction,
@@ -51,15 +51,11 @@ export default async function handler(req, res) {
                 maxOutputTokens: 1000
             }
         });
-
-       // Retrieve the clean text answer directly from the generative model response
-        const aiResponseText = response.text;
-
-        // Express / Vercel Serverless return block mapping the string to the expected key
+const aiResponseText = response.text;
         res.status(200).json({ reply: aiResponseText });
 
     } catch (error) {
         console.error("Internal Gateway Error:", error);
         res.status(500).json({ error: "The generative engine failed to process the instruction." });
     }
-}
+};
