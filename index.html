@@ -1398,11 +1398,28 @@ async function handleChatbotQuery(e) {
         // 4. Remove the typing loading indicator
         const loader = document.getElementById('k9-matrix-loading-node');
         if (loader) loader.remove();
-
-        // 5. Render the intelligent AI response text
+// 5. Render the intelligent AI response text & auto-direct for human contact
         if (data.reply) {
             appendChatLogBubble(data.reply, "bot");
+
+            // Check if the AI is pointing them to WhatsApp or staff
+            const lowerReply = data.reply.toLowerCase();
+            if (lowerReply.includes("whatsapp") || 
+                lowerReply.includes("manager") || 
+                lowerReply.includes("secretary") || 
+                lowerReply.includes("ishmael") || 
+                lowerReply.includes("natasha")) {
+                
+                // Print a small system notification so the user knows they are being redirected
+                appendChatLogBubble("System: Initializing direct secure routing to WhatsApp in 2 seconds...", "bot");
+                
+                // Automatically open your correct WhatsApp link in a new tab after 2 seconds
+                setTimeout(() => {
+                    window.open("https://wa.me/17672954694", "_blank"); 
+                }, 2000);
+            }
         } else {
+
             appendChatLogBubble("Signal disruption. Please click any green button below to reach us on WhatsApp directly!", "bot");
         }
 
@@ -1413,6 +1430,10 @@ async function handleChatbotQuery(e) {
         appendChatLogBubble("Unable to reach the serverless engine. Please use the WhatsApp catalog links below to chat directly with Ishmael or Natasha!", "bot");
     }
 }
+</script>
+</body>
+</html>
+       
     
     </script>
   </body>
