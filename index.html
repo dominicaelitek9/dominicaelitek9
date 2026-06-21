@@ -1415,17 +1415,15 @@ async function handleChatbotQuery(e) {
                 
                 setTimeout(() => {
                     window.open("https://wa.me/17672954694", "_blank"); 
-                }, 2000);
-         }
+              }, 2000);
+        }
     } else {
         // This fallback executes only if the server responds with blank data
         appendChatLogBubble("Signal disruption. Please click any green button below to reach us on WhatsApp directly!", "bot");
     }
-        // This fallback executes only if the server responds with blank data
         appendChatLogBubble("Signal disruption. Please click any green button below to reach us on WhatsApp directly!", "bot");
     }
     } catch (error) {
-        // This executes only if a structural network connection failure occurs
         console.error("Frontend Communication Error:", error);
         const loader = document.getElementById('k9-matrix-loading-node');
         if (loader) loader.remove();
@@ -1435,6 +1433,3 @@ async function handleChatbotQuery(e) {
 </script>
 </body>
 </html>
-       
-    
-
