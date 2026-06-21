@@ -43,12 +43,12 @@ export default async function handler(req, res) {
         `;
 
         const response = await ai.models.generateContent({
-            model: 'gemini-2.5-flash',
+            model: 'gemini-1.5-flash',
             contents: message,
             config: {
                 systemInstruction: systemInstruction,
                 temperature: 0.7,
-                maxOutputTokens: 500
+                maxOutputTokens: 1000
             }
         });
 
