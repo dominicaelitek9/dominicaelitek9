@@ -43,7 +43,7 @@ export default async function handler(req, res) {
         `;
 
         const response = await ai.models.generateContent({
-            model: 'gemini-1.5-flash',
+           model: 'gemini-2.0-flash',
             contents: message,
             config: {
                 systemInstruction: systemInstruction,
@@ -52,11 +52,14 @@ export default async function handler(req, res) {
             }
         });
 
-        const aiReplyText = response.text || "Signal processed. Please contact our Portsmouth center on WhatsApp for details.";
-        return res.status(200).json({ reply: aiReplyText });
+       // Retrieve the clean text answer directly from the generative model response
+        const aiResponseText = response.text;
+
+        // Express / Vercel Serverless return block mapping the string to the expected key
+        res.status(200).json({ reply: aiResponseText });
 
     } catch (error) {
-        console.error("Internal Serverless Error:", error);
-        return res.status(500).json({ error: 'Operational failure communicating with the AI cluster.' });
+        console.error("Internal Gateway Error:", error);
+        res.status(500).json({ error: "The generative engine failed to process the instruction." });
     }
 }
