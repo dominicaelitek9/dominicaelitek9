@@ -1358,60 +1358,62 @@
           logView.appendChild(bubble);
           logView.scrollTop = logView.scrollHeight;
       }
+// SECURE AI PIPELINE CONNECTION
+async function handleChatbotQuery(e) {
+    if (e) e.preventDefault();
+    
+    const inputEl = document.getElementById('chat-user-input');
+    if (!inputEl) return;
+    
+    const query = inputEl.value.trim();
+    if (!query) return;
 
-      function handleChatbotQuery(e) {
-          e.preventDefault();
-          const inputEl = document.getElementById('chat-user-input');
-          const query = inputEl.value.trim();
-          if(!query) return;
+    // 1. Post user's query block into the UI window layout
+    appendChatLogBubble(query, "user");
+    inputEl.value = "";
 
-          appendChatLogBubble(query, "user");
-          inputEl.value = "";
+    // 2. Inject a visual loading indicator bubble
+    const logView = document.getElementById('chat-logs-view');
+    const systemLoadingBubble = document.createElement('div');
+    systemLoadingBubble.className = "msg-bubble system-bot";
+    systemLoadingBubble.id = "k9-matrix-loading-node";
+    systemLoadingBubble.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Processing inquiry...`;
+    if (logView) {
+        logView.appendChild(systemLoadingBubble);
+        logView.scrollTop = logView.scrollHeight;
+    }
 
-          setTimeout(() => {
-              const q = query.toLowerCase();
-              let reply = "Signal categorized. I don't have a custom answer for that specific phrasing yet. For detailed calculations, physical structural evaluations, or specific contract parameters, please route directly via WhatsApp to Head Trainer Ishmael Samuel or Administrator Natasha White.";
+    try {
+        // 3. Send the query directly to your secure Vercel API endpoint
+        const response = await fetch('/api/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ message: query })
+        });
 
-              // 1. STORES AND CATALOG DATA
-              if (q.includes("puppy") || q.includes("puppies") || q.includes("litters") || q.includes("8 weeks")) {
-                  reply = "Puppy Store Parameters:\n• Breeds: Working Line German Shepherds & Belgian Malinois.\n• Price: $2,500 XCD fixed rate.\n• Policy: Released strictly at 8 weeks old, optimized with baseline health clearances, deworming vectors, and initial tactical vaccinations.\n• Action: Fill out the Advanced Acquisition Questionnaire on the Puppy Store page to match drive traits to your yard layout.";
-              } 
-              else if (q.includes("adult") || q.includes("green dog") || q.includes("guard dog") || q.includes("dual purpose") || q.includes("trained")) {
-                  reply = "Trained Adult K9 Pricing & Tier Index:\n1. Green Dogs ($4,500 XCD): Young adult European imports with high genetic drive index and foundational bite-grip work, but open command matrices.\n2. Guard Dogs / Patrol K9s ($5,000 XCD): Completely configured defense units trained in area alerts, perimeter dominance, and deep civilian threat counter-measures.\n3. Dual Purpose units ($7,000 XCD): Elite working configurations integrating top-tier protection systems with advanced scent tracking and discrimination.";
-              } 
-              else if (q.includes("price") || q.includes("cost") || q.includes("investment") || q.includes("how much")) {
-                  reply = "Dominica Elite K9 Investment Matrix:\n• Puppies (GSD/Malinois): $2,500 XCD\n• Green Adults: $4,500 XCD\n• Security / Patrol Guard Adults: $5,000 XCD\n• Dual Purpose Tactical Units: $7,000 XCD\n• Obedience Training Blocks (6 Weeks): $1,200 XCD\n• Facility Security Consultation / Evaluations: $150 XCD per hour.";
-              } 
-              else if (q.includes("gear") || q.includes("supplement") || q.includes("collar") || q.includes("vest") || q.includes("vitamin") || q.includes("store")) {
-                  reply = "K9 General Store Inventory:\nWe offer premium hardware such as Alpha Tactical Cobra Collars ($160 XCD), Modular Agility Protection Vests ($340 XCD), and heavy developmental Elite Growth Omega Vitamins ($210 XCD) designed to secure joint structural integrity in high-drive dogs. Use the 'K9 General Store' link above to see current balances.";
-              }
+        const data = await response.json();
+        
+        // 4. Remove the typing loading indicator
+        const loader = document.getElementById('k9-matrix-loading-node');
+        if (loader) loader.remove();
 
-              // 2. TRAINING METHODOLOGIES & DEPLOYMENT
-              else if (q.includes("train") || q.includes("obedience") || q.includes("bite") || q.includes("protection") || q.includes("course")) {
-                  reply = "Canine Engineering Matrix:\n• Foundational Obedience Block ($1,200 XCD): A rigorous 6-week curriculum focusing on strict leash mechanics, environmental neutralities, and boundary compliance.\n• Protection System Integration ($5,000+ XCD): Custom high-tier defensive development focusing on hidden sleeve work, structural bite stability, and targeted scenario drive manipulation.";
-              } 
-              else if (q.includes("security") || q.includes("firm") || q.includes("police") || q.includes("prison") || q.includes("francois") || q.includes("platinum")) {
-                  reply = "Institutional Placement Vectors:\nOur adult defense units are engineered specifically to satisfy high-liability tactical frameworks. We actively build assets configured for Private Security Firms (e.g., Francois Security, Platinum Security), Police special operational divisions (Drug Squad, SSU), Customs Border operations, and prison infrastructure protection grids.";
-              }
+        // 5. Render the intelligent AI response text
+        if (data.reply) {
+            appendChatLogBubble(data.reply, "bot");
+        } else {
+            appendChatLogBubble("Signal disruption. Please click any green button below to reach us on WhatsApp directly!", "bot");
+        }
 
-              // 3. FACILITY DATA, HOURS & STAFF
-              else if (q.includes("hours") || q.includes("time") || q.includes("schedule") || q.includes("sunday") || q.includes("open")) {
-                  reply = "Operational Visitation Timelines:\n• Monday through Saturday: 08:00 AM – 05:00 PM\n• Sundays: Strictly Closed / Reserved exclusively for pre-verified emergency tasks.\n• Facility Location: Portsmouth, Dominica.";
-              } 
-              else if (q.includes("rule") || q.includes("law") || q.includes("visiting") || q.includes("desk")) {
-                  reply = "Mandatory Compound Security Protocols:\n1. All visiting civilian handlers or buyers must immediately report to Natasha White at the front administrative desk upon arrival.\n2. Absolutely no unauthorized walking or profiling near the asset holding kennels is allowed.\n3. All field work and handler guidance must completely comply with the operational framework established by Head Trainer Ishmael Samuel.";
-              } 
-              else if (q.includes("ishmael") || q.includes("natasha") || q.includes("trainer") || q.includes("staff") || q.includes("who is")) {
-                  reply = "Command Personnel Index:\n• Head Trainer / Director of Canine Development: Ishmael Samuel. Manages all bloodline testing, custom drive engineering, and tactical compound training.\n• Administrative Manager / Secretary: Natasha White. Directs all scheduling, local front desk clearances, and financial documentation protocols.";
-              }
-
-              appendChatLogBubble(reply, "bot");
-          }, 450);
-      }
-
-      window.onload = function() {
-          renderAssetCatalogs();
-      };
+    } catch (error) {
+        console.error("Frontend Communication Error:", error);
+        const loader = document.getElementById('k9-matrix-loading-node');
+        if (loader) loader.remove();
+        appendChatLogBubble("Unable to reach the serverless engine. Please use the WhatsApp catalog links below to chat directly with Ishmael or Natasha!", "bot");
+    }
+}
+    
     </script>
   </body>
 </html>
