@@ -1358,65 +1358,33 @@
           logView.appendChild(bubble);
           logView.scrollTop = logView.scrollHeight;
       }
-
-      function handleChatbotQuery(e) {
-          e.preventDefault();
-          const inputEl = document.getElementById('chat-user-input');
-          const query = inputEl.value.trim();
-          if(!query) return;
-
-          appendChatLogBubble(query, "user");
-          inputEl.value = "";
-
-          setTimeout(() => {
-              const q = query.toLowerCase();
-              let reply = "Signal categorized. I don't have a custom answer for that specific phrasing yet. For detailed calculations, physical structural evaluations, or specific contract parameters, please route directly via WhatsApp to Head Trainer Ishmael Samuel or Administrator Natasha White.";
-
-              // 1. STORES AND CATALOG DATA
-              if (q.includes("puppy") || q.includes("puppies") || q.includes("litters") || q.includes("8 weeks")) {
-                  reply = "Puppy Store Parameters:\n• Breeds: Working Line German Shepherds & Belgian Malinois.\n• Price: $2,500 XCD fixed rate.\n• Policy: Released strictly at 8 weeks old, optimized with baseline health clearances, deworming vectors, and initial tactical vaccinations.\n• Action: Fill out the Advanced Acquisition Questionnaire on the Puppy Store page to match drive traits to your yard layout.";
-              } 
-              else if (q.includes("adult") || q.includes("green dog") || q.includes("guard dog") || q.includes("dual purpose") || q.includes("trained")) {
-                  reply = "Trained Adult K9 Pricing & Tier Index:\n1. Green Dogs ($4,500 XCD): Young adult European imports with high genetic drive index and foundational bite-grip work, but open command matrices.\n2. Guard Dogs / Patrol K9s ($5,000 XCD): Completely configured defense units trained in area alerts, perimeter dominance, and deep civilian threat counter-measures.\n3. Dual Purpose units ($7,000 XCD): Elite working configurations integrating top-tier protection systems with advanced scent tracking and discrimination.";
-              } 
-              else if (q.includes("price") || q.includes("cost") || q.includes("investment") || q.includes("how much")) {
-                  reply = "Dominica Elite K9 Investment Matrix:\n• Puppies (GSD/Malinois): $2,500 XCD\n• Green Adults: $4,500 XCD\n• Security / Patrol Guard Adults: $5,000 XCD\n• Dual Purpose Tactical Units: $7,000 XCD\n• Obedience Training Blocks (6 Weeks): $1,200 XCD\n• Facility Security Consultation / Evaluations: $150 XCD per hour.";
-              } 
-              else if (q.includes("gear") || q.includes("supplement") || q.includes("collar") || q.includes("vest") || q.includes("vitamin") || q.includes("store")) {
-                  reply = "K9 General Store Inventory:\nWe offer premium hardware such as Alpha Tactical Cobra Collars ($160 XCD), Modular Agility Protection Vests ($340 XCD), and heavy developmental Elite Growth Omega Vitamins ($210 XCD) designed to secure joint structural integrity in high-drive dogs. Use the 'K9 General Store' link above to see current balances.";
-              }
-
-              // 2. TRAINING METHODOLOGIES & DEPLOYMENT
-              else if (q.includes("train") || q.includes("obedience") || q.includes("bite") || q.includes("protection") || q.includes("course")) {
-                  reply = "Canine Engineering Matrix:\n• Foundational Obedience Block ($1,200 XCD): A rigorous 6-week curriculum focusing on strict leash mechanics, environmental neutralities, and boundary compliance.\n• Protection System Integration ($5,000+ XCD): Custom high-tier defensive development focusing on hidden sleeve work, structural bite stability, and targeted scenario drive manipulation.";
-              } 
-              else if (q.includes("security") || q.includes("firm") || q.includes("police") || q.includes("prison") || q.includes("francois") || q.includes("platinum")) {
-                  reply = "Institutional Placement Vectors:\nOur adult defense units are engineered specifically to satisfy high-liability tactical frameworks. We actively build assets configured for Private Security Firms (e.g., Francois Security, Platinum Security), Police special operational divisions (Drug Squad, SSU), Customs Border operations, and prison infrastructure protection grids.";
-              }
-
-              // NEW SECURE CLIENT FRONTEND ASYNCHRONOUS PIPELINE
+// SECURE AI PIPELINE CONNECTION
 async function handleChatbotQuery(e) {
-    e.preventDefault();
+    if (e) e.preventDefault();
+    
     const inputEl = document.getElementById('chat-user-input');
+    if (!inputEl) return;
+    
     const query = inputEl.value.trim();
-    if(!query) return;
+    if (!query) return;
 
-    // 1. Post the user's query block straight into the visible UI window layout
+    // 1. Post user's query block into the UI window layout
     appendChatLogBubble(query, "user");
     inputEl.value = "";
 
-    // 2. Create and inject a transient visual "Processing Line Tracker" bubble
+    // 2. Inject a visual loading indicator bubble
     const logView = document.getElementById('chat-logs-view');
     const systemLoadingBubble = document.createElement('div');
     systemLoadingBubble.className = "msg-bubble system-bot";
     systemLoadingBubble.id = "k9-matrix-loading-node";
-    systemLoadingBubble.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Matrix AI processing incoming vector...`;
-    logView.appendChild(systemLoadingBubble);
-    logView.scrollTop = logView.scrollHeight;
+    systemLoadingBubble.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Processing inquiry...`;
+    if (logView) {
+        logView.appendChild(systemLoadingBubble);
+        logView.scrollTop = logView.scrollHeight;
+    }
 
     try {
-        // Vercel serverless rules map relative paths directly (e.g. /api/chat) 
-        // fallback to absolute paths if testing out-of-container locally.
+        // 3. Send the query directly to your secure Vercel API endpoint
         const response = await fetch('/api/chat', {
             method: 'POST',
             headers: {
@@ -1427,24 +1395,46 @@ async function handleChatbotQuery(e) {
 
         const data = await response.json();
         
-        // 3. Clear out the typing loading node anchor
+        // 4. Remove the typing loading indicator
         const loader = document.getElementById('k9-matrix-loading-node');
         if (loader) loader.remove();
-
-        // 4. Render the fully comprehensive, unprompted natural reply text
+// 5. Render the intelligent AI response text & auto-direct for human contact
         if (data.reply) {
             appendChatLogBubble(data.reply, "bot");
+
+            // Check if the AI is pointing them to WhatsApp or staff
+            const lowerReply = data.reply.toLowerCase();
+            if (lowerReply.includes("whatsapp") || 
+                lowerReply.includes("manager") || 
+                lowerReply.includes("secretary") || 
+                lowerReply.includes("ishmael") || 
+                lowerReply.includes("natasha")) {
+                
+                // Print a small system notification so the user knows they are being redirected
+                appendChatLogBubble("System: Initializing direct secure routing to WhatsApp in 2 seconds...", "bot");
+                
+                // Automatically open your correct WhatsApp link in a new tab after 2 seconds
+                setTimeout(() => {
+                    window.open("https://wa.me/17672954694", "_blank"); 
+                }, 2000);
+            }
         } else {
-            appendChatLogBubble("Connection error. Please use our website's green catalog actions to message our staff directly over WhatsApp.", "bot");
+
+            appendChatLogBubble("Signal disruption. Please click any green button below to reach us on WhatsApp directly!", "bot");
         }
 
     } catch (error) {
         console.error("Frontend Communication Error:", error);
         const loader = document.getElementById('k9-matrix-loading-node');
         if (loader) loader.remove();
-        appendChatLogBubble("Unable to securely reach the serverless engine cluster. Please connect with Head Trainer Ishmael Samuel directly on WhatsApp.", "bot");
+        appendChatLogBubble("Unable to reach the serverless engine. Please use the WhatsApp catalog links below to chat directly with Ishmael or Natasha!", "bot");
     }
 }
+</script>
+</body>
+</html>
+       
+    
     </script>
   </body>
 </html>
