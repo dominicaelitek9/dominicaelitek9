@@ -1394,24 +1394,57 @@
                   reply = "Institutional Placement Vectors:\nOur adult defense units are engineered specifically to satisfy high-liability tactical frameworks. We actively build assets configured for Private Security Firms (e.g., Francois Security, Platinum Security), Police special operational divisions (Drug Squad, SSU), Customs Border operations, and prison infrastructure protection grids.";
               }
 
-              // 3. FACILITY DATA, HOURS & STAFF
-              else if (q.includes("hours") || q.includes("time") || q.includes("schedule") || q.includes("sunday") || q.includes("open")) {
-                  reply = "Operational Visitation Timelines:\n• Monday through Saturday: 08:00 AM – 05:00 PM\n• Sundays: Strictly Closed / Reserved exclusively for pre-verified emergency tasks.\n• Facility Location: Portsmouth, Dominica.";
-              } 
-              else if (q.includes("rule") || q.includes("law") || q.includes("visiting") || q.includes("desk")) {
-                  reply = "Mandatory Compound Security Protocols:\n1. All visiting civilian handlers or buyers must immediately report to Natasha White at the front administrative desk upon arrival.\n2. Absolutely no unauthorized walking or profiling near the asset holding kennels is allowed.\n3. All field work and handler guidance must completely comply with the operational framework established by Head Trainer Ishmael Samuel.";
-              } 
-              else if (q.includes("ishmael") || q.includes("natasha") || q.includes("trainer") || q.includes("staff") || q.includes("who is")) {
-                  reply = "Command Personnel Index:\n• Head Trainer / Director of Canine Development: Ishmael Samuel. Manages all bloodline testing, custom drive engineering, and tactical compound training.\n• Administrative Manager / Secretary: Natasha White. Directs all scheduling, local front desk clearances, and financial documentation protocols.";
-              }
+              // NEW SECURE CLIENT FRONTEND ASYNCHRONOUS PIPELINE
+async function handleChatbotQuery(e) {
+    e.preventDefault();
+    const inputEl = document.getElementById('chat-user-input');
+    const query = inputEl.value.trim();
+    if(!query) return;
 
-              appendChatLogBubble(reply, "bot");
-          }, 450);
-      }
+    // 1. Post the user's query block straight into the visible UI window layout
+    appendChatLogBubble(query, "user");
+    inputEl.value = "";
 
-      window.onload = function() {
-          renderAssetCatalogs();
-      };
+    // 2. Create and inject a transient visual "Processing Line Tracker" bubble
+    const logView = document.getElementById('chat-logs-view');
+    const systemLoadingBubble = document.createElement('div');
+    systemLoadingBubble.className = "msg-bubble system-bot";
+    systemLoadingBubble.id = "k9-matrix-loading-node";
+    systemLoadingBubble.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Matrix AI processing incoming vector...`;
+    logView.appendChild(systemLoadingBubble);
+    logView.scrollTop = logView.scrollHeight;
+
+    try {
+        // Vercel serverless rules map relative paths directly (e.g. /api/chat) 
+        // fallback to absolute paths if testing out-of-container locally.
+        const response = await fetch('/api/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ message: query })
+        });
+
+        const data = await response.json();
+        
+        // 3. Clear out the typing loading node anchor
+        const loader = document.getElementById('k9-matrix-loading-node');
+        if (loader) loader.remove();
+
+        // 4. Render the fully comprehensive, unprompted natural reply text
+        if (data.reply) {
+            appendChatLogBubble(data.reply, "bot");
+        } else {
+            appendChatLogBubble("Connection error. Please use our website's green catalog actions to message our staff directly over WhatsApp.", "bot");
+        }
+
+    } catch (error) {
+        console.error("Frontend Communication Error:", error);
+        const loader = document.getElementById('k9-matrix-loading-node');
+        if (loader) loader.remove();
+        appendChatLogBubble("Unable to securely reach the serverless engine cluster. Please connect with Head Trainer Ishmael Samuel directly on WhatsApp.", "bot");
+    }
+}
     </script>
   </body>
 </html>
