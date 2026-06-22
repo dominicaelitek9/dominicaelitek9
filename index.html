@@ -1384,25 +1384,22 @@ async function handleChatbotQuery(e) {
     }
 
     try {
-        // 3. Send the query directly to your secure Vercel API endpoint
+        // Send user request to the serverless Vercel engine
         const response = await fetch('/api/chat', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ message: query })
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: messageText })
         });
 
         const data = await response.json();
-        
-        // 4. Remove the typing loading indicator
-        const loader = document.getElementById('k9-matrix-loading-node');
+
         if (loader) loader.remove();
-// 5. Render the intelligent AI response text & auto-direct for human contact
+
+        // Validate server response layout
         if (data.reply) {
             appendChatLogBubble(data.reply, "bot");
 
-            // Check if the AI is pointing them to WhatsApp or staff
+            // Look for live redirection keywords
             const lowerReply = data.reply.toLowerCase();
             if (lowerReply.includes("whatsapp") || 
                 lowerReply.includes("manager") || 
@@ -1410,16 +1407,12 @@ async function handleChatbotQuery(e) {
                 lowerReply.includes("ishmael") || 
                 lowerReply.includes("natasha")) {
                 
-                // Print a small system notification so the user knows they are being redirected
                 appendChatLogBubble("System: Initializing direct secure routing to WhatsApp in 2 seconds...", "bot");
-                
-                // Automatically open your correct WhatsApp link in a new tab after 2 seconds
                 setTimeout(() => {
                     window.open("https://wa.me/17672954694", "_blank"); 
                 }, 2000);
             }
         } else {
-
             appendChatLogBubble("Signal disruption. Please click any green button below to reach us on WhatsApp directly!", "bot");
         }
 
@@ -1432,9 +1425,4 @@ async function handleChatbotQuery(e) {
 }
 </script>
 </body>
-</html>
-       
-    
-    </script>
-  </body>
 </html>
