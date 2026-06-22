@@ -1384,26 +1384,22 @@ async function handleChatbotQuery(e) {
     }
 
     try {
-        // 3. Send the query directly to your secure Vercel API endpoint
+        // Send user request to the serverless Vercel engine
         const response = await fetch('/api/chat', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ message: query })
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: messageText })
         });
 
         const data = await response.json();
-        
-        // 4. Remove the typing loading indicator
-        const loader = document.getElementById('k9-matrix-loading-node');
+
         if (loader) loader.remove();
-// 5. Render the intelligent AI response text
+
+        // Validate server response layout
         if (data.reply) {
-            // ALWAYS display the actual AI response to the user first
             appendChatLogBubble(data.reply, "bot");
 
-            // 6. Scan the text response to determine if direct human hand-off is required
+            // Look for live redirection keywords
             const lowerReply = data.reply.toLowerCase();
             if (lowerReply.includes("whatsapp") || 
                 lowerReply.includes("manager") || 
@@ -1412,17 +1408,14 @@ async function handleChatbotQuery(e) {
                 lowerReply.includes("natasha")) {
                 
                 appendChatLogBubble("System: Initializing direct secure routing to WhatsApp in 2 seconds...", "bot");
-                
                 setTimeout(() => {
                     window.open("https://wa.me/17672954694", "_blank"); 
-              }, 2000);
+                }, 2000);
+            }
+        } else {
+            appendChatLogBubble("Signal disruption. Please click any green button below to reach us on WhatsApp directly!", "bot");
         }
-    } else {
-        // This fallback executes only if the server responds with blank data
-        appendChatLogBubble("Signal disruption. Please click any green button below to reach us on WhatsApp directly!", "bot");
-    }
-        appendChatLogBubble("Signal disruption. Please click any green button below to reach us on WhatsApp directly!", "bot");
-    }
+
     } catch (error) {
         console.error("Frontend Communication Error:", error);
         const loader = document.getElementById('k9-matrix-loading-node');
