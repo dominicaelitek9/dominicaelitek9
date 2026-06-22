@@ -1,7 +1,4 @@
 {
   "name": "dominica-elite-k9-matrix",
-  "version": "1.0.0",
-  "dependencies": {
-    "@google/genai": "^0.1.1"
-  }
+  "version": "1.0.0"
 }
