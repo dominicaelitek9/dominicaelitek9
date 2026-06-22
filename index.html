@@ -1385,13 +1385,12 @@ async function handleChatbotQuery(e) {
 
     try {
         // Send user request to the serverless Vercel engine
-        const response = await fetch('/api/chat', {
+      // Update this line in index.html to match the new file name
+        const response = await fetch('/api/chat.mjs', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ message: messageText })
         });
-
-        const data = await response.json();
 
         if (loader) loader.remove();
 
