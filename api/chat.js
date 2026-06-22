@@ -1,10 +1,10 @@
-import { GoogleGenAI } from '@google/genai';
+const { GoogleGenAI } = require('@google/genai');
 
-// Initialize the SDK cleanly, explicitly referencing the Vercel production environment mapping
+// Initialize the SDK using your verified Vercel environment variable
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
-export default async function handler(req, res) {
-    // Enable complete Cross-Origin Resource Sharing (CORS) security headers
+module.exports = async function handler(req, res) {
+    // Set headers to allow Cross-Origin frontend communication
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
@@ -21,12 +21,12 @@ export default async function handler(req, res) {
         const { message } = req.body;
         
         if (!message) {
-            return res.status(400).json({ error: 'Message field is completely empty.' });
+            return res.status(400).json({ error: 'Message field is empty.' });
         }
 
         const systemInstruction = `You are the Dominica Elite K9 Services Automated Operations Center AI assistant. Always answer warmly and professionally, directing the user to look at the store catalog tables on the webpage and click any available links to proceed.`;
 
-        // Execute text generation using active, stable flash models
+        // Execute text generation using the precise active flash standard model identifier
         const response = await ai.models.generateContent({
             model: 'gemini-2.0-flash',
             contents: message,
@@ -37,7 +37,7 @@ export default async function handler(req, res) {
             }
         });
 
-        // Pull the clean text answer string safely out of the response payload
+        // Pull the text response directly from the SDK string variable 
         const aiResponseText = response.text;
         return res.status(200).json({ reply: aiResponseText });
 
@@ -48,4 +48,4 @@ export default async function handler(req, res) {
             details: error.message 
         });
     }
-}
+};
