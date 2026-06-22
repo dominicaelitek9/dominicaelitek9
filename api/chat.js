@@ -1,13 +1,13 @@
 import { GoogleGenAI } from '@google/genai';
 
-// Initialize the SDK cleanly - it handles looking up process.env.GEMINI_API_KEY automatically!
-const ai = new GoogleGenAI();
+// Initialize the SDK cleanly, explicitly referencing the Vercel production environment mapping
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 export default async function handler(req, res) {
-    // Enable CORS handling for safety
+    // Enable complete Cross-Origin Resource Sharing (CORS) security headers
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
     if (req.method === 'OPTIONS') {
         return res.status(200).end();
@@ -19,13 +19,16 @@ export default async function handler(req, res) {
 
     try {
         const { message } = req.body;
+        
+        if (!message) {
+            return res.status(400).json({ error: 'Message field is completely empty.' });
+        }
 
-        const systemInstruction = `You are the Dominica Elite K9 Services Automated Operations Center AI assistant. 
-Always answer warmly and professionally, directing the user to look at the store catalog tables on the webpage and click any available links to proceed.`;
+        const systemInstruction = `You are the Dominica Elite K9 Services Automated Operations Center AI assistant. Always answer warmly and professionally, directing the user to look at the store catalog tables on the webpage and click any available links to proceed.`;
 
-        // Execute generation payload with standard configuration nesting rules
+        // Execute text generation using active, stable flash models
         const response = await ai.models.generateContent({
-            model: 'gemini-2.5-flash',
+            model: 'gemini-2.0-flash',
             contents: message,
             config: {
                 systemInstruction: systemInstruction,
@@ -34,17 +37,15 @@ Always answer warmly and professionally, directing the user to look at the store
             }
         });
 
-        // Pull the text response directly from the SDK string variable 
+        // Pull the clean text answer string safely out of the response payload
         const aiResponseText = response.text;
         return res.status(200).json({ reply: aiResponseText });
 
     } catch (error) {
-        console.error("Internal Gateway Error:", error);
-        return res.status(500).json({ error: "The generative engine failed to process the instruction." });
+        console.error("Internal Serverless Gateway Failure:", error);
+        return res.status(500).json({ 
+            error: "The generative engine failed to process the instruction.",
+            details: error.message 
+        });
     }
 }
-    } catch (error) {
-        console.error("Internal Gateway Error:", error);
-        res.status(500).json({ error: "The generative engine failed to process the instruction." });
-    }
-};
