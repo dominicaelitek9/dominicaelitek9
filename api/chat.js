@@ -1,8 +1,5 @@
 const { GoogleGenAI } = require('@google/genai');
 
-// Initialize the SDK using your verified Vercel environment variable
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-
 module.exports = async function handler(req, res) {
     // Set headers to allow Cross-Origin frontend communication
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -23,6 +20,9 @@ module.exports = async function handler(req, res) {
         if (!message) {
             return res.status(400).json({ error: 'Message field is empty.' });
         }
+
+        // Initialize the client directly inside the request block to capture environment variables reliably
+        const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
         const systemInstruction = `You are the Dominica Elite K9 Services Automated Operations Center AI assistant. Always answer warmly and professionally, directing the user to look at the store catalog tables on the webpage and click any available links to proceed.`;
 
