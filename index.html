@@ -1206,18 +1206,44 @@
           inputEl.value = '';
 
           const cleanQuery = rawQuery.toLowerCase();
+        
+  // Show a loading text placeholder while waiting for Gemini
+  pushBotResponse("Typing...");
 
-          setTimeout(() => {
-              if (cleanQuery.includes("puppy") || cleanQuery.includes("pups") || cleanQuery.includes("inventory") || cleanQuery.includes("stock")) {
-                  let infoStr = "Active Live Store Inventory Reads:\n\n";
-                  storeProducts.forEach(p => {
-                      infoStr += `🐾 ${p.name} ($${p.price} XCD) - Stock Units Available: ${p.qty}\n`;
-                  });
-                  pushBotResponse(infoStr);
-              } 
-              else if (cleanQuery.includes("green")) {
-                  pushBotResponse("Green Dogs represent raw, high-drive adult prospects (GSD or Malinois). They possess powerful genetic tracking and protective capability layout values but contain no polished training. Best fit for Government Customs tracking, Police forces, or experienced tactical handlers.");
-              }
+  try {
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        messages: [{ role: 'user', content: rawQuery }]
+      })
+    });
+
+    const data = await response.json();
+
+    // Remove the placeholder message
+    const chatLogs = document.getElementById('chat-logs-view');
+    if (chatLogs.lastChild) chatLogs.removeChild(chatLogs.lastChild);
+
+    if (data.text) {
+      pushBotResponse(data.text);
+    } else if (data.error) {
+      pushBotResponse("Error: " + data.error);
+    } else {
+      pushBotResponse("System was unable to process the operational response.");
+    }
+
+  } catch (err) {
+    // Remove the placeholder message on failure
+    const chatLogs = document.getElementById('chat-logs-view');
+    if (chatLogs.lastChild) chatLogs.removeChild(chatLogs.lastChild);
+    
+    console.error("Network communication failed:", err);
+    pushBotResponse("Unable to connect to the matrix server framework.");
+  }
+} // This closing bracket ends the handleChatbotQuery function cleanly}
               else if (cleanQuery.includes("single")) {
                   pushBotResponse("Single-Purpose assets are hyper-engineered in exactly one field—either tracking protection/bite control work or detection mapping. Ideal deployment: Private security firms seeking patrol K9 structures, arson squads, or corrections environments.");
               }
