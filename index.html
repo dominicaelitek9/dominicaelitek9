@@ -21,6 +21,18 @@
           --badge-outstock: #ef4444;
           --border-color: rgba(255, 255, 255, 0.08);
       }
+      /* ... existing :root block ... */
+} /* End of :root */
+
+@media only screen and (max-width: 600px) {
+  body {
+    padding: 0 10px;
+  }
+  .page-content, .admin-card-control {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+}
       
       body {            
           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;            
