@@ -680,6 +680,7 @@
                           <textarea id="adm-prod-desc" placeholder="Manual notes (if description engine is set to manual)..."></textarea>
                       </div>
                       <button type="submit" style="width:100%; padding:8px; font-size:12px;">Publish Changes To Live Grid</button>
+<button type="button" style="width:100%; padding:8px; font-size:12px; margin-top:5px; background-color: #ff4d4d; color: white;" onclick="deleteProduct()">Remove Selected Product</button>
                   </form>
               </div>
 
@@ -1223,6 +1224,16 @@
           }
 
           document.getElementById('admin-product-form').reset();
+        function deleteProduct() {
+    const targetId = document.getElementById('edit-product-id').value;
+    const idx = storeAssetsMatrix.findIndex(a => a.id === targetId);
+    if (idx !== -1) {
+        storeAssetsMatrix.splice(idx, 1);
+        alert("Product removed!");
+        document.getElementById('admin-product-form').reset();
+       renderStore(); // <--- Add this call here (use your actual function name)
+    }
+}
           document.getElementById('edit-product-id').value = "";
           renderAssetCatalogs();
           alert("Matrix Ledger Synchronized Successfully.");
