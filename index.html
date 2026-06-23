@@ -1398,13 +1398,13 @@ async function handleChatbotQuery(e) {
             // Remove the loading indicator spinner
             if (systemLoadingBubble) systemLoadingBubble.remove();
 
-            if (data.reply) {
-                appendChatLogBubble(data.reply, "bot");
-            } else {
-                appendChatLogBubble("Configuration matrix error. Try again.", "bot");
-            }
-
-        } catch (error) {
+                    if (data.reply) {
+           appendChatLogBubble(data.reply, "bot");
+     } else {
+         appendChatLogBubble("Configuration matrix error. Try again.", "bot");
+      }
+   }
+  } catch (error) {
             console.error("Matrix Core Connection Lost:", error);
             if (systemLoadingBubble) systemLoadingBubble.remove();
             appendChatLogBubble("Network offline. Failed to reach core array.", "bot");
