@@ -1353,7 +1353,7 @@
   const logView = document.getElementById('chat-logs-view');
   const bubble = document.createElement('div');
    bubble.className = `msg-bubble ${sender === "bot" ? "system-bot" : "user-node"}`;
-    bubble.innerHTML = processMessageContent(text); // <--- REPLACE LINE 1356 WITH THIS
+bubble.innerHTML = processMessageContent(text);
  logView.appendChild(bubble);
     logView.scrollTop = logView.scrollHeight;
  }
@@ -1407,8 +1407,7 @@ async function handleChatbotQuery(e) {
         appendChatLogBubble("Network offline. Failed to reach core array.", "bot");
     }
 }
-      // Add this new translator function
-function processMessageContent(text) {
+ function processMessageContent(text) {
     const urlRegex = /(https?:\/\/[^\s]+)/g;
     return text.replace(urlRegex, (url) => {
         if (url.includes('youtube.com') || url.includes('youtu.be')) {
