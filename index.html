@@ -1383,45 +1383,32 @@ async function handleChatbotQuery(e) {
         logView.scrollTop = logView.scrollHeight;
     }
 
-    try {
-        // Send user request to the serverless Vercel engine
-      // Update this line in index.html to match the new file name
-        const response = await fetch('/api/chat.mjs', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: messageText })
-        });
+   try {
+            // This line connects your frontend to your secure Render backend engine
+            const response = await fetch('https://k9-backend-service.onrender.com/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: query })
+            });
 
-        if (loader) loader.remove();
+            const data = await response.json();
+            
+            // Remove the loading indicator spinner
+            if (systemLoadingBubble) systemLoadingBubble.remove();
 
-        // Validate server response layout
-        if (data.reply) {
-            appendChatLogBubble(data.reply, "bot");
-
-            // Look for live redirection keywords
-            const lowerReply = data.reply.toLowerCase();
-            if (lowerReply.includes("whatsapp") || 
-                lowerReply.includes("manager") || 
-                lowerReply.includes("secretary") || 
-                lowerReply.includes("ishmael") || 
-                lowerReply.includes("natasha")) {
-                
-                appendChatLogBubble("System: Initializing direct secure routing to WhatsApp in 2 seconds...", "bot");
-                setTimeout(() => {
-                    window.open("https://wa.me/17672954694", "_blank"); 
-                }, 2000);
+            if (data.reply) {
+                appendChatLogBubble(data.reply, "bot");
+            } else {
+                appendChatLogBubble("Configuration matrix error. Try again.", "bot");
             }
-        } else {
-            appendChatLogBubble("Signal disruption. Please click any green button below to reach us on WhatsApp directly!", "bot");
-        }
 
-    } catch (error) {
-        console.error("Frontend Communication Error:", error);
-        const loader = document.getElementById('k9-matrix-loading-node');
-        if (loader) loader.remove();
-        appendChatLogBubble("Unable to reach the serverless engine. Please use the WhatsApp catalog links below to chat directly with Ishmael or Natasha!", "bot");
-    }
-}
+        } catch (error) {
+            console.error("Matrix Core Connection Lost:", error);
+            if (systemLoadingBubble) systemLoadingBubble.remove();
+            appendChatLogBubble("Network offline. Failed to reach core array.", "bot");
+        }
 </script>
 </body>
 </html>
