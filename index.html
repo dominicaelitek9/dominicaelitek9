@@ -21,18 +21,39 @@
           --badge-outstock: #ef4444;
           --border-color: rgba(255, 255, 255, 0.08);
       }
-      /* ... existing :root block ... */
-} /* End of :root */
 
-@media only screen and (max-width: 600px) {
-  body {
-    padding: 0 10px;
-  }
-  .page-content, .admin-card-control {
-    width: 100% !important;
-    box-sizing: border-box;
-  }
-}
+      /* PAGE DISPLAY ROUTING */
+      .page-content {
+          display: none !important;
+      }
+
+      .page-content.active-page {
+          display: block !important;
+      }
+
+      @media only screen and (max-width: 600px) {
+        body {
+          padding: 0 10px;
+        }
+        .page-content, .admin-card-control {
+          width: 100% !important;
+          box-sizing: border-box;
+        }
+      }
+        
+      body {            
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;            
+          background-color: var(--bg-color);            
+          color: var(--text-primary);            
+          text-align: left;            
+          padding: 20px;            
+          margin: 0;            
+          line-height: 1.7;            
+          display: flex;            
+          flex-direction: column;            
+          min-height: 100vh;        
+      }
+
       
       body {            
           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;            
