@@ -1031,7 +1031,7 @@
               </ul>
           </div>
         </div>
-        <section id="operational-reviews" class="page-section" style="background-color: #0b0e14; color: #ffffff; padding: 60px 20px; text-align: center;">
+     <section id="operational-reviews" class="page-content" style="background-color: #0b0e14; color: #ffffff; padding: 60px 20px; text-align: center;">
     <div style="max-width: 1100px; margin: 0 auto;">
         
         <h2 style="color: #e3a008; font-size: 2rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;">
@@ -1158,15 +1158,13 @@
     });
   });
 </script>
-
-<section id="contact-headquarters" class="page-section" style="background-color: #0d1117; color: #ffffff; padding: 50px 20px; text-align: center;">
     <div style="max-width: 600px; margin: 0 auto;">
         
         <h2 style="color: #e3a008; font-size: 2rem; margin-bottom: 10px;">Contact Operations Command</h2>
         <p style="color: #cccccc; margin-bottom: 30px;">
             Have questions regarding working bloodlines, asset availability, or facility protocols? Send a direct message to our command team.
         </p>
-
+<section id="contact-headquarters" class="page-content" style="background-color: #0d1117; color: #ffffff; padding: 50px 20px; text-align: center;">
         <form action="https://api.web3forms.com/submit" method="POST" style="display: flex; flex-direction: column; gap: 15px; text-align: left;">
             
             <input type="hidden" name="access_key" value="e506b6c9-9d2d-4e5b-bc39-0bf402b3cee2">
@@ -1217,29 +1215,33 @@
       ];
 
       // VIEW ROUTER
-      function showPage(pageId) {
-          document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active-page'));
-          document.querySelectorAll('#primary-corporate-navigation a').forEach(a => a.classList.remove('active'));
-          
-          const targetPage = document.getElementById(pageId);
-          if (targetPage) targetPage.classList.add('active-page');
-          
-          const navMapping = {
-              'home-page': 'nav-home-page',
-              'about-page': 'nav-about-page',
-              'training-page': 'nav-training-page',
-              'services-rates': 'nav-services-rates',
-              'operations-page': 'nav-operations-page',
-              'puppy-sales': 'features-assets-navigation',
-              'adult-sales': 'features-assets-navigation',
-              'general-store-page': 'features-assets-navigation'
-          };
-          if (navMapping[pageId] && navMapping[pageId] !== 'features-assets-navigation') {
-              document.getElementById(navMapping[pageId]).classList.add('active');
-          }
-          window.scrollTo({top: 0, behavior: 'smooth'});
-      }
+    // VIEW ROUTER
+function showPage(pageId) {
+    document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active-page'));
+    document.querySelectorAll('#primary-corporate-navigation a').forEach(a => a.classList.remove('active'));
 
+    const targetPage = document.getElementById(pageId);
+    if (targetPage) targetPage.classList.add('active-page');
+
+    const navMapping = {
+        'home-page': 'nav-home-page',
+        'about-page': 'nav-about-page',
+        'training-page': 'nav-training-page',
+        'services-rates': 'nav-services-rates',
+        'operations-page': 'nav-operations-page',
+        'operational-reviews': 'nav-reviews-page',
+        'contact-headquarters': 'nav-contact-page',
+        'puppy-sales': 'features-assets-navigation',
+        'adult-sales': 'features-assets-navigation',
+        'general-store-page': 'features-assets-navigation'
+    };
+    if (navMapping[pageId] && navMapping[pageId] !== 'features-assets-navigation') {
+        const navElem = document.getElementById(navMapping[pageId]);
+        if (navElem) navElem.classList.add('active');
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
       function scrollToElement(id) {
           const el = document.getElementById(id);
           if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
