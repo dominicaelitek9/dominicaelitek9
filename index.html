@@ -1032,6 +1032,137 @@
 
       </main>
     </div>
+<section id="operational-reviews" style="background-color: #0b0e14; color: #ffffff; padding: 60px 20px; text-align: center;">
+    <div style="max-width: 1100px; margin: 0 auto;">
+        
+        <h2 style="color: #e3a008; font-size: 2rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;">
+            Handler & Client Field Reports
+        </h2>
+        <p style="color: #8b949e; margin-bottom: 25px; font-size: 1rem;">
+            Real-time client feedback on obedience, reactivity reduction, and behavior modification.
+        </p>
+
+        <button id="openModalBtn" style="background-color: #e3a008; color: #000; font-weight: bold; padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; font-size: 1rem; margin-bottom: 40px;">
+            <i class="fa-solid fa-pen"></i> Submit Your Field Review
+        </button>
+
+        <div id="reviewsGridContainer" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; text-align: left;">
+            <p id="loadingReviewsText" style="color: #8b949e; grid-column: 1/-1; text-align: center;">Loading field reports from database...</p>
+        </div>
+
+    </div>
+</section>
+
+<div id="reviewModalWindow" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 10000; justify-content: center; align-items: center; padding: 20px;">
+    <div style="background-color: #161b22; border: 1px solid #30363d; width: 100%; max-width: 500px; border-radius: 8px; padding: 30px; position: relative; color: #fff;">
+        
+        <button id="closeModalBtn" style="position: absolute; top: 15px; right: 15px; background: none; border: none; color: #8b949e; font-size: 1.5rem; cursor: pointer;">&times;</button>
+
+        <h3 style="color: #e3a008; margin-top: 0; margin-bottom: 5px;">Submit Field Review</h3>
+        <p style="color: #8b949e; font-size: 0.85rem; margin-bottom: 20px;">Share how training helped calm behaviors and improve obedience.</p>
+
+        <form id="firebaseReviewForm" style="display: flex; flex-direction: column; gap: 15px; text-align: left;">
+            <div>
+                <label style="display: block; margin-bottom: 5px; font-size: 0.85rem; color: #e3a008; font-weight: bold;">Your Full Name / Handler Name</label>
+                <input type="text" id="fbRevName" required placeholder="e.g. Alex Richardson" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #30363d; background: #0d1117; color: #fff; box-sizing: border-box;">
+            </div>
+
+            <div>
+                <label style="display: block; margin-bottom: 5px; font-size: 0.85rem; color: #e3a008; font-weight: bold;">Star Rating</label>
+                <select id="fbRevStars" required style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #30363d; background: #0d1117; color: #fff; box-sizing: border-box;">
+                    <option value="★ ★ ★ ★ ★">5 Stars - Outstanding Results</option>
+                    <option value="★ ★ ★ ★ ☆">4 Stars - Great Improvement</option>
+                    <option value="★ ★ ★ ☆ ☆">3 Stars - Moderate Progress</option>
+                    <option value="★ ★ ☆ ☆ ☆">2 Stars - Minor Changes</option>
+                    <option value="★ ☆ ☆ ☆ ☆">1 Star - Needs Improvement</option>
+                </select>
+            </div>
+
+            <div>
+                <label style="display: block; margin-bottom: 5px; font-size: 0.85rem; color: #e3a008; font-weight: bold;">Your Review & Dog's Progress</label>
+                <textarea id="fbRevText" rows="4" required placeholder="Describe how training helped calm behaviors and improve obedience..." style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #30363d; background: #0d1117; color: #fff; box-sizing: border-box; resize: vertical;"></textarea>
+            </div>
+
+            <button type="submit" style="background-color: #e3a008; color: #000; font-weight: bold; padding: 12px; border: none; border-radius: 6px; cursor: pointer; margin-top: 10px;">
+                Publish Live Review
+            </button>
+        </form>
+    </div>
+</div>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+  import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBke_wlnUffyPZ6l1M6HaPS8lt9sg0qP7Q",
+    authDomain: "dominica-elite-k9.firebaseapp.com",
+    databaseURL: "https://dominica-elite-k9-default-rtdb.firebaseio.com",
+    projectId: "dominica-elite-k9",
+    storageBucket: "dominica-elite-k9.firebasestorage.app",
+    messagingSenderId: "938494088244",
+    appId: "1:938494088244:web:0755fad68f56b610232661"
+  };
+
+  // Initialize
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+  // Modal Controls
+  const modal = document.getElementById('reviewModalWindow');
+  document.getElementById('openModalBtn').addEventListener('click', () => modal.style.display = 'flex');
+  document.getElementById('closeModalBtn').addEventListener('click', () => modal.style.display = 'none');
+
+  // Submit Review
+  document.getElementById('firebaseReviewForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('fbRevName').value.trim();
+    const stars = document.getElementById('fbRevStars').value;
+    const text = document.getElementById('fbRevText').value.trim();
+
+    if (name && text) {
+      push(ref(db, 'reviews'), {
+        name: name,
+        stars: stars,
+        text: text,
+        timestamp: Date.now()
+      }).then(() => {
+        document.getElementById('firebaseReviewForm').reset();
+        modal.style.display = 'none';
+      }).catch(err => alert("Error posting review: " + err.message));
+    }
+  });
+
+  // Listen for Live Updates
+  const reviewsRef = ref(db, 'reviews');
+  onValue(reviewsRef, (snapshot) => {
+    const grid = document.getElementById('reviewsGridContainer');
+    grid.innerHTML = '';
+
+    const reviewsData = snapshot.val();
+    if (!reviewsData) {
+      grid.innerHTML = '<p style="color: #8b949e; grid-column: 1/-1; text-align: center;">No reviews posted yet. Be the first to post!</p>';
+      return;
+    }
+
+    Object.values(reviewsData).reverse().forEach(data => {
+      const card = document.createElement('div');
+      card.style.cssText = "background-color: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 25px;";
+      card.innerHTML = `
+        <div style="color: #e3a008; margin-bottom: 15px; font-size: 1.1rem;">${data.stars}</div>
+        <p style="color: #c9d1d9; font-style: italic; line-height: 1.6; margin-bottom: 20px;">"${data.text}"</p>
+        <div style="border-top: 1px solid #21262d; padding-top: 15px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <strong style="color: #fff; display: block;">${data.name}</strong>
+                <span style="color: #8b949e; font-size: 0.85rem;">Client Field Review</span>
+            </div>
+            <span style="background: rgba(227, 160, 8, 0.15); color: #e3a008; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Verified Client</span>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  });
+</script>
 <section id="contact-headquarters" style="background-color: #0d1117; color: #ffffff; padding: 50px 20px; text-align: center;">
     <div style="max-width: 600px; margin: 0 auto;">
         
