@@ -1102,6 +1102,42 @@
     </div>
   </div>
 </section>
+        <!-- ================= FIELD REVIEW MODAL WINDOW ================= -->
+<div id="reviewModalWindow" style="display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); z-index: 10000; justify-content: center; align-items: center; padding: 20px;">
+  <div style="background-color: #161b22; border: 1px solid #30363d; border-radius: 12px; max-width: 500px; width: 100%; padding: 30px; text-align: left; position: relative;">
+    
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #30363d; padding-bottom: 15px;">
+      <h3 style="color: #fbbf24; margin: 0; font-size: 1.25rem; text-transform: uppercase;">Submit Field Review</h3>
+      <button id="closeModalBtn" style="background: none; border: none; color: #8b949e; font-size: 1.5rem; cursor: pointer;">&times;</button>
+    </div>
+
+    <form id="firebaseReviewForm" style="display: flex; flex-direction: column; gap: 16px;">
+      <div>
+        <label style="color: #c9d1d9; font-weight: bold; display: block; margin-bottom: 6px;">Full Name</label>
+        <input type="text" id="fbRevName" placeholder="e.g. John Doe" required style="width: 100%; padding: 10px; background-color: #0b0e14; border: 1px solid #30363d; border-radius: 6px; color: #fff; box-sizing: border-box;">
+      </div>
+
+      <div>
+        <label style="color: #c9d1d9; font-weight: bold; display: block; margin-bottom: 6px;">Rating</label>
+        <select id="fbRevStars" style="width: 100%; padding: 10px; background-color: #0b0e14; border: 1px solid #30363d; border-radius: 6px; color: #fbbf24; box-sizing: border-box;">
+          <option value="★★★★★">★★★★★ (5 Stars - Outstanding)</option>
+          <option value="★★★★☆">★★★★☆ (4 Stars - Great)</option>
+          <option value="★★★☆☆">★★★☆☆ (3 Stars - Satisfactory)</option>
+        </select>
+      </div>
+
+      <div>
+        <label style="color: #c9d1d9; font-weight: bold; display: block; margin-bottom: 6px;">Field Review</label>
+        <textarea id="fbRevText" rows="4" placeholder="Share your feedback..." required style="width: 100%; padding: 10px; background-color: #0b0e14; border: 1px solid #30363d; border-radius: 6px; color: #fff; box-sizing: border-box; resize: vertical;"></textarea>
+      </div>
+
+      <div style="display: flex; gap: 12px; justify-content: flex-end; margin-top: 10px;">
+        <button type="submit" style="background-color: #fbbf24; color: #000; font-weight: bold; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer;">Publish Review</button>
+      </div>
+    </form>
+
+  </div>
+</div>
 
 <!-- ================= CONTACT SECTION ================= -->
 <section id="contact-page" class="page-content" style="max-width: 800px; margin: 60px auto; padding: 40px 20px; background-color: #172136; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
