@@ -1001,6 +1001,8 @@
         </div>
 
        <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; max-width: 1200px; margin: 40px auto; padding: 0 20px; font-family: sans-serif;">
+<!-- Services & Rates Grid -->
+<div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; max-width: 1200px; margin: 40px auto; padding: 0 20px; font-family: sans-serif;">
 
   <!-- Obedience Foundation Block -->
   <div class="service-card" style="background-color: #172136; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid rgba(255, 255, 255, 0.05); min-height: 240px;">
@@ -1074,48 +1076,49 @@
     <div style="color: #ffffff; font-size: 1.75rem; font-weight: 800;">$140 <span style="color: #fbbf24; font-size: 0.9rem; font-weight: 700; text-transform: uppercase;">XCD</span></div>
   </div>
 
+</div> <!-- Explicitly closed services-grid container -->
+
+<!-- HOURS AND OPERATIONAL RULES MODULE -->
+<div id="operations-page" class="page-content" style="max-width: 1200px; margin: 40px auto; padding: 0 20px;">
+  <h2>Facility Operational Guidelines & Management Schedules</h2>
+  <p>To safely maintain the working drive profiles of our protection assets, strict compliance with facility laws is mandatory.</p>
+  
+  <div class="policy-item" style="margin-bottom: 20px;">
+    <h4 style="color:var(--accent-gold, #fbbf24); margin-top:0;"><i class="fa-solid fa-clock"></i> Standard Visitation Framework</h4>
+    <p style="margin:5px 0;"><strong>Monday through Saturday:</strong> 08:00 AM – 05:00 PM</p>
+    <p style="margin:5px 0;"><strong>Sundays:</strong> Completely Locked / Emergency Bookings Only</p>
+  </div>
+
+  <div class="policy-item">
+    <h4 style="color:var(--accent-gold, #fbbf24); margin-top:0;"><i class="fa-solid fa-scale-balanced"></i> Core Facility Laws</h4>
+    <ul style="margin:0; padding-left:20px; color:var(--text-secondary, #94a3b8);">
+      <li>All civilians must report to <strong>Natasha White</strong> at the administrative desk immediately upon entering.</li>
+      <li>Absolutely zero unauthorized physical profiling near the holding kennel structures is permitted.</li>
+      <li>Handlers must execute commands matching the custom framework established by Head Trainer <strong>Ishmael Samuel</strong>.</li>
+    </ul>
+  </div>
 </div>
-        <!-- HOURS AND OPERATIONAL RULES MODULE -->
-        <div id="operations-page" class="page-content">
-          <h2>Facility Operational Guidelines & Management Schedules</h2>
-          <p>To safely maintain the working drive profiles of our protection assets, strict compliance with facility laws is mandatory.</p>
-          
-          <div class="policy-item">
-              <h4 style="color:var(--accent-gold); margin-top:0;"><i class="fa-solid fa-clock"></i> Standard Visitation Framework</h4>
-              <p style="margin:5px 0;"><strong>Monday through Saturday:</strong> 08:00 AM – 05:00 PM</p>
-              <p style="margin:5px 0;"><strong>Sundays:</strong> Completely Locked / Emergency Bookings Only</p>
-          </div>
 
-          <div class="policy-item">
-              <h4 style="color:var(--accent-gold); margin-top:0;"><i class="fa-solid fa-scale-balanced"></i> Core Facility Laws</h4>
-              <ul style="margin:0; padding-left:20px; color:var(--text-secondary);">
-                  <li>All civilians must report to <strong>Natasha White</strong> at the administrative desk immediately upon entering.</li>
-                  <li>Absolutely zero unauthorized physical profiling near the holding kennel structures is permitted.</li>
-                  <li>Handlers must execute commands matching the custom framework established by Head Trainer <strong>Ishmael Samuel</strong>.</li>
-              </ul>
-          </div>
-        </div>
-     <section id="operational-reviews" class="page-content" style="background-color: #0b0e14; color: #ffffff; padding: 60px 20px; text-align: center;">
-    <div style="max-width: 1100px; margin: 0 auto;">
-        
-        <h2 style="color: #e3a008; font-size: 2rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;">
-            Handler & Client Field Reports
-        </h2>
-        <p style="color: #8b949e; margin-bottom: 25px; font-size: 1rem;">
-            Real-time client feedback on obedience, reactivity reduction, and behavior modification.
-        </p>
+<!-- FIELD REPORTS SECTION -->
+<section id="operational-reviews" class="page-content" style="background-color: #0b0e14; color: #ffffff; padding: 60px 20px; text-align: center;">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <h2 style="color: #e3a008; font-size: 2rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;">
+      Handler & Client Field Reports
+    </h2>
+    <p style="color: #8b949e; margin-bottom: 25px; font-size: 1rem;">
+      Real-time client feedback on obedience, reactivity reduction, and behavior modification.
+    </p>
 
-        <button id="openModalBtn" style="background-color: #e3a008; color: #000; font-weight: bold; padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; font-size: 1rem; margin-bottom: 40px;">
-            <i class="fa-solid fa-pen"></i> Submit Your Field Review
-        </button>
+    <button id="openModalBtn" style="background-color: #e3a008; color: #000; font-weight: bold; padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; font-size: 1rem; margin-bottom: 40px;">
+      <i class="fa-solid fa-pen"></i> Submit Your Field Review
+    </button>
 
-        <div id="reviewsGridContainer" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; text-align: left;">
-            <p id="loadingReviewsText" style="color: #8b949e; grid-column: 1/-1; text-align: center;">Loading field reports from database...</p>
-        </div>
-
+    <div id="reviewsGridContainer" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; text-align: left;">
+      <p id="loadingReviewsText" style="color: #8b949e; grid-column: 1/-1; text-align: center;">Loading field reports from database...</p>
     </div>
+  </div>
 </section>
-
+ 
 <div id="reviewModalWindow" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 10000; justify-content: center; align-items: center; padding: 20px;">
     <div style="background-color: #161b22; border: 1px solid #30363d; width: 100%; max-width: 500px; border-radius: 8px; padding: 30px; position: relative; color: #fff;">
         
