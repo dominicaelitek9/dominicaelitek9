@@ -787,7 +787,7 @@
           </div>
         </div>
 
-    <!-- DOMINICA ELITE K9 SOCIAL MEDIA SECTION -->
+ <!-- DOMINICA ELITE K9 SOCIAL MEDIA SECTION -->
 <div id="social-media-page" class="page-content">
   <h2>Dominica Elite K9 Services | Official Social Channels</h2>
   <p>Follow our working dogs, field operations, bite work training, and litter updates across our official social platforms. Like, subscribe, and share!</p>
@@ -800,15 +800,21 @@
           <h3 class="dog-name">YouTube Channel</h3>
           <p style="color: var(--text-secondary); font-size: 0.9rem;">Watch full-length protection demos, handler guides, and working line footage.</p>
           
-          <!-- LIVECOUNTS.IO YOUTUBE EMBED -->
+          <!-- LIVE SUBSCRIBER COUNTER (LIVECOUNTS EMBED) -->
           <iframe 
-              src="https://livecounts.io/embed/youtube-live-subscriber-counter/dominicaelitek9services" 
-              style="width: 100%; height: 140px; border: none; overflow: hidden; margin: 10px 0;" 
+              src="https://livecounts.io/embed/youtube-live-subscriber-counter/UCaSKuD4dJW9yyzu4t5DsfTbQ" 
+              style="width: 100%; height: 130px; border: none; overflow: hidden; margin-top: 10px;" 
               scrolling="no">
           </iframe>
 
+          <!-- OVERALL VIEWS DISPLAY (PIPED API) -->
+          <div style="background: rgba(0,0,0,0.05); padding: 10px; border-radius: 8px; margin: 10px 0; width: 100%;">
+              <span style="font-size: 0.8rem; color: var(--text-secondary); display: block; text-transform: uppercase; letter-spacing: 0.5px;">Overall YouTube Views</span>
+              <strong style="font-size: 1.3rem; color: #ff0000;" id="yt-overall-views">Loading...</strong>
+          </div>
+
           <a href="https://youtube.com/@dominicaelitek9services?si=Ldso96ZsmuQg8WES" target="_blank" style="text-decoration: none; width: 100%;">
-              <button style="width: 100%; margin-top: 10px; background-color: #ff0000; color: white;"><i class="fa-brands fa-youtube"></i> Subscribe & Watch</button>
+              <button style="width: 100%; margin-top: 5px; background-color: #ff0000; color: white;"><i class="fa-brands fa-youtube"></i> Subscribe & Watch</button>
           </a>
       </div>
 
@@ -818,20 +824,20 @@
           <h3 class="dog-name">TikTok Channel</h3>
           <p style="color: var(--text-secondary); font-size: 0.9rem;">High-intensity bite work clips, obedience drills, and training shorts.</p>
           
-          <!-- LIVECOUNTS.IO TIKTOK EMBED -->
+          <!-- LIVE FOLLOWER COUNTER (LIVECOUNTS EMBED) -->
           <iframe 
               src="https://livecounts.io/embed/tiktok-live-follower-counter/dominica.elitek9s" 
-              style="width: 100%; height: 140px; border: none; overflow: hidden; margin: 10px 0;" 
+              style="width: 100%; height: 130px; border: none; overflow: hidden; margin: 10px 0;" 
               scrolling="no">
           </iframe>
 
-          <a href="https://www.tiktok.com/@dominica.elitek9s" target="_blank" style="text-decoration: none; width: 100%;">
+          <a href="https://www.tiktok.com/@dominica.elitek9s" target="_blank" style="text-decoration: none; width: 100%; margin-top: auto;">
               <button style="width: 100%; margin-top: 10px; background-color: #000000; color: white;"><i class="fa-brands fa-tiktok"></i> Follow & Share</button>
           </a>
       </div>
 
   </div>
-</div> 
+</div>
         <!-- PUPPY CATALOGUE MODULE SECTION -->
         <div id="puppy-sales" class="page-content">
           <h2>Working Line Puppy Sales</h2>
@@ -1755,6 +1761,29 @@ function processMessageContent(text) {
         return `<a href="${url}" target="_blank">${url}</a>`;
     });
 }
+<script>
+async function loadOverallYouTubeViews() {
+    const channelId = 'UCaSKuD4dJW9yyzu4t5DsfTbQ';
+    const viewElement = document.getElementById('yt-overall-views');
+
+    try {
+        const response = await fetch(`https://api.piped.video/channel/${channelId}`);
+        const data = await response.json();
+
+        if (data && data.views !== undefined) {
+            // Format number with commas (e.g., 12,450)
+            viewElement.innerText = Number(data.views).toLocaleString();
+        } else {
+            viewElement.innerText = 'View on YouTube';
+        }
+    } catch (error) {
+        console.error('Error fetching views from Piped API:', error);
+        if (viewElement) viewElement.innerText = 'View on YouTube';
+    }
+}
+
+// Fetch view count when page loads
+document.addEventListener('DOMContentLoaded', loadOverallYouTubeViews);
 </script>
 </body>
 </html>
