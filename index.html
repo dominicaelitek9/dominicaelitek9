@@ -786,8 +786,7 @@
               </div>
           </div>
         </div>
-
- <!-- DOMINICA ELITE K9 SOCIAL MEDIA SECTION -->
+<!-- DOMINICA ELITE K9 SOCIAL MEDIA SECTION -->
 <div id="social-media-page" class="page-content">
   <h2>Dominica Elite K9 Services | Official Social Channels</h2>
   <p>Follow our working dogs, field operations, bite work training, and litter updates across our official social platforms. Like, subscribe, and share!</p>
@@ -800,21 +799,20 @@
           <h3 class="dog-name">YouTube Channel</h3>
           <p style="color: var(--text-secondary); font-size: 0.9rem;">Watch full-length protection demos, handler guides, and working line footage.</p>
           
-          <!-- LIVE SUBSCRIBER COUNTER -->
-          <iframe 
-              src="https://livecounts.io/embed/youtube-live-subscriber-counter/UCaSKuD4dJW9yyzu4t5DsfTbQ" 
-              style="width: 100%; height: 130px; border: none; overflow: hidden; margin-top: 10px;" 
-              scrolling="no">
-          </iframe>
-
-          <!-- DYNAMIC OVERALL VIEWS DISPLAY -->
-          <div style="background: rgba(0,0,0,0.05); padding: 10px; border-radius: 8px; margin: 10px 0; width: 100%;">
-              <span style="font-size: 0.8rem; color: var(--text-secondary); display: block; text-transform: uppercase; letter-spacing: 0.5px;">Overall YouTube Views</span>
-              <strong style="font-size: 1.3rem; color: #ff0000;" id="yt-overall-views">Loading...</strong>
+          <!-- STATS BADGES CONTAINER -->
+          <div style="display: flex; gap: 10px; width: 100%; margin: 15px 0;">
+              <div style="flex: 1; background: rgba(255, 0, 0, 0.08); padding: 12px 5px; border-radius: 8px; border: 1px solid rgba(255,0,0,0.2);">
+                  <span style="font-size: 0.75rem; color: var(--text-secondary); display: block; text-transform: uppercase; font-weight: bold;">Subscribers</span>
+                  <strong style="font-size: 1.1rem; color: #ff0000;">Official</strong>
+              </div>
+              <div style="flex: 1; background: rgba(255, 0, 0, 0.08); padding: 12px 5px; border-radius: 8px; border: 1px solid rgba(255,0,0,0.2);">
+                  <span style="font-size: 0.75rem; color: var(--text-secondary); display: block; text-transform: uppercase; font-weight: bold;">Channel Views</span>
+                  <strong style="font-size: 1.1rem; color: #ff0000;" id="yt-auto-views">7,702 Views</strong>
+              </div>
           </div>
 
           <a href="https://youtube.com/@dominicaelitek9services?si=Ldso96ZsmuQg8WES" target="_blank" style="text-decoration: none; width: 100%;">
-              <button style="width: 100%; margin-top: 5px; background-color: #ff0000; color: white;"><i class="fa-brands fa-youtube"></i> Subscribe & Watch</button>
+              <button style="width: 100%; margin-top: 5px; background-color: #ff0000; color: white; padding: 12px; font-weight: bold;"><i class="fa-brands fa-youtube"></i> Subscribe & Watch</button>
           </a>
       </div>
 
@@ -824,20 +822,27 @@
           <h3 class="dog-name">TikTok Channel</h3>
           <p style="color: var(--text-secondary); font-size: 0.9rem;">High-intensity bite work clips, obedience drills, and training shorts.</p>
           
-          <!-- LIVE FOLLOWER COUNTER -->
-          <iframe 
-              src="https://livecounts.io/embed/tiktok-live-follower-counter/dominica.elitek9s" 
-              style="width: 100%; height: 130px; border: none; overflow: hidden; margin: 10px 0;" 
-              scrolling="no">
-          </iframe>
+          <!-- STATS BADGES CONTAINER -->
+          <div style="display: flex; gap: 10px; width: 100%; margin: 15px 0;">
+              <div style="flex: 1; background: rgba(0, 242, 254, 0.08); padding: 12px 5px; border-radius: 8px; border: 1px solid rgba(0, 242, 254, 0.2);">
+                  <span style="font-size: 0.75rem; color: var(--text-secondary); display: block; text-transform: uppercase; font-weight: bold;">Followers</span>
+                  <strong style="font-size: 1.1rem; color: #00f2fe;">Official</strong>
+              </div>
+              <div style="flex: 1; background: rgba(0, 242, 254, 0.08); padding: 12px 5px; border-radius: 8px; border: 1px solid rgba(0, 242, 254, 0.2);">
+                  <span style="font-size: 0.75rem; color: var(--text-secondary); display: block; text-transform: uppercase; font-weight: bold;">Content</span>
+                  <strong style="font-size: 1.1rem; color: #00f2fe;">Shorts & Clips</strong>
+              </div>
+          </div>
 
           <a href="https://www.tiktok.com/@dominica.elitek9s" target="_blank" style="text-decoration: none; width: 100%; margin-top: auto;">
-              <button style="width: 100%; margin-top: 10px; background-color: #000000; color: white;"><i class="fa-brands fa-tiktok"></i> Follow & Share</button>
+              <button style="width: 100%; margin-top: 5px; background-color: #000000; color: white; padding: 12px; font-weight: bold;"><i class="fa-brands fa-tiktok"></i> Follow & Share</button>
           </a>
       </div>
 
   </div>
 </div>
+
+
         <!-- PUPPY CATALOGUE MODULE SECTION -->
         <div id="puppy-sales" class="page-content">
           <h2>Working Line Puppy Sales</h2>
@@ -1762,26 +1767,36 @@ function processMessageContent(text) {
     });
 }
 
-async function fetchYouTubeViews() {
+<!-- AUTOMATIC YOUTUBE VIEW COUNTER SCRIPT -->
+<script>
+async function loadAutoYouTubeViews() {
     const channelId = 'UCaSKuD4dJW9yyzu4t5DsfTbQ';
-    const viewElem = document.getElementById('yt-overall-views');
+    const viewElem = document.getElementById('yt-auto-views');
 
-    try {
-        const res = await fetch(`https://yt.lemnoslife.com/noKey/channels?part=statistics&id=${channelId}`);
-        const data = await res.json();
-        
-        if (data.items && data.items.length > 0) {
-            const views = Number(data.items[0].statistics.viewCount).toLocaleString();
-            if (viewElem) viewElem.innerText = `${views} Views`;
-        } else {
-            if (viewElem) viewElem.innerText = '7,702 Views';
+    const apiEndpoints = [
+        `https://inv.tux.pizza/api/v1/channels/${channelId}`,
+        `https://invidious.nerdvpn.de/api/v1/channels/${channelId}`,
+        `https://vid.puffyan.us/api/v1/channels/${channelId}`
+    ];
+
+    for (const endpoint of apiEndpoints) {
+        try {
+            const response = await fetch(endpoint);
+            if (response.ok) {
+                const data = await response.json();
+                if (data && data.totalViews) {
+                    viewElem.innerText = `${Number(data.totalViews).toLocaleString()} Views`;
+                    return;
+                }
+            }
+        } catch (e) {
+            console.warn('API instance skipped, trying backup...', e);
         }
-    } catch (err) {
-        if (viewElem) viewElem.innerText = '7,702 Views';
     }
 }
 
-document.addEventListener('DOMContentLoaded', fetchYouTubeViews);
+document.addEventListener('DOMContentLoaded', loadAutoYouTubeViews);
+
 </script>
 </body>
 </html>
