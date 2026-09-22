@@ -604,7 +604,7 @@
         <ul>
           <li><a onclick="showPage('home-page')" id="nav-home-page" class="active">Home</a></li>
           <li><a onclick="showPage('about-page')" id="nav-about-page">About</a></li>
-          <li><a onclick="showPage('training-page')" id="nav-training-page">Watch Training</a></li>
+          <li><a onclick="showPage('social-media-page')" id="nav-social-media-page">Social Feeds</a></li>
           <li><a onclick="showPage('services-rates')" id="nav-services-rates">Services & Rates</a></li>
           <li><a onclick="showPage('operational-reviews')" id="nav-reviews-page">Field Reports</a></li>
           <li><a onclick="showPage('contact-headquarters')" id="nav-contact-page">Contact Us</a></li>   
@@ -787,24 +787,59 @@
           </div>
         </div>
 
-        <!-- WATCH TRAINING MODULE SECTION -->
-        <div id="training-page" class="page-content">
-          <h2>Watch Training Operations</h2>
-          <p>Observe our operational lines undergoing comprehensive field tracking maneuvers, structural bite stability processing, and high-intensity environmental pressure training.</p>
+        <!-- SOCIAL MEDIA MODULE SECTION -->
+<div id="social-media-page" class="page-content">
+  <h2>Dominica Elite K9 Services | Official Social Channels</h2>
+  <p>Follow our working dogs, field operations, bite work training, and litter updates across our official social platforms. Like, subscribe, and share!</p>
+
+  <div class="catalog-grid-system" style="margin-top: 30px;">
+      
+      <!-- YOUTUBE CARD -->
+      <div class="dog-profile-card" style="text-align: center; align-items: center; padding: 20px;">
+          <i class="fa-brands fa-youtube" style="font-size: 3.5rem; color: #ff0000; margin-bottom: 15px;"></i>
+          <h3 class="dog-name">YouTube Channel</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Watch full-length protection demos, handler guides, and working line footage.</p>
           
-          <div class="video-grid" id="live-video-grid-mount">
-              <div class="video-item" data-type="long">
-                  <span class="video-type-badge long">Long Maneuver</span>
-                             <iframe width="100%" height="250" src="https://www.youtube.com/embed/RfKGc7eWCF4" frameborder="0" allowfullscreen></iframe>
-                  <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:5px; text-align:center;">Advanced Tactical Obedience & Drive Management Demo | Dominica Elite K9 Services</p>
+          <div style="display: flex; justify-content: space-around; width: 100%; margin: 15px 0; background: rgba(0,0,0,0.05); padding: 10px; border-radius: 8px;">
+              <div>
+                  <strong style="display: block; font-size: 1.2rem;" id="yt-sub-count">--</strong>
+                  <span style="font-size: 0.8rem; color: var(--text-secondary);">Subscribers</span>
               </div>
-              <div class="video-item" data-type="short">
-                  <span class="video-type-badge short">Tactical Short</span>
-                  <iframe width="100%" height="250"src="https://www.youtube.com/embed/zbYaORnxFps" frameborder="0" allowfullscreen></iframe>
-                  <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:5px; text-align:center;">K9 Utility Focus & Environmental Confidence Progression</p>
+              <div>
+                  <strong style="display: block; font-size: 1.2rem;" id="yt-view-count">--</strong>
+                  <span style="font-size: 0.8rem; color: var(--text-secondary);">Total Views</span>
               </div>
           </div>
-        </div>
+
+          <a href="https://youtube.com/@dominicaelitek9services?si=Ldso96ZsmuQg8WES" target="_blank" style="text-decoration: none; width: 100%;">
+              <button style="width: 100%; margin-top: 10px; background-color: #ff0000; color: white;"><i class="fa-brands fa-youtube"></i> Subscribe & Watch</button>
+          </a>
+      </div>
+
+      <!-- TIKTOK CARD -->
+      <div class="dog-profile-card" style="text-align: center; align-items: center; padding: 20px;">
+          <i class="fa-brands fa-tiktok" style="font-size: 3.5rem; color: #00f2fe; margin-bottom: 15px;"></i>
+          <h3 class="dog-name">TikTok Channel</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">High-intensity bite work clips, obedience drills, and training shorts.</p>
+          
+          <div style="display: flex; justify-content: space-around; width: 100%; margin: 15px 0; background: rgba(0,0,0,0.05); padding: 10px; border-radius: 8px;">
+              <div>
+                  <strong style="display: block; font-size: 1.2rem;" id="tt-follower-count">--</strong>
+                  <span style="font-size: 0.8rem; color: var(--text-secondary);">Followers</span>
+              </div>
+              <div>
+                  <strong style="display: block; font-size: 1.2rem;" id="tt-like-count">--</strong>
+                  <span style="font-size: 0.8rem; color: var(--text-secondary);">Total Likes</span>
+              </div>
+          </div>
+
+          <a href="https://www.tiktok.com/@dominica.elitek9s" target="_blank" style="text-decoration: none; width: 100%;">
+              <button style="width: 100%; margin-top: 10px; background-color: #000000; color: white;"><i class="fa-brands fa-tiktok"></i> Follow & Share</button>
+          </a>
+      </div>
+
+  </div>
+</div>
 
         <!-- PUPPY CATALOGUE MODULE SECTION -->
         <div id="puppy-sales" class="page-content">
