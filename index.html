@@ -616,7 +616,251 @@
     </header>
 
     <div class="content-container">
+<!-- ============================================================ -->
+<!-- DOMINICA ELITE K9 - ACADEMY & LMS PORTAL PAGE                -->
+<!-- ============================================================ -->
+<div id="academy-page" class="page-container hidden">
 
+    <!-- ACADEMY HERO SECTION -->
+    <div style="background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('Breed-Hero-German-Shepherd.jpg') center/cover no-repeat; padding: 4rem 2rem; border-radius: 8px; text-align: center; border: 1px solid #374151; margin-bottom: 2rem;">
+        <h1 style="color: var(--accent-gold); font-size: 2.5rem; margin-bottom: 0.8rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Dominica Elite K9 Academy</h1>
+        <p style="color: #e5e7eb; max-width: 800px; margin: 0 auto 1.5rem auto; font-size: 1.1rem; line-height: 1.6;">
+            Professional Dog Trainer Certification Programs & Interactive Student Portal. Master practical handling, behavior modification, and canine science.
+        </p>
+        <button onclick="document.getElementById('academy-syllabus-section').scrollIntoView({behavior: 'smooth'})" style="background: var(--accent-gold); color: #000; padding: 0.8rem 1.8rem; font-weight: bold; border: none; border-radius: 4px; font-size: 1rem; cursor: pointer;">
+            Explore Certification Levels
+        </button>
+    </div>
+
+    <!-- CERTIFICATION TRACKS & SYLLABI -->
+    <div id="academy-syllabus-section" style="margin-bottom: 3rem;">
+        <h2 style="color: #fff; font-size: 1.8rem; margin-bottom: 1rem; text-align: center;">Course Outlines & Certification Tracks</h2>
+        
+        <!-- Track Selector Tabs with Durations -->
+        <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+            <button onclick="switchSyllabusTab('l1')" id="tab-syl-l1" style="background: var(--accent-gold); color: #000; font-weight: bold; padding: 0.7rem 1.5rem; border: none; border-radius: 4px; cursor: pointer;">
+                Level 1: Dog Owner Mastery <span style="font-size: 0.8rem; opacity: 0.85;">(6 Weeks)</span>
+            </button>
+            <button onclick="switchSyllabusTab('l2')" id="tab-syl-l2" style="background: #1f2937; color: #fff; font-weight: bold; padding: 0.7rem 1.5rem; border: 1px solid #374151; border-radius: 4px; cursor: pointer;">
+                Level 2: Apprentice Trainer <span style="font-size: 0.8rem; opacity: 0.85;">(6 Months)</span>
+            </button>
+            <button onclick="switchSyllabusTab('l3')" id="tab-syl-l3" style="background: #1f2937; color: #fff; font-weight: bold; padding: 0.7rem 1.5rem; border: 1px solid #374151; border-radius: 4px; cursor: pointer;">
+                Level 3: Master Trainer <span style="font-size: 0.8rem; opacity: 0.85;">(12 Months)</span>
+            </button>
+        </div>
+
+        <!-- LEVEL 1 SYLLABUS PANEL -->
+        <div id="syl-l1" class="syllabus-panel">
+            <div style="background: #111827; border: 1px solid #374151; border-left: 4px solid var(--accent-gold); padding: 1.5rem; border-radius: 6px; margin-bottom: 1.5rem;">
+                <h4 style="color: var(--accent-gold); font-size: 1.15rem; margin-bottom: 0.5rem;">Module 1: Canine Body Language & Communication Engine</h4>
+                <ul style="color: #9ca3af; padding-left: 1.25rem; line-height: 1.7; margin-bottom: 1rem;">
+                    <li>Lesson 1.1: Anatomy of a Happy Dog vs. Arousal Signals[cite: 3]</li>
+                    <li>Lesson 1.2: Subtle Stress Signals, Yawning, Pacing & Whale Eye[cite: 3]</li>
+                    <li>Lesson 1.3: Calming Signals & Displacement Behaviors[cite: 3]</li>
+                    <li>Lesson 1.4: De-escalation & Recognizing the Ladder of Aggression[cite: 3]</li>
+                </ul>
+                <div style="background: #1f2937; padding: 1rem; border-radius: 4px; font-size: 0.9rem; color: #d1d5db;">
+                    <p><strong>📋 Assignment 1.1:</strong> Video Submission — Record a 2-minute video analyzing your dog's subtle body language during an everyday interaction.</p>
+                    <p style="margin-top: 0.5rem;"><strong>📝 Module 1 Quiz:</strong> 10-Question Knowledge Check on stress indicators and escalation ladders.</p>
+                </div>
+            </div>
+
+            <div style="background: #111827; border: 1px solid #374151; border-left: 4px solid var(--accent-gold); padding: 1.5rem; border-radius: 6px; margin-bottom: 1.5rem;">
+                <h4 style="color: var(--accent-gold); font-size: 1.15rem; margin-bottom: 0.5rem;">Module 2: Level 1 Basic Obedience & Lure Fading</h4>
+                <ul style="color: #9ca3af; padding-left: 1.25rem; line-height: 1.7; margin-bottom: 1rem;">
+                    <li>Lesson 2.1: Basic Obedience Foundations — Luring Sit, Down, Stand, and Recall</li>
+                    <li>Lesson 2.2: Marker Mechanics ("Yes!" Verbal Marker & Clicker Timing)[cite: 3]</li>
+                    <li>Lesson 2.3: Intro to Hand Fading — Transitioning from Food Lures to Clear Hand Signals</li>
+                    <li>Lesson 2.4: Bed/Place Foundation Target Training[cite: 3]</li>
+                    <li>Lesson 2.5: Impulse Control Engine (Leave It & Wait Protocol)[cite: 3]</li>
+                    <li>Lesson 2.6: Loose-Leash Walking & Polite Sidewalk Footwork[cite: 3]</li>
+                </ul>
+                <div style="background: #1f2937; padding: 1rem; border-radius: 4px; font-size: 0.9rem; color: #d1d5db;">
+                    <p><strong>📋 Assignment 2.1:</strong> Practical Handling Video — Demonstrate fading a food lure into a clean hand signal for Sit, Down, and Place across 3 consecutive reps.</p>
+                    <p style="margin-top: 0.5rem;"><strong>📝 Module 2 Quiz:</strong> Automated assessment on marker timing precision and luring mechanics.</p>
+                </div>
+            </div>
+
+            <div style="background: #111827; border: 1px solid #374151; border-left: 4px solid var(--accent-gold); padding: 1.5rem; border-radius: 6px;">
+                <h4 style="color: var(--accent-gold); font-size: 1.15rem; margin-bottom: 0.5rem;">Module 3: Puppy Development & Preventive Care</h4>
+                <ul style="color: #9ca3af; padding-left: 1.25rem; line-height: 1.7; margin-bottom: 1rem;">
+                    <li>Lesson 3.1: Housebreaking, Crate Conditioning & Schedule Routines[cite: 3]</li>
+                    <li>Lesson 3.2: Redirecting Puppy Nipping & Landshark Behavior[cite: 3]</li>
+                    <li>Lesson 3.3: Cooperative Care, Nail Trimming & Muzzle Conditioning[cite: 3]</li>
+                </ul>
+                <div style="background: #1f2937; padding: 1rem; border-radius: 4px; font-size: 0.9rem; color: #d1d5db;">
+                    <p><strong>📋 Assignment 3.1:</strong> Daily Log Submission — Submit a 7-day housebreaking schedule and crate training routine log.</p>
+                    <p style="margin-top: 0.5rem;"><strong>🎓 Level 1 Final Exam:</strong> Comprehensive 25-Question Test covering body language, basic obedience, and puppy management.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- LEVEL 2 SYLLABUS PANEL -->
+        <div id="syl-l2" class="syllabus-panel" style="display: none;">
+            <div style="background: #111827; border: 1px solid #374151; border-left: 4px solid var(--accent-gold); padding: 1.5rem; border-radius: 6px; margin-bottom: 1.5rem;">
+                <h4 style="color: var(--accent-gold); font-size: 1.15rem; margin-bottom: 0.5rem;">Module 1: Scientific Learning Theory & Operant Conditioning</h4>
+                <ul style="color: #9ca3af; padding-left: 1.25rem; line-height: 1.7; margin-bottom: 1rem;">
+                    <li>Lesson 1.1: Classical Conditioning & Pavlovian Associations[cite: 3]</li>
+                    <li>Lesson 1.2: The 4 Quadrants of Operant Conditioning (PR, NR, PP, NP)[cite: 3]</li>
+                    <li>Lesson 1.3: Reinforcement Schedules (Variable vs. Fixed Ratios)[cite: 3]</li>
+                    <li>Lesson 1.4: LIMA (Least Intrusive, Minimally Aversive) Ethical Framework[cite: 3]</li>
+                </ul>
+                <div style="background: #1f2937; padding: 1rem; border-radius: 4px; font-size: 0.9rem; color: #d1d5db;">
+                    <p><strong>📋 Assignment 1.1:</strong> Operant Analysis Essay — Write a 500-word breakdown identifying all 4 quadrants in a provided training video scenario.</p>
+                    <p style="margin-top: 0.5rem;"><strong>📝 Module 1 Quiz:</strong> Learning Theory & Quadrant Identification Assessment.</p>
+                </div>
+            </div>
+
+            <div style="background: #111827; border: 1px solid #374151; border-left: 4px solid var(--accent-gold); padding: 1.5rem; border-radius: 6px; margin-bottom: 1.5rem;">
+                <h4 style="color: var(--accent-gold); font-size: 1.15rem; margin-bottom: 0.5rem;">Module 2: Intermediate & Advanced Obedience Mechanics</h4>
+                <ul style="color: #9ca3af; padding-left: 1.25rem; line-height: 1.7; margin-bottom: 1rem;">
+                    <li>Lesson 2.1: Basic Obedience Maintenance — Fast Response Drives for Sit, Down, and Stay</li>
+                    <li>Lesson 2.2: Level 2 Advanced Obedience — Precision Heeling, Auto-Sits & Focused Heel Work</li>
+                    <li>Lesson 2.3: Intermediate Hand Fading — Minimizing Physical Signals into Subtle Body Gestures</li>
+                    <li>Lesson 2.4: 3-Part Marker System (Terminal, Duration, & Release Markers)[cite: 3]</li>
+                    <li>Lesson 2.5: Proofing Mechanics using the 3 Ds (Distance, Duration, Distraction)[cite: 3]</li>
+                    <li>Lesson 2.6: Non-Negotiable Emergency Recall System[cite: 3]</li>
+                </ul>
+                <div style="background: #1f2937; padding: 1rem; border-radius: 4px; font-size: 0.9rem; color: #d1d5db;">
+                    <p><strong>📋 Assignment 2.1:</strong> Video Submission — Unedited video demonstrating 3-Part Marker execution with proofing against controlled distractions.</p>
+                    <p style="margin-top: 0.5rem;"><strong>📝 Module 2 Quiz:</strong> Proofing Strategies and Marker System Rules.</p>
+                </div>
+            </div>
+
+            <div style="background: #111827; border: 1px solid #374151; border-left: 4px solid var(--accent-gold); padding: 1.5rem; border-radius: 6px;">
+                <h4 style="color: var(--accent-gold); font-size: 1.15rem; margin-bottom: 0.5rem;">Module 3: Client Coaching & Safety Protocols</h4>
+                <ul style="color: #9ca3af; padding-left: 1.25rem; line-height: 1.7; margin-bottom: 1rem;">
+                    <li>Lesson 3.1: Client Communication, Homework Design & Video Feedback[cite: 3]</li>
+                    <li>Lesson 3.2: Single & Two-Person Dog Fight Intervention Protocols[cite: 3]</li>
+                </ul>
+                <div style="background: #1f2937; padding: 1rem; border-radius: 4px; font-size: 0.9rem; color: #d1d5db;">
+                    <p><strong>📋 Assignment 3.1:</strong> Client Plan Case Study — Draft a 4-week training plan for a mock client with a reactive dog.</p>
+                    <p style="margin-top: 0.5rem;"><strong>🎓 Level 2 Final Exam:</strong> Apprentice Practical Exam and Theory Assessment.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- LEVEL 3 SYLLABUS PANEL -->
+        <div id="syl-l3" class="syllabus-panel" style="display: none;">
+            <div style="background: #111827; border: 1px solid #374151; border-left: 4px solid var(--accent-gold); padding: 1.5rem; border-radius: 6px; margin-bottom: 1.5rem;">
+                <h4 style="color: var(--accent-gold); font-size: 1.15rem; margin-bottom: 0.5rem;">Module 1: Master-Level Advanced Obedience & Off-Leash Reliability</h4>
+                <ul style="color: #9ca3af; padding-left: 1.25rem; line-height: 1.7; margin-bottom: 1rem;">
+                    <li>Lesson 1.1: Complete Basic & Advanced Obedience Mastery Across High-Distraction Environments</li>
+                    <li>Lesson 1.2: Complete Signal & Hand Fading — Transitioning Entirely to Verbal Cues and Micro-Gestures</li>
+                    <li>Lesson 1.3: Off-Leash Utility, Motion Exercises & Emergency Drop on the Fly[cite: 3]</li>
+                    <li>Lesson 1.4: Long-Line Generalization, Fading Physical Lines & Safety Bubbles[cite: 3]</li>
+                    <li>Lesson 1.5: Out-of-Sight Stays & Boundary Control Systems[cite: 3]</li>
+                </ul>
+                <div style="background: #1f2937; padding: 1rem; border-radius: 4px; font-size: 0.9rem; color: #d1d5db;">
+                    <p><strong>📋 Assignment 1.1:</strong> Unedited Field Reel — Demonstrate off-leash obedience, emergency drop on the fly, and complete hand fading in an open park environment.</p>
+                    <p style="margin-top: 0.5rem;"><strong>📝 Module 1 Quiz:</strong> Off-Leash Safety Mechanics & Line Fading Assessment.</p>
+                </div>
+            </div>
+
+            <div style="background: #111827; border: 1px solid #374151; border-left: 4px solid var(--accent-gold); padding: 1.5rem; border-radius: 6px; margin-bottom: 1.5rem;">
+                <h4 style="color: var(--accent-gold); font-size: 1.15rem; margin-bottom: 0.5rem;">Module 2: Severe Behavior Modification</h4>
+                <ul style="color: #9ca3af; padding-left: 1.25rem; line-height: 1.7; margin-bottom: 1rem;">
+                    <li>Lesson 2.1: Systematic Desensitization & Counter-Conditioning (DS/CC)[cite: 3]</li>
+                    <li>Lesson 2.2: Leash Reactivity (BAT & LAT Protocols)[cite: 3]</li>
+                    <li>Lesson 2.3: Separation Anxiety Assessment & Graduation Plans[cite: 3]</li>
+                    <li>Lesson 2.4: Severe Aggression & Functional Behavior Assessments (FBA)[cite: 3]</li>
+                </ul>
+                <div style="background: #1f2937; padding: 1rem; border-radius: 4px; font-size: 0.9rem; color: #d1d5db;">
+                    <p><strong>📋 Assignment 2.1:</strong> Clinical FBA Submission — Complete a full Functional Behavior Assessment for a real or assigned aggressive behavior case study.</p>
+                    <p style="margin-top: 0.5rem;"><strong>📝 Module 2 Quiz:</strong> Advanced Behavior Modification & Desensitization Mechanics.</p>
+                </div>
+            </div>
+
+            <div style="background: #111827; border: 1px solid #374151; border-left: 4px solid var(--accent-gold); padding: 1.5rem; border-radius: 6px;">
+                <h4 style="color: var(--accent-gold); font-size: 1.15rem; margin-bottom: 0.5rem;">Module 3: Business Operations & Legal Infrastructure</h4>
+                <ul style="color: #9ca3af; padding-left: 1.25rem; line-height: 1.7; margin-bottom: 1rem;">
+                    <li>Lesson 3.1: Liability Waivers, Client Contracts & Dominica Legal Compliance[cite: 3]</li>
+                    <li>Lesson 3.2: Veterinary Referral Loops & Behavioral Pharmacology Basics[cite: 3]</li>
+                </ul>
+                <div style="background: #1f2937; padding: 1rem; border-radius: 4px; font-size: 0.9rem; color: #d1d5db;">
+                    <p><strong>📋 Assignment 3.1:</strong> Professional Document Package — Draft custom liability waivers and service contracts tailored for professional training in Dominica.</p>
+                    <p style="margin-top: 0.5rem;"><strong>🎓 Level 3 Master Certification Board:</strong> Comprehensive Written Examination & Practical Case Review.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- STUDENT COURSE MATERIAL VIEWER & LMS PORTAL -->
+    <div style="background: #111827; border: 1px solid #374151; border-radius: 8px; padding: 2rem;">
+        
+        <!-- ROLE LOGIN & AUTH BAR -->
+        <div style="background: #1f2937; border: 1px solid #374151; padding: 1rem; border-radius: 6px; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div style="display: flex; align-items: center; gap: 0.8rem;">
+                <span style="color: var(--accent-gold); font-size: 1.2rem;">🔐</span>
+                <div>
+                    <span style="color: #fff; font-weight: bold; font-size: 0.95rem;">Portal Account Status: </span>
+                    <span id="active-user-role-badge" style="background: #374151; color: #d1d5db; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">Guest Mode</span>
+                </div>
+            </div>
+            <div style="display: flex; gap: 0.5rem;">
+                <button onclick="loginAsRole('student')" style="background: var(--accent-gold); color: #000; font-weight: bold; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">Login as Student</button>
+                <button onclick="loginAsRole('trainer')" style="background: #374151; color: #fff; font-weight: bold; border: 1px solid #4b5563; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">Login as Master Trainer</button>
+            </div>
+        </div>
+
+        <!-- LMS HEADER WITH DURATION & PRICING DROPDOWN -->
+        <div style="border-bottom: 1px solid #374151; padding-bottom: 1rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div>
+                <h2 style="color: var(--accent-gold); font-size: 1.6rem; margin: 0;">🎓 Student Course Portal</h2>
+                <p style="color: #9ca3af; font-size: 0.9rem; margin-top: 0.2rem;">Select a track to view lectures, read PDF guides, take quizzes, and submit assignments.</p>
+            </div>
+            <div>
+                <label style="color: #9ca3af; font-size: 0.85rem; margin-right: 0.5rem;">Select Active Course:</label>
+                <select id="lms-track-select" onchange="loadLMSCourse(this.value)" style="background: #1f2937; color: #fff; border: 1px solid #374151; padding: 0.6rem 1rem; border-radius: 4px; font-weight: bold;">
+                    <option value="l1">Level 1: Dog Owner Mastery — 6 Weeks ($1,500 XCD)</option>
+                    <option value="l2">Level 2: Apprentice Trainer — 6 Months ($4,000 XCD)</option>
+                    <option value="l3">Level 3: Master Dog Trainer — 12 Months ($8,000 XCD)</option>
+                </select>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 280px 1fr; gap: 1.5rem;" class="lms-grid-responsive">
+            <!-- Sidebar: Lesson List -->
+            <div style="background: #0b1120; border: 1px solid #374151; border-radius: 6px; padding: 1rem; max-height: 500px; overflow-y: auto;">
+                <h4 style="color: #fff; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.8rem; border-bottom: 1px solid #374151; padding-bottom: 0.4rem;">
+                    Course Content
+                </h4>
+                <div id="lms-lesson-list"></div>
+            </div>
+
+            <!-- Main Workspace Display -->
+            <div style="background: #0b1120; border: 1px solid #374151; border-radius: 6px; padding: 1.5rem;">
+                <div id="lms-content-display"></div>
+            </div>
+        </div>
+
+        <!-- 1-ON-1 DIRECT MESSAGING ENGINE (STUDENT <-> TRAINER) -->
+        <div style="margin-top: 2rem; background: #0b1120; border: 1px solid #374151; border-radius: 8px; padding: 1.5rem;">
+            <div style="border-bottom: 1px solid #374151; padding-bottom: 0.8rem; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="color: var(--accent-gold); font-size: 1.2rem; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+                    💬 1-on-1 Direct Messaging Engine
+                </h3>
+                <span style="color: #9ca3af; font-size: 0.8rem;">Direct Channel to Head Trainer</span>
+            </div>
+            
+            <!-- Message Thread History Display -->
+            <div id="lms-chat-thread" style="background: #111827; border: 1px solid #374151; border-radius: 6px; padding: 1rem; height: 220px; overflow-y: auto; margin-bottom: 1rem; display: flex; flex-direction: column; gap: 0.8rem;">
+                <div style="background: #1f2937; padding: 0.8rem; border-radius: 6px; max-width: 80%; border-left: 3px solid var(--accent-gold);">
+                    <strong style="color: var(--accent-gold); font-size: 0.85rem;">Master Trainer (Dominica K9):</strong>
+                    <p style="color: #d1d5db; font-size: 0.9rem; margin-top: 0.2rem;">Welcome to the portal! Use this private 1-on-1 channel to ask questions regarding your assignments or course theory.</p>
+                </div>
+            </div>
+
+            <!-- Input Box & Send Action -->
+            <div style="display: flex; gap: 0.8rem;">
+                <input type="text" id="lms-chat-input" placeholder="Type your message or ask a question..." style="flex: 1; background: #1f2937; border: 1px solid #374151; color: #fff; padding: 0.7rem 1rem; border-radius: 4px; font-size: 0.9rem;">
+                <button onclick="sendLMSMessage()" style="background: var(--accent-gold); color: #000; font-weight: bold; border: none; padding: 0.7rem 1.5rem; border-radius: 4px; cursor: pointer; font-size: 0.9rem;">Send</button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
       <!-- SEPARATE NAV TAG FOR TARGET FEATURES, STORES, AND MEDIA FEEDS -->
       <nav class="secondary-nav-bar" id="features-assets-navigation">
           <ul>
@@ -1837,7 +2081,179 @@ async function fetchLiveYouTubeStats() {
 }
 
 document.addEventListener('DOMContentLoaded', fetchLiveYouTubeStats);
+// ============================================================
+// ACADEMY & LMS PORTAL ENGINE
+// ============================================================
 
+// State Management
+let currentRole = 'Guest'; // 'Guest', 'Student', or 'Trainer'
+let currentTrack = 'l1';
+
+// LMS Course Data Repository
+const lmsCourses = {
+    l1: {
+        title: "Level 1: Dog Owner Mastery (6 Weeks)",
+        lessons: [
+            { id: "1.1", title: "Module 1: Canine Body Language", type: "lecture", content: "Understanding subtle stress signals, yawning, pacing, whale eye, and the ladder of aggression." },
+            { id: "1.2", title: "Module 2: Basic Obedience & Markers", type: "video", content: "Luring Sit, Down, Stand, Recall, and establishing 'Yes!' verbal marker timing." },
+            { id: "1.3", title: "Module 3: Puppy Care & Schedules", type: "pdf", content: "Housebreaking routines, crate conditioning, and redirection of puppy nipping." }
+        ]
+    },
+    l2: {
+        title: "Level 2: Apprentice Trainer (6 Months)",
+        lessons: [
+            { id: "2.1", title: "Module 1: Scientific Learning Theory", type: "lecture", content: "Classical vs. Operant Conditioning, the 4 Quadrants, and LIMA framework." },
+            { id: "2.2", title: "Module 2: Intermediate Mechanics", type: "video", content: "3-Part Marker system, proofing across Distance/Duration/Distraction, and emergency recalls." },
+            { id: "2.3", title: "Module 3: Client Coaching & Safety", type: "pdf", content: "Structuring client homework, video analysis, and dog fight intervention protocols." }
+        ]
+    },
+    l3: {
+        title: "Level 3: Master Dog Trainer (12 Months)",
+        lessons: [
+            { id: "3.1", title: "Module 1: Off-Leash Reliability", type: "video", content: "Complete hand signal fading, micro-gestures, emergency drop on the fly, and line fading." },
+            { id: "3.2", title: "Module 2: Severe Behavior Modification", type: "lecture", content: "Desensitization/Counter-conditioning (DS/CC), BAT/LAT protocols, and Functional Behavior Assessments (FBA)." },
+            { id: "3.3", title: "Module 3: Business & Legal", type: "pdf", content: "Liability waivers, client contracts under Dominica law, and veterinary referral loops." }
+        ]
+    }
+};
+
+// 1. Tab Switcher for Syllabus Section
+function switchSyllabusTab(trackId) {
+    const tabs = ['l1', 'l2', 'l3'];
+    tabs.forEach(t => {
+        const panel = document.getElementById(`syl-${t}`);
+        const tabBtn = document.getElementById(`tab-syl-${t}`);
+        if (panel && tabBtn) {
+            if (t === trackId) {
+                panel.style.display = 'block';
+                tabBtn.style.background = 'var(--accent-gold)';
+                tabBtn.style.color = '#000';
+            } else {
+                panel.style.display = 'none';
+                tabBtn.style.background = '#1f2937';
+                tabBtn.style.color = '#fff';
+            }
+        }
+    });
+}
+
+// 2. Role-Based Authentication Switcher
+function loginAsRole(role) {
+    const badge = document.getElementById('active-user-role-badge');
+    if (role === 'student') {
+        currentRole = 'Student';
+        badge.innerText = 'Logged in as: Student';
+        badge.style.background = 'var(--accent-gold)';
+        badge.style.color = '#000';
+    } else if (role === 'trainer') {
+        currentRole = 'Master Trainer';
+        badge.innerText = 'Logged in as: Master Trainer';
+        badge.style.background = '#10b981'; // Green accent for Trainer
+        badge.style.color = '#fff';
+    }
+    renderChatMessages();
+}
+
+// 3. Load Active Course Content in LMS
+function loadLMSCourse(trackId) {
+    currentTrack = trackId;
+    const course = lmsCourses[trackId];
+    const listContainer = document.getElementById('lms-lesson-list');
+    const displayContainer = document.getElementById('lms-content-display');
+
+    if (!course || !listContainer || !displayContainer) return;
+
+    // Build sidebar list
+    listContainer.innerHTML = course.lessons.map((lesson, idx) => `
+        <div onclick="selectLMSLesson('${trackId}', ${idx})" style="padding: 0.6rem; border-radius: 4px; background: #111827; margin-bottom: 0.5rem; cursor: pointer; border: 1px solid #374151;">
+            <strong style="color: var(--accent-gold); font-size: 0.85rem;">${lesson.id}</strong>
+            <p style="color: #e5e7eb; font-size: 0.85rem; margin: 0.2rem 0 0 0;">${lesson.title}</p>
+        </div>
+    `).join('');
+
+    // Load first lesson by default
+    selectLMSLesson(trackId, 0);
+}
+
+// 4. Render Selected Lesson Content
+function selectLMSLesson(trackId, index) {
+    const lesson = lmsCourses[trackId].lessons[index];
+    const displayContainer = document.getElementById('lms-content-display');
+
+    if (!lesson || !displayContainer) return;
+
+    displayContainer.innerHTML = `
+        <h3 style="color: var(--accent-gold); margin-top: 0;">${lesson.title}</h3>
+        <p style="color: #9ca3af; font-size: 0.85rem;">Format: ${lesson.type.toUpperCase()}</p>
+        <hr style="border-color: #374151; margin: 1rem 0;">
+        <div style="color: #d1d5db; line-height: 1.6;">
+            <p>${lesson.content}</p>
+        </div>
+        <div style="margin-top: 1.5rem; background: #1f2937; padding: 1rem; border-radius: 6px;">
+            <h5 style="color: #fff; margin: 0 0 0.5rem 0;">Assignment Submission</h5>
+            <input type="file" style="color: #9ca3af; font-size: 0.85rem; margin-bottom: 0.5rem;"><br>
+            <button onclick="alert('Assignment submitted successfully!')" style="background: var(--accent-gold); color: #000; font-weight: bold; border: none; padding: 0.4rem 1rem; border-radius: 4px; cursor: pointer;">Submit Work</button>
+        </div>
+    `;
+}
+
+// 5. 1-on-1 Direct Messaging System (With Local Storage)
+function getChatHistory() {
+    const saved = localStorage.getItem('k9_lms_messages');
+    return saved ? JSON.parse(saved) : [
+        { sender: 'Master Trainer (Dominica K9)', text: 'Welcome to the portal! Use this private 1-on-1 channel to ask questions regarding your assignments or course theory.', role: 'Trainer' }
+    ];
+}
+
+function saveChatHistory(messages) {
+    localStorage.setItem('k9_lms_messages', JSON.stringify(messages));
+}
+
+function sendLMSMessage() {
+    const input = document.getElementById('lms-chat-input');
+    const text = input.value.trim();
+    if (!text) return;
+
+    const messages = getChatHistory();
+    const senderName = currentRole === 'Master Trainer' ? 'Master Trainer (Dominica K9)' : (currentRole === 'Student' ? 'Student' : 'Guest User');
+    
+    messages.push({
+        sender: senderName,
+        text: text,
+        role: currentRole
+    });
+
+    saveChatHistory(messages);
+    input.value = '';
+    renderChatMessages();
+}
+
+function renderChatMessages() {
+    const chatContainer = document.getElementById('lms-chat-thread');
+    if (!chatContainer) return;
+
+    const messages = getChatHistory();
+    chatContainer.innerHTML = messages.map(msg => {
+        const isTrainer = msg.role === 'Master Trainer' || msg.role === 'Trainer';
+        const borderCol = isTrainer ? 'var(--accent-gold)' : '#3b82f6';
+        const nameCol = isTrainer ? 'var(--accent-gold)' : '#60a5fa';
+
+        return `
+            <div style="background: #1f2937; padding: 0.8rem; border-radius: 6px; max-width: 80%; border-left: 3px solid ${borderCol}; margin-bottom: 0.5rem;">
+                <strong style="color: ${nameCol}; font-size: 0.85rem;">${msg.sender}:</strong>
+                <p style="color: #d1d5db; font-size: 0.9rem; margin-top: 0.2rem; margin-bottom: 0;">${msg.text}</p>
+            </div>
+        `;
+    }).join('');
+
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+}
+
+// Initialize default views on script load
+document.addEventListener('DOMContentLoaded', () => {
+    loadLMSCourse('l1');
+    renderChatMessages();
+});
 </script>
 </body>
 </html>
