@@ -608,16 +608,16 @@
           <li><a onclick="showPage('social-media-page')" id="nav-social-media-page">Social Feeds</a></li>
           <li><a onclick="showPage('services-rates')" id="nav-services-rates">Services & Rates</a></li>
           <li><a onclick="showPage('operational-reviews')" id="nav-reviews-page">Field Reports</a></li>
-          <li><a onclick="showPage('contact-headquarters')" id="nav-contact-page">Contact Us</a></li> 
-        <li><a onclick="showPage('academy-page')" id="nav-academy-page" style="color: var(--accent-gold); font-weight: bold;">🎓 Become a Trainer</a></li>
+          <li><a onclick="showPage('contact-headquarters')" id="nav-contact-page">Contact Us</a></li>   
           <li><a onclick="showPage('operations-page')" id="nav-operations-page">Hours & Rules</a></li>
           <li><a onclick="triggerAdminGateModal()" style="color: var(--accent-gold);"><i class="fa-solid fa-key"></i> Control Matrix</a></li>
         </ul>
       </nav>
     </header>
-    <div class="content-container">
-    </div>
 
+    <div class="content-container">
+
+      <!-- SEPARATE NAV TAG FOR TARGET FEATURES, STORES, AND MEDIA FEEDS -->
       <nav class="secondary-nav-bar" id="features-assets-navigation">
           <ul>
               <li><a onclick="showPage('about-page'); setTimeout(() => scrollToElement('parent-gallery-grid-container'), 100);"><i class="fa-solid fa-images"></i> Puppy & Parent Gallery</a></li>
@@ -627,7 +627,29 @@
           </ul>
       </nav>
 
-      
+      <!-- SYSTEM AUTHENTICATION MODAL GATEWAY -->
+      <div id="auth-gate-modal">
+          <h4 style="margin-top:0; color:var(--accent-gold);"><i class="fa-solid fa-key"></i> Master Authentication</h4>
+          <div class="form-group-block">
+              <input type="password" id="admin-pass-input" placeholder="Enter Secure Matrix Key" />
+          </div>
+          <div style="display:flex; gap:10px; margin-top:15px;">
+              <button onclick="evaluateAccessKey()" style="padding:6px 12px; font-size:12px;">Verify</button>
+              <button onclick="document.getElementById('auth-gate-modal').style.display='none'" style="padding:6px 12px; font-size:12px; background:#475569; color:white;">Cancel</button>
+          </div>
+      </div>
+
+      <!-- MASTER CONTROL BANNER PANEL -->
+      <div id="secret-admin-banner">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:10px;">
+              <div>
+                  <h4 style="margin:0; color:var(--accent-gold); display:inline-block;"><i class="fa-solid fa-user-gear"></i> Direct Operational Admin Hub Active</h4>
+                  <span id="active-operator-signature" style="margin-left: 15px; font-size: 12px; background: rgba(214,175,55,0.15); padding: 3px 10px; border-radius: 4px; border: 1px solid var(--accent-gold); color: #fff; font-weight: bold;">Operator: Unknown</span>
+              </div>
+              <button onclick="killAdminSession()" style="background:#ef4444; color:white; padding:4px 10px; font-size:11px;">Lock Session</button>
+          </div>
+          
+          <div class="admin-panel-grid">
               <!-- PRODUCT EDITOR (Unified for all 3 store sections) -->
               <div class="admin-card-control">
                   <h5 style="color: var(--accent-gold); margin-top:0;"><i class="fa-solid fa-dog"></i> Add / Edit Core Asset Store</h5>
@@ -1815,145 +1837,7 @@ async function fetchLiveYouTubeStats() {
 }
 
 document.addEventListener('DOMContentLoaded', fetchLiveYouTubeStats);
-// ============================================================
-// ACADEMY LEVEL SWITCHER LOGIC
-// ============================================================
-function switchAcademyLevel(levelId) {
-    const levels = ['level-1', 'level-2', 'level-3'];
-    
-    levels.forEach(lvl => {
-        const panel = document.getElementById(`academy-${lvl}`);
-        const btn = document.getElementById(`tab-btn-${lvl}`);
-        
-        if (panel && btn) {
-            if (lvl === levelId) {
-                panel.style.display = 'block';
-                btn.style.background = 'var(--accent-gold, #f59e0b)';
-                btn.style.color = '#000';
-            } else {
-                panel.style.display = 'none';
-                btn.style.background = '#1f2937';
-                btn.style.color = '#fff';
-            }
-        }
-    });
-}
 
-// Global page routing function
-function showPageSection(sectionId) {
-    const sections = [
-        'home-section', 
-        'about-section', 
-        'social-section', 
-        'services-section', 
-        'reports-section', 
-        'contact-section', 
-        'hours-section', 
-        'academy-page'
-    ];
-
-    sections.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) {
-            el.style.display = (id === sectionId) ? 'block' : 'none';
-        }
-    });
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-      // Quiz Submission Logic
-function submitAcademyQuiz(e) {
-    e.preventDefault();
-    const selected = document.querySelector('input[name="q1"]:checked');
-    const msg = document.getElementById('quiz-result-msg');
-    
-    if (!selected) return;
-    
-    msg.style.display = 'block';
-    if (selected.value === 'NR') {
-        msg.style.color = '#34d399';
-        msg.innerHTML = '✅ Correct! Negative Reinforcement (NR) removes a stimulus to increase a target behavior.';
-    } else {
-        msg.style.color = '#f87171';
-        msg.innerHTML = '❌ Incorrect. Review Module 1: Operant Conditioning Quadrants.';
-    }
-}
-
-// Video Submission Logic
-function submitVideoHomework(e) {
-    e.preventDefault();
-    const msg = document.getElementById('video-submit-msg');
-    msg.style.display = 'block';
-    msg.innerHTML = '✅ Homework video successfully submitted to the evaluation rubric queue!';
-    e.target.reset();
-}
-
-// Mentorship Session Booking Logic
-function bookMentorshipSession(e) {
-    e.preventDefault();
-    const msg = document.getElementById('booking-confirm-msg');
-    msg.style.display = 'block';
-    msg.innerHTML = '📅 Session request transmitted! You will receive confirmation via email.';
-    e.target.reset();
-}
-      // Dynamic PDF Upload Handler for Trainers
-function uploadTrainerPDF(e) {
-    e.preventDefault();
-    
-    const targetLevel = document.getElementById('pdf-target-level').value;
-    const title = document.getElementById('pdf-doc-title').value;
-    const desc = document.getElementById('pdf-doc-desc').value;
-    const fileInput = document.getElementById('pdf-file-input');
-    const msg = document.getElementById('trainer-upload-msg');
-    
-    const fileURL = (fileInput.files && fileInput.files[0]) 
-        ? URL.createObjectURL(fileInput.files[0]) 
-        : '#';
-
-    // Create a new PDF card element dynamically inside the Student PDF Library Grid
-    const grid = document.getElementById('pdf-materials-grid');
-    if (grid) {
-        const newCard = document.createElement('div');
-        newCard.className = `pdf-card ${targetLevel}`;
-        newCard.style.cssText = 'background: #0b1120; border: 1px solid #374151; border-radius: 6px; padding: 1.2rem; display: flex; flex-direction: column; justify-content: space-between;';
-        
-        const badgeColor = targetLevel === 'level-1' ? '#60a5fa' : targetLevel === 'level-2' ? '#34d399' : targetLevel === 'level-3' ? '#a78bfa' : '#f59e0b';
-        
-        newCard.innerHTML = `
-            <div>
-                <span style="background: #1f2937; color: ${badgeColor}; font-size: 0.75rem; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: bold;">
-                    ${targetLevel.toUpperCase()}
-                </span>
-                <h4 style="color: #fff; margin: 0.6rem 0 0.3rem 0; font-size: 1.05rem;">${title}</h4>
-                <p style="color: #9ca3af; font-size: 0.85rem; line-height: 1.4; margin-bottom: 1rem;">${desc}</p>
-            </div>
-            <div style="display: flex; gap: 0.5rem; margin-top: auto;">
-                <a href="${fileURL}" target="_blank" style="flex: 1; text-align: center; background: var(--accent-gold, #f59e0b); color: #000; font-weight: bold; padding: 0.5rem; border-radius: 4px; text-decoration: none; font-size: 0.85rem;">👁️ View PDF</a>
-                <a href="${fileURL}" download="${title}.pdf" style="flex: 1; text-align: center; background: #1f2937; color: #fff; border: 1px solid #374151; font-weight: bold; padding: 0.5rem; border-radius: 4px; text-decoration: none; font-size: 0.85rem;">📥 Download</a>
-            </div>
-        `;
-        
-        grid.prepend(newCard);
-    }
-
-    msg.style.display = 'block';
-    msg.innerHTML = `✅ Successfully published "${title}" to the student library!`;
-    e.target.reset();
-}
-
-// Student Forum Post Handler
-function postForumDiscussion(e) {
-    e.preventDefault();
-    const text = document.getElementById('forum-input').value;
-    const feed = document.getElementById('forum-feed');
-    
-    if (feed && text) {
-        const post = document.createElement('div');
-        post.style.cssText = 'background: #0b1120; border: 1px solid #374151; padding: 1rem; border-radius: 6px;';
-        post.innerHTML = `
-            <div style="display: flex; justify-content: space-between; margin-bottom: 0.4rem;">
-                <strong style="color: var(--accent-gold, #f59
-                
 </script>
 </body>
 </html>
